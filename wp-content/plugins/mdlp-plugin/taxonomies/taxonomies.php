@@ -121,7 +121,7 @@ function semaine_taxonomy() {
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'semaine_taxonomy', 0 );
+//add_action( 'init', 'semaine_taxonomy', 0 );
 
 
 
@@ -245,7 +245,7 @@ function place_arrondissement_taxonomy() {
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'place_arrondissement_taxonomy', 0 );
+//add_action( 'init', 'place_arrondissement_taxonomy', 0 );
 
 
 
@@ -285,7 +285,7 @@ function text_type_taxonomy() {
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'text_type_taxonomy', 0 );
+//add_action( 'init', 'text_type_taxonomy', 0 );
 
 
 

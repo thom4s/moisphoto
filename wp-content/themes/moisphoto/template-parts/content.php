@@ -39,9 +39,13 @@
 				'after'  => '</div>',
 			) );
 		?>
+
+
+		<?php the_field('nom_commissaire'); ?>
+
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php moisphoto_entry_footer(); ?>
+		<?php //moisphoto_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
