@@ -1,12 +1,7 @@
 <?php
 
-
-function my_acf_google_map_api( $api ){
-  
-  $api['key'] = 'AIzaSyBs3x5sifohlp4Zqy3GxSv-oOF0_z2mx9s';
-  
-  return $api;
-  
+function my_acf_init() {
+  acf_update_setting('google_api_key', 'AIzaSyBs3x5sifohlp4Zqy3GxSv-oOF0_z2mx9s');
 }
 
-add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+add_action('acf/init', 'my_acf_init');
