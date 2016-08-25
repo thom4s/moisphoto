@@ -7,19 +7,19 @@
 function theme_taxonomy() {
 
   $labels = array(
-    'name'                       => _x( 'Thèmes', 'Taxonomy General Name', 'mdlp_db' ),
-    'singular_name'              => _x( 'Thème', 'Taxonomy Singular Name', 'mdlp_db' ),
-    'menu_name'                  => __( 'Thème', 'mdlp_db' ),
-    'all_items'                  => __( 'Tous les thèmes', 'mdlp_db' ),
-    'parent_item'                => __( 'Thème parent', 'mdlp_db' ),
-    'parent_item_colon'          => __( 'Thème parent :', 'mdlp_db' ),
-    'new_item_name'              => __( 'Nouveau thème', 'mdlp_db' ),
-    'add_new_item'               => __( 'Ajouter un thème', 'mdlp_db' ),
-    'edit_item'                  => __( 'Editer thème', 'mdlp_db' ),
-    'update_item'                => __( 'Mettre à jour le Thème', 'mdlp_db' ),
-    'separate_items_with_commas' => __( 'Séparer les thèmes avec une virgule', 'mdlp_db' ),
-    'search_items'               => __( 'Cherche le thème', 'mdlp_db' ),
-    'add_or_remove_items'        => __( 'Ajouter ou retirer un thème', 'mdlp_db' ),
+    'name'                       => _x( 'Thématiques', 'Taxonomy General Name', 'mdlp_db' ),
+    'singular_name'              => _x( 'Thématique', 'Taxonomy Singular Name', 'mdlp_db' ),
+    'menu_name'                  => __( 'Thématique', 'mdlp_db' ),
+    'all_items'                  => __( 'Toutes les Thématique', 'mdlp_db' ),
+    'parent_item'                => __( 'Thématique parente', 'mdlp_db' ),
+    'parent_item_colon'          => __( 'Thématique parente :', 'mdlp_db' ),
+    'new_item_name'              => __( 'Nouvelle Thématique', 'mdlp_db' ),
+    'add_new_item'               => __( 'Ajouter une Thématique', 'mdlp_db' ),
+    'edit_item'                  => __( 'Editer Thématique', 'mdlp_db' ),
+    'update_item'                => __( 'Mettre à jour la Thématique', 'mdlp_db' ),
+    'separate_items_with_commas' => __( 'Séparer les Thématiques avec une virgule', 'mdlp_db' ),
+    'search_items'               => __( 'Cherche la Thématique', 'mdlp_db' ),
+    'add_or_remove_items'        => __( 'Ajouter ou retirer une Thématique', 'mdlp_db' ),
     'choose_from_most_used'      => __( 'Choisir parmi les plus utilisés', 'mdlp_db' ),
     'not_found'                  => __( 'Not Found', 'mdlp_db' ),
   );
@@ -50,7 +50,7 @@ function event_type_taxonomy() {
   $labels = array(
     'name'                       => _x( 'Types événement', 'Taxonomy General Name', 'mdlp_db' ),
     'singular_name'              => _x( 'Type événement', 'Taxonomy Singular Name', 'mdlp_db' ),
-    'menu_name'                  => __( 'Type', 'mdlp_db' ),
+    'menu_name'                  => __( 'Type d\'événement', 'mdlp_db' ),
     'all_items'                  => __( 'Tous les types', 'mdlp_db' ),
     'parent_item'                => __( 'Type parent', 'mdlp_db' ),
     'parent_item_colon'          => __( 'Type parent : ', 'mdlp_db' ),
@@ -125,22 +125,22 @@ function semaine_taxonomy() {
 
 
 
-// Register Photographe Taxonomy
+// Register Auteur Taxonomy
 ////////////////////////////////
 
-function photographe_taxonomy() {
+function auteur_taxonomy() {
 
   $labels = array(
-    'name'                       => _x( 'Photographes', 'Taxonomy General Name', 'mdlp_db' ),
-    'singular_name'              => _x( 'Photographe', 'Taxonomy Singular Name', 'mdlp_db' ),
-    'menu_name'                  => __( 'Photographes', 'mdlp_db' ),
-    'all_items'                  => __( 'Tous les photographes', 'mdlp_db' ),
+    'name'                       => _x( 'Auteurs', 'Taxonomy General Name', 'mdlp_db' ),
+    'singular_name'              => _x( 'Auteur', 'Taxonomy Singular Name', 'mdlp_db' ),
+    'menu_name'                  => __( 'Auteurs', 'mdlp_db' ),
+    'all_items'                  => __( 'Tous les Auteurs', 'mdlp_db' ),
     'parent_item'                => __( 'Parent Item', 'mdlp_db' ),
     'parent_item_colon'          => __( 'Parent Item:', 'mdlp_db' ),
-    'new_item_name'              => __( 'Nouveau Photographe', 'mdlp_db' ),
-    'add_new_item'               => __( 'Ajouter un photographe', 'mdlp_db' ),
-    'edit_item'                  => __( 'Editer un photographe', 'mdlp_db' ),
-    'update_item'                => __( 'Mettre à jour photographe', 'mdlp_db' ),
+    'new_item_name'              => __( 'Nouvel Auteur', 'mdlp_db' ),
+    'add_new_item'               => __( 'Ajouter un Auteur', 'mdlp_db' ),
+    'edit_item'                  => __( 'Editer un Auteur', 'mdlp_db' ),
+    'update_item'                => __( 'Mettre à jour Auteur', 'mdlp_db' ),
     'separate_items_with_commas' => __( 'Separate items with commas', 'mdlp_db' ),
     'search_items'               => __( 'Search Items', 'mdlp_db' ),
     'add_or_remove_items'        => __( 'Add or remove items', 'mdlp_db' ),
@@ -156,12 +156,12 @@ function photographe_taxonomy() {
     'show_in_nav_menus'          => true,
     'show_tagcloud'              => true,
   );
-  register_taxonomy( 'photographe', 'event', $args );
+  register_taxonomy( 'auteur', 'event', $args );
 
 }
 
 // Hook into the 'init' action
-add_action( 'init', 'photographe_taxonomy', 0 );
+add_action( 'init', 'auteur_taxonomy', 0 );
 
 
 
