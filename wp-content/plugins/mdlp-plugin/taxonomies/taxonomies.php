@@ -40,7 +40,48 @@ function theme_taxonomy() {
 add_action( 'init', 'theme_taxonomy', 0 );
 
 
-  
+
+
+
+// Register Type de curiosité Taxonomy
+//////////////////////////
+
+function curiosite_cat_taxonomy() {
+
+  $labels = array(
+    'name'                       => _x( 'Type de curiosité', 'Taxonomy General Name', 'mdlp_db' ),
+    'singular_name'              => _x( 'Type de curiosité', 'Taxonomy Singular Name', 'mdlp_db' ),
+    'menu_name'                  => __( 'Type de curiosité', 'mdlp_db' ),
+    'all_items'                  => __( 'Toutes les types', 'mdlp_db' ),
+    'parent_item'                => __( 'Type de curiosité parente', 'mdlp_db' ),
+    'parent_item_colon'          => __( 'Type de curiosité parente :', 'mdlp_db' ),
+    'new_item_name'              => __( 'Nouveau Type de curiosité', 'mdlp_db' ),
+    'add_new_item'               => __( 'Ajouter un Type de curiosité', 'mdlp_db' ),
+    'edit_item'                  => __( 'Editer Type de curiosité', 'mdlp_db' ),
+    'update_item'                => __( 'Mettre à jour', 'mdlp_db' ),
+    'separate_items_with_commas' => __( 'Séparer les types avec une virgule', 'mdlp_db' ),
+    'search_items'               => __( 'Cherche la types', 'mdlp_db' ),
+    'add_or_remove_items'        => __( 'Ajouter ou retirer une types', 'mdlp_db' ),
+    'choose_from_most_used'      => __( 'Choisir parmi les plus utilisés', 'mdlp_db' ),
+    'not_found'                  => __( 'Not Found', 'mdlp_db' ),
+  );
+  $args = array(
+    'labels'                     => $labels,
+    'hierarchical'               => true,
+    'public'                     => true,
+    'show_ui'                    => true,
+    'show_admin_column'          => true,
+    'show_in_nav_menus'          => true,
+    'show_tagcloud'              => false,
+  );
+  register_taxonomy( 'curiosite-cat', 'curiosite', $args );
+
+}
+
+// Hook into the 'init' action
+add_action( 'init', 'curiosite_cat_taxonomy', 0 );
+
+
 
 // Register Event Type Taxonomy
 ///////////////////////////////
