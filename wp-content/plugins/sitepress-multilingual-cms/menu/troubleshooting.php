@@ -295,6 +295,9 @@ if ( isset( $action) && wp_verify_nonce($nonce, $action) ) {
 			add_filter('get_term', array($sitepress,'get_term_adjust_id'));
 			add_filter('get_terms_args', array($sitepress, 'get_terms_args_filter'), 10, 2);
 			exit;
+		case 'icl_remove_st_db_cache_logs' :
+			delete_option( 'wpml-st-persist-errors' );
+			exit;
 	}
 }
 /* DEBUG ACTION */
@@ -534,6 +537,18 @@ echo '</textarea>';
 
 			});
 		});
+
+		jQuery('#icl_remove_st_db_cache_logs').click(function () {
+			var self = jQuery(this);
+			self.attr('disabled', 'disabled');
+			self.after(icl_ajxloaderimg);
+			jQuery.post(location.href + '&debug_action=icl_remove_st_db_cache_logs&nonce=<?php echo wp_create_nonce('icl_remove_st_db_cache_logs'); ?>', function () {
+				self.removeAttr('disabled');
+				alert('<?php echo esc_js(__('Done', 'sitepress')) ?>');
+				self.next().fadeOut();
+
+			});
+		});
 	})
 </script>
 <div class="icl_cyan_box">
@@ -586,6 +601,14 @@ echo '</textarea>';
 		<input id="icl_fix_post_types" type="button" class="button-secondary" value="<?php _e( 'Fix post type assignment for translations', 'sitepress' ) ?>"/><br/>
 		<small style="margin-left:10px;"><?php _e( 'Correct post type assignment for translations of custom post types in case something went wrong.', 'sitepress' ) ?></small>
 	</p>
+
+	<?php if( get_option( 'wpml-st-persist-errors' ) ) { ?>
+	<p>
+		<input id="icl_remove_st_db_cache_logs" type="button" class="button-secondary" value="<?php _e( 'Remove debug logs of String Translation cache', 'sitepress' ) ?>"/><br/>
+		<small style="margin-left:10px;"><?php _e( 'Removes invalid rows stored in option and hide admin notice.', 'sitepress' ) ?></small>
+	</p>
+	<?php } ?>
+
 	<p>
 		<br/>
 		<?php _e( 'Translatable custom posts linking', 'sitepress' ); ?><br/>

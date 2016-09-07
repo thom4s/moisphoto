@@ -53,8 +53,11 @@ class WPML_DB_Chunk {
 	 * @param string $query
 	 */
 	private function validate_query( $query ) {
-		if ( stripos( $query, 'LIMIT' ) !== false || stripos( $query, 'OFFSET' ) !== false ) {
-			throw new \InvalidArgumentException( "Query can't contain OFFSET or LIMIT keyword" );
+		$query2tree = new dqml2tree( $query );
+		$sql_tree   = $query2tree->make();
+
+		if ( array_key_exists( 'LIMIT', $sql_tree['SQL']['SELECT'] ) || array_key_exists( 'OFFSET', $sql_tree['SQL']['SELECT'] ) ) {
+			throw new InvalidArgumentException( "Query can't contain OFFSET or LIMIT keyword" );
 		}
 	}
 }

@@ -193,15 +193,15 @@ function icl_sitepress_activate() {
                  CREATE TABLE IF NOT EXISTS `{$table_name}` (
                   `id` bigint(20) unsigned NOT NULL auto_increment,
                   `language` varchar(7) NOT NULL,
-                  `context` varchar(" . WPML_STRING_TABLE_NAME_CONTEXT_LENGTH . ") NOT NULL,
-                  `name` varchar(" . WPML_STRING_TABLE_NAME_CONTEXT_LENGTH . ") NOT NULL,
+                  `context` varchar(" . WPML_STRING_TABLE_NAME_CONTEXT_LENGTH . ") CHARACTER SET UTF8 NOT NULL,
+                  `name` varchar(" . WPML_STRING_TABLE_NAME_CONTEXT_LENGTH . ") CHARACTER SET UTF8 NOT NULL,
                   `value` text NOT NULL,
                   `string_package_id` BIGINT unsigned NULL,
                   `type` VARCHAR(40) NOT NULL DEFAULT 'LINE',
                   `title` VARCHAR(160) NULL,
                   `status` TINYINT NOT NULL,
                   `gettext_context` TEXT NOT NULL,
-                  `domain_name_context_md5` VARCHAR(32) NOT NULL,
+                  `domain_name_context_md5` VARCHAR(32) CHARACTER SET LATIN1 NOT NULL,
                   PRIMARY KEY  (`id`),
                   UNIQUE KEY `uc_domain_name_context_md5` (`domain_name_context_md5`),
                   KEY `language_context` (`language`, `context`)
@@ -372,6 +372,7 @@ function icl_sitepress_activate() {
 
 	//Set new caps for all administrator role
 	icl_enable_capabilities();
+	repair_el_type_collate();
 
 	do_action('wpml_activated');
 }

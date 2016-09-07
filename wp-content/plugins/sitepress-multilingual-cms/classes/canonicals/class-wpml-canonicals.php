@@ -67,10 +67,9 @@ class WPML_Canonicals {
 	 * @param WP_Post     $post
 	 *
 	 * @return string|bool
-	 * @throws \InvalidArgumentException
 	 */
 	public function get_canonical_url( $canonical_url, $post ) {
-		if ( $this->sitepress->get_wp_api()->is_front_end() ) {
+		if ( $post && $this->sitepress->get_wp_api()->is_front_end() ) {
 			$post_element = new WPML_Post_Element( $post->ID, $this->sitepress );
 
 			if ( ! $post_element->is_translatable() ) {

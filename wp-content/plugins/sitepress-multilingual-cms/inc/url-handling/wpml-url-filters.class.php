@@ -113,9 +113,12 @@ class WPML_URL_Filters extends WPML_SP_And_PT_User {
 	 * @param int|WP_Post $post
 	 *
 	 * @return bool|mixed|string
-	 * @throws \InvalidArgumentException
 	 */
 	public function permalink_filter( $link, $post ) {
+		if ( ! $post ) {
+			return $link;
+		}
+
 		/** @var int $post */
 		if ( is_object( $post ) ) {
 			$post = $post->ID;
