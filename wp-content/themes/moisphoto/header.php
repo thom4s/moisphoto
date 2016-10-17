@@ -16,7 +16,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-<meta name="google-site-verification" content="yIod8nwCkjV4eAiryQ7RSi3-dmiUU_20Z11hhfVtQdo" />
+
 <?php wp_head(); ?>
 </head>
 
@@ -31,7 +31,11 @@
 				&nbsp; 
 				<?php if( !is_front_page() && !is_home() ) : ?>
 					
-					<div class="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"> </a></div>
+					<div class="site-logo">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png">
+						</a>
+					</div>
 
 				<?php endif; ?>
 			</div>

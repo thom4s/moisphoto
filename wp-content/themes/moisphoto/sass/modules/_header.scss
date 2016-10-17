@@ -6,4 +6,16 @@
 
 
 .site-header {
+  padding-top: $base_line_half;
 }
+
+
+
+.site-branding--little {
+  line-height: 0.1;
+  padding-right: 4px;
+
+  a {
+    display: block;
+  }
+} 
