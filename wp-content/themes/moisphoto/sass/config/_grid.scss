@@ -13,7 +13,7 @@
 $max_width:                         1024px;
 $max_width_large:                   1200px;
 $cols:                              24 !default; 
-$gutter:                            0.5% !default; 
+$gutter:                            0 !default; 
         
 $mobile_first:                      false !default; 
 $minimal_breakpoint:                320px !default; 
@@ -91,7 +91,6 @@ $one_col: (100% - ($gutter * ($cols - 1))) / $cols;
 }
 
 .row {
-    @include clearfix;
 
     > :first-child, 
     .row > :first-child { 

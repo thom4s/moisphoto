@@ -1,0 +1,54 @@
+/* 
+ * Sprite
+ * 
+ * @package sasskit
+ */
+
+
+%sprite {
+  background-image: url('../img/sprite.png');
+  background-repeat: no-repeat;
+  background-color: none;
+}
+
+
+
+
+%pict {
+  position: relative;
+  text-align: center;
+  color: $white;
+  margin-right: 4px;
+  margin-bottom: 4px;
+
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  .pict__content {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.pict--social {
+  @extend %pict;
+  background-color: $gray_darker;
+}
+
+
+.pict--wpml {
+  @extend %pict;
+  background-color: $color_secondary;
+}
+
+
+.pict--search {
+  @extend %pict;
+  background-color: $color_tertiary;
+}

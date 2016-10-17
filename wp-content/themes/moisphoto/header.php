@@ -23,26 +23,57 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
-	<header id="masthead" class="site-header wrap" role="banner">
-		<div class="site-branding">
-			<?php
-			if ( is_front_page() && is_home() ) : ?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-			<?php else : ?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-			<?php
-			endif;
+	<header id="masthead" class="site-header wrap clearfix" role="banner">
 
-			$description = get_bloginfo( 'description', 'display' );
-			if ( $description || is_customize_preview() ) : ?>
-				<p class="site-description"><?php echo $description; /* WPCS: xss ok. */ ?></p>
-			<?php
-			endif; ?>
-		</div><!-- .site-branding -->
+		<div class="row clearfix">
 
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-		</nav><!-- #site-navigation -->
+			<div class="site-branding--little l-6col">
+				&nbsp; 
+				<?php if( !is_front_page() && !is_home() ) : ?>
+					
+					<div class="site-logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"> </a></div>
+
+				<?php endif; ?>
+			</div>
+
+
+
+			<nav id="site-navigation" class="main-navigation" role="navigation">
+				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+
+					<div class="pict--search l-1col l-last">
+						<span class="pict__content">s</span>
+					</div>
+
+					<div class="pict--wpml l-1col l-last">
+						<span class="pict__content">EN</span>
+					</div>
+
+					<div class="pict--social l-1col l-last">
+						<span class="pict__content">t</span>
+					</div>
+					
+					<div class="pict--social l-1col l-last">
+						<span class="pict__content">t</span>
+					</div>
+					
+					<div class="pict--social l-1col l-last">
+						<span class="pict__content">t</span>
+					</div>
+					
+			</nav><!-- #site-navigation -->
+
+		</div><!-- .row -->
+
+
+
+		<?php if( is_front_page() ) : ?>
+			<div class="site-branding--big row clearfix">
+				<div class="site-logo l-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
+			</div><!-- .site-branding -->
+		<?php endif; ?>
+
+
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content wrap">
+	<div id="content" class="site-content wrap clearfix">
