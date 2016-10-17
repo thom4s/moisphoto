@@ -38,11 +38,10 @@ figure {
 	margin: 0;
 }
 
-.entry-content {
-	ul {
-		padding-left: 0;
-	}
-	li {
-		margin-bottom: 11px;
-	}
+
+
+.no-bullets {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

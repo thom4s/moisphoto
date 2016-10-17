@@ -58,6 +58,28 @@
 
 
 
+// MENU FOOTER 
+
+.footer__main__menu {
+
+  ul {
+    @extend .no-bullets;
+  }
+
+  li {
+    background-color: $gray;
+    height: ($base_line_height * 1.5) - 4;
+    line-height: ($base_line_height * 1.5) - 4;
+    padding-left: $base_line_half;
+
+    margin-right: 4px;
+    margin-bottom: 4px;
+
+  }
+}
+
+
+
 // MENU MOBILE
 .navigation-trigger {
   @include box-sizing();

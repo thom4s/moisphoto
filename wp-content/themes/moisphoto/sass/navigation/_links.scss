@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 
   @include transition(all, 0.2s);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 a:hover,
 a:focus,

@@ -22,6 +22,10 @@ $large_breakpoint:                  1024px !default;
 $wide_breakpoint:                   1400px !default; 
 
 
+* {
+    @include box-sizing;
+}
+
 .plain {
     @include box-sizing;
     display: block;

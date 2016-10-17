@@ -14,12 +14,11 @@
 
 
 
-%pict {
+%picto--square {
   position: relative;
   text-align: center;
   color: $white;
-  margin-right: 4px;
-  margin-bottom: 4px;
+
 
   &:after {
     content: "";
@@ -32,23 +31,57 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    border-right: 4px solid #fff;
+    border-bottom: 4px solid #fff;
+  }
+}
+
+%pict--rounded {
+  border-radius: 50%;
+  position: relative;
+  text-align: center;
+  color: $white;
+}
+
+
+
+.pict--social {
+  @extend %picto--square;
+
+  .pict__content {
+    background-color: $gray_darker;
+  }
+}
+
+.pict--wpml {
+  @extend %picto--square;
+
+  .pict__content {
+    background-color: $color_secondary;
   }
 }
 
 
-.pict--social {
-  @extend %pict;
-  background-color: $gray_darker;
-}
-
-
-.pict--wpml {
-  @extend %pict;
-  background-color: $color_secondary;
-}
-
-
 .pict--search {
-  @extend %pict;
-  background-color: $color_tertiary;
+  @extend %picto--square;
+
+  .pict__content {
+    background-color: $color_tertiary;
+  }
 }
+
+
+
+.pict--arrow--right {
+  @extend %pict--rounded;
+
+}
+
+
+
+
+
+
+
+
+

@@ -7,20 +7,19 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-	border: 1px solid;
-	border-color: #333;
-	border-radius: 3px;
-	background: $button_bg_color;
-	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 15px 17px rgba(255, 255, 255, 0.5), inset 0 -5px 12px rgba(0, 0, 0, 0.05);
-	color: rgba(0, 0, 0, .8);
-	@include fontsize(0.75);
-	line-height: 1;
-	padding: .6em 1em .4em;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
+	@include type-setting(0);
+	width: 100%;
+	height: ($base_line_height * 1.5) - 4;
+  margin-bottom: 4px;
+	border: none;
+	background: none;
+	background-color: $black;
+	color: $white;
+	line-height: ($base_line_height * 1.5) - 4;
+	padding: 0;
 
 	&:hover {
 		border-color: $button_border_color;
-		box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 15px 17px rgba(255, 255, 255, 0.8), inset 0 -5px 12px rgba(0, 0, 0, 0.02);
 	}
 
 	&:active,

@@ -4,22 +4,21 @@ input[type="url"],
 input[type="password"],
 input[type="search"],
 textarea {
+  width: 100%;
+  height: ($base_line_height * 1.5) - 4;
+  margin-bottom: 4px;
+  padding: 0;
 	color: $black;
-	border: 1px solid $black;
-	border-radius: 3px;
+	border: none;
+  background: none;
+  background-color: $gray_dark;
 
 	&:focus {
 
 	}
 }
 
-input[type="text"],
-input[type="email"],
-input[type="url"],
-input[type="password"],
-input[type="search"] {
-	padding: 3px;
-}
+
 
 textarea {
   overflow: auto; /* Removes default vertical scrollbar in IE6/7/8/9 */
