@@ -11,38 +11,34 @@
 // =============
 
 // Descriptive colors (example)
-$hopbush                      : #c69;
-$bouquet                      : #b37399;
-$venus                        : #998099;
-$patina                       : #699;
-$nebula                       : #d2e1dd;
+$blue                         : rgb(40, 53, 131);
+$red                          : rgb(219, 8, 25);
+$green                        : rgb(63, 165, 53);
 
 // Grey nuances
 $black                        : #000 !default;
-$gray_darker                  : #222 !default;
-$gray_dark                    : #333 !default;
-$gray                         : #555 !default;
-$gray_light                   : #999 !default;
-$gray_lighter                 : #eee !default;
+$gray_darker                  : rgb(40, 40, 40) !default;
+$gray_dark                    : rgb(100, 100, 100) !default;
+$gray                         : rgb(165, 165, 165) !default;
+$gray_light                   : rgb(210, 210, 210) !default;
+$gray_lighter                 : rgb(245, 245, 245) !default;
 $white                        : #fff !default;
 
 // Main color palette
-$color_primary                : $hopbush;
-$color_secondary              : $bouquet;
-$color_accent                 : $patina;
+$color_primary                : $blue;
+$color_secondary              : $red;
+$color_tertiary               : $green;
 
 // Common colors
 $color_background             : $white;
-$color_border                 : $bouquet;
-$color_text                   : darken($bouquet, 15);
-$color_text_weak              : $bouquet;
-$color_text_strong            : $venus;
-$color_text_heading           : $bouquet;
+$color_text                   : $gray_darker;
+$color_text_weak              : $gray_light;
+$color_text_strong            : $black;
 
 // Links
 $color_link                   : $color_primary;
-$color_link_hover             : $venus;
-$color_link_visited           : $bouquet;
+$color_link_hover             : $color_primary;
+$color_link_visited           : $color_primary;
 
 // Code
 $color_code                   : #333;

@@ -14,18 +14,18 @@
 // Base Sizes
 // ==========
 
-$base_font_size               : 16px !default;
+$base_font_size               : 14px !default;
 
-$base_line_half               : 16px;
-$base_line_height             : 32px !default;
+$base_line_half               : 14px;
+$base_line_height             : 28px !default;
 
 
 $type-scale: (
-  -1: 1rem,
-  0: 1.4rem, // paragraphes
-  1: 1.6rem, // menu items
-  2: 2rem, // h3, 
-  3: 3rem // h1, h2
+  -1: 1.2rem,
+  0: 1.4rem, 
+  1: 1.6rem, 
+  2: 2rem, 
+  3: 2.4rem 
 );
 
 $line-heights: (
@@ -79,12 +79,7 @@ $font_family_meta               : $din, $font_family_sans;
 
 // Set weights
 $black              : 900;
-$heavy              : 800;
-$bold               : 700;
-$medium             : 600;
-$regular            : 400;
-$book               : 300;
-$light              : 200;
+$medium             : 400;
 $thin               : 100;
 
 

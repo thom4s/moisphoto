@@ -12,10 +12,10 @@
 
 $max_width:                         1024px;
 $max_width_large:                   1200px;
-$cols:                              12 !default; 
-$gutter:                            1.5% !default; 
+$cols:                              24 !default; 
+$gutter:                            0.5% !default; 
         
-$mobile_first:                      true !default; 
+$mobile_first:                      false !default; 
 $minimal_breakpoint:                320px !default; 
 $medium_breakpoint:                 760px !default; 
 $large_breakpoint:                  1024px !default; 
