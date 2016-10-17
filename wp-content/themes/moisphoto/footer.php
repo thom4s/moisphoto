@@ -17,6 +17,10 @@
 		<div class="site-info">
       Le Mois de la Photo du Grand Paris est un événement organisé par la Maison Européenne de la Photographie.
 		</div><!-- .site-info -->
+
+    <div>
+      <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu' ) ); ?>
+    </div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

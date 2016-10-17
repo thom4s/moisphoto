@@ -44,7 +44,8 @@ function moisphoto_setup() {
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => esc_html__( 'Primary', 'moisphoto' ),
+		'primary' => esc_html__( 'Principal', 'moisphoto' ),
+		'secondary' => esc_html__( 'Secondaire', 'moisphoto' ),
 	) );
 
 	/*
