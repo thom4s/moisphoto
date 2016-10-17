@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Template name : Espace Presse
+ * Template name: Espace Presse
  *
  * @package moisphoto
  */

@@ -1,7 +1,7 @@
 <?php
 /**
  *
- * Template name : Page d'accueil
+ * Template name: Page d'accueil
  *
  * @package moisphoto
  */
