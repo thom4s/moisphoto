@@ -10,34 +10,63 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
 
-	<div class="entry-content">
-		<?php
-			the_content();
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'moisphoto' ),
-				'after'  => '</div>',
-			) );
-		?>
+	<div class="entry-content clearfix">
+
+		<div class="module-map clearfix">
+			<?php 
+				// get current edition
+				// get all events of current edition
+				// set_query_var('e', $events); 
+			?>
+			<?php get_template_part( 'template-parts/modules/module', 'map' ); ?>
+
+		</div>
+
+
+		<div class="module-grid clearfix">
+			<div class="wrap">
+
+				<?php 
+					// get elements from template
+					// set_query_var('e', $elements); 
+				?>
+				<?php get_template_part( 'template-parts/modules/module', 'grid' ); ?>
+
+			</div>
+		</div>
+
+
+		<div class="module-news clearfix">
+			<div class="wrap row">
+				<?php 
+					// Define number of posts
+					// set_query_var('p', $posts); 
+				?>
+				<div class="l-16col">
+					<?php get_template_part( 'template-parts/modules/module', 'news' ); ?>
+				</div>
+
+				<div class="l-8col">
+				<?php 
+					// Define number of items
+					// set_query_var('i', $items); 
+				?>
+				<?php get_template_part( 'template-parts/modules/module', 'stream' ); ?>
+				</div>
+			</div>	
+		</div>
+
+
+		<div class="module-partners clearfix">
+			<div class="wrap">
+				<?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
+			</div>
+		</div>
+
+
 	</div><!-- .entry-content -->
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-				edit_post_link(
-					sprintf(
-						/* translators: %s: Name of current post */
-						esc_html__( 'Edit %s', 'moisphoto' ),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					),
-					'<span class="edit-link">',
-					'</span>'
-				);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+
 </article><!-- #post-## -->

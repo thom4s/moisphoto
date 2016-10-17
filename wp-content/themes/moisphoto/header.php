@@ -80,4 +80,4 @@
 
 	</header><!-- #masthead -->
 
-	<div id="content" class="site-content wrap clearfix">
+	<div id="content" class="site-content clearfix">
