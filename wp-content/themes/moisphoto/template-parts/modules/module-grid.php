@@ -21,76 +21,105 @@
 
       switch ( $item['acf_fc_layout'] ) {
         case 'btn_show_events': ?>
-
-          <div class="grid__item--btn l-6col <?php echo $order_item; ?> square">
-            <div class="square__content">
-              <?php echo $item['btn_chapo']; ?>
+          <a href="#" class="js-display-events">
+            <div class="grid__item--btn l-6col <?php echo $order_item; ?> square">
+              <div class="square__content">
+                <?php echo $item['btn_chapo']; ?>
+              </div>
             </div>
-          </div>
-
+          </a>
           <?php break;
 
 
         case 'text': ?>
-
-          <div class="grid__item--text l-6col <?php echo $order_item; ?> square">
-            <div class="square__content">
-              <?php echo $item['text_title']; ?>
-              <?php echo $item['text_intro']; ?>
-              <?php echo $item['text_link']; ?>
+          <a href="<?php echo $item['text_link']; ?>">
+            <div class="grid__item--text l-6col <?php echo $order_item; ?> square">
+              <div class="square__content">
+                <h3><?php echo $item['text_title']; ?></h3>
+                <?php echo $item['text_intro']; ?>
+                <span>En savoir plus</span>
+              </div>
             </div>
-          </div>
-
+          </a>
           <?php
           break;
+
 
         case 'weekend': ?>
-
-          <div class="grid__item--weekend l-14col <?php echo $order_item; ?>">
-            <div class="row">
-            
-              <div class="l-8col square">
-                <div class="square__content">
-                  <?php echo $item['weekend_item']; ?>
+          <?php $url = get_permalink ( $item['weekend_item'] ); ?>
+          <a href="<?php echo $url; ?>">
+            <div class="grid__item--weekend l-14col <?php echo $order_item; ?>">
+              <div class="row">
+              
+                <div class="l-8col square">
+                  <div class="square__content bg--img" style="background-image: url(<?php echo $item['weekend_img']; ?>)">
+                                  
+                  </div>
                 </div>
-              </div>
-            
-              <div class="l-6col square">
-                <div class="square__content">
-                  <?php echo $item['weekend_title']; ?>
-                  <?php echo $item['weekend_intro']; ?>
+              
+                <div class="l-6col square">
+                  <div class="square__content">
+                    <h3><?php echo $item['weekend_title']; ?></h3>
+                    <?php echo $item['weekend_intro']; ?>
+                  </div>
                 </div>
+              
               </div>
-            
             </div>
-          </div>
-
+          </a>
           <?php
           break;
+
+
+        case 'big_bloc': ?>
+          <a href="<?php echo $url; ?>">
+            <div class="grid__item--weekend l-15col <?php echo $order_item; ?>">
+              <div class="row">
+              
+                <div class="l-9col square">
+                  <div class="square__content bg--img" style="background-image: url(<?php echo $item['big_bloc_img']; ?>)">
+                                  
+                  </div>
+                </div>
+              
+                <div class="l-6col square">
+                  <div class="square__content">
+                    <h3><?php echo $item['big_bloc_title']; ?></h3>
+                    <?php echo $item['big_bloc_text']; ?>
+                  </div>
+                </div>
+              
+              </div>
+            </div>
+          </a>
+          <?php
+          break;
+
 
         case 'page': ?>
-
-          <div class="grid__item--page l-6col <?php echo $order_item; ?> square">
-            <div class="square__content">
-              <?php echo $item['page_item']; ?>
-              <?php echo $item['page_title']; ?>
-              <?php echo $item['page_intro']; ?>
+          <?php $url = get_permalink ( $item['page_item'] ); ?>
+          <a href="<?php echo $url; ?>">
+            <div class="grid__item--page l-6col <?php echo $order_item; ?> square">
+              <div class="square__content">
+                <h3><?php echo $item['page_title']; ?></h3>
+                <?php echo $item['page_intro']; ?>
+              </div>
             </div>
-          </div>
-
+          </a>
           <?php
           break;
 
+
         case 'post': ?>
-
-          <div class="grid__item--post l-6col <?php echo $order_item; ?> square">
-            <div class="square__content">
-              <?php echo $item['post_item']; ?>
-              <?php echo $item['post_title']; ?>
-              <?php echo $item['post_intro']; ?>
+          <?php $url = get_permalink ( $item['post_item'] ); ?>
+          <a href="<?php echo $url; ?>">
+            <div class="grid__item--post l-6col <?php echo $order_item; ?> square">
+              <div class="square__content">
+                <?php echo $item['post_title']; ?>
+                <?php echo $item['post_intro']; ?>
+              </div>
             </div>
-          </div>
-
+          </a>
           <?php
           break;
 
@@ -100,11 +129,8 @@
 
       if($i % 2 == 0) : 
         echo '</div><!-- .row -->';
-        
-      else : 
 
       endif; 
-
       $i++;
     }
 

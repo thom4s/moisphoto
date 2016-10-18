@@ -16,11 +16,11 @@
 }
 
   .grid__row:not(:last-child) {
-    margin-bottom: $base_line_height;
+    margin-bottom: $base_line_height * 2;
   }
 
     %grid__item {
-      border-top: 10px solid;
+      border-top: 20px solid;
 
       &.even {
         @extend .l-2col-push;

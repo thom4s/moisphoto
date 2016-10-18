@@ -11,7 +11,11 @@ img {
 }
 
 
-@import "gallery";
+.bg--img {
+  background-position: center center;
+  background-size: cover;
+}
 
+@import "gallery";
 @import "caption";
 
