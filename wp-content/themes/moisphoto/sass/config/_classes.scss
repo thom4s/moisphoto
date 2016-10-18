@@ -47,6 +47,13 @@
   @include clearfix;
 }
 
+.is-centered {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    float: none !important;
+}
+
+
 
 /* 
  * Javascript

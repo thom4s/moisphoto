@@ -10,34 +10,28 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-	</header><!-- .entry-header -->
+	<div class="row">
 
-	<div class="entry-content">
-		<?php
-			the_content();
 
-			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'moisphoto' ),
-				'after'  => '</div>',
-			) );
-		?>
-	</div><!-- .entry-content -->
+    <?php if ( has_post_thumbnail() ) : ?>
+      <div class="entry__media bg--img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div>
+    <?php endif; ?>
 
-	<?php if ( get_edit_post_link() ) : ?>
-		<footer class="entry-footer">
-			<?php
-				edit_post_link(
-					sprintf(
-						/* translators: %s: Name of current post */
-						esc_html__( 'Edit %s', 'moisphoto' ),
-						the_title( '<span class="screen-reader-text">"', '"</span>', false )
-					),
-					'<span class="edit-link">',
-					'</span>'
-				);
-			?>
-		</footer><!-- .entry-footer -->
-	<?php endif; ?>
+    <div class="wrap">
+			<header class="entry__header l-14col is-centered clearfix">
+
+				<h1 class="entry__title">
+					<?php the_title(); ?>
+				</h1>	
+
+			</header><!-- .entry-header -->
+		</div>
+
+		<div class="wrap">
+			<div class="entry__content l-14col is-centered clearfix">
+				<?php	the_content(); ?>
+			</div><!-- .entry-content -->
+		</div>
+
+	</div>
 </article><!-- #post-## -->

@@ -65,13 +65,13 @@
                 <div class="modal__content">
 
                   <div class="modal__img">
-                    <div class="row wrap">
+                    <div class="row">
                         <?php the_post_thumbnail($c); ?>
                     </div>
                   </div>
 
                   <div class="modal__texts">
-                    <div class="row wrap">
+                    <div class="row">
                       <h2><?php echo get_the_title($c); ?></h2>
                       <p><?php echo $c_type; ?></p>
                       <p><?php echo $c_description; ?></p>
@@ -91,13 +91,13 @@
             <div class="modal__content">
 
               <div class="modal__img">
-                <div class="row wrap">
+                <div class="row">
                     <?php echo $thumbnail; ?>
                 </div>
               </div>
 
               <div class="modal__texts">
-                <div class="row wrap">
+                <div class="row">
 
                   <h2><?php moisphoto_get_artists_list($auteurs, false); ?></h2>
                   <h3><?php echo $title; ?></h3>
@@ -121,9 +121,7 @@
       </div>
 
       <div class="modal">
-        <div class="wrap">
           <div class="modal__content"></div>
-        </div>
       </div>
 
     </div><!-- .map-outer -->
