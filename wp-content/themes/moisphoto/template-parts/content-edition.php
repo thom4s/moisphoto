@@ -74,7 +74,7 @@
           <?php get_template_part( 'template-parts/modules/module', 'news' ); ?>
         </div>
 
-        <div class="l-8col l-last">
+        <div class="l-6col l-last">
           <?php 
             $number_of_item = 4;
             set_query_var('number_of_item', $number_of_item); 
