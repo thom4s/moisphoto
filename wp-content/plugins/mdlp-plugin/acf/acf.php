@@ -6,6 +6,9 @@ function my_acf_init() {
 
 add_action('acf/init', 'my_acf_init');
 
+
+
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -1410,6 +1413,29 @@ acf_add_local_field_group(array (
           'max' => '',
         ),
       ),
+    ),
+    array (
+      'key' => 'field_580616a2b090f',
+      'label' => 'Actualité principale',
+      'name' => 'news_main',
+      'type' => 'post_object',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'post_type' => array (
+        0 => 'post',
+      ),
+      'taxonomy' => array (
+      ),
+      'allow_null' => 0,
+      'multiple' => 0,
+      'return_format' => 'object',
+      'ui' => 1,
     ),
   ),
   'location' => array (
