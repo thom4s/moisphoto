@@ -17,10 +17,7 @@
 		<p>auteurs : 
 		<?php 
 			$auteurs = get_field('auteurs'); 
-			foreach ($auteurs as $a) {
-				echo get_term($a)->name;
-				echo ', ';
-			}
+			moisphoto_get_artists_list($auteurs);
 		?>
 		</p>
 
@@ -28,7 +25,7 @@
 		<?php 
 			$sous_titres = get_field('sous_titres'); 
 			foreach ($sous_titres as $st) {
-			echo $st['sous-titre'];
+				echo $st['sous-titre'];
 			}
 		?>
 		</p>

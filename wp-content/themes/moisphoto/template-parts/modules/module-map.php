@@ -11,6 +11,14 @@
   $beige_lighter = ' #F4F1E6';
   $gray = ' #1C1C1C';
 
+  /* 
+    $places_events_array
+    (
+        [event->ID] => place->ID
+        [event->ID] => place->ID
+        ....
+    )
+  */
 ?>
 
 
@@ -20,22 +28,21 @@
       <div class="map-inner">
       <?php
 
-        foreach ($places as $place):
-          $location = get_field('adresse', $place->ID);
+        foreach ($places_events_array as $e => $p):
+          $location = get_field('adresse', $p);
 
-          $current_exhibition = get_posts(array(
-            'numberposts' => 1,
-            'post_type'   => 'exhibition',
-            'meta_key'    => 'lieu',
-            'meta_value'  => $place->ID,
-          ));
-
-          if($current_exhibition) {
-            $current_exhibition_id = $current_exhibition[0]->ID;
-            $thumbnail = get_the_post_thumbnail($current_exhibition_id, 'medium' );
-            $subtitle = get_field('subtitle', $current_exhibition_id);
-            $intro = get_field('introduction', $current_exhibition_id);
-            $url = get_permalink ( $current_exhibition_id );
+          $thumbnail = get_the_post_thumbnail($e, 'medium' );
+          $auteurs = get_field('auteurs', $e);
+          $title = get_the_title($e);
+          $chapo = get_field('chapo', $e);
+          $dates = get_field('dates', $e);
+          $url = get_permalink ( $e );
+          $date_fixe = get_field('date_fixe', $e);
+          if($date_fixe) {
+            $dates = get_field('date', $e);
+          } 
+          else {
+            $dates = get_field('date_debut', $e) . ' -> ' . get_field('date_fin', $e);
           }
       ?>
 
@@ -46,29 +53,22 @@
 
               <div class="modal-img">
                 <div class="row wrap">
-                  <div class="m-4col m-1col-push modal-img-inner">
                     <?php echo $thumbnail; ?>
-                  </div>
                 </div>
               </div>
 
               <div class="modal-texts">
                 <div class="row wrap">
 
-                  <div class="modal-title m-4col m-1col-push">
-                    <h3><?php echo $place->post_title; ?></h3>
-                    <a href="<?php echo $url; ?>" class=""><span class="btn-rounded circle icon-arrow_right"></span>En savoir plus</a>
-                  </div>
-
-                  <div class="modal-practical m-3col m-2col-push">
-                    <div class="modal-practical-adresse data"><?php echo get_field('adresse_texte', $place->ID); ?></div>
-                    <div class="data modal-practical-metro"><?php echo get_field('metros', $place->ID); ?></div>
-                    <div class="data modal-practical-horaires"><?php echo get_field('horaires', $place->ID); ?></div>
-                  </div>
-
-                  <div class="modal-subtitle m-2col m-last data">
-                    <?php echo $subtitle; ?>
-                  </div>
+                  <h2> 
+                    <?php moisphoto_get_artists_list($auteurs, false); ?>
+                  </h2>
+                  <h3><?php echo $title; ?></h3>
+                  <p><?php echo $dates; ?></p>
+                  <p><?php echo $chapo; ?></p>
+                  <p><?php echo $lieu_nom; ?></p>
+                  <p><?php echo $location['address']; ?></p>
+                  <a href="<?php echo $url; ?>">En savoir plus</a></p>
 
 
                 </div>
@@ -379,15 +379,12 @@
       google.maps.event.addListener(marker, 'click', function() {
 
         for (i=0; i < map.markers.length; i++ ) {
-          map.markers[i].setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle.png");
+          //map.markers[i].setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle.png");
                 }
-          marker.setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle_released.png");
+          //marker.setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle_released.png");
           $content = $marker.html();
           $('.modal').html($content).show();
 
-          $imgheight = $('.modal').find('.modal-img').height();
-          $('.modal').find('.modal-img').css('top', -$imgheight);
-          console.log($imgheight);
       });
     }
 

@@ -1,10 +1,14 @@
 <?php
 /**
  *
- * Template name: Page d'accueil
+ * Template name: Page d'accueil - Edition courante
  *
  * @package moisphoto
  */
+
+  // Get ACF Fields
+  $current_edition = get_field('edition_courante'); 
+  $grid_items = get_field('grid'); 
 
 get_header(); ?>
 
@@ -14,7 +18,9 @@ get_header(); ?>
 			<?php
 			while ( have_posts() ) : the_post();
 
-				get_template_part( 'template-parts/content', 'accueil' );
+        set_query_var('current_edition', $current_edition); 
+        set_query_var('grid_items', $grid_items); 
+				get_template_part( 'template-parts/content', 'edition' );
 
 			endwhile; // End of the loop.
 			?>

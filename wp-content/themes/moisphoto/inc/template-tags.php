@@ -120,3 +120,52 @@ function moisphoto_category_transient_flusher() {
 }
 add_action( 'edit_category', 'moisphoto_category_transient_flusher' );
 add_action( 'save_post',     'moisphoto_category_transient_flusher' );
+
+
+
+/**
+ * List all the artists, with link or not to term archive, separated by a virgule (, ):
+ */
+function moisphoto_get_artists_list($terms, $linked = false) {
+	
+	if ( ! empty( $terms ) && ! is_wp_error( $terms ) ) {
+	    $count = count( $terms );
+	    $i = 0;
+	    $term_list = '';
+
+	    if($count > 5) :
+	    	$term_list = 'Collectif';
+
+	    else : 
+				foreach ( $terms as $term ) {
+		        $i++;
+
+		        if($linked) :
+			        $term_list .= '<a href="' . esc_url( get_term_link( $term ) ) . '" alt="' . esc_attr( sprintf( __( 'View all post filed under %s', 'my_localization_domain' ), get_term($term)->name ) ) . '">' . get_term($term)->name . '</a>';
+			      
+			      else : 
+			      	$term_list .= get_term($term)->name;
+
+			      endif;
+
+		        if ( $count != $i ) {
+		            $term_list .= ', ';
+		        }
+		        else {
+		            $term_list .= '';
+		        }
+	    	}
+
+    	endif; 
+
+	    
+	    echo $term_list;
+	}
+}
+
+
+
+
+
+
+
