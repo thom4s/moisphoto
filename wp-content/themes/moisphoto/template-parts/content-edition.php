@@ -14,56 +14,56 @@
 
   <div class="entry-content clearfix">
 
-    <div class="module-map clearfix">
-      <?php 
-        $type_relation = get_field('type_relation', $current_edition);
-        $events = array();
-        $places = array();
 
-        if( $type_relation == 'Weekends') : 
-          $weekends = get_field('weekends',  $current_edition); // ID
+    <?php 
+      // GET MAP ITEMS AND DISPLAY
 
-          foreach ($weekends as $we) {
-            $events_list = get_field('events_list', $we);
+      $type_relation = get_field('type_relation', $current_edition);
+      $events = array();
+      $places = array();
+
+      if( $type_relation == 'Weekends') : 
+        $weekends = get_field('weekends',  $current_edition); // ID
+
+        foreach ($weekends as $we) {
+          $events_list = get_field('events_list', $we);
         
-            foreach ($events_list as $e) {
-              $events[] = $e;
-              $places_events_array[$e] = get_field('lieu', $e);
-
-            }            
-          }
-
-        elseif ( $type_relation == 'Événements' ) :
-          $events = get_field('evenements', $current_edition);
-
-          foreach ($events as $e) {
+          foreach ($events_list as $e) {
+            $events[] = $e;
             $places_events_array[$e] = get_field('lieu', $e);
-          }    
+          }            
+        }
 
-        endif; 
+      elseif ( $type_relation == 'Événements' ) :
+        $events = get_field('evenements', $current_edition);
 
-        set_query_var('events', $events); 
-        set_query_var('places_events_array', $places_events_array); 
+        foreach ($events as $e) {
+          $places_events_array[$e] = get_field('lieu', $e);
+        }    
 
-        get_template_part( 'template-parts/modules/module', 'map' ); ?>
+      endif; 
 
-    </div>
+      set_query_var('events', $events); 
+      set_query_var('places_events_array', $places_events_array); 
 
+      get_template_part( 'template-parts/modules/module', 'map' ); 
 
-    <div class="module-grid clearfix">
-      <div class="wrap">
-
-        <?php 
-          // get elements from template
-          // set_query_var('e', $elements); 
-        ?>
-        <?php get_template_part( 'template-parts/modules/module', 'grid' ); ?>
-
-      </div>
-    </div>
+      // END MAP ?>
 
 
-    <div class="module-news clearfix">
+
+    <?php 
+      // GET GRID ITEMS AND DISPLAY
+
+      $grid_items = get_field('grid');
+      set_query_var('grid_items', $grid_items); 
+      get_template_part( 'template-parts/modules/module', 'grid' ); 
+
+      // END GRID ?>
+
+
+
+    <section class="module-news clearfix">
       <div class="wrap row">
         <?php 
           // Define number of posts
@@ -81,14 +81,14 @@
         <?php get_template_part( 'template-parts/modules/module', 'stream' ); ?>
         </div>
       </div>  
-    </div>
+    </section>
 
 
-    <div class="module-partners clearfix">
+    <section class="module-partners clearfix">
       <div class="wrap">
         <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
       </div>
-    </div>
+    </section>
 
 
   </div><!-- .entry-content -->

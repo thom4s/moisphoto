@@ -1,0 +1,54 @@
+/* 
+ * Set up general & particulars modules : headers, contents, footers
+ * 
+ * @package sasskit
+ *
+ */
+
+
+
+.module-grid {
+  background-color: $gray_lighter;
+  padding-top: $base_line_height * 2;
+  padding-bottom: $base_line_height * 2;
+  margin-top: $base_line_height * 2;
+  margin-bottom: $base_line_height * 2;
+}
+
+  .grid__row:not(:last-child) {
+    margin-bottom: $base_line_height;
+  }
+
+    %grid__item {
+      border-top: 10px solid;
+
+      &.even {
+        @extend .l-2col-push;
+      }
+    }
+
+
+
+    .grid__item--page {
+      @extend %grid__item;
+    }
+
+
+    .grid__item--post {
+      @extend %grid__item;
+    }
+
+
+    .grid__item--weekend {
+      @extend %grid__item;
+    }
+
+
+    .grid__item--text {
+      @extend %grid__item;
+    }
+
+
+    .grid__item--btn {
+      @extend %grid__item;
+    }            

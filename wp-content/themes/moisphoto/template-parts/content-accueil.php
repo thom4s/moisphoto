@@ -15,27 +15,12 @@
 	<div class="entry-content clearfix">
 
 		<div class="module-map clearfix">
-			<?php 
-				// get current edition
-				// get all events of current edition
-				// set_query_var('e', $events); 
-			?>
 			<?php get_template_part( 'template-parts/modules/module', 'map' ); ?>
 
 		</div>
 
 
-		<div class="module-grid clearfix">
-			<div class="wrap">
-
-				<?php 
-					// get elements from template
-					// set_query_var('e', $elements); 
-				?>
-				<?php get_template_part( 'template-parts/modules/module', 'grid' ); ?>
-
-			</div>
-		</div>
+		<?php get_template_part( 'template-parts/modules/module', 'grid' ); ?>
 
 
 		<div class="module-news clearfix">

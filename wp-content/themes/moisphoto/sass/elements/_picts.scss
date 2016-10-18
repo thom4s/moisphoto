@@ -15,16 +15,10 @@
 
 
 %picto--square {
-  position: relative;
+  @extend .square;
+
   text-align: center;
   color: $white;
-
-
-  &:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
 
   .pict__content {
     display: block;
