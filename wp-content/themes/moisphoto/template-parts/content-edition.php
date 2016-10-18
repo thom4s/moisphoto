@@ -37,15 +37,15 @@
           $events = get_field('evenements', $current_edition);
 
           foreach ($events as $e) {
-            $places[] = get_field('lieu', $e);
+            $places_events_array[$e] = get_field('lieu', $e);
           }    
 
         endif; 
 
         set_query_var('events', $events); 
         set_query_var('places_events_array', $places_events_array); 
-      ?>
-      <?php get_template_part( 'template-parts/modules/module', 'map' ); ?>
+
+        get_template_part( 'template-parts/modules/module', 'map' ); ?>
 
     </div>
 
