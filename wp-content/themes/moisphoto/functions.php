@@ -141,5 +141,20 @@ require get_template_directory() . '/inc/jetpack.php';
 
 
 
+/**
+ * Custom language menu
+ */
+function icl_post_languages(){
+  $languages = icl_get_languages('skip_missing=1&orderby=name&order=desc');
+  if(1 < count($languages)){
+    foreach($languages as $l){
+	    if(!$l['active']) $langs[] = '<a href="'.$l['url'].'">'.$l['language_code'].'</a>';
+    }
+    echo join('', $langs);
+  }
+}
+add_action( 'display_languages', 'icl_post_languages', 10, 2 );
+
+
 
 
