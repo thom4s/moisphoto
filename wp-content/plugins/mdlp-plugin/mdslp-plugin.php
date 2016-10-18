@@ -46,7 +46,7 @@ require_once(ODY_TAXO_PATH . 'taxonomies.php');
 /**
  * Custom fields. Need ACF plugin.
  */
-//require_once(ODY_ACF_PATH . 'acf.php');
+require_once(ODY_ACF_PATH . 'acf.php');
 
 
 /**

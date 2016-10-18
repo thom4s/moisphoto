@@ -44,32 +44,71 @@
           else {
             $dates = get_field('date_debut', $e) . ' -> ' . get_field('date_fin', $e);
           }
-      ?>
+
+          
+          // CURIOSITES
+
+          $curiosites_liste = get_field('curiosites_liste', $e);
+          var_dump($curiosites_liste); 
+
+          if( is_array( $curiosites_liste ) ) :
+            foreach ($curiosites_liste as $c) : ?>
+              <?php 
+                $c_location = get_field('adresse', $c); 
+                $c_type = get_field('type_de_curiosite', $c); 
+                $c_description = get_field('description', $c); 
+              ?>
+
+              <!-- MARKER FOR CURIOSITES-->
+              <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>">
+
+                <div class="modal__content">
+
+                  <div class="modal__img">
+                    <div class="row wrap">
+                        <?php the_post_thumbnail($c); ?>
+                    </div>
+                  </div>
+
+                  <div class="modal__texts">
+                    <div class="row wrap">
+                      <h2><?php echo get_the_title($c); ?></h2>
+                      <p><?php echo $c_type; ?></p>
+                      <p><?php echo $c_description; ?></p>
+                      <p><?php echo $c_location['address']; ?></p>
+                    </div>
+                  </div>
+
+                </div><!--.modal-content -->
+              </div><!--.marker -->
+
+            <?php endforeach; 
+          endif; ?>
 
           <!-- MARKER -->
           <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
 
-            <div class="modal-content is-relative">
+            <div class="modal__content">
 
-              <div class="modal-img">
+              <div class="modal__img">
                 <div class="row wrap">
                     <?php echo $thumbnail; ?>
                 </div>
               </div>
 
-              <div class="modal-texts">
+              <div class="modal__texts">
                 <div class="row wrap">
 
-                  <h2> 
-                    <?php moisphoto_get_artists_list($auteurs, false); ?>
-                  </h2>
+                  <h2><?php moisphoto_get_artists_list($auteurs, false); ?></h2>
                   <h3><?php echo $title; ?></h3>
+
                   <p><?php echo $dates; ?></p>
                   <p><?php echo $chapo; ?></p>
+
                   <p><?php echo $lieu_nom; ?></p>
                   <p><?php echo $location['address']; ?></p>
-                  <a href="<?php echo $url; ?>">En savoir plus</a></p>
 
+                  <a href="<?php echo $url; ?>">En savoir plus</a></p>
 
                 </div>
               </div>
@@ -83,7 +122,7 @@
 
       <div class="modal">
         <div class="wrap">
-          <div class="modal-content"></div>
+          <div class="modal__content"></div>
         </div>
       </div>
 
