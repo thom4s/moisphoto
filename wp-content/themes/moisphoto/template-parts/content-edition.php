@@ -62,27 +62,27 @@
       // END GRID ?>
 
 
-
-    <section class="module-news clearfix">
+    <section class="news-group clearfix">
       <div class="wrap row">
         <?php 
-          // Define number of posts
-          // set_query_var('p', $posts); 
+          $news_main = get_field('news_main');
+          $number_of_posts = 3;
+          set_query_var('number_of_posts', $number_of_posts); 
+          set_query_var('news_main', $news_main); 
         ?>
         <div class="l-16col">
           <?php get_template_part( 'template-parts/modules/module', 'news' ); ?>
         </div>
 
-        <div class="l-8col">
-        <?php 
-          // Define number of items
-          // set_query_var('i', $items); 
-        ?>
-        <?php get_template_part( 'template-parts/modules/module', 'stream' ); ?>
+        <div class="l-8col l-last">
+          <?php 
+            $number_of_item = 4;
+            set_query_var('number_of_item', $number_of_item); 
+          ?>
+          <?php get_template_part( 'template-parts/modules/module', 'stream' ); ?>
         </div>
       </div>  
     </section>
-
 
     <section class="module-partners clearfix">
       <div class="wrap">

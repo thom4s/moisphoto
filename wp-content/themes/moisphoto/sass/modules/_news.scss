@@ -1,0 +1,60 @@
+/* 
+ * 
+ * @package sasskit
+ *
+ */
+
+
+
+.news-group {
+  background-color: $gray_lighter;
+  padding-top: $base_line_height * 2;
+  padding-bottom: $base_line_height * 2;
+  margin-top: $base_line_height * 2;
+  margin-bottom: $base_line_height * 2;  
+}
+
+  .news__main {
+
+  }
+
+  .news__list {
+
+    .news__item:nth-child(even) {
+      @extend .l-last;
+    }
+    .news__item:nth-child(odd) {
+      @extend .clearfix;
+    }
+  }
+
+    .news__item {
+      margin-bottom: $base_line_height;  
+
+      &:before {
+        content: '';
+        display: block;
+        width: 26px;
+        height: 13px;
+        background-color: $black;
+      }
+    }
+
+      .news__item__img--big {
+        height: $base_line_height * 15;
+        width: auto;
+        background-color: $white;
+
+        img {
+          display: block;
+          max-height: 100%;
+          width: auto;
+          margin: auto;
+        }
+      }
+
+      .news__item__img--little {
+        @extend .news__item__img--big;
+
+        height: $base_line_height * 8;
+      }

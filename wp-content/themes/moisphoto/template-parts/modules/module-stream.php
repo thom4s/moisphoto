@@ -1,2 +1,8 @@
 
-social stream
+
+<section class="module-stream">
+
+
+
+</section>
+
