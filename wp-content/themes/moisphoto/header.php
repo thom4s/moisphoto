@@ -49,6 +49,14 @@
 						<span class="pict__content">s</span>
 					</div>
 
+		      <div id="searchbar">
+		        <div class="searchbar-inner table">
+		            <div class="table-cell">
+		              <?php get_search_form(); ?>
+		            </div>
+		        </div>
+		      </div><!-- .row-mesure  -->
+
 					<div class="pict--wpml l-1col l-last">
 						<span class="pict__content"> <?php do_action('display_languages'); ?></span>
 					</div>
@@ -79,5 +87,9 @@
 
 
 	</header><!-- #masthead -->
+
+
+  <div id="searchresults"></div>
+
 
 	<div id="content" class="site-content clearfix">

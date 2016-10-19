@@ -110,6 +110,9 @@ function moisphoto_scripts() {
 	wp_enqueue_script('jquery');
 
 
+  wp_enqueue_script( 'mdlp-scripts', get_stylesheet_directory_uri() . '/js/all.min.js', array( 'jquery' ), '1.0', true );
+
+
 }
 add_action( 'wp_enqueue_scripts', 'moisphoto_scripts' );
 
@@ -158,3 +161,238 @@ add_action( 'display_languages', 'icl_post_languages', 10, 2 );
 
 
 
+
+/**
+ * Special Ajax Search
+ */
+
+add_action( 'wp_enqueue_scripts', 'ajax_search_enqueues' );
+function ajax_search_enqueues() {
+    if (!is_admin()) {
+      wp_enqueue_script( 'ajax-search', get_stylesheet_directory_uri() . '/js/assets/ajax-search.js', array( 'jquery' ), '1.0.0', true );
+      wp_localize_script( 'ajax-search', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+    }
+}
+
+add_action( 'wp_ajax_load_search_results', 'load_search_results' );
+add_action( 'wp_ajax_nopriv_load_search_results', 'load_search_results' );
+function load_search_results() {
+    $query = $_POST['query'];
+
+    $args = array(
+        'post_type' => array('post', 'event', 'page'),
+        'post_status' => 'publish',
+        's' => $query
+    );
+    $search = new WP_Query( $args );
+
+    ob_start();
+
+    ?>
+
+      <div class="search-container wrap row">
+
+        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+
+
+          <header class="search-header">
+            <h3 class="h2 search-title">Résultat de la recherche</h3>
+          </header>
+
+          <div class="search-results">
+              <div class="results-number">
+                <?php if( $search->post_count > 0) : ?>
+                  <?php echo $search->post_count; ?> pages trouvées :
+                <?php endif; ?>
+              </div>
+
+              <?php if ( $search->have_posts() ) : ?>
+
+              <ul class="results-list">
+                <?php while ( $search->have_posts() ) : $search->the_post(); ?>
+
+                <li class="result-item">
+                  <a href="<?php the_permalink(); ?>">
+                  
+                    <?php the_title(); ?>  - 
+
+                    <span>
+                    <?php 
+                    $post_type = get_post_type( get_the_ID() );
+
+                    switch ($post_type) {
+                      case 'page':
+                        echo 'page d\'informations';
+                        break;
+
+                      case 'post':
+                        $cats = '';
+                        $categories = get_the_category( get_the_ID()  ); 
+                        foreach( $categories as $category ) { $cats .= $category->name; } 
+
+                        echo 'Actualité - ';
+                        echo $cats;
+                        echo ' - ';
+                        echo get_the_time( 'j.d.Y', get_the_ID() );
+
+                        break;
+
+                      case 'event':
+                        echo 'Evénement - ';
+                        the_field('date');
+                        echo ' - '; 
+                        the_field('lieu'); 
+                        break;
+
+                      default:
+                        # code...
+                        break;
+                    }
+                    
+                    ?>
+                    </span>
+
+                  </a>
+                </li>
+                <?php endwhile; ?>
+
+              </ul>
+
+              <?php wp_reset_postdata(); ?>
+
+            <?php else : ?>
+              <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
+            <?php endif; ?>
+
+            <a href="#" id="close-search" class="clearfix close-search">(Fermer la recherche)</a>
+
+          </div>
+        </div>
+
+  <?php
+
+  $content = ob_get_clean();
+
+  echo $content;
+  die();
+
+}
+
+
+
+
+
+/**
+ * Special Ajax Display Events
+ */
+
+add_action( 'wp_enqueue_scripts', 'ajax_events_enqueues' );
+function ajax_events_enqueues() {
+    if (!is_admin()) {
+      wp_enqueue_script( 'ajax-search', get_stylesheet_directory_uri() . '/js/assets/ajax-events.js', array( 'jquery' ), '1.0.0', true );
+      wp_localize_script( 'ajax-search', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+    }
+}
+
+add_action( 'wp_ajax_load_search_results', 'load_events' );
+add_action( 'wp_ajax_nopriv_load_search_results', 'load_events' );
+function load_events() {
+    $query = $_POST['query'];
+
+    $args = array(
+        'post_type' => array('event'),
+        'post_status' => 'publish',
+    );
+    $search = new WP_Query( $args );
+
+    ob_start();
+
+    ?>
+
+      <div class="search-container wrap row">
+
+        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+
+
+          <header class="search-header">
+            <h3 class="h2 search-title">Résultat de la recherche</h3>
+          </header>
+
+          <div class="search-results">
+              <div class="results-number">
+                <?php if( $search->post_count > 0) : ?>
+                  <?php echo $search->post_count; ?> pages trouvées :
+                <?php endif; ?>
+              </div>
+
+              <?php if ( $search->have_posts() ) : ?>
+
+              <ul class="results-list">
+                <?php while ( $search->have_posts() ) : $search->the_post(); ?>
+
+                <li class="result-item">
+                  <a href="<?php the_permalink(); ?>">
+                  
+                    <?php the_title(); ?>  - 
+
+                    <span>
+                    <?php 
+                    $post_type = get_post_type( get_the_ID() );
+
+                    switch ($post_type) {
+                      case 'page':
+                        echo 'page d\'informations';
+                        break;
+
+                      case 'post':
+                        $cats = '';
+                        $categories = get_the_category( get_the_ID()  ); 
+                        foreach( $categories as $category ) { $cats .= $category->name; } 
+
+                        echo 'Actualité - ';
+                        echo $cats;
+                        echo ' - ';
+                        echo get_the_time( 'j.d.Y', get_the_ID() );
+
+                        break;
+
+                      case 'event':
+                        echo 'Evénement - ';
+                        the_field('date');
+                        echo ' - '; 
+                        the_field('lieu'); 
+                        break;
+
+                      default:
+                        # code...
+                        break;
+                    }
+                    
+                    ?>
+                    </span>
+
+                  </a>
+                </li>
+                <?php endwhile; ?>
+
+              </ul>
+
+              <?php wp_reset_postdata(); ?>
+
+            <?php else : ?>
+              <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
+            <?php endif; ?>
+
+            <a href="#" id="close-search" class="clearfix close-search">(Fermer la recherche)</a>
+
+          </div>
+        </div>
+
+  <?php
+
+  $content = ob_get_clean();
+
+  echo $content;
+  die();
+
+}
