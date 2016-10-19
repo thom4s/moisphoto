@@ -34,10 +34,45 @@ jQuery(document).on( 'submit', '#searchform', function() {
     return false;
 });
 
-
 jQuery(document).on('click', '#close-search', function(event) {
     event.preventDefault;
     jQuery('#searchresults').hide('fast');
+});
+
+
+
+/**
+ * Press_Search load and display
+ */
+
+jQuery(document).on( 'submit', '#pressform', function() {
+    var $form = jQuery(this);
+    var $input = $form.find('input[name="s"]');
+    var query = $input.val();
+    var $content = jQuery('#press__list');
+    
+    jQuery.ajax({
+        type: 'post',
+        url: myAjax.ajaxurl,
+        data: {
+            action: 'press_search',
+            query: query
+        },
+        beforeSend: function() {
+            $input.prop('disabled', true);
+            jQuery('.search-container').addClass('loading');
+            jQuery('#loading-msg').show();
+        },
+        success: function( response ) {
+            $input.prop('disabled', false);
+            jQuery('#loading-msg').hide();
+            jQuery('.search-container').removeClass('loading');
+            $content.html( response );
+            $content.show('fast');
+        }
+    });
+    
+    return false;
 });
 
 

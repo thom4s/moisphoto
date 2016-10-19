@@ -280,9 +280,84 @@ function load_search_results() {
 
   echo $content;
   die();
-
 }
 
+
+
+
+
+/**
+ * Press_search Ajax
+ */
+
+add_action( 'wp_ajax_press_search', 'load_press_search' );
+add_action( 'wp_ajax_nopriv_press_search', 'load_press_search' );
+function load_press_search() {
+    $query = $_POST['query'];
+
+    $args = array(
+        'post_type' => array('event'),
+        'post_status' => 'publish',
+        's' => $query
+    );
+    $search = new WP_Query( $args );
+
+    ob_start();
+
+    ?>
+
+      <div class="search-container wrap row">
+
+        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+
+          <div class="search-results">
+              <div class="results-number">
+                <?php if( $search->post_count > 0) : ?>
+                  <?php echo $search->post_count; ?> événements ont été trouvés :
+                <?php endif; ?>
+              </div>
+
+              <?php if ( $search->have_posts() ) : ?>
+
+                <?php while ( $search->have_posts() ) : $search->the_post(); 
+
+                    $auteurs = get_field('auteurs'); 
+                    $lieu = get_field('lieu');
+                    $id = $post->ID; ?>
+
+                  <div class="press__list__item">
+                    <p><?php moisphoto_get_artists_list($auteurs); ?> - <?php the_title(); ?></p>
+
+                    <p><?php echo get_the_title( $lieu ); ?></p>
+
+                    <div class="press__btn">
+                      <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">pdf</a>
+                      <a href="?zip=<?php echo $id; ?>" classe="">zip</a>
+                    </div>
+
+                  </div>
+
+                <?php endwhile; ?>
+
+
+              <?php wp_reset_postdata(); ?>
+
+            <?php else : ?>
+              <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
+            <?php endif; ?>
+
+
+          </div>
+        </div>
+
+  <?php
+
+  $content = ob_get_clean();
+
+  echo $content;
+  die();
+
+}
 
 
 
