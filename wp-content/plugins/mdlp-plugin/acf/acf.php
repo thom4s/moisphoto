@@ -339,7 +339,7 @@ acf_add_local_field_group(array (
       'key' => 'field_57b5bfb3efb7a',
       'label' => 'Mentions partenaires & remerciements',
       'name' => 'mentions',
-      'type' => 'textarea',
+      'type' => 'wysiwyg',
       'instructions' => '',
       'required' => 0,
       'conditional_logic' => 0,
