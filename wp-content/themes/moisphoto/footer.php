@@ -67,8 +67,6 @@
           <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu' ) ); ?>
         </div>
 
-
-
       </div>
 		</div><!-- .site-info -->
 
@@ -79,7 +77,11 @@
 
 
   <div id="events-modal">
-    <div class="modal-content wrap">
+    <div class="modal__content wrap">
+        <a href="#" id="close-events">Close</a>
+        <div class="modal__content__inner">
+          hello
+        </div>    
     </div>
   </div>
 
