@@ -52,7 +52,7 @@ require_once(ODY_ACF_PATH . 'acf.php');
 /**
  * Utiles
  */
-//require_once(ODY_UTILS_PATH . 'utils.php');
+require_once(ODY_UTILS_PATH . 'zipfiles.php');
 
 
 

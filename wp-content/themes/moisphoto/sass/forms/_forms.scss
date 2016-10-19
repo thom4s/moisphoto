@@ -31,3 +31,8 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 
 @import "buttons";
 @import "fields";
+
+
+#searchbar {
+  display: none;
+}

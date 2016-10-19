@@ -1,0 +1,28 @@
+/* 
+ * templates/home
+ * 
+ * @package sasskit
+ */
+
+
+
+.press__list {
+
+}
+
+  .press__list__item {
+    border-bottom: 1px dotted $gray_light;
+    margin-bottom: $base_line_height;
+    padding-bottom: $base_line_height;
+    
+    p {
+      margin: 0;
+    }
+  }
+
+
+  .press__btn {
+
+  }
+
+
