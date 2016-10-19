@@ -7,6 +7,12 @@
  * @package moisphoto
  */
 
+  if(isset($_GET['pdf'])) {
+		get_template_part('template-parts/content', 'pdf');
+
+  }
+  
+
 get_header(); ?>
 
 	<div id="primary" class="content-area">

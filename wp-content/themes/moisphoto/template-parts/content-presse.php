@@ -60,7 +60,7 @@
               <p><?php echo get_the_title( $lieu ); ?></p>
 
               <div class="press__btn">
-                <a href="#" classe="">pdf</a>
+                <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">pdf</a>
                 <a href="?zip=<?php echo $id; ?>" classe="">zip</a>
               </div>
 
