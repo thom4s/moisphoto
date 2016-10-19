@@ -75,6 +75,16 @@
     <div>
     </div>
 	</footer><!-- #colophon -->
+
+
+
+  <div id="events-modal">
+    <div class="modal-content wrap">
+    </div>
+  </div>
+
+
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

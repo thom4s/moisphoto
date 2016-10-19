@@ -163,16 +163,23 @@ add_action( 'display_languages', 'icl_post_languages', 10, 2 );
 
 
 /**
- * Special Ajax Search
+ * Load Ajax
  */
 
 add_action( 'wp_enqueue_scripts', 'ajax_search_enqueues' );
 function ajax_search_enqueues() {
     if (!is_admin()) {
-      wp_enqueue_script( 'ajax-search', get_stylesheet_directory_uri() . '/js/assets/ajax-search.js', array( 'jquery' ), '1.0.0', true );
+      wp_enqueue_script( 'ajax-search', get_stylesheet_directory_uri() . '/js/assets/ajax-scripts.js', array( 'jquery' ), '1.0.0', true );
+      // wp_enqueue_script( 'ajax-events', get_stylesheet_directory_uri() . '/js/assets/ajax-events.js', array( 'jquery' ), '1.0.0', true );
       wp_localize_script( 'ajax-search', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+      // wp_localize_script( 'ajax-events', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
     }
 }
+
+
+/**
+ * Special Ajax Search
+ */
 
 add_action( 'wp_ajax_load_search_results', 'load_search_results' );
 add_action( 'wp_ajax_nopriv_load_search_results', 'load_search_results' );
@@ -286,90 +293,44 @@ function load_search_results() {
  * Special Ajax Display Events
  */
 
-add_action( 'wp_enqueue_scripts', 'ajax_events_enqueues' );
-function ajax_events_enqueues() {
-    if (!is_admin()) {
-      wp_enqueue_script( 'ajax-search', get_stylesheet_directory_uri() . '/js/assets/ajax-events.js', array( 'jquery' ), '1.0.0', true );
-      wp_localize_script( 'ajax-search', 'myAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-    }
-}
-
 add_action( 'wp_ajax_load_search_results', 'load_events' );
 add_action( 'wp_ajax_nopriv_load_search_results', 'load_events' );
 function load_events() {
-    $query = $_POST['query'];
 
     $args = array(
         'post_type' => array('event'),
         'post_status' => 'publish',
     );
-    $search = new WP_Query( $args );
+    $events = new WP_Query( $args );
 
     ob_start();
 
     ?>
 
-      <div class="search-container wrap row">
+      <div class="events-container wrap row">
 
         <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
 
-
-          <header class="search-header">
-            <h3 class="h2 search-title">Résultat de la recherche</h3>
+          <header class="events-header">
+            <h3 class="h2 events-title">Résultat de la recherche</h3>
           </header>
 
-          <div class="search-results">
+          <div class="events-results">
               <div class="results-number">
-                <?php if( $search->post_count > 0) : ?>
-                  <?php echo $search->post_count; ?> pages trouvées :
+                <?php if( $events->post_count > 0) : ?>
+                  <?php echo $events->post_count; ?> pages trouvées :
                 <?php endif; ?>
               </div>
 
-              <?php if ( $search->have_posts() ) : ?>
+              <?php if ( $events->have_posts() ) : ?>
 
               <ul class="results-list">
-                <?php while ( $search->have_posts() ) : $search->the_post(); ?>
+                <?php while ( $events->have_posts() ) : $events->the_post(); ?>
 
                 <li class="result-item">
                   <a href="<?php the_permalink(); ?>">
                   
-                    <?php the_title(); ?>  - 
-
-                    <span>
-                    <?php 
-                    $post_type = get_post_type( get_the_ID() );
-
-                    switch ($post_type) {
-                      case 'page':
-                        echo 'page d\'informations';
-                        break;
-
-                      case 'post':
-                        $cats = '';
-                        $categories = get_the_category( get_the_ID()  ); 
-                        foreach( $categories as $category ) { $cats .= $category->name; } 
-
-                        echo 'Actualité - ';
-                        echo $cats;
-                        echo ' - ';
-                        echo get_the_time( 'j.d.Y', get_the_ID() );
-
-                        break;
-
-                      case 'event':
-                        echo 'Evénement - ';
-                        the_field('date');
-                        echo ' - '; 
-                        the_field('lieu'); 
-                        break;
-
-                      default:
-                        # code...
-                        break;
-                    }
-                    
-                    ?>
-                    </span>
+                    <?php the_title(); ?>
 
                   </a>
                 </li>
@@ -383,7 +344,7 @@ function load_events() {
               <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
             <?php endif; ?>
 
-            <a href="#" id="close-search" class="clearfix close-search">(Fermer la recherche)</a>
+            <a href="#" id="close-events" class="clearfix close-events">(Fermer la fenetre)</a>
 
           </div>
         </div>
