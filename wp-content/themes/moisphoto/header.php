@@ -46,33 +46,43 @@
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 
 					<div class="pict--search l-1col l-last">
-						<span class="pict__content">s</span>
+						<a class="pict__content js-open-searchbar" href="#">s</a>
 					</div>
-
-		      <div id="searchbar">
-		        <div class="searchbar-inner table">
-		            <div class="table-cell">
-		              <?php get_search_form(); ?>
-		            </div>
-		        </div>
-		      </div><!-- .row-mesure  -->
 
 					<div class="pict--wpml l-1col l-last">
-						<span class="pict__content"> <?php do_action('display_languages'); ?></span>
+						<a class="pict__content"> <?php do_action('display_languages'); ?></a>
 					</div>
 
 					<div class="pict--social l-1col l-last">
-						<span class="pict__content">t</span>
+						<a class="pict__content">t</a>
 					</div>
 					
 					<div class="pict--social l-1col l-last">
-						<span class="pict__content">t</span>
+						<a class="pict__content">t</a>
 					</div>
 					
 					<div class="pict--social l-1col l-last">
-						<span class="pict__content">t</span>
+						<a class="pict__content">t</a>
 					</div>
 					
+
+		      <div id="searchbar" class="l-6col">
+		      	<div class="row">
+							<div class="close l-1col square">
+								<a href="#" class="js-close square__content">x</a>
+							</div>
+
+			        <div class="searchbar-inner l-5col table">
+			            <div class="table-cell">
+			              <?php get_search_form(); ?>
+			            </div>
+			        </div>
+
+		      	</div>
+		      	
+		      </div><!-- .row-mesure  -->
+
+
 			</nav><!-- #site-navigation -->
 
 		</div><!-- .row -->

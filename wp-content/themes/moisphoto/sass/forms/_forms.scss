@@ -35,4 +35,31 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 
 #searchbar {
   display: none;
+  position: absolute;
+  right: 0;
+  background-color: $white;
+  height: $base_line_height * 1.5;
+
+  .close {
+    text-align: center;
+    background-color: $black;
+    
+    a {
+      color: $white;
+    }
+  }
+
+  input[type="search"] {
+    width: 75%;
+    background: none;
+    border: 1px solid $black;
+  } 
+
+  input[type="submit"] {
+    width: 20%;
+    border: 1px solid $black;
+    height: 100%;
+  }
+
+
 }

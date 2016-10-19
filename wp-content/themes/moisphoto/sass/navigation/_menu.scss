@@ -2,7 +2,8 @@
 
 .main-navigation {
   @include box-sizing();
-
+  position: relative;
+  
   @include up-to(medium) {
   }
 }
@@ -17,6 +18,7 @@
 
       text-align: center;
       border-left: 1px solid $color_primary;
+      color: $color_primary;
 
 
       @include up-to(medium) {
@@ -24,10 +26,9 @@
 
     }
       .main-navigation a {
-        color: $color_primary;
+        color: inherit;
 
         &:hover {
-          color: $color_link_hover;
         }
       }
 
