@@ -84,14 +84,9 @@
       </div>  
     </section>
 
-    <section class="module-partners clearfix">
-      <div class="wrap">
-        <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
-      </div>
-    </section>
+
+    <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
 
 
   </div><!-- .entry-content -->
-
-
 </article><!-- #post-## -->

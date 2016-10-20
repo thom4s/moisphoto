@@ -1,0 +1,25 @@
+/* 
+ * Sidebar
+ * 
+ * @package sasskit
+ */
+
+
+
+.module-partners {
+
+
+  h1 {
+    border-bottom: 1px solid $gray;
+    padding-bottom: $base_line_height;
+    display: block;
+    
+    &:before {
+      @extend .m-3col;
+
+      display: block;
+      height: $base_line_height;
+      background-color: $black;
+    }
+  }
+}

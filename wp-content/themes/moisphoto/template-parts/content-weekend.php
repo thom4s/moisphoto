@@ -11,6 +11,17 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+  <header class="entry-header">
+    <div class="wrap row">
+      
+      <h1><?php the_title(); ?></h1>
+    
+      <div class="m-12col">
+        <?php the_content(); ?>
+      </div>
+    
+    </div>
+  </header>
 
   <div class="entry-content clearfix">
 
@@ -36,10 +47,11 @@
       <div class="wrap">
 
         <?php 
-          // get elements from template
-          // set_query_var('e', $elements); 
-        ?>
-        <?php get_template_part( 'template-parts/modules/module', 'grid' ); ?>
+          $grid_items = get_field('grid');
+          set_query_var('grid_items', $grid_items); 
+          if($grid_items) {
+            get_template_part( 'template-parts/modules/module', 'grid' ); 
+          } ?>
 
       </div>
     </div>
@@ -49,6 +61,7 @@
       <div class="wrap row">
         <?php 
           // Define number of posts
+          // Define category post
           // set_query_var('p', $posts); 
         ?>
         <div class="l-16col">
@@ -66,11 +79,8 @@
     </div>
 
 
-    <div class="module-partners clearfix">
-      <div class="wrap">
-        <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
-      </div>
-    </div>
+    <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
+
 
 
   </div><!-- .entry-content -->

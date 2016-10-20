@@ -15,6 +15,9 @@
         $searchbar.hide();
       });
 
+    $('.menu-item-has-children > a').on('click', function(event) {
+      event.preventDefault();
+    })
 
   });
 
