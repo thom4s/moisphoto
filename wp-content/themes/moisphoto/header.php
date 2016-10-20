@@ -50,7 +50,7 @@
 					</div>
 
 					<div class="pict--wpml l-1col l-last">
-						<a class="pict__content"> <?php do_action('display_languages'); ?></a>
+						<span class="pict__content"> <?php do_action('display_languages'); ?></span>
 					</div>
 
 					<div class="pict--social l-1col l-last">

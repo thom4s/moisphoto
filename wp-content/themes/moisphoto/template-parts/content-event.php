@@ -7,124 +7,146 @@
  * @package moisphoto
  */
 
+	// Get Variables
+	$auteurs = get_field('auteurs'); 
+	$sous_titres = get_field('sous_titres'); 
+ 	$date_fixe = get_field('date_fixe');
+	$curiosites_liste = get_field('curiosites_liste');
+$evenements_lies = get_field('evenements_lies');  
+$lieu = get_field('lieu');
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	<header class="event__header clearfix">
+		<div class="row wrap">
 
-		<p>auteurs : 
-		<?php 
-			$auteurs = get_field('auteurs'); 
-			moisphoto_get_artists_list($auteurs);
-		?>
-		</p>
+			<div class="m-16col">
+				<h1><?php moisphoto_get_artists_list($auteurs); ?></h1>
+				<h2><?php the_title(); ?></h2>
+			
+				<?php 
+					if($sous_titres) {
+						foreach ($sous_titres as $st) {
+							echo $st['sous-titre'];
+						}
+					}
+				?>
+			</div>
+			
+			<div class="m-6col m-last event__short">
+				<p><?php 
+					if($date_fixe) {
+						the_field('date'); 
+					} else {
+						the_field('date_debut');
+						echo ' - ';
+						the_field('date_fin');
+					}
+				?><p>
+				<p><?php echo get_the_title( $lieu ); ?></p>
+				<p><?php the_field('adresse', $lieu); ?></p>
+			</div>
+		</div>
+		
 
-		<p>sous titre : 
-		<?php 
-			$sous_titres = get_field('sous_titres'); 
-			foreach ($sous_titres as $st) {
-				echo $st['sous-titre'];
-			}
-		?>
-		</p>
-
-		<p>date fixe ? <?php $date_fixe = get_field('date_fixe'); var_dump($date_fixe); ?></p>
-		<p>date : <?php the_field('date'); ?></p>
-		<p>date début : <?php the_field('date_debut'); ?></p>
-		<p>date fin : <?php the_field('date_fin'); ?></p>
-		<p>horaires : <?php the_field('horaires'); ?></p>
-		<p>date vernissage : <?php the_field('date_vernissage'); ?></p>
-		<p>nom commissaire : <?php the_field('nom_commissaire'); ?></p>
-		<p>remerciements : <?php the_field('mentions'); ?></p>
-		<p>catalogue : <?php the_field('catalogue'); ?></p>
 
 	</header><!-- .entry-header -->
 
+	<div class="event_curators clearfix">
+		<div class="wrap row">
+			<p>nom commissaire : <?php the_field('nom_commissaire'); ?></p>
+
+		</div>
+	</div>	
 
 
-	<div class="entry-content">
+	<div class="event__content clearfix">
 
-		<!-- 
-			CURIOSITES
-		-->
-		<h3>Visuels</h3>
-		<p>visuels : <?php the_field('visuels'); ?></p>
+		<div class="event__main clearfix">
+			<div class="wrap row">
 
+				<div class="m-16col">
+					<?php	the_content(); ?>
+			
+					<p>catalogue : <?php the_field('catalogue'); ?></p>
 
+					<p>Contact presse : 
+					<?php the_field('nom_contact', $lieu); ?><br>
+					<?php the_field('email_contact', $lieu); ?></p>
+				</div>
+				
+				<div class="m-6col m-last">
+					<div class="event__place">
 
-		<!-- 
-			PRESENTATION
-		-->
-		<h3>Présentation</h3>
-		<?php	the_content(); ?>
+						<h3>Le lieu</h3>
 
+						<h5><?php echo get_the_title( $lieu ); ?></h5>
+						<p><?php the_field('adresse', $lieu); ?></p>
+						<p><?php the_field('complement_adresse', $lieu); ?></p>
+						<p><?php the_field('type_de_lieu', $lieu); ?></p>
+						<p><?php the_field('transport', $lieu); ?></p>
+						<p><?php the_field('horaires', $lieu); ?></p>
+						<p><?php the_field('accès', $lieu); ?></p>
+						<p><?php the_field('telephone', $lieu); ?></p>
+						<p><?php the_field('email', $lieu); ?></p>
+						<p><?php the_field('website', $lieu); ?></p>
+		
+						<p>horaires : <?php the_field('horaires'); ?></p>
+						<p>date vernissage : <?php the_field('date_vernissage'); ?></p>
 
+					</div>
+					
+					<div class="event__map">
 
-		<!-- 
-			LE LIEU
-		-->
-		<h3>Le lieu</h3>
-		<?php $lieu = get_field('lieu'); ?>
+						<h3>Les curiosités</h3>
+						<?php 
+							if($curiosites_liste) {
+								foreach ($curiosites_liste as $c) {
+									echo get_the_title( $c );
+									the_field('description', $c);
+									the_field('adresse', $c);
+									the_field('type_de_curiosite', $c);
+								}
+							}
+						?>
 
-		<h5><?php echo get_the_title( $lieu ); ?></h5>
-		<p><?php the_field('adresse', $lieu); ?></p>
-		<p><?php the_field('complement_adresse', $lieu); ?></p>
-		<p><?php the_field('type_de_lieu', $lieu); ?></p>
-		<p><?php the_field('transport', $lieu); ?></p>
-		<p><?php the_field('horaires', $lieu); ?></p>
-		<p><?php the_field('accès', $lieu); ?></p>
-		<p><?php the_field('telephone', $lieu); ?></p>
-		<p><?php the_field('email', $lieu); ?></p>
-		<p><?php the_field('website', $lieu); ?></p>
+					</div>
+				</div>
 
-		Contact presse
-		<p><?php the_field('nom_contact', $lieu); ?></p>
-		<p><?php the_field('email_contact', $lieu); ?></p>
-
-
-
-
-		<!-- 
-			CURIOSITES
-		-->
-		<h3>Les curiosités</h3>
-		<?php $curiosites_liste = get_field('curiosites_liste'); ?>
-
-		<?php 
-			foreach ($curiosites_liste as $c) {
-				echo get_the_title( $c );
-				the_field('description', $c);
-				the_field('adresse', $c);
-				the_field('type_de_curiosite', $c);
-			}
-		?>
-
-
-
-		<!-- 
-			AUTOUR DE L'EVENEMENT
-		-->
-		<h3>Autour de l'événement</h3>
-		<p><?php $evenements_lies = get_field('evenements_lies');  ?></p>
-
-		<?php 
-			foreach ($evenements_lies as $e) {
-				echo '<h4>'. get_the_title( $e ) . '</h4>';
-				the_field('description', $e);
-				the_field('adresse', $e);
-				the_field('type_de_curiosite', $e);
-			}
-		?>
-	</div><!-- .entry-content -->
+			</div><!-- .wrap -->
+		</div><!-- .event__main -->
+		
 
 
+		<div class="event__rebonds clearfix">
+			<div class="wrap">
+
+				<h3>Autour de l'événement</h3>
+
+				<?php 
+					if($evenements_lies) {
+						foreach ($evenements_lies as $e) {
+							echo '<h4>'. get_the_title( $e ) . '</h4>';
+							the_field('description', $e);
+							the_field('adresse', $e);
+							the_field('type_de_curiosite', $e);
+						}
+					}
+				?>
+
+			</div>
+		</div><!-- .event__rebonds -->
 
 
+		<div class="event__partners clearfix">
+			<div class="row wrap">
+				<h3>Partenaires</h3>
+				<p>remerciements : <?php the_field('mentions'); ?></p>
+			</div><!-- .wrap -->
+		</div><!-- .event__partners -->
 
-	<footer class="entry-footer">
-		<?php //moisphoto_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
+		
+	</div><!-- .event__content -->
 
 </article><!-- #post-## -->

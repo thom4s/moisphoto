@@ -15,7 +15,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
+	<div id="primary" class="event__single">
 		<main id="main" class="site-main" role="main">
 
 		<?php
