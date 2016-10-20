@@ -6,14 +6,15 @@
 
 
 .site-header {
-  padding-top: $base_line_half;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 
 
 .site-branding--little {
   line-height: 0.1;
-  padding-right: 4px;
+  padding-right: 2em;
 
   a {
     display: block;
