@@ -22,8 +22,13 @@
     %grid__item {
       border-top: 20px solid;
 
+      &.square__content,
+      .square__content {
+        padding: 1em;
+      }
+
       &.even {
-        @extend .l-2col-push;
+        float: right;
       }
     }
 
@@ -31,24 +36,65 @@
 
     .grid__item--page {
       @extend %grid__item;
+
+      border-color: $black;
+      background-color: $color_secondary;
+      color: $white;
     }
 
 
     .grid__item--post {
       @extend %grid__item;
+
+      .square {
+        background-color: $white;
+      }
     }
 
 
     .grid__item--weekend {
       @extend %grid__item;
+
+      border-color: $color_secondary;
+      color: $white;
+
+      .square {
+        background-color: $black;
+      }
+    }
+
+    .grid__item--big {
+      @extend %grid__item;
+
+      border-color: $color_secondary;
+      color: $white;
+
+      .square {
+        background-color: $black;
+      }
     }
 
 
     .grid__item--text {
       @extend %grid__item;
+
+      .square__content {
+        background-color: $white;
+      }
     }
 
 
     .grid__item--btn {
       @extend %grid__item;
-    }            
+
+      color: $white;
+      border-color: $black;
+
+      .square__content {
+        background-color: $color_secondary;
+      }
+    }
+
+
+
+

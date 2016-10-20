@@ -73,7 +73,7 @@
 
         case 'big_bloc': ?>
           <a href="<?php echo $url; ?>">
-            <div class="grid__item--weekend l-15col <?php echo $order_item; ?>">
+            <div class="grid__item--big l-15col <?php echo $order_item; ?>">
               <div class="row">
               
                 <div class="l-9col square">

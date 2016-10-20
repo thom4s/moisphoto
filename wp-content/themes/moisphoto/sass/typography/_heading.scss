@@ -3,24 +3,30 @@
 
 h1 {
   @include type-setting(3);
+  margin-top: 0;
 }
 
 h2 {
   @include type-setting(3);
+  margin-top: 0;
 }
 
 h3 {
   @include type-setting(2);
+  margin-top: 0;
 }
 
 h4 {
   @include type-setting(1);
+  margin-top: 0;
 }
 
 h5 {
   @include type-setting(0);
+  margin-top: 0;
 }
 
 h6 {
   @include type-setting(2);
+  margin-top: 0;
 }
