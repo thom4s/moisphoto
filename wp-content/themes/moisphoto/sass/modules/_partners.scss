@@ -9,18 +9,9 @@
 .module-partners {
 
 
-  h1 {
-    border-bottom: 1px solid $gray;
+  h3 {
+    border-bottom: 1px solid $gray_light;
     padding-bottom: $base_line_height;
     display: block;
-    
-    &:before {
-      @extend .m-3col;
-
-      content: '';
-      display: block;
-      height: $base_line_height;
-      background-color: $black;
-    }
   }
 }

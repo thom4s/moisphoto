@@ -139,12 +139,17 @@ $lieu = get_field('lieu');
 		</div><!-- .event__rebonds -->
 
 
-		<div class="event__partners clearfix">
-			<div class="row wrap">
-				<h3>Partenaires</h3>
-				<p>remerciements : <?php the_field('mentions'); ?></p>
-			</div><!-- .wrap -->
-		</div><!-- .event__partners -->
+
+	<section class="event__partners clearfix">
+	  <div class="wrap row">  
+
+	    <div class="has-bordertop--big clearfix"></div>   
+	    <h3 class="clearfix">Partenaires de l'événement</h3>
+
+	    <?php the_field('mentions'); ?>
+	  
+	  </div>
+	</section>
 
 		
 	</div><!-- .event__content -->

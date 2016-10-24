@@ -88,5 +88,16 @@ big {
   }  
 }
 
+.has-bordertop--big {
 
+  &:before {
+      @extend .m-3col;
+
+      content: '';
+      display: block;
+      height: $base_line_half;
+      background-color: $black;
+      margin-bottom: $base_line_height * 0.75;
+  }  
+}
 
