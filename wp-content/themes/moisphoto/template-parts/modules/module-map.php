@@ -5,17 +5,18 @@
  *  subfields are : 'titre' (texte), 'map' (Google map)
  */
 
-  $blue = '#281EBE';
-  $blue_darker = '#1B0290';
-  $beige = ' #F0EBDC';
-  $beige_lighter = ' #F4F1E6';
+  $blue = '#283583';
+  $red = ' #DB0819';
+  $green = ' #3FA535';
   $gray = ' #1C1C1C';
+  $black = '#000000';
+  $white = '#ffffff';
 
   /* 
     $places_events_array
     (
-        [event->ID] => place->ID
-        [event->ID] => place->ID
+        [event->ID] => array( place->ID, color_we ) 
+        [event->ID] => array( place->ID, color_we ) 
         ....
     )
   */
@@ -29,8 +30,11 @@
       <?php
 
         foreach ($places_events_array as $e => $p):
-          $location = get_field('adresse', $p);
-          $lieu_nom = get_the_title($p);
+          // $p[0] = place id
+          // $p[1] = color we
+
+          $location = get_field('adresse', $p[0] );
+          $lieu_nom = get_the_title($p[0]);
 
 
           $thumbnail = get_the_post_thumbnail($e, 'medium' );
@@ -60,7 +64,7 @@
               ?>
 
               <!-- MARKER FOR CURIOSITES-->
-              <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>">
+              <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>" icon="default_2">
                 <div class="modal__close"> <a href="#">x</a> </div>
 
                 <div class="map__modal__content">
@@ -86,7 +90,7 @@
           endif; ?>
 
           <!-- MARKER -->
-          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
+          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>">
             <div class="modal__close"> <a href="#">x</a> </div>
 
             <div class="map__modal__content">
@@ -180,19 +184,19 @@
     },{
       "featureType": "poi.sports_complex",
       "stylers": [
-        { "visibility": "on" }
+        { "visibility": "off" }
       ]
     },{
       "featureType": "water",
       "stylers": [
-        { "color": "<?php echo $blue_darker; ?>" }
+        { "color": "<?php echo $blue; ?>" }
       ]
     },{
       "featureType": "water",
       "elementType": "labels.text",
       "stylers": [
         { "color": "#666666" },
-        { "visibility": "on" },
+        { "visibility": "off" },
         { "weight": 0.1 }
       ]
     },{
@@ -206,7 +210,8 @@
     },{
       "featureType": "road.highway",
       "stylers": [
-        { "visibility": "simplified" }
+        { "visibility": "simplified" },
+        { "color": "<?php echo $gray; ?>" },
       ]
     },{
       "featureType": "road.arterial",
@@ -217,13 +222,13 @@
     },{
       "featureType": "road.local",
       "stylers": [
-        { "visibility": "on" }
+        { "visibility": "off" }
       ]
     },{
       "featureType": "road.arterial",
       "elementType": "labels",
       "stylers": [
-        { "visibility": "simplified" }
+        { "visibility": "off" }
       ]
     },{
       "featureType": "road.highway",
@@ -277,7 +282,7 @@
     },{
       "featureType": "landscape",
       "stylers": [
-        { "color": "<?php echo $beige; ?>" },
+        { "color": "<?php echo $gray; ?>" },
         { "visibility": "simplified" },
         { "lightness": 60 },
         { "saturation": 6 },
@@ -300,7 +305,7 @@
       "featureType": "administrative",
       "elementType": "labels.text.fill",
       "stylers": [
-        { "color": "#555555" }
+        { "visibility": "off" }
       ]
     },{
       "featureType": "administrative",
@@ -312,9 +317,7 @@
       "featureType": "road.highway.controlled_access",
       "elementType": "geometry",
       "stylers": [
-        { "color": "<?php echo $blue; ?>" },
-        { "saturation": 96 },
-        { "weight": 1.5 },
+        { "color": "<?php echo $gray; ?>" },
         { "lightness": 20 }
       ]
     }
@@ -345,7 +348,7 @@
     
     // vars
     var args = {
-      zoom              : 10,
+      zoom              : 11,
       center            : new google.maps.LatLng(48.860532, 2.347772),
       mapTypeId         : google.maps.MapTypeId.ROADMAP,
       draggable         : true,
@@ -358,7 +361,7 @@
     
     // create map           
     var map = new google.maps.Map( $el[0], args);
-    map.setOptions({styles: mapStyles});
+    map.setOptions( {styles: mapStyles} );
 
     
     // add a markers reference
@@ -400,12 +403,31 @@
 
     // var
     var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+    var icon_file = "<?php echo get_template_directory_uri(); ?>/assets/icons/" + $marker.attr('icon') + '.png';
+    var active_icon_file = "<?php echo get_template_directory_uri(); ?>/assets/icons/active_" + $marker.attr('icon') + '.png';
+
+    var default_icon = {
+        url: icon_file,
+        scaledSize: new google.maps.Size(16, 16),
+    };
+
+    var active_icon = {
+        url: active_icon_file,
+        scaledSize: new google.maps.Size(62, 62), 
+        // The origin for this image is (0, 0).
+        origin: new google.maps.Point(0, 0),
+        // The anchor for this image is the base of the flagpole at (0, 32).
+        anchor: new google.maps.Point(62, 62)
+    };
+
 
     // create marker
     var marker = new google.maps.Marker({
       position  : latlng,
       map     : map,
-      //icon    : "<?php echo get_template_directory_uri(); ?>/img/epingle.png"
+      icon    : default_icon,
+      icon_backup: default_icon,
+      active_icon : active_icon
     });
 
     // add to array
@@ -423,11 +445,15 @@
       google.maps.event.addListener(marker, 'click', function() {
 
         for (i=0; i < map.markers.length; i++ ) {
-          //map.markers[i].setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle.png");
-                }
-          //marker.setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle_released.png");
-          $content = $marker.html();
-          $('.map__modal').html($content).show();
+          var this_icon_backup = map.markers[i].icon_backup;
+          console.log(this_icon_backup);
+
+          map.markers[i].setIcon(this_icon_backup);
+        }
+        
+        marker.setIcon( active_icon );
+        $content = $marker.html();
+        $('.map__modal').html($content).show();
 
       });
     }
@@ -499,7 +525,6 @@
 
     $('.triggers').each(function(ev){
       ev.preventDefault;
-      console.log( $(this) );
 
       google.maps.event.addDomListener(document.getElementById( '1'), "click", function(ev) {
         map.setCenter(map.markers[1].getPosition());
