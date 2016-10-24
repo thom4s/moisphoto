@@ -21,6 +21,7 @@ $base_line_height             : 28px !default;
 
 
 $type-scale: (
+  -2: 1.1rem,
   -1: 1.2rem,
   0: 1.4rem, 
   1: 1.6rem, 
@@ -29,7 +30,8 @@ $type-scale: (
 );
 
 $line-heights: (
-  -1: $base_line_height,
+  -2: $base_line_half,
+  -1: $base_line_half,
   0: $base_line_half, 
   1: $base_line_height, 
   2: $base_line_height,

@@ -9,26 +9,42 @@
   margin-top: $base_line_height * 2;
 }
 
-.footer__sub {
-  background-color: $gray;
-  padding-top: 2em;
-}
-
-
 
 .footer__main{
+  @include type-setting(-2);
+
+  font-weight: $light;
   background-color: $gray_darker;
   padding-top: $base_line_height * 2;
   padding-bottom: $base_line_height * 3;
   color: $white;
 }
 
+
+  .footer__main__infos {
+    strong {
+      text-transform: uppercase;
+    }
+  }
+
   .footer__main__newsletter {
 
+    input[type="email"] {
+      padding-left: $base_line_half;
+      color: $white;
+    }
+    input[type="submit"] {
+      @include type-setting(-1);
+      padding-left: $base_line_half;
+      text-align: left;
+      text-transform: uppercase;
+    }
   }
 
   .footer__main__menu {
-    
+    li:last-child {
+      background-color: $black;
+    }
   }
 
 
