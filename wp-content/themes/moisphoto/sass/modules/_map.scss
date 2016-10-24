@@ -10,7 +10,7 @@
 
 .map-outer {
   position: relative;
-  height: 600px;
+  height: 650px;
 }
 
   .map-inner {
@@ -71,12 +71,13 @@
 
       h2 {
         text-transform: uppercase;
-        margin-bottom: $base_line_half;
+        margin-bottom: $base_line_half / 2;
       }
 
       h3 {
         @include type-setting(0);
         font-weight: $medium;
+        margin-bottom: $base_line_height;
       }
 
       p {

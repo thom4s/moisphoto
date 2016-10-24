@@ -58,8 +58,10 @@
               <div class="row">
               
                 <div class="l-8col square">
-                  <div class="square__content bg--img" style="background-image: url(<?php echo $item['weekend_img']; ?>)">
-                                  
+                  <div class="square__content grid__item__img">
+                    <div class="table">
+                      <img src="<?php echo $item['weekend_img']; ?>">
+                    </div>
                   </div>
                 </div>
               
@@ -83,8 +85,8 @@
               <div class="row">
               
                 <div class="l-9col square">
-                  <div class="square__content bg--img" style="background-image: url(<?php echo $item['big_bloc_img']; ?>)">
-                                  
+                  <div class="square__content grid__item__img">
+                      <img src="<?php echo $item['big_bloc_img']; ?>">
                   </div>
                 </div>
               

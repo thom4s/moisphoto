@@ -30,7 +30,17 @@
       &.even {
         float: right;
       }
+
+      .grid__item__img {
+        padding: 0;
+
+        img {
+          display: table-cell;
+        }
+      }
+
     }
+
 
 
 

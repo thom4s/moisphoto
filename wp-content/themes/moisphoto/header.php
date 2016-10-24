@@ -28,7 +28,12 @@
 		<div class="row clearfix">
 
 			<div class="site-branding--little l-6col">
-				&nbsp; 
+				<div class="row">
+					<div class="l-1col square">
+							<div class="square__content"> &nbsp; </div>
+						</div>				
+				</div>
+				
 				<?php if( !is_front_page() && !is_home() ) : ?>
 					
 					<div class="site-logo">

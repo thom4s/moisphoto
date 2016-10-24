@@ -19,7 +19,7 @@
       text-align: center;
       border-left: 1px solid $color_primary;
       color: $color_primary;
-
+      text-transform: uppercase;
 
       @include up-to(medium) {
       }
