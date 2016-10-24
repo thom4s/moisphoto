@@ -4,11 +4,13 @@
 h1 {
   @include type-setting(3);
   margin-top: 0;
+  font-weight: $medium;
 }
 
 h2 {
   @include type-setting(3);
   margin-top: 0;
+  font-weight: $medium;
 }
 
 h3 {

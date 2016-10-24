@@ -76,4 +76,17 @@ big {
 
 
 
+.has-bordertop--little {
+
+  &:before {
+    content: '';
+    border-top: 1px solid $white;
+    display: block;
+    height: 2px;
+    width: $base_line_height;
+    margin-bottom: 4px;
+  }  
+}
+
+
 

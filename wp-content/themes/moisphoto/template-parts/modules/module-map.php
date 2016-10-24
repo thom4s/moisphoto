@@ -30,6 +30,8 @@
 
         foreach ($places_events_array as $e => $p):
           $location = get_field('adresse', $p);
+          $lieu_nom = get_the_title($p);
+
 
           $thumbnail = get_the_post_thumbnail($e, 'medium' );
           $auteurs = get_field('auteurs', $e);
@@ -45,11 +47,9 @@
             $dates = get_field('date_debut', $e) . ' -> ' . get_field('date_fin', $e);
           }
 
-          
           // CURIOSITES
 
           $curiosites_liste = get_field('curiosites_liste', $e);
-          var_dump($curiosites_liste); 
 
           if( is_array( $curiosites_liste ) ) :
             foreach ($curiosites_liste as $c) : ?>
@@ -61,22 +61,22 @@
 
               <!-- MARKER FOR CURIOSITES-->
               <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>">
+                <div class="modal__close"> <a href="#">x</a> </div>
 
-                <div class="modal__content">
+                <div class="map__modal__content">
 
                   <div class="modal__img">
-                    <div class="row">
-                        <?php the_post_thumbnail($c); ?>
-                    </div>
+                    <?php the_post_thumbnail($c); ?>
                   </div>
 
                   <div class="modal__texts">
-                    <div class="row">
-                      <h2><?php echo get_the_title($c); ?></h2>
-                      <p><?php echo $c_type; ?></p>
-                      <p><?php echo $c_description; ?></p>
-                      <p><?php echo $c_location['address']; ?></p>
-                    </div>
+                    <h2><?php echo get_the_title($c); ?></h2>
+
+                    <h3><?php moisphoto_get_artists_list($c_type, false); ?></h3>
+
+                    <div class="modal__intro has-bordertop--little"><?php echo $c_description; ?></div>
+
+                    <p class="has-bordertop--little modal__place"><?php echo $c_location['address']; ?></p>
                   </div>
 
                 </div><!--.modal-content -->
@@ -87,31 +87,38 @@
 
           <!-- MARKER -->
           <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>">
+            <div class="modal__close"> <a href="#">x</a> </div>
 
-            <div class="modal__content">
+            <div class="map__modal__content">
 
               <div class="modal__img">
-                <div class="row">
-                    <?php echo $thumbnail; ?>
-                </div>
+                <?php echo $thumbnail; ?>
               </div>
 
               <div class="modal__texts">
-                <div class="row">
 
                   <h2><?php moisphoto_get_artists_list($auteurs, false); ?></h2>
                   <h3><?php echo $title; ?></h3>
 
-                  <p><?php echo $dates; ?></p>
-                  <p><?php echo $chapo; ?></p>
+                  <?php if($chapo) :?>
+                    <div class="modal__intro has-bordertop--little"><?php echo $chapo; ?></div>
+                  <?php endif; ?>
 
-                  <p><?php echo $lieu_nom; ?></p>
-                  <p><?php echo $location['address']; ?></p>
+                  <?php if($dates) :?>
+                    <p class="modal__dates has-bordertop--little"><?php echo $dates; ?></p>
+                  <?php endif; ?>
 
-                  <a href="<?php echo $url; ?>">En savoir plus</a></p>
+                  <?php if($lieu_nom) :?>
+                    <p class="has-bordertop--little modal__place"><?php echo $lieu_nom; ?></p>
+                    <p class="modal__adress"><?php echo $location['address']; ?></p>
+                  <?php endif; ?>
 
-                </div>
               </div>
+
+              <div class="modal__btn">
+                <a href="<?php echo $url; ?>">En savoir plus <br>sur l'exposition et le lieu</a></p>
+              </div>
+              
 
             </div><!--.modal-content -->
           </div><!--.marker -->
@@ -120,8 +127,8 @@
 
       </div>
 
-      <div class="modal">
-          <div class="modal__content"></div>
+      <div class="map__modal">
+          <div class="map__modal__content"></div>
       </div>
 
     </div><!-- .map-outer -->
@@ -420,7 +427,7 @@
                 }
           //marker.setIcon("<?php echo get_template_directory_uri(); ?>/img/epingle_released.png");
           $content = $marker.html();
-          $('.modal').html($content).show();
+          $('.map__modal').html($content).show();
 
       });
     }
@@ -497,6 +504,11 @@
       google.maps.event.addDomListener(document.getElementById( '1'), "click", function(ev) {
         map.setCenter(map.markers[1].getPosition());
       });
+
+    $('.modal__close > a').on('click', function(event) {
+       event.preventDefault;
+      $('.map__modal').hide();
+    });
 
     });
 

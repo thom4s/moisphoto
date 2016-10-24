@@ -17,6 +17,7 @@
     &:before {
       @extend .m-3col;
 
+      content: '';
       display: block;
       height: $base_line_height;
       background-color: $black;
