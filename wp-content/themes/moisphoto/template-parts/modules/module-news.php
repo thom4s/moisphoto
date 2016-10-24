@@ -39,8 +39,14 @@
                   <div class="news__item__img--big"><?php the_post_thumbnail(); ?></div>
                 <?php endif; ?>
                 
+                <div class="pict--rounded--little"> -> </div>
+
                 <h3><?php the_title(); ?></h3>
-                <p><?php the_excerpt(); ?></p>
+                <p><?php echo get_the_date('d/m/Y'); ?></p>
+
+                <div class="has-bordertop--little">
+                  <div class="news_excerpt"><?php the_excerpt(); ?></div>
+                </div>
               </a>
             </div>
             <?php wp_reset_postdata();  ?>
@@ -62,8 +68,14 @@
                   <div class="news__item__img--little"><?php the_post_thumbnail(); ?></div>
                 <?php endif; ?>
 
+                <div class="pict--rounded--little"> -> </div>
+
                 <h3><?php the_title(); ?></h3>
-                <p><?php the_excerpt(); ?></p>
+                <p><?php echo get_the_date('d/m/Y'); ?></p>
+
+                <div class="has-bordertop--little">
+                  <div class="news_excerpt"><?php the_excerpt(); ?></div>
+                </div>
               </a>
             </div>
         <?php endforeach; ?>

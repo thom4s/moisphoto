@@ -41,6 +41,17 @@
   color: $white;
 }
 
+.pict--rounded--little {
+  @extend %pict--rounded;
+  @include type-setting(-1);
+
+  line-height: $base_line_height;
+  text-align: center;
+  background-color: $gray_darker;
+  color: $white;
+  width: $base_line_height;
+  height: $base_line_height;
+}
 
 
 .pict--social {
