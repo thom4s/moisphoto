@@ -30,6 +30,12 @@
           </a>
           <?php break;
 
+        case 'affiche': ?>
+          <div class="grid__item--affiche l-6col <?php echo $order_item; ?>">
+            <img src="<?php echo $item['file']['url']; ?>">
+          </div>
+          <?php break;
+
 
         case 'text': ?>
           <a href="<?php echo $item['text_link']; ?>">

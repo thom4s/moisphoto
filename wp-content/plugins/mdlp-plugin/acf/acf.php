@@ -6,9 +6,6 @@ function my_acf_init() {
 
 add_action('acf/init', 'my_acf_init');
 
-
-
-
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -349,10 +346,9 @@ acf_add_local_field_group(array (
         'id' => '',
       ),
       'default_value' => '',
-      'placeholder' => '',
-      'maxlength' => '',
-      'rows' => 6,
-      'new_lines' => 'wpautop',
+      'tabs' => 'all',
+      'toolbar' => 'full',
+      'media_upload' => 1,
     ),
     array (
       'key' => 'field_57b5bfd4efb7b',
@@ -1053,6 +1049,40 @@ acf_add_local_field_group(array (
           'max' => '',
         ),
         array (
+          'key' => '580e18cc030e4',
+          'name' => 'affiche',
+          'label' => 'Affiche',
+          'display' => 'block',
+          'sub_fields' => array (
+            array (
+              'key' => 'field_580e18cc030e5',
+              'label' => 'Fichier affiche',
+              'name' => 'file',
+              'type' => 'image',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'return_format' => 'array',
+              'preview_size' => 'thumbnail',
+              'library' => 'all',
+              'min_width' => '',
+              'min_height' => '',
+              'min_size' => '',
+              'max_width' => '',
+              'max_height' => '',
+              'max_size' => '',
+              'mime_types' => '',
+            ),
+          ),
+          'min' => '',
+          'max' => '',
+        ),
+        array (
           'key' => '5805d1b4b2d84',
           'name' => 'page',
           'label' => 'Une page',
@@ -1202,7 +1232,7 @@ acf_add_local_field_group(array (
               'key' => 'field_5805d10d5bb27',
               'label' => 'Quel article ?',
               'name' => 'post_item',
-              'type' => 'post_object',
+              'type' => 'page_link',
               'instructions' => '',
               'required' => 1,
               'conditional_logic' => 0,
@@ -1216,10 +1246,9 @@ acf_add_local_field_group(array (
               ),
               'taxonomy' => array (
               ),
-              'allow_null' => 1,
-              'multiple' => 1,
-              'return_format' => 'object',
-              'ui' => 1,
+              'allow_null' => 0,
+              'allow_archives' => 1,
+              'multiple' => 0,
             ),
             array (
               'key' => 'field_5805d15c5bb2a',
@@ -1745,3 +1774,5 @@ acf_add_local_field_group(array (
 ));
 
 endif;
+
+
