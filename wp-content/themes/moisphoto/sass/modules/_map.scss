@@ -53,14 +53,14 @@
       border-top: $base_line_height * 0.75 solid $color_primary;
 
       .modal__img {
-        max-height: 150px;
+        max-height: 130px;
         margin-bottom: $base_line_height;
         background-color: $white;
         
         img {
           display: block;
           margin: auto;
-          height: 150px;
+          height: 130px;
           width: auto;
         }
       }

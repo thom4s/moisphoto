@@ -46,9 +46,12 @@
     .grid__item--post {
       @extend %grid__item;
 
-      .square {
+      .square__content {
         background-color: $white;
       }
+      .has-bordertop--little:before {
+        border-color: $black;
+      }    
     }
 
 
@@ -58,7 +61,7 @@
       border-color: $color_secondary;
       color: $white;
 
-      .square {
+      .square__content {
         background-color: $black;
       }
     }
@@ -66,7 +69,7 @@
     .grid__item--big {
       @extend %grid__item;
 
-      border-color: $color_secondary;
+      border-color: $black;
       color: $white;
 
       .square {
@@ -80,6 +83,10 @@
 
       .square__content {
         background-color: $white;
+      }
+
+      .has-bordertop--little:before {
+        border-color: $black;
       }
     }
 

@@ -36,8 +36,8 @@
             <div class="grid__item--text l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 <h3><?php echo $item['text_title']; ?></h3>
-                <?php echo $item['text_intro']; ?>
-                <span>En savoir plus</span>
+                <div class="has-bordertop--little"> <?php echo $item['text_intro']; ?></div>
+                <span class="picto--rounded">En savoir plus</span>
               </div>
             </div>
           </a>
@@ -60,7 +60,7 @@
                 <div class="l-6col square">
                   <div class="square__content">
                     <h3><?php echo $item['weekend_title']; ?></h3>
-                    <?php echo $item['weekend_intro']; ?>
+                    <div class="has-bordertop--little"> <?php echo $item['weekend_intro']; ?></div>
                   </div>
                 </div>
               
@@ -85,7 +85,7 @@
                 <div class="l-6col square">
                   <div class="square__content">
                     <h3><?php echo $item['big_bloc_title']; ?></h3>
-                    <?php echo $item['big_bloc_text']; ?>
+                    <div class="has-bordertop--little"> <?php echo $item['big_bloc_text']; ?></div>
                   </div>
                 </div>
               
@@ -102,7 +102,7 @@
             <div class="grid__item--page l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 <h3><?php echo $item['page_title']; ?></h3>
-                <?php echo $item['page_intro']; ?>
+                <div class="has-bordertop--little"> <?php echo $item['page_intro']; ?></div>
               </div>
             </div>
           </a>
@@ -111,12 +111,16 @@
 
 
         case 'post': ?>
-          <?php $url = get_permalink ( $item['post_item'] ); ?>
+          <?php
+            $post_id = $item['post_item'][0]->ID;
+            $url = get_permalink ( $post_id );
+            $post_title = get_the_title( $post_id ); ?>
+            
           <a href="<?php echo $url; ?>">
             <div class="grid__item--post l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
-                <?php echo $item['post_title']; ?>
-                <?php echo $item['post_intro']; ?>
+                <h3><?php echo $post_title; ?></h3>
+                <div class="has-bordertop--little"> <?php echo $item['post_intro']; ?></div>
               </div>
             </div>
           </a>

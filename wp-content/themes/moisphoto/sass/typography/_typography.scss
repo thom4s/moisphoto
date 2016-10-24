@@ -16,7 +16,7 @@
 
 $base_font_size               : 14px !default;
 
-$base_line_half               : 14px;
+$base_line_half               : 18px;
 $base_line_height             : 28px !default;
 
 
@@ -30,7 +30,7 @@ $type-scale: (
 
 $line-heights: (
   -1: $base_line_height,
-  0: $base_line_height, 
+  0: $base_line_half, 
   1: $base_line_height, 
   2: $base_line_height,
   3: $base_line_height

@@ -16,6 +16,7 @@ h2 {
 h3 {
   @include type-setting(2);
   margin-top: 0;
+  font-weight: $medium;
 }
 
 h4 {
