@@ -435,3 +435,45 @@ function my_ajax_pagination() {
 
 
 
+function filter_ptags_on_images($content){
+    return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
+}
+add_filter('the_content', 'filter_ptags_on_images');
+
+
+/**
+ * Filtre sur le shortcode  pour un code "HTML5 Compliant"
+ * @return text HTML décrivant un contenu de type image
+ **/
+if ( !function_exists('juiz_img_caption_shortcode_html5_compliant')) {
+  function juiz_img_caption_shortcode_html5_compliant($val, $attr, $content = null)
+  {
+    extract(shortcode_atts(array(
+      'id'  => '',
+      'align' => '',
+      'width' => '',
+      'caption' => ''
+    ), $attr));
+
+    if ( empty ($caption) || 1 > (int)$width )
+      return $val;
+
+    $capid = '';
+    if ( $id ) {
+      $id = esc_attr($id);
+      $id = str_replace('attachment_', '', $id);
+      $caption = get_field('legende', $id);
+
+      $capid = 'id="figcaption_'. $id . '" ';
+      $id = 'id="' . $id . '" aria-labelledby="figcaption_' . $id . '" ';
+    }
+
+    return '<figure ' . $id . 'class="wp-caption ' . esc_attr($align) . '" style="width: '
+    . (10 + (int) $width) . 'px">' . do_shortcode( $content ) . '</figure><figcaption ' . $capid 
+    . 'class="wp-caption-text">' . $caption . '</figcaption>';
+  }
+} //endif !function_exists
+add_filter('img_caption_shortcode', 'juiz_img_caption_shortcode_html5_compliant',10,3);
+
+
+

@@ -75,11 +75,11 @@
 
 				<div class="m-16col">
 
-					<div class="p--big">
+					<div class="p--big event__extract">
 						<?php the_field('chapo'); ?>
 					</div>
 
-					<div>
+					<div class="event__text row">
 						<?php	the_content(); ?>
 					</div>
 					
@@ -231,9 +231,7 @@
 
 										<p class="has-bordertop--little"><?php echo $curiosite_adresse; ?></p>
 										<?php the_field('description', $c); ?>
-										
-										<?php the_field('type_de_curiosite', $c); ?>
-									
+																			
 									<?php }
 								}
 							?>

@@ -4,12 +4,17 @@
  * @package sasskit
  */
 
+
+
+figure {
+  max-width: 100%;
+}
+
 img {
   @include box-sizing;
   max-width: 100%;
   height: auto;
 }
-
 
 .bg--img {
   background-position: center center;
