@@ -49,13 +49,14 @@
 
 
   .event__main {
+    margin-bottom: $base_line_height * 2;
 
   }
 
   .event__extract {
     margin-bottom: $base_line_height;
   }
-  
+
     .event__text {
 
       p {
@@ -152,6 +153,39 @@
     .event__map__inner {
       padding: 1.4em;
     }
+
+
+
+  .event__rebonds {
+    background-color: $gray_lighter;
+    padding: $base_line_height 0;
+    margin-bottom: $base_line_height * 2;
+
+    .h2 {
+      font-weight: $medium;
+      margin-bottom: $base_line_height;
+    }
+
+    .h3 {
+      margin-bottom: $base_line_height;
+    }
+
+    .rebonds__item {
+      margin-bottom: $base_line_height;
+      border-top: $base_line_half solid $black;
+      padding: 1.4em;
+      background-color: $white; 
+    }
+
+    .has-bordertop--big:before {
+      width: 100%;
+    }
+
+    .has-bordertop--little:before {
+      border-color: $black;
+    }
+  }
+
 
 }
 

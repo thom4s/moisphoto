@@ -244,27 +244,9 @@
 		</div><!-- .event__main -->
 		
 
-
-		<div class="event__rebonds clearfix">
-			<div class="wrap">
-
-				<div class="map"></div>
-
-				<h3>Autour de l'événement</h3>
-
-				<?php 
-					if($evenements_lies) {
-						foreach ($evenements_lies as $e) {
-							echo '<h4>'. get_the_title( $e ) . '</h4>';
-							the_field('description', $e);
-							the_field('adresse', $e);
-							the_field('type_de_curiosite', $e);
-						}
-					}
-				?>
-
-			</div>
-		</div><!-- .event__rebonds -->
+		<?php 
+			set_query_var('rebonds', $evenements_lies); 
+		  get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
 
 
 
@@ -272,7 +254,7 @@
 	  <div class="wrap row">  
 
 	    <div class="has-bordertop--big clearfix"></div>   
-	    <h3 class="clearfix">Partenaires de l'événement</h3>
+	    <h3 class="h2 clearfix">Partenaires de l'événement</h3>
 
 	    <?php the_field('mentions'); ?>
 	  
