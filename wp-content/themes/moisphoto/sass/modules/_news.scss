@@ -91,6 +91,10 @@
     border-top: 10px solid $color_primary;
     background-color: $white;
     padding: $base_line_height;
+
+    .has-bordertop--little::before {
+      border-color: $black;
+    }
   }
 
 

@@ -9,9 +9,11 @@
 .module-partners {
 
 
-  h3 {
+  .h2 {
     border-bottom: 1px solid $gray_light;
     padding-bottom: $base_line_height;
     display: block;
+    font-weight: $medium;
+    margin-bottom: $base_line_height;
   }
 }

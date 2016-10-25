@@ -69,19 +69,16 @@
         padding: 0 $base_line_height;
       }
 
-      h2 {
+      h3.h3 {
         text-transform: uppercase;
         margin-bottom: $base_line_half / 2;
       }
 
-      h3 {
-        @include type-setting(0);
-        font-weight: $medium;
+      .h6 {
         margin-bottom: $base_line_height;
       }
 
       p {
-        line-height: $base_line_half;
         margin-bottom: 0;
       }
 
@@ -91,7 +88,6 @@
       }
 
       .modal__adress {
-        font-weight: $light;
         padding-left: $base_line_half;
       }
 
@@ -104,6 +100,10 @@
         padding: $base_line_half $base_line_height $base_line_height $base_line_height;
         line-height: $base_line_half;
         background-color: $color_primary;
+      }
+      
+      .a--inline {
+        color: $white;
       }
     } 
 

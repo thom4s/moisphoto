@@ -41,7 +41,7 @@
           <a href="<?php echo $item['text_link']; ?>">
             <div class="grid__item--text l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
-                <h3><?php echo $item['text_title']; ?></h3>
+                <h3 class="h3"><?php echo $item['text_title']; ?></h3>
                 <div class="has-bordertop--little"> <?php echo $item['text_intro']; ?></div>
                 <span class="picto--rounded">En savoir plus</span>
               </div>
@@ -67,8 +67,13 @@
               
                 <div class="l-6col square">
                   <div class="square__content">
-                    <h3><?php echo $item['weekend_title']; ?></h3>
+                    <h3 class="h3"><?php echo $item['weekend_title']; ?></h3>
                     <div class="has-bordertop--little"> <?php echo $item['weekend_intro']; ?></div>
+
+                    <div>
+                      <a class="a--inline">...</a>
+                    </div> 
+                  
                   </div>
                 </div>
               
@@ -92,7 +97,7 @@
               
                 <div class="l-6col square">
                   <div class="square__content">
-                    <h3><?php echo $item['big_bloc_title']; ?></h3>
+                    <h3 class="h3"><?php echo $item['big_bloc_title']; ?></h3>
                     <div class="has-bordertop--little"> <?php echo $item['big_bloc_text']; ?></div>
                   </div>
                 </div>
@@ -105,12 +110,29 @@
 
 
         case 'page': ?>
-          <?php $url = get_permalink ( $item['page_item'] ); ?>
+          <?php 
+            $page_id = $item['post_item'];
+            $url = get_permalink ( $item['page_item'] );
+            $post_title = get_the_title( $page_id ) ?>
           <a href="<?php echo $url; ?>">
             <div class="grid__item--page l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
-                <h3><?php echo $item['page_title']; ?></h3>
+                
+                <h3 class="h3">
+                  <?php if ( $item['page_title'] == '' ) {
+                    echo get_the_title( $item['page_item'] );
+                  }  else {
+                    echo $item['page_title']; 
+                  } ?>
+                </h3>
+                
                 <div class="has-bordertop--little"> <?php echo $item['page_intro']; ?></div>
+
+                <div>
+                  <span class="pict--rounded--little"></span>
+                  <a class="a--inline">Lire la suite</a>
+                </div>  
+
               </div>
             </div>
           </a>
@@ -127,8 +149,16 @@
           <a href="<?php echo $url; ?>">
             <div class="grid__item--post l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
-                <h3><?php echo $post_title; ?></h3>
+                
+                <h3 class="h3"><?php echo $post_title; ?></h3>
+                
                 <div class="has-bordertop--little"> <?php echo $item['post_intro']; ?></div>
+
+                <div>
+                  <span class="pict--rounded--little"></span>
+                  <a class="a--inline">Lire la suite</a>
+                </div>  
+
               </div>
             </div>
           </a>

@@ -9,9 +9,57 @@ textarea {
 }
 
 
-p {
+p,
+.p {
+  @include type-setting(0);
+  font-weight: $light;
   margin: 0 0 $base_line_half 0;
 }
+
+  .p--big {
+    @include type-setting(1);
+    font-weight: $medium;
+
+    p {
+      font-weight: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .p--small {
+    @include type-setting(-1);
+    font-weight: $medium;
+
+    p {
+      font-weight: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .p--smaller {
+    @include type-setting(-2);
+
+    font-family: $font_family_sans;
+    color: $gray_dark;
+
+    p {
+      font-weight: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .p--strong {
+    font-weight: $medium;
+
+    p {
+      font-weight: inherit;
+    }
+  }
+
+
 
 blockquote {
   margin: 0 $base_line_height;

@@ -48,7 +48,7 @@
             $dates = get_field('date', $e);
           } 
           else {
-            $dates = get_field('date_debut', $e) . ' -> ' . get_field('date_fin', $e);
+            $dates = get_field('date_debut', $e) . ' - ' . get_field('date_fin', $e);
           }
 
           // CURIOSITES
@@ -74,9 +74,9 @@
                   </div>
 
                   <div class="modal__texts">
-                    <h2><?php echo get_the_title($c); ?></h2>
+                    <h3 class="h3"><?php echo get_the_title($c); ?></h3>
 
-                    <h3><?php moisphoto_get_artists_list($c_type, false); ?></h3>
+                    <h3 class="h6"><?php moisphoto_get_artists_list($c_type, false); ?></h3>
 
                     <div class="modal__intro has-bordertop--little"><?php echo $c_description; ?></div>
 
@@ -101,26 +101,26 @@
 
               <div class="modal__texts">
 
-                  <h2><?php moisphoto_get_artists_list($auteurs, false); ?></h2>
-                  <h3><?php echo $title; ?></h3>
+                  <h3 class="h3"><?php moisphoto_get_artists_list($auteurs, false); ?></h3>
+                  <h3 class="h6"><?php echo $title; ?></h3>
 
                   <?php if($chapo) :?>
                     <div class="modal__intro has-bordertop--little"><?php echo $chapo; ?></div>
                   <?php endif; ?>
 
                   <?php if($dates) :?>
-                    <p class="modal__dates has-bordertop--little"><?php echo $dates; ?></p>
+                    <p class="p--strong modal__dates has-bordertop--little"><?php echo $dates; ?></p>
                   <?php endif; ?>
 
                   <?php if($lieu_nom) :?>
-                    <p class="has-bordertop--little modal__place"><?php echo $lieu_nom; ?></p>
+                    <p class="p--strong has-bordertop--little modal__place"><?php echo $lieu_nom; ?></p>
                     <p class="modal__adress"><?php echo $location['address']; ?></p>
                   <?php endif; ?>
 
               </div>
 
               <div class="modal__btn">
-                <a href="<?php echo $url; ?>">En savoir plus <br>sur l'exposition et le lieu</a></p>
+                <a href="<?php echo $url; ?>" class="a--inline">En savoir plus <br>sur l'exposition et le lieu</a></p>
               </div>
               
 
@@ -417,7 +417,7 @@
         // The origin for this image is (0, 0).
         origin: new google.maps.Point(0, 0),
         // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(62, 62)
+        anchor: new google.maps.Point(0, 0)
     };
 
 

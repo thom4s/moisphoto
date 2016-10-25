@@ -16,8 +16,15 @@ a {
     cursor: pointer;
   }
 }
+  .a--inline {
+    @include type-setting(0);
+    font-weight: $medium;
+    color: $black;
+  }
+
+
 a:hover,
 a:focus,
 a:active {
-  color: $color_link_hover;
+  color: inherit;
 }

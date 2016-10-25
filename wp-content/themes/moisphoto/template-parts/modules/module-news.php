@@ -41,8 +41,8 @@
                 
                 <div class="pict--rounded--little"> -> </div>
 
-                <h3><?php the_title(); ?></h3>
-                <p><?php echo get_the_date('d/m/Y'); ?></p>
+                <h3 class="h3"><?php the_title(); ?></h3>
+                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small"><?php the_author(); ?></span></p>
 
                 <div class="has-bordertop--little">
                   <div class="news_excerpt"><?php the_excerpt(); ?></div>
@@ -70,8 +70,8 @@
 
                 <div class="pict--rounded--little"> -> </div>
 
-                <h3><?php the_title(); ?></h3>
-                <p><?php echo get_the_date('d/m/Y'); ?></p>
+                <h3 class="h3"><?php the_title(); ?></h3>
+                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small"><?php the_author(); ?></span></p>
 
                 <div class="has-bordertop--little">
                   <div class="news_excerpt"><?php the_excerpt(); ?></div>

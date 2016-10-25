@@ -1,35 +1,39 @@
 
+
+h1, 
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: $medium;
+}
+
 // Titles
 
-h1 {
-  @include type-setting(3);
-  margin-top: 0;
-  font-weight: $medium;
+.h1 {
+  @include type-setting(5);
 }
 
-h2 {
-  @include type-setting(3);
-  margin-top: 0;
-  font-weight: $medium;
+.h2 {
+  @include type-setting(4);
+  font-weight: $light;
 }
 
-h3 {
+.h3 {
+  @include type-setting(3);
+}
+
+.h4 {
   @include type-setting(2);
-  margin-top: 0;
-  font-weight: $medium;
 }
 
-h4 {
+.h5 {
   @include type-setting(1);
-  margin-top: 0;
 }
 
-h5 {
+.h6 {
   @include type-setting(0);
-  margin-top: 0;
-}
-
-h6 {
-  @include type-setting(2);
-  margin-top: 0;
 }
