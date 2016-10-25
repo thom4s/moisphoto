@@ -6,6 +6,7 @@ function my_acf_init() {
 
 add_action('acf/init', 'my_acf_init');
 
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -1466,6 +1467,24 @@ acf_add_local_field_group(array (
       'return_format' => 'object',
       'ui' => 1,
     ),
+    array (
+      'key' => 'field_580e231fd6f52',
+      'label' => 'Partenaires',
+      'name' => 'partenaires',
+      'type' => 'wysiwyg',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'tabs' => 'all',
+      'toolbar' => 'full',
+      'media_upload' => 1,
+    ),
   ),
   'location' => array (
     array (
@@ -1753,6 +1772,24 @@ acf_add_local_field_group(array (
       'max' => '',
       'return_format' => 'id',
     ),
+    array (
+      'key' => 'field_580e251c7be05',
+      'label' => 'Couleur du weekend',
+      'name' => 'color',
+      'type' => 'color_picker',
+      'instructions' => '#283583 pour le bleu
+#DB0819 pour le rouge
+#3FA535 pour le vert
+#000000 pour le noir',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+    ),
   ),
   'location' => array (
     array (
@@ -1774,5 +1811,3 @@ acf_add_local_field_group(array (
 ));
 
 endif;
-
-
