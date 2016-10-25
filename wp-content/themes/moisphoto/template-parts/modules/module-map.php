@@ -348,7 +348,7 @@
     
     // vars
     var args = {
-      zoom              : 11,
+      zoom              : <?php if( isset($zoom) ) { echo $zoom; } else { echo '11'; } ?>,
       center            : new google.maps.LatLng(48.860532, 2.347772),
       mapTypeId         : google.maps.MapTypeId.ROADMAP,
       draggable         : true,

@@ -56,14 +56,13 @@
 					</div>
 				</div>
 
-
 			</div>
 		</div>
 	</header><!-- .entry-header -->
 
 	<div class="event__curators clearfix">
 		<div class="wrap row">
-			<p class="h5"><?php the_field('nom_commissaire'); ?></p>
+			<div class="h5"><?php the_field('nom_commissaire'); ?></div>
 
 		</div>
 	</div>	
@@ -159,24 +158,87 @@
 
 						</div>
 
-						<p></p>
-
 					</div>
 					
 					<div class="event__map">
 
-						<h3>Les curiosités</h3>
-						<?php 
-							if($curiosites_liste) {
-								foreach ($curiosites_liste as $c) {
-									echo get_the_title( $c );
-									the_field('description', $c);
-									the_field('adresse', $c);
-									the_field('type_de_curiosite', $c);
-								}
-							}
-						?>
+					    <?php 
+					      // GET MAP ITEMS AND DISPLAY
 
+								$front_page_id = get_option('page_on_front');
+  							$current_edition = get_field('edition_courante', $front_page_id); 
+
+					      $type_relation = get_field('type_relation', $current_edition);
+					      
+					      $events = array();
+					      $places = array();
+
+					      if( $type_relation == 'Weekends') : 
+					        $weekends = get_field('weekends',  $current_edition); // ID
+
+					        foreach ($weekends as $we) {
+					          $events_list = get_field('events_list', $we);
+					          $color_we = get_field('color', $we);
+					          $color_we = str_replace('#', '', $color_we); 
+					          
+					          foreach ($events_list as $e) {
+					            $events[] = $e;
+					            $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+					          }            
+					        }
+					        $is_weekend = true; 
+
+					      elseif ( $type_relation == 'Événements' ) :
+					        $events = get_field('evenements', $current_edition);
+
+					        foreach ($events as $e) {
+					          $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+					        }    
+					        $is_weekend = false; 
+
+					      endif; 
+					        $is_weekend = false; 
+
+					      set_query_var('events', $events); 
+					      set_query_var('places_events_array', $places_events_array); 
+					      set_query_var('is_weekend', $is_weekend); 
+					      set_query_var('zoom', '15'); 
+
+					      get_template_part( 'template-parts/modules/module', 'map' ); 
+
+					      // END MAP ?>
+
+					  <div class="event__map__inner">
+
+						  <h3 class="h3">événements et curiosités proches</h3>
+
+							<?php 
+								if($curiosites_liste) {
+									foreach ($curiosites_liste as $c) { 
+
+											$curiosite_adresse_group = get_field('adresse', $c);
+											$curiosite_adresse = $curiosite_adresse_group['address'];
+											?>
+
+										<h5 class="p--big has-bordertop--little">
+											<?php echo get_the_title( $c ); ?><br>
+											<span class="p">
+												<?php 
+													$type_de_curiosite = get_field('type_de_curiosite', $c); 
+													moisphoto_get_artists_list($type_de_curiosite); ?>
+											</span>
+										</h5>
+
+										<p class="has-bordertop--little"><?php echo $curiosite_adresse; ?></p>
+										<?php the_field('description', $c); ?>
+										
+										<?php the_field('type_de_curiosite', $c); ?>
+									
+									<?php }
+								}
+							?>
+						</div>
+						
 					</div>
 				</div>
 

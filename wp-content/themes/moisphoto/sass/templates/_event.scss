@@ -91,9 +91,32 @@
   .event__map {
     background-color: $gray_lighter;
     border-top: $base_line_half solid $black;
-    padding: 1.4em;
+
+    .h3 {
+      margin-bottom: $base_line_height;
+      text-transform: uppercase;
+    }
+
+    h5 {
+      margin-bottom: $base_line_half;
+    }
+
+    .map-outer {
+      height: 250px;
+    }
+    
+    .map-inner {
+      margin: 0;
+    }
+
+    .has-bordertop--little::before {
+      border-color: $black;
+    }
 
   }
+    .event__map__inner {
+      padding: 1.4em;
+    }
 
 }
 

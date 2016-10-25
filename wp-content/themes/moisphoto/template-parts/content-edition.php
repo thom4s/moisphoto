@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying page content in page-accueil.php.
+ * Template part for displaying page content in page-edition.php.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
@@ -19,6 +19,9 @@
       // GET MAP ITEMS AND DISPLAY
 
       $type_relation = get_field('type_relation', $current_edition);
+
+      var_dump($type_relation);
+      
       $events = array();
       $places = array();
 
