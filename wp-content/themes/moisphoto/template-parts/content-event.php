@@ -259,23 +259,27 @@
 		</div><!-- .event__main -->
 		
 
-	<div class="part" id="rebonds" title="Autour de l'exposition"></div>
-	<?php 
-		set_query_var('rebonds', $evenements_lies); 
-	  get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
+	<?php if($evenements_lies) : ?>
+		<div class="part" id="rebonds" title="Autour de l'exposition"></div>
+		<?php 
+			set_query_var('rebonds', $evenements_lies); 
+		  get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
+	<?php endif; ?>
 
 
-	<div class="part" id="partenaires" title="Partenaires"></div>
-	<section class="module-partners clearfix">
-	  <div class="wrap row">  
+	<?php if( get_field('mentions') ) : ?>
+		<div class="part" id="partenaires" title="Partenaires"></div>
+		<section class="module-partners clearfix">
+		  <div class="wrap row">  
 
-	    <div class="has-bordertop--big clearfix"></div>   
-	    <h3 class="h2 clearfix">Partenaires de l'événement</h3>
+		    <div class="has-bordertop--big clearfix"></div>   
+		    <h3 class="h2 clearfix">Partenaires de l'événement</h3>
 
-	    <?php the_field('mentions'); ?>
-	  
-	  </div>
-	</section>
+		    <?php the_field('mentions'); ?>
+		  
+		  </div>
+		</section>
+	<?php endif; ?>
 
 		
 	</div><!-- .event__content -->
