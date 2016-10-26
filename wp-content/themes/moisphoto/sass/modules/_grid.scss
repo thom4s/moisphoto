@@ -82,6 +82,10 @@
 
       color: $white;
 
+      .grid__item__img {
+        position: relative;
+      }
+      
       .arrow--medium--black {
         position: absolute;
         top: 16px;

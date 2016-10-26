@@ -66,13 +66,9 @@
             <div class="grid__item--weekend l-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
-                <div class="l-8col">
-                  <div class="square__content grid__item__img">
-                    <div class="table">
+                <div class="l-8col grid__item__img">
                       <img src="<?php echo $item['weekend_img']; ?>">
                       <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
-                    </div>
-                  </div>
                 </div>
               
                 <div class="l-6col square">

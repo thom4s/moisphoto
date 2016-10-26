@@ -250,7 +250,7 @@
 
 
 
-	<section class="event__partners clearfix">
+	<section class="module-partners clearfix">
 	  <div class="wrap row">  
 
 	    <div class="has-bordertop--big clearfix"></div>   
