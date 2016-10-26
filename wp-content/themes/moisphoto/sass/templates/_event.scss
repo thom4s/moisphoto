@@ -9,9 +9,15 @@
 
 .event__single {
 
-
   .event__summary {
-    padding: $base_line_half;
+    @include transition(all, 0.2s);
+    
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+  
+    padding: $base_line_half 0;
     background-color: $black;
 
     ul {
@@ -41,14 +47,21 @@
         color: $white;
       }
     }
+
+    &.is-reduced {
+      top: 93px;
+      padding: $base_line_half / 2 0;
+    }
+
   }
 
 
 
   .event__header {
+    @include transition(all, 0.2s);
+
     background-image: url('assets/img/event_bg.png');
     padding: $base_line_height * 1.5 0;
-
     color: $white;
 
     .h1 {
@@ -66,6 +79,9 @@
       border-color: $white;
     }
   }
+    .event__header__inner {
+      padding-top: 60px;
+    }
 
 
   .event__short {
@@ -85,6 +101,7 @@
     margin-bottom: $base_line_height * 2;
 
   }
+
 
   .event__extract {
     margin-bottom: $base_line_height;
@@ -157,6 +174,7 @@
     }
   }
 
+
   .event__map {
     background-color: $gray_lighter;
     border-top: $base_line_half solid $black;
@@ -186,7 +204,6 @@
     .event__map__inner {
       padding: 1.4em;
     }
-
 
 
   .event__rebonds {

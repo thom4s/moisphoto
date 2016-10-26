@@ -50,7 +50,7 @@
             if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
                 dest = $(document).height() - $(window).height() - 200;
             } else {
-                dest = $(this.hash).offset().top - 100;
+                dest = $(this.hash).offset().top - 150;
             }
 
             //go to destination
@@ -62,16 +62,19 @@
     });
 
 
+    var event_summary_height = $('.event__summary').height();
+
     $( window ).scroll(function() {
       var $win = $(window);
 
-
-      if ($win.scrollTop() > 100) {
+      if ($win.scrollTop() > 50) {
         $( "#masthead" ).addClass( "is-reduced" );
+        $('.event__summary').addClass("is-reduced");
       }
 
       if ($win.scrollTop() === 0) {
         $( "#masthead" ).removeClass( "is-reduced" );
+        $('.event__summary').removeClass("is-reduced");
       }
 
     });

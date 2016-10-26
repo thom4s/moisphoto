@@ -21,63 +21,66 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<section id="summary" class="clearfix event__summary">
-		<div class="wrap">
-			<ul id="summary-inner" class=" no-bullets">
-				<li class="arrow--little--white"> > </li>
-			</ul>	
-		</div>
-	</section>
+
+		<section id="summary" class="clearfix event__summary">
+			<div class="wrap">
+				<ul id="summary-inner" class=" no-bullets">
+					<li class="arrow--little--white"> > </li>
+				</ul>	
+			</div>
+		</section>
 
 
-	<header class="event__header clearfix bg--img">
-		<div class="row wrap">
-			<div class="m-8col">
 
-				<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>
-				
-				<h2 class="h2"><?php the_title(); ?></h2>
-			
-				<?php 
-					if($sous_titres) {
-						foreach ($sous_titres as $st) {
-							echo $st['sous-titre'];
-						}
-					}
-				?>
+		<header class="event__header clearfix bg--img">
+			<div class="event__header__inner">
+				<div class="row wrap">
+					<div class="m-8col">
 
-				<div class="has-bordertop--little">
-					<div class="h4"><?php echo get_the_title( $lieu ); ?></div>
-					<p class="h5"><?php echo $lieu_adresse; ?></p>
-				</div>
-
-				<div class="has-bordertop--little">
-					<div class="h4">
+						<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>
+						
+						<h2 class="h2"><?php the_title(); ?></h2>
+					
 						<?php 
-							if($date_fixe) {
-								the_field('date'); 
-							} else {
-								the_field('date_debut');
-								echo ' - ';
-								the_field('date_fin');
+							if($sous_titres) {
+								foreach ($sous_titres as $st) {
+									echo $st['sous-titre'];
+								}
 							}
 						?>
+
+						<div class="has-bordertop--little">
+							<div class="h4"><?php echo get_the_title( $lieu ); ?></div>
+							<p class="h5"><?php echo $lieu_adresse; ?></p>
+						</div>
+
+						<div class="has-bordertop--little">
+							<div class="h4">
+								<?php 
+									if($date_fixe) {
+										the_field('date'); 
+									} else {
+										the_field('date_debut');
+										echo ' - ';
+										the_field('date_fin');
+									}
+								?>
+							</div>
+						</div>
+
 					</div>
 				</div>
+			</div>
+		</header>
+	
+	<div class="event__content clearfix">
+
+		<div class="event__curators clearfix">
+			<div class="wrap row">
+				<div class="h5"><?php the_field('nom_commissaire'); ?></div>
 
 			</div>
-		</div>
-	</header><!-- .entry-header -->
-
-	<div class="event__curators clearfix">
-		<div class="wrap row">
-			<div class="h5"><?php the_field('nom_commissaire'); ?></div>
-
-		</div>
-	</div>	
-
-
-	<div class="event__content clearfix">
+		</div>	
 
 		<div class="event__main clearfix">
 			<div class="wrap row">
@@ -221,7 +224,6 @@
 					      // END MAP ?>
 
 					  <div class="event__map__inner">
-							<div class="part" id="rebonds" title="Autour de l'exposition"></div>
 
 						  <h3 class="h3">événements et curiosités proches</h3>
 
@@ -256,14 +258,14 @@
 			</div><!-- .wrap -->
 		</div><!-- .event__main -->
 		
-		<div class="part" id="partenaires" title="Partenaires"></div>
 
-		<?php 
-			set_query_var('rebonds', $evenements_lies); 
-		  get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
+	<div class="part" id="rebonds" title="Autour de l'exposition"></div>
+	<?php 
+		set_query_var('rebonds', $evenements_lies); 
+	  get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
 
 
-
+	<div class="part" id="partenaires" title="Partenaires"></div>
 	<section class="module-partners clearfix">
 	  <div class="wrap row">  
 
