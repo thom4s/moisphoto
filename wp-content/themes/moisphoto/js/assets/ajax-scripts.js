@@ -19,15 +19,16 @@ jQuery(document).on( 'submit', '#searchform', function() {
         },
         beforeSend: function() {
             $input.prop('disabled', true);
-            jQuery('.search-container').addClass('loading');
-            jQuery('#loading-msg').show();
+            $('.search-container').addClass('loading');
+            $('#loading-search-msg').show();
         },
         success: function( response ) {
+            $('#searchresults').show();
             $input.prop('disabled', false);
-            jQuery('#loading-msg').hide();
-            jQuery('.search-container').removeClass('loading');
+            $('.search-container').removeClass('loading');
             $content.html( response );
             $content.show('fast');
+            $('#loading-search-msg').hide();
         }
     });
     
@@ -36,7 +37,7 @@ jQuery(document).on( 'submit', '#searchform', function() {
 
 jQuery(document).on('click', '#close-search', function(event) {
     event.preventDefault;
-    jQuery('#searchresults').hide('fast');
+    $('#searchresults').hide('fast');
 });
 
 

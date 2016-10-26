@@ -176,7 +176,7 @@ function ajax_enqueues() {
 
 
 /**
- * Special Ajax Search
+ * Ajax main Search 
  */
 
 add_action( 'wp_ajax_load_search_results', 'load_search_results' );
@@ -196,30 +196,26 @@ function load_search_results() {
     ?>
 
       <div class="search-container wrap row">
+        <a href="#" id="close-search" class="clearfix close-events"></a>
 
-        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+        <div id="loading-search-msg" class="loading-msg">Nous cherchons des réponses...</div>
 
+        <div class="search__results">
+          <div class="results-number">
+            <?php if( $search->post_count > 0) : ?>
+              <h5 class="h3">Nous avons <?php echo $search->post_count; ?> résultats à votre recherche :</h5>
+            <?php endif; ?>
+          </div>
 
-          <header class="search-header">
-            <h3 class="h2 search-title">Résultat de la recherche</h3>
-          </header>
+          <?php if ( $search->have_posts() ) : ?>
 
-          <div class="search-results">
-              <div class="results-number">
-                <?php if( $search->post_count > 0) : ?>
-                  <?php echo $search->post_count; ?> pages trouvées :
-                <?php endif; ?>
-              </div>
+          <ul class="search__list no-bullets">
+            <?php while ( $search->have_posts() ) : $search->the_post(); ?>
 
-              <?php if ( $search->have_posts() ) : ?>
-
-              <ul class="results-list">
-                <?php while ( $search->have_posts() ) : $search->the_post(); ?>
-
-                <li class="result-item">
-                  <a href="<?php the_permalink(); ?>">
+              <li class="search__item">
+                <a href="<?php the_permalink(); ?>">
                   
-                    <?php the_title(); ?>  - 
+                  <?php the_title(); ?>  - 
 
                     <span>
                     <?php 
@@ -268,8 +264,6 @@ function load_search_results() {
             <?php else : ?>
               <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
             <?php endif; ?>
-
-            <a href="#" id="close-search" class="clearfix close-search">(Fermer la recherche)</a>
 
           </div>
         </div>
@@ -372,7 +366,6 @@ add_action( 'wp_ajax_load_events', 'load_events_list' );
 function load_events_list() {
 
 
-
   // GET MAP ITEMS AND DISPLAY
 
   $front_page_id = get_option('page_on_front');
@@ -409,7 +402,6 @@ function load_events_list() {
   $is_weekend = false; 
 
   ob_start(); ?> 
-
 
       <div class="events-container row">
         <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>

@@ -87,17 +87,14 @@
 	</header><!-- #masthead -->
 
 
-		<?php if( is_front_page() ) : ?>
-			<div class="wrap">
-				<div class="site-branding--big row clearfix">
-					<div class="site-logo l-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
-				</div><!-- .site-branding -->
-			</div>
+	<?php if( is_front_page() ) : ?>
+		<div class="wrap">
+			<div class="site-branding--big row clearfix">
+				<div class="site-logo l-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
+			</div><!-- .site-branding -->
+		</div>
+	<?php endif; ?>
 
-		<?php endif; ?>
-
-
-  <div id="searchresults"></div>
-
+  <div id="searchresults" class="search__outer"></div>
 
 	<div id="content" class="site-content clearfix">
