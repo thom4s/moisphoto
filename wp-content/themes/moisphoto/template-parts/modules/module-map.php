@@ -93,7 +93,7 @@
           <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>">
             <div class="modal__close"> <a href="#">x</a> </div>
 
-            <div class="map__modal__content">
+            <div class="map__modal__content" style="border-color: #<?php echo $p[1]; ?>">
 
               <div class="modal__img">
                 <?php echo $thumbnail; ?>
@@ -119,7 +119,8 @@
 
               </div>
 
-              <div class="modal__btn">
+              <div class="modal__btn" style="background-color: #<?php echo $p[1]; ?>">
+                <span class="arrow--little--white"> > </span>
                 <a href="<?php echo $url; ?>" class="a--inline">En savoir plus <br>sur l'exposition et le lieu</a></p>
               </div>
               

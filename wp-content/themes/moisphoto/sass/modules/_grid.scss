@@ -35,7 +35,7 @@
         padding: 0;
 
         img {
-          display: table-cell;
+          display: block;
         }
       }
 
@@ -43,9 +43,14 @@
         margin-bottom: $base_line_height;
       }
     
-      a {
+      .a--inline {
         color: inherit;
       }
+
+      .arrow--little--black {
+        margin-right: $base_line_half / 2;
+      }
+
     }
 
 
@@ -75,8 +80,13 @@
     .grid__item--weekend {
       @extend %grid__item;
 
-      border-color: $color_secondary;
       color: $white;
+
+      .arrow--medium--black {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
 
       .h3 {
         text-transform: uppercase;
@@ -92,6 +102,12 @@
 
       border-color: $black;
       color: $white;
+
+      .arrow--medium--white {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+      }
 
       .square {
         background-color: $black;

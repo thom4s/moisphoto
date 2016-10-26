@@ -43,7 +43,12 @@
               <div class="square__content">
                 <h3 class="h3"><?php echo $item['text_title']; ?></h3>
                 <div class="has-bordertop--little"> <?php echo $item['text_intro']; ?></div>
-                <span class="picto--rounded">En savoir plus</span>
+                
+                <div>
+                  <span class="arrow--little--black"> > </span>
+                  <span class="a--inline">En savoir plus</span>
+                </div>  
+
               </div>
             </div>
           </a>
@@ -52,15 +57,20 @@
 
 
         case 'weekend': ?>
-          <?php $url = get_permalink ( $item['weekend_item'] ); ?>
-          <a href="<?php echo $url; ?>">
-            <div class="grid__item--weekend l-14col <?php echo $order_item; ?>">
+          <?php 
+            $we_id = $item['weekend_item'];
+            $we_url = get_permalink ( $we_id ); 
+            $we_color = get_field('color', $we_id);
+          ?>
+          <a href="<?php echo $we_url; ?>">
+            <div class="grid__item--weekend l-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
-                <div class="l-8col square">
+                <div class="l-8col">
                   <div class="square__content grid__item__img">
                     <div class="table">
                       <img src="<?php echo $item['weekend_img']; ?>">
+                      <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
                     </div>
                   </div>
                 </div>
@@ -92,6 +102,7 @@
                 <div class="l-9col square">
                   <div class="square__content grid__item__img">
                       <img src="<?php echo $item['big_bloc_img']; ?>">
+                      <div class="arrow--medium--white"> > </div>
                   </div>
                 </div>
               
@@ -129,8 +140,8 @@
                 <div class="has-bordertop--little"> <?php echo $item['page_intro']; ?></div>
 
                 <div>
-                  <span class="pict--rounded--little"></span>
-                  <a class="a--inline">Lire la suite</a>
+                  <span class="arrow--little--black"> > </span>
+                  <span class="a--inline">Lire la suite</span>
                 </div>  
 
               </div>
@@ -155,8 +166,8 @@
                 <div class="has-bordertop--little"> <?php echo $item['post_intro']; ?></div>
 
                 <div>
-                  <span class="pict--rounded--little"></span>
-                  <a class="a--inline">Lire la suite</a>
+                  <span class="arrow--little--black"> > </span>
+                  <span class="a--inline">Lire la suite</span>
                 </div>  
 
               </div>

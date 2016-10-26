@@ -18,6 +18,7 @@ a {
 }
   .a--inline {
     @include type-setting(0);
+    display: inline-block;
     font-weight: $medium;
     color: $black;
   }

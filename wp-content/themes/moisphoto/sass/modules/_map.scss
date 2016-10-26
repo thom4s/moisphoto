@@ -55,7 +55,7 @@
       .modal__img {
         max-height: 130px;
         margin-bottom: $base_line_height;
-        background-color: $white;
+        background-color: $black;
         
         img {
           display: block;
@@ -88,7 +88,7 @@
       }
 
       .modal__adress {
-        padding-left: $base_line_half;
+        padding-left: $base_line_half / 2;
       }
 
       .modal__btn {
@@ -102,8 +102,15 @@
         background-color: $color_primary;
       }
       
+      
+      .arrow--little--white {
+        float: left;
+        margin-right: $base_line_half;
+      }
       .a--inline {
+        float: left;
         color: $white;
       }
+
     } 
 

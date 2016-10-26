@@ -18,10 +18,7 @@
     <?php 
       // GET MAP ITEMS AND DISPLAY
 
-      $type_relation = get_field('type_relation', $current_edition);
-
-      var_dump($type_relation);
-      
+      $type_relation = get_field('type_relation', $current_edition);      
       $events = array();
       $places = array();
 

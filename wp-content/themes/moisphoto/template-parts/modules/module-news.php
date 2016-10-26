@@ -1,10 +1,7 @@
 <?php 
 
-  // var_dump($news_main);
-  // var_dump($number_of_posts);
-
-  if( $news__main ) {
-    $number_of_posts = $number_of_posts - 1;
+  if( isset($news_main) ) {
+    $number_of_posts--;
   }
 
   $args = array(
@@ -39,10 +36,10 @@
                   <div class="news__item__img--big"><?php the_post_thumbnail(); ?></div>
                 <?php endif; ?>
                 
-                <div class="pict--rounded--little"> -> </div>
+                <div class="arrow--little--black arrow--down"> > </div>
 
                 <h3 class="h3"><?php the_title(); ?></h3>
-                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small"><?php the_author(); ?></span></p>
+                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small">Par <?php the_author(); ?></span></p>
 
                 <div class="has-bordertop--little">
                   <div class="news_excerpt"><?php the_excerpt(); ?></div>
@@ -68,10 +65,10 @@
                   <div class="news__item__img--little"><?php the_post_thumbnail(); ?></div>
                 <?php endif; ?>
 
-                <div class="pict--rounded--little"> -> </div>
+                <div class="arrow--little--black arrow--down"> > </div>
 
                 <h3 class="h3"><?php the_title(); ?></h3>
-                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small"><?php the_author(); ?></span></p>
+                <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small">Par <?php the_author(); ?></span></p>
 
                 <div class="has-bordertop--little">
                   <div class="news_excerpt"><?php the_excerpt(); ?></div>

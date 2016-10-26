@@ -87,10 +87,112 @@
 }
 
 
+%arrow {
+  display: inline-block;
+  border-radius: 50%;
+  font-weight: $light;
+  text-align: center;
+}
+
+%arrow--little {
+  @extend %arrow;
+
+  font-size: 1px;
+  font-size: 1rem;
+  width: $base_line_half * 1.25;
+  height: $base_line_half * 1.25;
+  line-height: $base_line_half * 1.25;
+}
+%arrow--medium {
+  @extend %arrow;
+
+  font-size: 16px;
+  font-size: 1.6rem;
+  width: $base_line_height * 1.75;
+  height: $base_line_height * 1.75;
+  line-height: $base_line_height * 1.75;
+}
+
+.arrow--down {
+  @include rotate(89deg);
+}
+
+%arrow--white {
+  background-color: $white;
+  color: $black;
+}
+%arrow--black {
+  background-color: $black;
+  color: $white;
+}
+%arrow--transparent {
+  background-color: none;
+  color: $black;
+}
+%arrow--primary {
+  background-color: $color_primary;
+  color: $white;
+}
+%arrow--secondary {
+  background-color: $color_secondary;
+  color: $white;
+}
+%arrow--tertiary {
+  background-color: $color_tertiary;
+  color: $white;
+}
 
 
+.arrow--little--white {
+  @extend %arrow--little;
+  @extend %arrow--white;
+}
+.arrow--little--black {
+  @extend %arrow--little;
+  @extend %arrow--black;
+}
+.arrow--little--transparent {
+  @extend %arrow--little;
+  @extend %arrow--transparent;
+}
+.arrow--little--primary {
+  @extend %arrow--little;
+  @extend %arrow--primary;
+}
+.arrow--little--secondary {
+  @extend %arrow--little;
+  @extend %arrow--secondary;
+}
+.arrow--little--tertiary {
+  @extend %arrow--little;
+  @extend %arrow--tertiary;
+}
 
 
+.arrow--medium--white {
+  @extend %arrow--medium;
+  @extend %arrow--white;
+}
+.arrow--medium--black {
+  @extend %arrow--medium;
+  @extend %arrow--black;
+}
+.arrow--medium--transparent {
+  @extend %arrow--medium;
+  @extend %arrow--transparent;
+}
+.arrow--medium--primary {
+  @extend %arrow--medium;
+  @extend %arrow--primary;
+}
+.arrow--medium--secondary {
+  @extend %arrow--medium;
+  @extend %arrow--secondary;
+}
+.arrow--medium--tertiary {
+  @extend %arrow--medium;
+  @extend %arrow--tertiary;
+}
 
 
 
