@@ -412,15 +412,26 @@
         scaledSize: new google.maps.Size(16, 16),
     };
 
-    var active_icon = {
-        url: active_icon_file,
-        scaledSize: new google.maps.Size(62, 62), 
-        // The origin for this image is (0, 0).
-        origin: new google.maps.Point(0, 0),
-        // The anchor for this image is the base of the flagpole at (0, 32).
-        anchor: new google.maps.Point(0, 0)
-    };
-
+    if ( $marker.attr('icon') == 'default_2' ) {
+      var active_icon = {
+          url: active_icon_file,
+          scaledSize: new google.maps.Size(22, 22), 
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 0)
+      };
+    } 
+    else {
+      var active_icon = {
+          url: active_icon_file,
+          scaledSize: new google.maps.Size(48, 48), 
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 0)
+      };
+    }
 
     // create marker
     var marker = new google.maps.Marker({
