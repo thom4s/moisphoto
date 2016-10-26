@@ -34,7 +34,7 @@
 
         <div class="footer__main__newsletter l-7col l-1col-push">
           <div class="row">
-            <div class="pict--rounded--little l-1col">-></div>
+            <div class="pict--rounded--little l-1col"> > </div>
             <div class="input-group l-6col">
               <input type="email" placeholder="votre mail">
               <input type="submit" value="M'inscrire à la newsletter">

@@ -65,7 +65,9 @@
 
               <!-- MARKER FOR CURIOSITES-->
               <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>" icon="default_2">
-                <div class="modal__close"> <a href="#">x</a> </div>
+                <div class="modal__close">
+                  <a href="#" id="close-event" class="clearfix close-events"></a>
+                </div>
 
                 <div class="map__modal__content">
 
@@ -78,7 +80,9 @@
 
                     <h3 class="h6"><?php moisphoto_get_artists_list($c_type, false); ?></h3>
 
-                    <div class="modal__intro has-bordertop--little"><?php echo $c_description; ?></div>
+                    <?php if( $c_description != '' ) { ?>
+                      <div class="modal__intro has-bordertop--little"><?php echo $c_description; ?></div>
+                    <?php } ?>
 
                     <p class="has-bordertop--little modal__place"><?php echo $c_location['address']; ?></p>
                   </div>
@@ -91,7 +95,9 @@
 
           <!-- MARKER -->
           <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>">
-            <div class="modal__close"> <a href="#">x</a> </div>
+            <div class="modal__close">
+              <a href="#" id="close-event" class="clearfix close-events"></a>
+            </div>
 
             <div class="map__modal__content" style="border-color: #<?php echo $p[1]; ?>">
 
@@ -132,7 +138,7 @@
 
       </div>
 
-      <div class="map__modal">
+      <div id="map__modal" class="map__modal">
           <div class="map__modal__content"></div>
       </div>
 
@@ -458,14 +464,24 @@
 
         for (i=0; i < map.markers.length; i++ ) {
           var this_icon_backup = map.markers[i].icon_backup;
-          console.log(this_icon_backup);
-
           map.markers[i].setIcon(this_icon_backup);
         }
         
         marker.setIcon( active_icon );
         $content = $marker.html();
         $('.map__modal').html($content).show();
+
+
+        $('#close-event').on('click', function(event) {
+          event.preventDefault;
+          $('#map__modal').hide();
+
+          for (i=0; i < map.markers.length; i++ ) {
+            var this_icon_backup = map.markers[i].icon_backup;
+            map.markers[i].setIcon(this_icon_backup);
+          }
+          
+        });
 
       });
     }
@@ -541,12 +557,6 @@
       google.maps.event.addDomListener(document.getElementById( '1'), "click", function(ev) {
         map.setCenter(map.markers[1].getPosition());
       });
-
-      $('.modal__close > a').on('click', function(event) {
-         event.preventDefault;
-        $('.map__modal').hide();
-      });
-
     });
 
     $('.module-map').show();
