@@ -85,12 +85,14 @@ var $events_list_modal = $('#events-modal');
 var $content = $events_list_modal.find('.modal__content__inner');
 
 $(document).on( 'click', '.js-display-events', function( event ) {
+
     event.preventDefault();
+
     $.ajax({
         url: myAjax.ajaxurl,
         type: 'post',
         data: {
-            action: 'ajax_pagination'
+            action: 'load_events'
         },
         beforeSend: function() {
             $events_list_modal.show();
@@ -99,15 +101,19 @@ $(document).on( 'click', '.js-display-events', function( event ) {
         success: function( result ) {
             $content.html( result );
             $content.show('fast');
+            $('#loading-msg').hide();
         }
-    })
+    });
 
     return false;
-})
+});
 
 
 jQuery(document).on('click', '#close-events', function(event) {
     event.preventDefault;
-    $events_list_modal.hide('fast');
+    $events_list_modal.hide();
 });
+
+
+
 

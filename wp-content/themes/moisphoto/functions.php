@@ -366,62 +366,95 @@ function load_press_search() {
  * Special Ajax Display Events
  */
 
-add_action( 'wp_ajax_nopriv_ajax_pagination', 'my_ajax_pagination' );
-add_action( 'wp_ajax_ajax_pagination', 'my_ajax_pagination' );
+add_action( 'wp_ajax_nopriv_load_events', 'load_events_list' );
+add_action( 'wp_ajax_load_events', 'load_events_list' );
 
-function my_ajax_pagination() {
+function load_events_list() {
 
-   $args = array(
-        'post_type' => array('event'),
-        'post_status' => 'publish',
-    );
-    $events = new WP_Query( $args );
 
-    ob_start();
 
-    ?> 
+  // GET MAP ITEMS AND DISPLAY
 
-      <div class="events-container wrap row">
+  $front_page_id = get_option('page_on_front');
+  $current_edition = get_field('edition_courante', $front_page_id); 
+  $type_relation = get_field('type_relation', $current_edition);
+  $events_array = array();
+  $places_array = array();
 
+  if( $type_relation == 'Weekends') : 
+    $weekends = get_field('weekends',  $current_edition); // ID
+
+    foreach ($weekends as $we) {
+      $events_list = get_field('events_list', $we);
+      $color_we = get_field('color', $we);
+      $color_we = str_replace('#', '', $color_we); 
+                      
+      foreach ($events_list as $e) {
+        $events_array[] = $e;
+        $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+      }            
+    }
+    $is_weekend = true; 
+
+  elseif ( $type_relation == 'Événements' ) :
+    $events_array = get_field('evenements', $current_edition);
+
+    foreach ($events_array as $e) {
+      $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+    }    
+    $is_weekend = false; 
+
+  endif; 
+  
+  $is_weekend = false; 
+
+  ob_start(); ?> 
+
+
+      <div class="events-container row">
         <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
 
-          <header class="events-header">
-            <h3 class="h2 events-title">Résultat de la recherche</h3>
-          </header>
+        <div class="event__rebonds clearfix">
 
-          <div class="events-results">
-              <div class="results-number">
-                <?php if( $events->post_count > 0) : ?>
-                  <?php echo $events->post_count; ?> pages trouvées :
-                <?php endif; ?>
-              </div>
+          <div class="wrap">
+            <?php 
+              if($events_array) :
 
-              <?php if ( $events->have_posts() ) : ?>
+                $i = 1;
 
-              <ul class="results-list">
-                <?php while ( $events->have_posts() ) : $events->the_post(); ?>
+                foreach ($events_array as $e) : 
 
-                <li class="result-item">
-                  <a href="<?php the_permalink(); ?>">
-                  
-                    <?php the_title(); ?>
+                  $clearfix = ''; 
 
-                  </a>
-                </li>
-                <?php endwhile; ?>
+                  if( $i%3 == 0 ) : 
+                    $push = '2';
+                    $i = 1;
 
-              </ul>
+                  elseif( $i%2 == 0 ) : 
+                    $push = '1';
+                    $i++;
 
-              <?php wp_reset_postdata(); ?>
+                  else : 
+                    $push = '0';
+                    $clearfix = 'clearfix';
+                    $i++;
 
-            <?php else : ?>
+                  endif;  
+
+                  set_query_var('e', $e); 
+                  set_query_var('push', $push); 
+                  set_query_var('clearfix', $clearfix); 
+                  get_template_part('template-parts/parts/part', 'item'); ?>
+
+                <?php  endforeach; 
+              
+              else : ?>
               <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
             <?php endif; ?>
-
-            <a href="#" id="close-events" class="clearfix close-events">(Fermer la fenetre)</a>
-
           </div>
+
         </div>
+      </div>
 
   <?php
 
@@ -429,8 +462,6 @@ function my_ajax_pagination() {
 
   echo $content;
   die();
-
-
 }
 
 

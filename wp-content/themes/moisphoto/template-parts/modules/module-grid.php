@@ -25,6 +25,11 @@
             <div class="grid__item--btn l-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 <?php echo $item['btn_chapo']; ?>
+              
+                <div>
+                  <span class="arrow--little--black"> > </span>
+                  <span class="a--inline">Voir la liste des expositions</span>
+                </div>  
               </div>
             </div>
           </a>
