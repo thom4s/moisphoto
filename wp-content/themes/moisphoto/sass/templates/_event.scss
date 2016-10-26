@@ -10,6 +10,39 @@
 .event__single {
 
 
+  .event__summary {
+    padding: $base_line_half;
+    background-color: $black;
+
+    ul {
+      height: $base_line_half * 1.25;
+      line-height: $base_line_half * 1.25;
+    }
+
+    .arrow--little--white {
+      float: left;
+    }
+
+    .summary__item {
+      @include type-setting(-1);
+
+      display: inline-block;
+      float: left;
+      border-right: 1px solid $white;
+      text-transform: uppercase;
+      padding: 0 1em;
+      margin: 5px 0;
+      
+      &:last-child {
+        border: none;
+      }
+
+      a {
+        color: $white;
+      }
+    }
+  }
+
 
 
   .event__header {

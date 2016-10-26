@@ -23,7 +23,7 @@
 ?>
 
 
-<section class="module map">
+<section class="module-map">
   <div class="map-outer">
 
       <div class="map-inner">
@@ -542,12 +542,14 @@
         map.setCenter(map.markers[1].getPosition());
       });
 
-    $('.modal__close > a').on('click', function(event) {
-       event.preventDefault;
-      $('.map__modal').hide();
-    });
+      $('.modal__close > a').on('click', function(event) {
+         event.preventDefault;
+        $('.map__modal').hide();
+      });
 
     });
+
+    $('.module-map').show();
 
   });
 

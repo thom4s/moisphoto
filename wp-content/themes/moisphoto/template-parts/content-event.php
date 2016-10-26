@@ -21,6 +21,15 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
+	<section id="summary" class="clearfix event__summary">
+		<div class="wrap">
+			<ul id="summary-inner" class=" no-bullets">
+				<li class="arrow--little--white"> > </li>
+			</ul>	
+		</div>
+	</section>
+
+
 	<header class="event__header clearfix bg--img">
 		<div class="row wrap">
 			<div class="m-8col">
@@ -74,6 +83,7 @@
 			<div class="wrap row">
 
 				<div class="m-16col">
+					<div class="part" id="presentation" title="Présentation"></div>
 
 					<div class="p--big event__extract">
 						<?php the_field('chapo'); ?>
@@ -106,6 +116,7 @@
 
 
 					<div class="event__place">
+						<div class="part" id="lieu" title="Le lieu"></div>
 
 						<h3 class="h3">Où ça se passe ?</h3>
 
@@ -161,6 +172,7 @@
 					</div>
 					
 					<div class="event__map">
+						<div class="part" id="curiosites" title="Les curiosités"></div>
 
 					    <?php 
 					      // GET MAP ITEMS AND DISPLAY
@@ -209,6 +221,7 @@
 					      // END MAP ?>
 
 					  <div class="event__map__inner">
+							<div class="part" id="rebonds" title="Autour de l'exposition"></div>
 
 						  <h3 class="h3">événements et curiosités proches</h3>
 
@@ -243,6 +256,7 @@
 			</div><!-- .wrap -->
 		</div><!-- .event__main -->
 		
+		<div class="part" id="partenaires" title="Partenaires"></div>
 
 		<?php 
 			set_query_var('rebonds', $evenements_lies); 

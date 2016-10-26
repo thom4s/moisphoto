@@ -6,8 +6,23 @@
 
 
 .site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+
   padding-top: 2em;
   padding-bottom: 2em;
+  background-color: $white;
+  opacity: 0.98;
+
+  @include transition(all, 0.2s);
+
+  &.is-reduced {
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
 }
 
 .site-branding--big {
