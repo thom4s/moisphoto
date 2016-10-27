@@ -216,18 +216,18 @@ function load_search_results() {
           <ul class="search__list no-bullets">
             <?php while ( $search->have_posts() ) : $search->the_post(); ?>
 
-              <li class="search__item">
+              <li class="search__item has-bordertop--little">
                 <a href="<?php the_permalink(); ?>">
                   
-                  <?php the_title(); ?>  - 
-
-                    <span>
                     <?php 
                     $post_type = get_post_type( get_the_ID() );
 
                     switch ($post_type) {
                       case 'page':
-                        echo 'page d\'informations';
+                        echo '<span class="p--big">';
+                        the_title();  
+                        echo '</span>';
+                        echo ' | page d\'informations';
                         break;
 
                       case 'post':
@@ -235,19 +235,26 @@ function load_search_results() {
                         $categories = get_the_category( get_the_ID()  ); 
                         foreach( $categories as $category ) { $cats .= $category->name; } 
 
-                        echo 'Actualité - ';
+                        echo '<span class="p--big">';
+                        the_title();  
+                        echo '</span>';
+
+                        echo ' | Actualité - ';
                         echo $cats;
                         echo ' - ';
                         echo get_the_time( 'j.d.Y', get_the_ID() );
 
                         break;
 
-                      case 'event':
-                        echo 'Evénement - ';
-                        the_field('date');
-                        echo ' - '; 
-                        the_field('lieu'); 
-                        break;
+                      case 'event': 
+                        $auteurs = get_field('auteurs'); 
+                        $lieu = get_field('lieu'); ?>
+                        <p><span class="p--big"><?php moisphoto_get_artists_list($auteurs); ?></span> 
+                          <span class="p--strong">- <?php the_title(); ?></span>
+                          <span class=""> | <?php echo get_the_title( $lieu ); ?></span>
+                        </p>
+
+                        <?php break;
 
                       default:
                         # code...
@@ -255,7 +262,6 @@ function load_search_results() {
                     }
                     
                     ?>
-                    </span>
 
                   </a>
                 </li>

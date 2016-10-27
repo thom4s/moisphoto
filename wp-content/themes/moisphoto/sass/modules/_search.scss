@@ -12,6 +12,17 @@
   background-color: $gray_lighter;
   padding: $base_line_height 0;
   margin-top: $base_line_height;
+
+  .search-container {
+    position: relative;
+  }
+
+  .close-events {
+    position: absolute;
+    top: -70px;
+    margin-top: 0px;
+    right: 0px;
+  }
 }
 
     .loading-msg {
@@ -33,7 +44,11 @@
 
   .search__list {
 
+    .has-bordertop--little:before {
+      border-color: $black;
+    }
   }
-    .search__item {
 
+    .search__item {
+      margin-bottom: $base_line_half;
     }
