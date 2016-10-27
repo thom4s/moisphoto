@@ -13,7 +13,7 @@
     padding-left: 0;
   }
     .main-navigation .menu > li {
-      @extend .l-3col;
+      @extend .m-3col;
       @include type-setting(0);
 
       text-align: center;

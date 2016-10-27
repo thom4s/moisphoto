@@ -29,11 +29,11 @@
 					// Define number of posts
 					// set_query_var('p', $posts); 
 				?>
-				<div class="l-16col">
+				<div class="m-16col">
 					<?php get_template_part( 'template-parts/modules/module', 'news' ); ?>
 				</div>
 
-				<div class="l-8col">
+				<div class="m-8col">
 				<?php 
 					// Define number of items
 					// set_query_var('i', $items); 

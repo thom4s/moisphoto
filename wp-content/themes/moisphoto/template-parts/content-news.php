@@ -16,11 +16,11 @@
           $number_of_posts = 12;
           set_query_var('number_of_posts', $number_of_posts); 
         ?>
-        <div class="l-16col">
+        <div class="m-16col">
           <?php get_template_part( 'template-parts/modules/module', 'news' ); ?>
         </div>
 
-        <div class="l-6col l-last">
+        <div class="m-6col m-last">
           <?php 
             $number_of_item = 6;
             set_query_var('number_of_item', $number_of_item); 

@@ -18,9 +18,9 @@
 		<div class="footer__main clearfix">
       <div class="footer__main__inner row wrap clearfix">
 
-        <div class="footer__main__logo l-4col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mep.png"> </a></div>
+        <div class="footer__main__logo m-4col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mep.png"> </a></div>
 
-        <div class="footer__main__infos l-4col">
+        <div class="footer__main__infos m-4col">
           <p>
             Le Mois de la Photo du Grand Paris est un événement organisé par la Maison Européenne de la Photographie.
           </p>
@@ -53,7 +53,7 @@
         </div>
 
 
-        <div class="footer__main__menu l-4col l-last">
+        <div class="footer__main__menu m-4col m-last">
           <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu' ) ); ?>
         </div>
 

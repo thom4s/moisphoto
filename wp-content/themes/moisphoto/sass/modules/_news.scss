@@ -25,7 +25,7 @@
   .news__list {
 
     .news__item:nth-child(even) {
-      @extend .l-last;
+      @extend .m-last;
     }
     .news__item:nth-child(odd) {
       @extend .clearfix;

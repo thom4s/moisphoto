@@ -23,7 +23,7 @@
   <div class="row clearfix">
 
     <?php if( $news_main ): ?>
-      <div class="news__main l-15col">
+      <div class="news__main m-15col">
 
         <?php 
           $post = $news_main;
@@ -59,7 +59,7 @@
       <?php if( $posts_array ): ?>
         <?php foreach( $posts_array as $post): ?>
             <?php setup_postdata($post); ?>
-            <div class="news__item l-7col">
+            <div class="news__item m-7col">
               <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ) : ?>
                   <div class="news__item__img--little"><?php the_post_thumbnail(); ?></div>

@@ -18,7 +18,7 @@
     <?php endif; ?>
 
     <div class="wrap">
-			<header class="entry__header l-14col is-centered clearfix">
+			<header class="entry__header m-14col is-centered clearfix">
 
 				<h1 class="entry__title">
 					<?php the_title(); ?>
@@ -28,7 +28,7 @@
 		</div>
 
 		<div class="wrap">
-			<div class="entry__content l-14col is-centered clearfix">
+			<div class="entry__content m-14col is-centered clearfix">
 				<?php	the_content(); ?>
 			</div><!-- .entry-content -->
 		</div>
