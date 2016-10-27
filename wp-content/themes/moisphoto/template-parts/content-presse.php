@@ -20,21 +20,23 @@
   <div class="row wrap">
 
 
-    <header class="entry-header">
-      <h1><?php the_title(); ?></h1>
+    <header class="page__header">
+      <div class="has-bordertop--big clearfix"></div>   
+      <h1 class="h1"><?php the_title(); ?></h1>
     </header><!-- .entry-header -->
 
 
 
-    <div class="entry-content">
+    <div class="page__content">
       <?php the_content(); ?>
     </div><!-- .entry-content -->
 
+    <div class="m-7col searchbar--press">
+      <?php get_template_part('template-parts/parts/part-presseform'); ?>
+    </div>
+    
 
-    <?php get_template_part('template-parts/parts/part-presseform'); ?>
-
-
-    <div id="press__list">
+    <div id="press__list" class="clearfix m-16col press__list">
 
       <?php 
 
@@ -55,15 +57,15 @@
             ?>
 
             <div class="press__list__item">
-              <p><?php moisphoto_get_artists_list($auteurs); ?> - <?php the_title(); ?></p>
-
-              <p><?php echo get_the_title( $lieu ); ?></p>
-
-              <div class="press__btn">
-                <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">pdf</a>
-                <a href="?zip=<?php echo $id; ?>" classe="">zip</a>
-              </div>
-
+              <p><span class="p--big"><?php moisphoto_get_artists_list($auteurs); ?></span> 
+                <span class="p--strong">- <?php the_title(); ?></span>
+                <span class=""> | <?php echo get_the_title( $lieu ); ?></span>
+              </p>
+              <p class="press__btn">
+                <span class="p--strong">Téléchargez :  </span>
+                <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a>
+                - <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
+              </p>
             </div>
           
           <?php endwhile; ?>

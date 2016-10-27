@@ -88,7 +88,7 @@
 						</div>
 					</div>
 
-		      <div id="searchbar" class="l-6col">
+		      <div id="searchbar" class="searchbar l-6col">
 		      	<?php get_search_form(); ?>
 		      </div>
 

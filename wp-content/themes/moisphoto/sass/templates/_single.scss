@@ -5,6 +5,10 @@
  */
 
 
+.page__header {
+  margin-top: $base_line_height * 2;
+  margin-bottom: $base_line_height;
+}
 
 .entry__media {
   height: 450px;

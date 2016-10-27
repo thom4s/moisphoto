@@ -198,7 +198,11 @@ function load_search_results() {
       <div class="search-container wrap row">
         <a href="#" id="close-search" class="clearfix close-events"></a>
 
-        <div id="loading-search-msg" class="loading-msg">Nous cherchons des réponses...</div>
+        <div id="loading-msg" class="loading-msg globalsearch-msg">
+          <div class="table">
+            <div class="table-cell"><p class="p--big">... Nous cherchons des réponses...</p></div>
+          </div>
+        </div>
 
         <div class="search__results">
           <div class="results-number">
@@ -300,14 +304,18 @@ function load_press_search() {
 
     ?>
 
-      <div class="search-container wrap row">
+      <div class="search__container wrap row">
 
-        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+          <div id="loading-msg" class="loading-msg presssearch-msg">
+            <div class="table">
+              <div class="table-cell"><p class="p--big">... Nous cherchons des réponses...</p></div>
+            </div>
+          </div>
 
-          <div class="search-results">
+          <div class="search__results">
               <div class="results-number">
                 <?php if( $search->post_count > 0) : ?>
-                  <?php echo $search->post_count; ?> événements ont été trouvés :
+                  <h4 class="h3"> <?php echo $search->post_count; ?> événements ont été trouvés :</h4>
                 <?php endif; ?>
               </div>
 
@@ -319,17 +327,17 @@ function load_press_search() {
                     $lieu = get_field('lieu');
                     $id = $post->ID; ?>
 
-                  <div class="press__list__item">
-                    <p><?php moisphoto_get_artists_list($auteurs); ?> - <?php the_title(); ?></p>
-
-                    <p><?php echo get_the_title( $lieu ); ?></p>
-
-                    <div class="press__btn">
-                      <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">pdf</a>
-                      <a href="?zip=<?php echo $id; ?>" classe="">zip</a>
+                    <div class="press__list__item">
+                      <p><span class="p--big"><?php moisphoto_get_artists_list($auteurs); ?></span> 
+                        <span class="p--strong">- <?php the_title(); ?></span>
+                        <span class=""> | <?php echo get_the_title( $lieu ); ?></span>
+                      </p>
+                      <p class="press__btn">
+                        <span class="p--strong">Téléchargez :  </span>
+                        <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a>
+                        - <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
+                      </p>
                     </div>
-
-                  </div>
 
                 <?php endwhile; ?>
 

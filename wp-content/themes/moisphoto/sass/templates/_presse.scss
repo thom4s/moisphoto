@@ -8,12 +8,17 @@
 
 .press__list {
 
+
+
+  .search__container {
+    position: relative;
+  }
 }
 
   .press__list__item {
     border-bottom: 1px dotted $gray_light;
-    margin-bottom: $base_line_height;
-    padding-bottom: $base_line_height;
+    margin-bottom: $base_line_half;
+    padding-bottom: $base_line_half;
     
     p {
       margin: 0;
@@ -23,6 +28,18 @@
 
   .press__btn {
 
+    a {
+      border-bottom: 1px dotted $color_tertiary;
+      padding: 2px 5px;
+      margin: 0 5px;
+    }
   }
 
+
+.results-number {
+
+  .h3 {
+    margin-bottom: $base_line_height;
+  }
+}
 

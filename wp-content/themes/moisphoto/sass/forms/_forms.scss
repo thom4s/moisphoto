@@ -33,7 +33,7 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 @import "fields";
 
 
-#searchbar {
+.searchbar {
   display: none;
   position: absolute;
   right: 0;
@@ -67,4 +67,11 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
   }
 }
 
+.searchbar--press {
+  @extend .searchbar;
+
+  display: block;
+  position: relative;
+  margin-bottom: $base_line_height;
+}
 
