@@ -363,6 +363,7 @@
       scrollwheel       : false,
       streetViewControl : false,
       zoomControl       : true,
+      mapTypeControl    : false,
     };
     
     

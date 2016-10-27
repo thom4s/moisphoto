@@ -6,11 +6,40 @@
  */
 
 
+html,
+body {
+  height: 100%;
+}
 
 #page {
   padding-top: 118px;
 }
 
+  .map_fulscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .map-outer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: auto;
+    }
+    .map-inner {
+      margin: 0;
+    }
+
+    .close-events {
+      z-index: 999;
+      position: relative;
+      margin-top: 20px;
+    }
+  }
 
 
 @import "home";

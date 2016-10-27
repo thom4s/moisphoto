@@ -23,6 +23,8 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 
+	<?php if( !is_page_template( 'page-carte.php' ) ) : ?>
+
 	<header id="masthead" class="site-header clearfix" role="banner">
 
 		<div class="wrap row clearfix">
@@ -106,5 +108,7 @@
 	<?php endif; ?>
 
   <div id="searchresults" class="search__outer"></div>
+
+	<?php endif; ?>
 
 	<div id="content" class="site-content clearfix">
