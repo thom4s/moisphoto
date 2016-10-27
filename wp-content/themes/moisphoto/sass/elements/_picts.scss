@@ -1,61 +1,24 @@
 /* 
- * Sprite
+ * Pictos
  * 
  * @package sasskit
  */
 
 
-%sprite {
-  background-image: url('../img/sprite.png');
-  background-repeat: no-repeat;
-  background-color: none;
-}
 
 
-
-
-%picto--square {
-  @extend .square;
-
+%picto {
   text-align: center;
   color: $white;
-
-  .pict__content {
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-right: 4px solid #fff;
-    border-bottom: 4px solid #fff;
-  }
 
   a {
     color: inherit;
   }
 }
 
-%pict--rounded {
-  border-radius: 50%;
-  position: relative;
-  text-align: center;
-  color: $white;
-}
-
-.pict--rounded--little {
-  @extend %pict--rounded;
-  @include type-setting(-1);
-
-  line-height: $base_line_height;
-  text-align: center;
-  background-color: $gray_darker;
-  color: $white;
-  width: $base_line_height;
-  height: $base_line_height;
-}
-
 
 .pict--social {
-  @extend %picto--square;
+  @extend %picto;
 
   .pict__content {
     background-color: $gray_darker;
@@ -63,7 +26,7 @@
 }
 
 .pict--wpml {
-  @extend %picto--square;
+  @extend %picto;
 
   .pict__content {
     background-color: $color_secondary;
@@ -72,7 +35,7 @@
 
 
 .pict--search {
-  @extend %picto--square;
+  @extend %picto;
 
   .pict__content {
     background-color: $color_tertiary;
@@ -81,11 +44,8 @@
 
 
 
-.pict--arrow--right {
-  @extend %pict--rounded;
 
-}
-
+// ARROWS ROUNDED
 
 %arrow {
   display: inline-block;

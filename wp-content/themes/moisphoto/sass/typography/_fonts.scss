@@ -26,3 +26,71 @@
     font-style: normal;
 }
 
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?fzpy1s');
+  src:  url('fonts/icomoon.eot?fzpy1s#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?fzpy1s') format('truetype'),
+    url('fonts/icomoon.woff?fzpy1s') format('woff'),
+    url('fonts/icomoon.svg?fzpy1s#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-instagram:before {
+  content: "\69";
+}
+.icon-search:before {
+  content: "\73";
+}
+.icon-twitter:before {
+  content: "\74";
+}
+.icon-facebook:before {
+  content: "\66";
+}
+.icon-fleche_H:before {
+  content: "\31";
+}
+.icon-fleche_HD:before {
+  content: "\32";
+}
+.icon-fleche_D:before {
+  content: "\33";
+}
+.icon-fleche_BD:before {
+  content: "\34";
+}
+.icon-fleche_B:before {
+  content: "\35";
+}
+.icon-fleche_BG:before {
+  content: "\36";
+}
+.icon-fleche_G:before {
+  content: "\37";
+}
+.icon-fleche_HG:before {
+  content: "\38";
+}
+.icon-close:before {
+  content: "\63";
+}
+

@@ -37,6 +37,10 @@
 
   .sub-menu {
     display: none;
+
+    & > li {
+      padding-top: 10px;
+    }
   } 
 
   &:hover {

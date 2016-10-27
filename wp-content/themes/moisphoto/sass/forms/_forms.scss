@@ -43,22 +43,27 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
   .close {
     text-align: center;
     background-color: $black;
-    
+    background-image: url("assets/bouton_close_map.png");
+
     a {
       color: $white;
     }
   }
 
   input[type="search"] {
-    width: 75%;
     background: none;
     border: 1px solid $black;
+    padding-left: 4px;
   } 
 
   input[type="submit"] {
-    width: 20%;
-    border: 1px solid $black;
-    height: 100%;
+    margin-bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: none;
   }
 }
 

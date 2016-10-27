@@ -5,8 +5,12 @@
  */
 
 
+// Set weights
+$bold                : 900;
+$medium              : 400;
+$light               : 100;
 
-// Not needed
+
 @import "fonts";
 
 
@@ -83,10 +87,7 @@ $font_family_alt                : $din, $font_family_sans;
 $font_family_quote              : $din, $font_family_sans;
 $font_family_meta               : $din, $font_family_sans;
 
-// Set weights
-$bold                : 900;
-$medium              : 400;
-$light               : 100;
+
 
 
 /*

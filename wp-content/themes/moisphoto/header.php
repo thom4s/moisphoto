@@ -48,38 +48,48 @@
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 
-					<div class="pict--search l-1col l-last">
-						<a class="pict__content js-open-searchbar" href="#">s</a>
+					<div class="pict--search square l-1col l-last">
+						<div class="square__content">
+							<div class="table">
+								<a class="pict__content table-cell js-open-searchbar icon-search" href="#"> </a>
+							</div>
+						</div>
 					</div>
 
-					<div class="pict--wpml l-1col l-last">
-						<span class="pict__content"> <?php do_action('display_languages'); ?></span>
+					<div class="pict--wpml square l-1col l-last">
+						<div class="square__content">
+							<div class="table">
+								<span class="pict__content table-cell"> <?php do_action('display_languages'); ?></span>	
+							</div>
+						</div>				
 					</div>
 
-					<div class="pict--social l-1col l-last">
-						<a class="pict__content">t</a>
+					<div class="pict--social square l-1col l-last">
+						<div class="square__content">
+							<div class="table">
+								<a class="pict__content icon-twitter table-cell"> </a>
+							</div>
+						</div>
 					</div>
 					
-					<div class="pict--social l-1col l-last">
-						<a class="pict__content">t</a>
+					<div class="pict--social  square l-1col l-last">
+						<div class="square__content">
+							<div class="table">
+								<a class="pict__content icon-facebook table-cell"> </a>
+							</div>
+						</div>
 					</div>
 	
-					<div class="pict--social l-1col l-last">
-						<a class="pict__content">t</a>
+					<div class="pict--social square l-1col l-last">
+						<div class="square__content">
+							<div class="table">
+								<a class="pict__content icon-instagram table-cell"></a>
+							</div>
+						</div>
 					</div>
 
 		      <div id="searchbar" class="l-6col">
-		      	<div class="row">
-							<div class="close l-1col square">
-								<a href="#" class="js-close square__content">x</a>
-							</div>
-
-			        <div class="searchbar-inner l-5col table">
-			            <div class="table-cell">
-			              <?php get_search_form(); ?>
-			            </div>
-			        </div>
-		      	</div>
+		      	<?php get_search_form(); ?>
 		      </div>
 
 			</nav><!-- #site-navigation -->
