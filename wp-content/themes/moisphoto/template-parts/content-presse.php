@@ -16,6 +16,7 @@
 
 
 
+
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
   <div class="row wrap">
 
@@ -24,6 +25,9 @@
       <div class="has-bordertop--big clearfix"></div>   
       <h1 class="h1"><?php the_title(); ?></h1>
     </header><!-- .entry-header -->
+
+
+    <?php if ( ! post_password_required() ) : ?>
 
 
 
@@ -78,5 +82,21 @@
 
     </div>
 
+
+  <?php else: ?>
+
+    <div class="press__password row">
+      <div class="m-10col is-centered  ">
+        <?php echo get_the_password_form(); ?> 
+      </div>
+    </div>
+   
+  <?php endif; ?>
+
+
   </div>
 </article><!-- #post-## -->
+
+
+
+

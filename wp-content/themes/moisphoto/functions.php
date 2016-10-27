@@ -514,3 +514,20 @@ add_filter('img_caption_shortcode', 'juiz_img_caption_shortcode_html5_compliant'
 
 
 
+
+/**
+ * Template tags for password form
+ * @return html
+ **/
+function my_password_form() {
+    global $post;
+    $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+    $o = '<form class="passwdform" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
+    ' . __( "<p class='passwdform-msg'>Pour accéder au contenu de cette page, merci de renseigner la mot de passe ici : </p>" ) . '
+    <label for="' . $label . '">' . __( "" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" maxlength="20" /><input type="submit" name="Submit" value="' . esc_attr__( "ok" ) . '" />
+    </form>
+    ';
+    return $o;
+}
+add_filter( 'the_password_form', 'my_password_form' );
+
