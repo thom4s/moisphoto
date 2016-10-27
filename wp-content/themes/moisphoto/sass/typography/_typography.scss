@@ -109,7 +109,7 @@ body {
 
 html {
   @include up-to(medium) {
-    font-size: 57.5%;
+    font-size: 60%;
   }
   @include at-least(medium) {
     font-size: 60%;

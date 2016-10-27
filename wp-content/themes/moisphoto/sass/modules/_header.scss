@@ -50,5 +50,6 @@
 
   @include up-to(medium) {
     height: 0;
+    min-height: auto;
   }
 } 

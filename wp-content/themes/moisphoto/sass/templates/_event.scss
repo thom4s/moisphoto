@@ -116,6 +116,10 @@
         width: 75%;
         margin-bottom: $base_line_height;
         @extend .clearfix;
+
+        @include up-to(medium) {
+          width: 100%;
+        }
       }
 
       figure {
