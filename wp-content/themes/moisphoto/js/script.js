@@ -3,6 +3,26 @@
 (function($) {
 
 
+  function initGeolocation() {
+    if (navigator && navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    } else {
+      console.log('Geolocation is not supported');
+    }
+  }
+ 
+  function errorCallback() {}
+ 
+  function successCallback(position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    console.log(latitude);
+    console.log(longitude);
+  }
+
+
+
   $(document).ready(function(){
 
     var $searchbar = $('#searchbar');
@@ -84,8 +104,14 @@
       $('#searchresults').hide();
     });
 
+    $('.js-display-aroundme').on('click', function(event){
+      event.preventDefault;
+      initGeolocation();
+    });
 
   });
+
+
 
 
 

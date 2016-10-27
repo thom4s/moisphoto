@@ -26,7 +26,7 @@ $useragent = $_SERVER['HTTP_USER_AGENT'];
       <div class="is-centered s-16col">
         <p><a href="#" class="js-display-events">voir la list des expositions</a></p>
         <p><a href="/carte">voir la map en plein écran</a></p>
-        <p> <a href="#">voir les exposition autour de moi</a></p>
+        <p> <a href="#" class="js-display-aroundme">voir les exposition autour de moi</a></p>
       </div> 
     </div>
 
