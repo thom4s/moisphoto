@@ -23,6 +23,15 @@
     padding-top: 1em;
     padding-bottom: 1em;
   }
+
+  @include up-to(medium) {
+    padding-top: 0;
+
+    &.is-reduced {
+      padding-top: 0;
+      padding-bottom: 0.5em;
+    }
+  }
 }
 
 .site-branding--big {
@@ -33,8 +42,13 @@
   line-height: 0.1;
   padding-right: 2em;
   margin-top: -4px;
+  min-height: 34px;  
   
   a {
     display: block;
+  }
+
+  @include up-to(medium) {
+    height: 0;
   }
 } 

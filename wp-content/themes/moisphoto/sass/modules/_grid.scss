@@ -17,6 +17,10 @@
 
   .grid__row:not(:last-child) {
     margin-bottom: $base_line_height * 2;
+
+    @include up-to(medium) {
+      margin-bottom: 0;
+    }
   }
 
     %grid__item {
@@ -51,6 +55,9 @@
         margin-right: $base_line_half / 2;
       }
 
+      @include up-to(medium) {
+        margin-bottom: $base_line_half;
+      }
     }
 
 

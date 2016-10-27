@@ -22,7 +22,7 @@
       switch ( $item['acf_fc_layout'] ) {
         case 'btn_show_events': ?>
           <a href="#" class="js-display-events">
-            <div class="grid__item--btn m-6col <?php echo $order_item; ?> square">
+            <div class="grid__item--btn s-14col m-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 <?php echo $item['btn_chapo']; ?>
               
@@ -36,7 +36,7 @@
           <?php break;
 
         case 'affiche': ?>
-          <div class="grid__item--affiche m-6col <?php echo $order_item; ?>">
+          <div class="grid__item--affiche s-14col m-6col <?php echo $order_item; ?>">
             <img src="<?php echo $item['file']['url']; ?>">
           </div>
           <?php break;
@@ -44,7 +44,7 @@
 
         case 'text': ?>
           <a href="<?php echo $item['text_link']; ?>">
-            <div class="grid__item--text m-6col <?php echo $order_item; ?> square">
+            <div class="grid__item--text s-14col m-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 <h3 class="h3"><?php echo $item['text_title']; ?></h3>
                 <div class="has-bordertop--little"> <?php echo $item['text_intro']; ?></div>
@@ -68,15 +68,15 @@
             $we_color = get_field('color', $we_id);
           ?>
           <a href="<?php echo $we_url; ?>">
-            <div class="grid__item--weekend m-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
+            <div class="grid__item--weekend s-22col m-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
-                <div class="m-8col grid__item__img">
+                <div class="s-12col m-8col grid__item__img">
                       <img src="<?php echo $item['weekend_img']; ?>">
                       <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
                 </div>
               
-                <div class="m-6col square">
+                <div class="s-10col m-6col square">
                   <div class="square__content">
                     <h3 class="h3"><?php echo $item['weekend_title']; ?></h3>
                     <div class="has-bordertop--little"> <?php echo $item['weekend_intro']; ?></div>
@@ -97,17 +97,17 @@
 
         case 'big_bloc': ?>
           <a href="<?php echo $url; ?>">
-            <div class="grid__item--big m-15col <?php echo $order_item; ?>">
+            <div class="grid__item--big s-23col m-15col <?php echo $order_item; ?>">
               <div class="row">
               
-                <div class="m-9col square">
+                <div class="s-13col m-9col square">
                   <div class="square__content grid__item__img">
                       <img src="<?php echo $item['big_bloc_img']; ?>">
                       <div class="arrow--medium--white"> > </div>
                   </div>
                 </div>
               
-                <div class="m-6col square">
+                <div class="s-10col m-6col square">
                   <div class="square__content">
                     <h3 class="h3"><?php echo $item['big_bloc_title']; ?></h3>
                     <div class="has-bordertop--little"> <?php echo $item['big_bloc_text']; ?></div>
@@ -127,7 +127,7 @@
             $url = get_permalink ( $item['page_item'] );
             $post_title = get_the_title( $page_id ) ?>
           <a href="<?php echo $url; ?>">
-            <div class="grid__item--page m-6col <?php echo $order_item; ?> square">
+            <div class="grid__item--page s-14col m-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 
                 <h3 class="h3">
@@ -159,7 +159,7 @@
             $post_title = get_the_title( $post_id ); ?>
             
           <a href="<?php echo $url; ?>">
-            <div class="grid__item--post m-6col <?php echo $order_item; ?> square">
+            <div class="grid__item--post s-14col m-6col <?php echo $order_item; ?> square">
               <div class="square__content">
                 
                 <h3 class="h3"><?php echo $post_title; ?></h3>

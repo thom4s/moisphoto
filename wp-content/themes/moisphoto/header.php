@@ -26,7 +26,7 @@
 	<header id="masthead" class="site-header clearfix" role="banner">
 
 		<div class="wrap row clearfix">
-			<div class="site-branding--little m-6col">
+			<div class="site-branding--little s-6col">
 				
 				<?php if( !is_front_page() && !is_home() ) : ?>
 					<div class="site-logo">
@@ -37,8 +37,8 @@
 
 				<?php else : ?>
 					<div class="row">
-						<div class="m-1col square">
-							<div class="square__content"> &nbsp; </div>
+						<div class="m-1col ">
+							<div class=""> </div>
 						</div>				
 					</div>
 
@@ -48,7 +48,7 @@
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 
-					<div class="pict--search square m-1col m-last">
+					<div class="pict--search square s-2col m-1col s-last">
 						<div class="square__content">
 							<div class="table">
 								<a class="pict__content table-cell js-open-searchbar icon-search" href="#"> </a>
@@ -56,7 +56,7 @@
 						</div>
 					</div>
 
-					<div class="pict--wpml square m-1col m-last">
+					<div class="pict--wpml square s-2col m-1col s-last">
 						<div class="square__content">
 							<div class="table">
 								<span class="pict__content table-cell"> <?php do_action('display_languages'); ?></span>	
@@ -64,7 +64,7 @@
 						</div>				
 					</div>
 
-					<div class="pict--social square m-1col m-last">
+					<div class="pict--social square s-2col m-1col s-last">
 						<div class="square__content">
 							<div class="table">
 								<a class="pict__content icon-twitter table-cell"> </a>
@@ -72,7 +72,7 @@
 						</div>
 					</div>
 					
-					<div class="pict--social  square m-1col m-last">
+					<div class="pict--social square s-2col m-1col s-last">
 						<div class="square__content">
 							<div class="table">
 								<a class="pict__content icon-facebook table-cell"> </a>
@@ -80,7 +80,7 @@
 						</div>
 					</div>
 	
-					<div class="pict--social square m-1col m-last">
+					<div class="pict--social square s-2col  m-1col s-last">
 						<div class="square__content">
 							<div class="table">
 								<a class="pict__content icon-instagram table-cell"></a>
@@ -88,7 +88,7 @@
 						</div>
 					</div>
 
-		      <div id="searchbar" class="searchbar m-6col">
+		      <div id="searchbar" class="searchbar m-6col s-8col">
 		      	<?php get_search_form(); ?>
 		      </div>
 
@@ -100,7 +100,7 @@
 	<?php if( is_front_page() ) : ?>
 		<div class="wrap">
 			<div class="site-branding--big row clearfix">
-				<div class="site-logo m-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
+				<div class="site-logo s-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
 			</div><!-- .site-branding -->
 		</div>
 	<?php endif; ?>

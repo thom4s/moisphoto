@@ -40,6 +40,11 @@
       text-align: left;
       text-transform: uppercase;
     }
+
+    @include up-to(medium) {
+      clear: both;
+      margin-top: $base_line_height;
+    }
   }
 
   .footer__main__menu {

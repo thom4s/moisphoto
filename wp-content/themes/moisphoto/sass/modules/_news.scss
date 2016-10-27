@@ -95,6 +95,13 @@
     .has-bordertop--little::before {
       border-color: $black;
     }
+    
+    @include up-to(medium) {
+      width: 50%;
+      float: left;
+      
+    }
+
   }
 
 

@@ -5,6 +5,7 @@
   position: relative;
   
   @include up-to(medium) {
+    clear: both;
   }
 }
   .main-navigation ul {
@@ -14,6 +15,8 @@
   }
     .main-navigation .menu > li {
       @extend .m-3col;
+      @extend .s-4col;
+
       @include type-setting(0);
 
       text-align: center;
