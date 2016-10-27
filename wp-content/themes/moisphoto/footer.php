@@ -32,13 +32,23 @@
         </div>
 
 
-        <div class="footer__main__newsletter l-7col l-1col-push">
+        <div class="footer__main__newsletter m-7col m-1col-push">
           <div class="row">
-            <div class="pict--rounded--little l-1col"> > </div>
-            <div class="input-group l-6col">
-              <input type="email" placeholder="votre mail">
-              <input type="submit" value="M'inscrire à la newsletter">
+            <div class="m-1col square"> 
+              <div class="square__content">
+                <div class="table">
+                  <div class="table-cell">
+                    <span class="arrow--little--black"> > </span>
+                  </div>
+                </div>           
+              </div>
             </div>
+
+            <form action="http://maisoneuropennedelaphoto.createsend.com/t/t/s/mhudii/" method="post" id="subForm" class=" m-6col">
+              <input id="fieldEmail" name="cm-mhudii-mhudii" type="email" required placeholder="votre email" />
+              <input type="submit" value="M'inscrire à la newsletter">
+            </form>
+
           </div>
         </div>
 
