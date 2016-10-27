@@ -75,3 +75,19 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
   margin-bottom: $base_line_height;
 }
 
+.search-form-bar {
+  display: flex;
+
+  .pressform__input {
+    display: flex;
+  }
+
+  .search-field {
+    align-items: stretch;
+    margin-bottom: 0;
+    height: auto;
+  }
+}
+
+
+

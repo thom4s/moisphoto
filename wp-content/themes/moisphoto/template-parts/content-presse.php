@@ -31,7 +31,7 @@
       <?php the_content(); ?>
     </div><!-- .entry-content -->
 
-    <div class="m-7col searchbar--press">
+    <div class="s-20col m-7col searchbar--press">
       <?php get_template_part('template-parts/parts/part-presseform'); ?>
     </div>
     
