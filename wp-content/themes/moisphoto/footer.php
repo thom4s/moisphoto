@@ -68,7 +68,9 @@
 
   <div id="events-modal">
     <div class="modal__content clearfix">
-        <a href="#" id="close-events" class="clearfix close-events"></a>
+        <div class="wrap">
+          <a href="#" id="close-events" class="clearfix close-events"></a>
+        </div>
         <div class="modal__content__inner"></div>    
     </div>
   </div>
