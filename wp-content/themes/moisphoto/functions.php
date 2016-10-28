@@ -379,95 +379,157 @@ add_action( 'wp_ajax_load_events', 'load_events_list' );
 
 function load_events_list() {
 
+  $nearby = $_POST['nearby'];
+  $event_latitude = $_POST['event_latitude'];
+  $event_longitude = $_POST['event_longitude'];
 
-  // GET MAP ITEMS AND DISPLAY
+  $event_latitude = '48.8652352';
+  $event_longitude = '2.3634082999999464';
 
-  $front_page_id = get_option('page_on_front');
-  $current_edition = get_field('edition_courante', $front_page_id); 
-  $type_relation = get_field('type_relation', $current_edition);
-  $events_array = array();
-  $places_array = array();
 
-  if( $type_relation == 'Weekends') : 
-    $weekends = get_field('weekends',  $current_edition); // ID
 
-    foreach ($weekends as $we) {
-      $events_list = get_field('events_list', $we);
-      $color_we = get_field('color', $we);
-      $color_we = str_replace('#', '', $color_we); 
-                      
-      foreach ($events_list as $e) {
-        $events_array[] = $e;
-        $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
-      }            
-    }
-    $is_weekend = true; 
+  $lat = maybe_serialize( array("lat" => $event_latitude) ); // a:1:{s:3:"bar";s:6:"foobar";}
+  $lat = rtrim( ltrim( $lat, 'a:1:{' ), '}' );    // on élague les bords qui nous gênent : s:3:"bar";s:6:"foobar";
 
-  elseif ( $type_relation == 'Événements' ) :
-    $events_array = get_field('evenements', $current_edition);
+  $lng = maybe_serialize( array("lng" => $event_longitude) ); // a:1:{s:3:"bar";s:6:"foobar";}
+  $lng = rtrim( ltrim( $lng, 'a:1:{' ), '}' );    // on élague les bords qui nous gênent : s:3:"bar";s:6:"foobar";
 
-    foreach ($events_array as $e) {
-      $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
-    }    
+  if( $nearby ) :
+
+    $meta_query[] = array(
+      'key'   => 'adresse',
+      'value'   => $lat,
+      'compare' => 'LIKE',
+    );
+
+    $nearby_places_args = array(
+        'posts_per_page'   => -1,
+        'meta_query'       => $meta_query,
+        'post_type'        => 'place',
+        'post_status'      => 'publish',
+        'suppress_filters' => 0 
+      );
+    $nearby_places_array = get_posts($nearby_places_args);
+
+    var_dump($nearby_places_array);
+
+    // lieux proches
+    $meta_query[] = array(
+       'key'   => $name,
+              'value'   => $value,
+              'compare' => 'IN',
+          );
+
+
+      $args = array(
+        'posts_per_page'   => 5,
+        'category'         => 'exposition',
+        'orderby'          => 'date',
+        'order'            => 'DESC',
+        'meta_key'         => '',
+        'meta_value'       => '',
+        'post_type'        => 'event',
+        'post_status'      => 'publish',
+        'suppress_filters' => 0 
+      );
+      $events_array = get_posts($args);
+
+//    var_dump($events_array);
+
+
+  else : 
+
+    // GET MAP ITEMS AND DISPLAY
+
+    $front_page_id = get_option('page_on_front');
+    $current_edition = get_field('edition_courante', $front_page_id); 
+    $type_relation = get_field('type_relation', $current_edition);
+    $events_array = array();
+    $places_array = array();
+
+    if( $type_relation == 'Weekends') : 
+      $weekends = get_field('weekends',  $current_edition); // ID
+
+      foreach ($weekends as $we) {
+        $events_list = get_field('events_list', $we);
+        $color_we = get_field('color', $we);
+        $color_we = str_replace('#', '', $color_we); 
+                        
+        foreach ($events_list as $e) {
+          $events_array[] = $e;
+          $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+        }            
+      }
+      $is_weekend = true; 
+
+    elseif ( $type_relation == 'Événements' ) :
+      $events_array = get_field('evenements', $current_edition);
+
+      foreach ($events_array as $e) {
+        $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+      }    
+      $is_weekend = false; 
+
+    endif; 
+    
     $is_weekend = false; 
 
-  endif; 
-  
-  $is_weekend = false; 
+  endif; // endif nearby or not
 
-  ob_start(); ?> 
+    ob_start(); ?> 
 
-      <div class="events-container row">
-        <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+        <div class="events-container row">
+          <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
 
-        <div class="event__rebonds clearfix">
+          <div class="event__rebonds clearfix">
 
-          <div class="wrap">
-            <?php 
-              if($events_array) :
+            <div class="wrap">
+              <?php 
+                if($events_array) :
 
-                $i = 1;
+                  $i = 1;
 
-                foreach ($events_array as $e) : 
+                  foreach ($events_array as $e) : 
 
-                  $clearfix = ''; 
+                    $clearfix = ''; 
 
-                  if( $i%3 == 0 ) : 
-                    $push = '2';
-                    $i = 1;
+                    if( $i%3 == 0 ) : 
+                      $push = '2';
+                      $i = 1;
 
-                  elseif( $i%2 == 0 ) : 
-                    $push = '1';
-                    $i++;
+                    elseif( $i%2 == 0 ) : 
+                      $push = '1';
+                      $i++;
 
-                  else : 
-                    $push = '0';
-                    $clearfix = 'clearfix';
-                    $i++;
+                    else : 
+                      $push = '0';
+                      $clearfix = 'clearfix';
+                      $i++;
 
-                  endif;  
+                    endif;  
 
-                  set_query_var('e', $e); 
-                  set_query_var('push', $push); 
-                  set_query_var('clearfix', $clearfix); 
-                  get_template_part('template-parts/parts/part', 'item'); ?>
+                    set_query_var('e', $e); 
+                    set_query_var('push', $push); 
+                    set_query_var('clearfix', $clearfix); 
+                    get_template_part('template-parts/parts/part', 'item'); ?>
 
-                <?php  endforeach; 
-              
-              else : ?>
-              <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
-            <?php endif; ?>
+                  <?php  endforeach; 
+                
+                else : ?>
+                <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
+              <?php endif; ?>
+            </div>
+
           </div>
-
         </div>
-      </div>
 
-  <?php
+    <?php
 
-  $content = ob_get_clean();
+    $content = ob_get_clean();
 
-  echo $content;
-  die();
+    echo $content;
+    die();
+
 }
 
 
@@ -549,3 +611,17 @@ function is_mobile() {
   
   endif;
 }
+
+
+/**
+ * serialize une array pour les meta_query
+ * @return 
+ **/
+if ( !function_exists('serialize_array_content') ):
+function serialize_array_content( $array, $value_only = false ) {
+  $array = serialize( (array) $array );
+  $pos   = $value_only ? ';' : '{';
+  return substr($array, strpos($array, $pos)+1, -1);
+}
+endif;
+

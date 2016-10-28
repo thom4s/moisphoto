@@ -113,4 +113,70 @@ jQuery(document).on('click', '#close-events', function(event) {
 
 
 
+/**
+ * Nearby events list load and display
+ */
+
+var $events_list_modal = $('#events-modal');
+var $content = $events_list_modal.find('.modal__content__inner');
+
+$(document).on( 'click', '.js-display-aroundme', function( event ) {
+
+    event.preventDefault();
+    var event_latitude = '';
+    var event_longitude = '';
+
+    function initGeolocation() {
+      if (navigator && navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+      } else {
+        console.log('Geolocation is not supported');
+      }
+    }
+     
+    function errorCallback() {
+        
+    }
+     
+    function successCallback(position) {
+        event_latitude = position.coords.latitude;
+        event_longitude = position.coords.longitude;
+
+        $.ajax({
+            url: myAjax.ajaxurl,
+            type: 'post',
+            data: {
+                action: 'load_events',
+                nearby: true,
+                event_latitude: event_latitude,
+                event_longitude: event_longitude,
+            },
+            beforeSend: function() {
+                $events_list_modal.show();
+                $content.html('loading...');
+            },
+            success: function( result ) {
+                $content.html( result );
+                $content.show('fast');
+                $('#loading-msg').hide();
+            }
+        });
+
+        return false;
+
+    }
+
+    initGeolocation();
+
+});
+
+
+jQuery(document).on('click', '#close-events', function(event) {
+    event.preventDefault;
+    $events_list_modal.hide();
+});
+
+
+
 
