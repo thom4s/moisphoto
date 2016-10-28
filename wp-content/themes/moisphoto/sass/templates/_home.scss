@@ -9,6 +9,10 @@
 .edition__mobile {
 
 
-  margin-top: $base_line_height; 
+  margin-top: $base_line_height * 2; 
+
+  span {
+    margin-right: $base_line_height;
+  }
 
 }

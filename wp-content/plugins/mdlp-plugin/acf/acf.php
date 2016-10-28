@@ -6,6 +6,8 @@ function my_acf_init() {
 
 add_action('acf/init', 'my_acf_init');
 
+
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -1485,6 +1487,130 @@ acf_add_local_field_group(array (
       'tabs' => 'all',
       'toolbar' => 'full',
       'media_upload' => 1,
+    ),
+    array (
+      'key' => 'field_581301e5a6289',
+      'label' => 'Bouttons pour mobile',
+      'name' => 'bouttons_pour_mobile',
+      'type' => 'flexible_content',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'button_label' => 'Ajouter un élément',
+      'min' => '',
+      'max' => '',
+      'layouts' => array (
+        array (
+          'key' => '581302051973b',
+          'name' => 'liste_des_expositions',
+          'label' => 'Liste des expositions (toutes ou près de moi)',
+          'display' => 'block',
+          'sub_fields' => array (
+            array (
+              'key' => 'field_5813021ba628a',
+              'label' => 'Texte du bouton',
+              'name' => 'texte',
+              'type' => 'text',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'maxlength' => '',
+            ),
+            array (
+              'key' => 'field_58130286a628f',
+              'label' => 'Action',
+              'name' => 'action',
+              'type' => 'text',
+              'instructions' => '"js-display-events" pour toutes les expositions<br>
+"js-display-aroundme" pour les expos aux alentours',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'maxlength' => '',
+            ),
+          ),
+          'min' => '',
+          'max' => '',
+        ),
+        array (
+          'key' => '58130231a628b',
+          'name' => 'lien_vers_page',
+          'label' => 'Lien vers page',
+          'display' => 'block',
+          'sub_fields' => array (
+            array (
+              'key' => 'field_5813023fa628c',
+              'label' => 'Texte du bouton',
+              'name' => 'texte',
+              'type' => 'text',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'default_value' => '',
+              'placeholder' => '',
+              'prepend' => '',
+              'append' => '',
+              'maxlength' => '',
+            ),
+            array (
+              'key' => 'field_5813024ea628d',
+              'label' => 'Page liée',
+              'name' => 'page',
+              'type' => 'page_link',
+              'instructions' => '',
+              'required' => 0,
+              'conditional_logic' => 0,
+              'wrapper' => array (
+                'width' => '',
+                'class' => '',
+                'id' => '',
+              ),
+              'post_type' => array (
+              ),
+              'taxonomy' => array (
+              ),
+              'filters' => array (
+                0 => 'search',
+                1 => 'post_type',
+                2 => 'taxonomy',
+              ),
+              'elements' => '',
+              'min' => '',
+              'max' => '',
+              'return_format' => 'object',
+            ),
+          ),
+          'min' => '',
+          'max' => '',
+        ),
+      ),
     ),
   ),
   'location' => array (
