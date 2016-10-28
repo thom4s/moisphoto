@@ -479,7 +479,9 @@ function load_events_list() {
     ob_start(); ?> 
 
         <div class="events-container row">
+          
           <div id="loading-msg" class="loading-msg">Nous cherchons des réponses...</div>
+
 
           <div class="event__rebonds clearfix">
 

@@ -23,6 +23,7 @@
       $auteurs = get_field('auteurs', $e_id); 
       $date_fixe = get_field('date_fixe', $e_id);
       $lieu = get_field('lieu', $e_id);
+      $chapo = get_field('chapo', $e);
       $lieu_adresse_group = get_field('adresse', $lieu);
       $lieu_adresse = $lieu_adresse_group['address'];
       $type = get_terms( 'event-type' ); ?>
@@ -31,7 +32,11 @@
 
   <h5 class="h5"><?php echo get_the_title( $e_id ); ?></h5>
 
-  <p class="p--strong">
+  <?php if($chapo) :?>
+    <div class="modal__intro has-bordertop--little"><?php echo $chapo; ?></div>
+  <?php endif; ?>
+
+  <p class="p--strong has-bordertop--little">
     <?php if($type) { moisphoto_get_artists_list($type); echo '<br>'; } ?>
     
     <?php 
@@ -46,6 +51,7 @@
 
   <div class="rebonds__chapo has-bordertop--little">
     <p class="p--strong"><?php echo get_the_title( $lieu ); ?></p>
+    <p class="modal__adress"><?php echo $location['address']; ?></p>
   </div>
 
   <?php } ?>

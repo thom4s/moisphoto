@@ -60,7 +60,7 @@
 #events-modal {
     display: none;
     position: fixed; 
-    z-index: 1; 
+    z-index: 9999; 
     left: 0;
     top: 0;
     right: 0; 
@@ -74,13 +74,43 @@
 
 /* Modal Content/Box */
 .modal__content {
-    background-color: $white;
+    background-color: $gray_darker;
     margin: 0;
-    padding: $base_line_height * 2 0 0;
-    border: 1px solid #888;
+    padding: $base_line_height 0 0;
+    border: none;
+
+    .event__rebonds {
+      background: none;
+    }
 }
 
 /* The Close Button */
+
+  .modal__close--events {
+    background-color: $black;
+    color: $white;
+    margin-top: $base_line_height * 2;
+    height: $base_line_height * 2;
+    line-height: $base_line_height * 2;
+
+    .arrow--little--white {
+      margin-right: $base_line_half;
+    } 
+
+    .h4 {
+      line-height: inherit;
+    }
+
+    .close-events {
+      margin: 10px 0;
+    }
+
+    a {
+      text-align: right; 
+      text-transform: uppercase;
+      font-weight: $light;
+    }
+  }
 
   .close-events {
     background-image: url("assets/bouton_close_map.png");
@@ -90,5 +120,5 @@
     height: 40px;
     display: inline-block;
     float: right;
-    margin-top: $base_line_height * 1.75;
+    margin-top: 0;
   }
