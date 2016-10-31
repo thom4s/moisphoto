@@ -14,6 +14,11 @@
     'post_type'        => 'post',
     'post_status'      => 'publish',
   );
+
+  if( isset($category) ) {
+    $args['category_name'] = $category;
+  }
+ 
   $posts_array = get_posts( $args ); 
 
 ?>
