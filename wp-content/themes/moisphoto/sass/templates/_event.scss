@@ -94,9 +94,10 @@
       text-transform: uppercase;
     }
     .h2 {
-      margin-bottom: $base_line_height;
     }
-
+    .h5 {
+    }
+    
     p:not(.h5) {
       margin-bottom: 0;
     }
@@ -108,7 +109,9 @@
     .event__header__inner {
       padding-top: 60px;
     }
-
+      .header__titles {
+        margin-bottom: $base_line_height;
+      }
 
   .event__short {
     text-align: right;

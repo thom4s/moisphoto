@@ -56,17 +56,17 @@
 				<div class="row wrap">
 					<div class="m-8col">
 
-						<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>
-						
-						<h2 class="h2"><?php the_title(); ?></h2>
-					
-						<?php 
-							if($sous_titres) {
-								foreach ($sous_titres as $st) {
-									echo $st['sous-titre'];
+						<div class="header__titles">
+							<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>
+							<h2 class="h2"><?php the_title(); ?></h2>					
+							<h5 class="h5"><?php 
+								if($sous_titres) {
+									foreach ($sous_titres as $st) {
+										echo $st['sous-titre'];
+									}
 								}
-							}
-						?>
+							?></h5>
+						</div>
 
 						<div class="has-bordertop--little">
 							<div class="h4"><?php echo get_the_title( $lieu ); ?></div>
