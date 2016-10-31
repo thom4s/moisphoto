@@ -7,6 +7,12 @@
  * @package moisphoto
  */
 
+
+define("FACEBOOK_LINK", 'https://www.facebook.com/moisdelaphotograndparis/');
+define("TWITTER_LINK", 'https://www.twitter.com/moisdelaphotograndparis/');
+define("INSTAGRAM_LINK", 'https://www.instagram.com/moisdelaphotograndparis/');
+
+
 if ( ! function_exists( 'moisphoto_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -331,7 +337,7 @@ function load_press_search() {
 
                     $auteurs = get_field('auteurs'); 
                     $lieu = get_field('lieu');
-                    $id = $post->ID; ?>
+                    $id = get_the_ID(); ?>
 
                     <div class="press__list__item">
                       <p><span class="p--big"><?php moisphoto_get_artists_list($auteurs); ?></span> 
