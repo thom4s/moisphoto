@@ -20,6 +20,7 @@
         ....
     )
   */
+
 ?>
 
 
@@ -352,11 +353,18 @@
     // var
     var $markers = $el.find('.marker');
     
+    <?php 
+      if( isset( $position ) ) {
+        $center = 'new google.maps.LatLng(' . $position['lat'] . ', ' . $position['lng'] . ')';
+      } else {
+        $center = 'new google.maps.LatLng(48.860532, 2.347772)';
+      }
+    ?>
     
     // vars
     var args = {
       zoom              : <?php if( isset($zoom) ) { echo $zoom; } else { echo '11'; } ?>,
-      center            : new google.maps.LatLng(48.860532, 2.347772),
+      center            : <?php echo $center; ?>,
       mapTypeId         : google.maps.MapTypeId.ROADMAP,
       draggable         : true,
       panControl        : false,

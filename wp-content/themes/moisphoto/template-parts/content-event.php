@@ -16,7 +16,10 @@
 	$lieu = get_field('lieu');
 	$lieu_adresse_group = get_field('adresse', $lieu);
 	$lieu_adresse = $lieu_adresse_group['address'];
-
+	$position = array(
+		'lat' => $lieu_adresse_group['lat'],
+		'lng' => $lieu_adresse_group['lng'],
+	);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -193,6 +196,8 @@
 					</div>
 					
 					<div class="event__map">
+					  <h3 class="h3">événements et curiosités proches</h3>
+
 						<div class="part" id="curiosites" title="Les curiosités"></div>
 
 					    <?php 
@@ -235,6 +240,7 @@
 					      set_query_var('events', $events); 
 					      set_query_var('places_events_array', $places_events_array); 
 					      set_query_var('is_weekend', $is_weekend); 
+					      set_query_var('position', $position); 
 					      set_query_var('zoom', '15'); 
 
 					      get_template_part( 'template-parts/modules/module', 'map' ); 
@@ -242,8 +248,6 @@
 					      // END MAP ?>
 
 					  <div class="event__map__inner">
-
-						  <h3 class="h3">événements et curiosités proches</h3>
 
 							<?php 
 								if($curiosites_liste) {

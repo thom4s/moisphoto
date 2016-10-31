@@ -217,8 +217,9 @@
     border-top: $base_line_half solid $black;
 
     .h3 {
-      margin-bottom: $base_line_height;
+      margin-bottom: 0;
       text-transform: uppercase;
+      padding: 1em;
     }
 
     h5 {
