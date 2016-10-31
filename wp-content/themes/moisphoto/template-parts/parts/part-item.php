@@ -28,6 +28,8 @@
       $lieu_adresse = $lieu_adresse_group['address'];
       $type = get_terms( 'event-type' ); ?>
 
+  <?php echo get_the_post_thumbnail($e_id); ?>
+
   <h4 class="h3"><?php if($auteurs) { moisphoto_get_artists_list($auteurs); } ?></h4>
 
   <h5 class="h5"><?php echo get_the_title( $e_id ); ?></h5>

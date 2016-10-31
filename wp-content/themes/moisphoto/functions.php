@@ -417,15 +417,14 @@ function load_events_list() {
       );
     $nearby_places_array = get_posts($nearby_places_args);
 
-    var_dump($nearby_places_array);
+    // var_dump($nearby_places_array);
 
-    // lieux proches
-    $meta_query[] = array(
-       'key'   => $name,
-              'value'   => $value,
-              'compare' => 'IN',
-          );
-
+      // lieux proches
+      $meta_query[] = array(
+         'key'   => $name,
+                'value'   => $value,
+                'compare' => 'IN',
+            );
 
       $args = array(
         'posts_per_page'   => 5,
