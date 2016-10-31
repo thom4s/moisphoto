@@ -70,11 +70,13 @@
       if ($win.scrollTop() > 50) {
         $( "#masthead" ).addClass( "is-reduced" );
         $('.event__summary').addClass("is-reduced");
+        $('.event__id').show();
       }
 
       if ($win.scrollTop() === 0) {
         $( "#masthead" ).removeClass( "is-reduced" );
         $('.event__summary').removeClass("is-reduced");
+        $('.event__id').hide();
       }
 
     });

@@ -9,9 +9,36 @@
 
 .event__single {
 
+
+  .event__id {
+    display: none;
+    color: $white;
+    padding-bottom: 0.5em;
+  }
+    .event__id__titles {
+      .id__artist {
+        text-transform: uppercase;
+      }
+      .id__title {
+        font-weight: $light;
+      }
+    }
+
+    .event__id__place {
+      text-align: right; 
+    }
+      .id__place {
+        font-weight: $light;
+        padding-right: $base_line_half;
+      }
+      .id__date {
+        padding-left: $base_line_half;
+      }
+
   .event__summary {
     @include transition(all, 0.2s);
-    
+    @include type-setting(-1);
+
     position: fixed;
     left: 0;
     right: 0;
@@ -30,14 +57,13 @@
     }
 
     .summary__item {
-      @include type-setting(-1);
 
       display: inline-block;
       float: left;
       border-right: 1px solid $white;
       text-transform: uppercase;
       padding: 0 1em;
-      margin: 5px 0;
+      margin: 0;
       
       &:last-child {
         border: none;

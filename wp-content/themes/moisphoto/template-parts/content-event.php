@@ -23,8 +23,24 @@
 
 
 		<section id="summary" class="clearfix event__summary">
-			<div class="wrap">
-				<ul id="summary-inner" class=" no-bullets">
+			<div class="wrap row">
+
+				<div class="clearfix event__id">
+					<div class="m-10col event__id__titles"><span class="id__artist"><?php moisphoto_get_artists_list($auteurs); ?></span> - <span class="id__title"> <?php the_title(); ?></span></div> 
+					<div class="m-10col m-last event__id__place">
+						<span class="id__place"> <?php echo get_the_title( $lieu ); ?></span> | 	
+								<span class="id__date"> <?php 
+									if($date_fixe) {
+										the_field('date'); 
+									} else {
+										the_field('date_debut');
+										echo ' - ';
+										the_field('date_fin');
+									}
+								?> </span></div>
+				</div>
+
+				<ul id="summary-inner" class="clearfix no-bullets">
 					<li class="arrow--little--white"> > </li>
 				</ul>	
 			</div>
@@ -88,10 +104,12 @@
 				<div class="m-16col">
 					<div class="part" id="presentation" title="Présentation"></div>
 
-					<div class="p--big event__extract">
-						<?php the_field('chapo'); ?>
-					</div>
-
+					<?php if( get_field('chapo') != '' ) : ?>
+						<div class="p--big event__extract">
+							<?php the_field('chapo'); ?>
+						</div>
+					<?php endif; ?>
+		
 					<div class="event__text row">
 						<?php	the_content(); ?>
 					</div>
