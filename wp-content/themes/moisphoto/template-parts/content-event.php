@@ -241,13 +241,13 @@
 					      set_query_var('places_events_array', $places_events_array); 
 					      set_query_var('is_weekend', $is_weekend); 
 					      set_query_var('position', $position); 
-					      set_query_var('zoom', '15'); 
+					      set_query_var('zoom', '13'); 
 
 					      get_template_part( 'template-parts/modules/module', 'map' ); 
 
 					      // END MAP ?>
 
-					  <div class="event__map__inner">
+					  <div class="clearfix event__map__inner">
 
 							<?php 
 								if($curiosites_liste) {
@@ -266,8 +266,13 @@
 											</span>
 										</h5>
 
-										<p class="has-bordertop--little"><?php echo $curiosite_adresse; ?></p>
-										<?php the_field('description', $c); ?>
+										<div class="has-bordertop--little">
+
+											<p class="p--strong"><?php echo $curiosite_adresse; ?></p>
+											
+											<?php the_field('description', $c); ?>
+
+										</div>
 																			
 									<?php }
 								}

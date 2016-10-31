@@ -94,9 +94,10 @@
         margin-bottom: $base_line_height;
       }
 
-      p {
+      p:not(.p--strong) {
         margin-bottom: 0;
       }
+
 
       .modal__dates,
       .modal__intro {
@@ -129,4 +130,42 @@
       }
 
     } 
+
+
+.event {
+
+  .map__modal__content {
+    border: none;
+  }
+
+  .modal__img {
+    background: none;
+    margin-bottom: 0;
+    margin-top: 1.4rem;
+  }
+
+  .modal__texts {
+    padding: 0;
+  }
+
+  .h6 {
+    padding: 0 1.4rem;
+    margin-bottom: 0;
+  }
+  .modal__adress {
+    padding: 0 1.4rem;
+  }
+  .modal__btn {
+    @extend .clearfix;
+
+    position: relative;
+    margin-top: $base_line_half;
+    background-color: $black;
+    padding: 0.8rem 1.4rem;
+    height: auto;
+  }
+}
+
+
+
 

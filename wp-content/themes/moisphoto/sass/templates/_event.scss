@@ -219,11 +219,12 @@
     .h3 {
       margin-bottom: 0;
       text-transform: uppercase;
-      padding: 1em;
+      padding: 1.4rem 1.4rem 0 1.4rem;
     }
 
     h5 {
-      margin-bottom: $base_line_half;
+      margin-bottom: 0;
+      padding: 1.4rem 1.4rem 0 1.4rem ;
     }
 
     .map-outer {
@@ -234,13 +235,16 @@
       margin: 0;
     }
 
-    .has-bordertop--little::before {
-      border-color: $black;
+    .has-bordertop--little {
+      padding: 1.4rem 1.4rem 0 1.4rem ;
+
+      &::before {
+        border-color: $black;
+      }
     }
 
   }
     .event__map__inner {
-      padding: 1.4em;
     }
 
 }

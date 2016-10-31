@@ -66,9 +66,16 @@
 
               <!-- MARKER FOR CURIOSITES-->
               <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>" icon="default_2">
-                <div class="modal__close">
-                  <a href="#" id="close-event" class="clearfix close-events"></a>
-                </div>
+
+
+                <?php if( 'event' == get_post_type() ) : ?>
+
+                <?php else : ?>
+                  <div class="modal__close">
+                    <a href="#" id="close-event" class="clearfix close-events"></a>
+                  </div>
+                <?php endif; ?>
+
 
                 <div class="map__modal__content">
 
@@ -81,11 +88,14 @@
 
                     <h3 class="h6"><?php moisphoto_get_artists_list($c_type, false); ?></h3>
 
-                    <?php if( $c_description != '' ) { ?>
-                      <div class="modal__intro has-bordertop--little"><?php echo $c_description; ?></div>
-                    <?php } ?>
+                    <div class="has-bordertop--little">
 
-                    <p class="has-bordertop--little modal__place"><?php echo $c_location['address']; ?></p>
+                      <p class="p--strong"><?php echo $c_location['address']; ?></p>
+                      
+                      <?php echo $c_description; ?>
+
+                    </div>
+
                   </div>
 
                 </div><!--.modal-content -->
@@ -128,7 +138,7 @@
 
               <div class="modal__btn" style="background-color: #<?php echo $p[1]; ?>">
                 <span class="arrow--little--white"> > </span>
-                <a href="<?php echo $url; ?>" class="a--inline">En savoir plus <br>sur l'exposition et le lieu</a></p>
+                <a href="<?php echo $url; ?>" class="a--inline">En savoir plus <br>sur l'exposition et le lieu</a>
               </div>
               
 
@@ -478,8 +488,14 @@
         
         marker.setIcon( active_icon );
         $content = $marker.html();
-        $('.map__modal').html($content).show();
 
+        <?php if( 'event' == get_post_type() ) : ?>
+          $('.event__map__inner').html($content).show();
+
+        <?php else : ?>
+          $('.map__modal').html($content).show();
+
+        <?php endif; ?>
 
         $('#close-event').on('click', function(event) {
           event.preventDefault;
