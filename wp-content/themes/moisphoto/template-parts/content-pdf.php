@@ -1,6 +1,6 @@
 <?php
 setlocale(LC_TIME, "fr_FR");
-require_once( dirname(__FILE__) . "/vendors/dompdf/dompdf_config.inc.php");
+require_once( dirname(__FILE__) . "/dompdf/dompdf_config.inc.php");
 ob_start(); ?>
 
 <style type="text/css">
