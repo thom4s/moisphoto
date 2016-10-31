@@ -14,3 +14,16 @@
   height: 450px;
   
 }
+
+.entry__header {
+  text-align: center;
+  margin-top: $base_line_height;
+  margin-bottom: $base_line_height * 2;
+}
+
+.entry__content {
+  
+  p:first-child {
+    @extend .p--big;
+  }
+}

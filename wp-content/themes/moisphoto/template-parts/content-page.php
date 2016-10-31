@@ -20,10 +20,13 @@
     <div class="wrap">
 			<header class="entry__header m-14col is-centered clearfix">
 
-				<h1 class="entry__title">
+				<h1 class="h1 entry__title">
 					<?php the_title(); ?>
 				</h1>	
 
+        <?php if( 'post' == get_post_type() ) :  ?>
+          <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small">Par <?php the_author(); ?></span></p>
+        <?php endif; ?>
 			</header><!-- .entry-header -->
 		</div>
 

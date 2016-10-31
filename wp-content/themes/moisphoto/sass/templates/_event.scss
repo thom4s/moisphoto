@@ -77,6 +77,10 @@
     &.is-reduced {
       top: 89px;
       padding: $base_line_half / 2 0;
+
+      @include up-to(medium) {
+        top: 59px;
+      }
     }
 
   }
@@ -97,7 +101,7 @@
     }
     .h5 {
     }
-    
+
     p:not(.h5) {
       margin-bottom: 0;
     }
