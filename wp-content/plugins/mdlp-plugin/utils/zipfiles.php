@@ -11,6 +11,7 @@ if (!function_exists('zipThoseFiles')) {
   
       function zipFilesDownload($file_names, $archive_file_name, $file_path){
   
+
           $files = $file_names;
           $zipname = $archive_file_name;
 
@@ -40,7 +41,7 @@ if (!function_exists('zipThoseFiles')) {
       }
     }
 
-    $fileNames = array();// create files array
+    $fileNames = array(); // create files array
 
     $args = array(
       'post_type'     => 'attachment',
@@ -51,6 +52,7 @@ if (!function_exists('zipThoseFiles')) {
     );
 
     $attachments = get_posts($args);
+
     if ($attachments) {
       foreach ($attachments as $attachment) {
           $fileNames[] = get_attached_file( $attachment->ID );
@@ -61,7 +63,8 @@ if (!function_exists('zipThoseFiles')) {
     $slug = $post_data['post_name'];
     $zip_file_name = 'photos-'. $slug .'.zip';
     $file_path = dirname(__FILE__).'/files/';
-    
+  
+
     if( !empty($fileNames) ) {
       zipFilesDownload( $fileNames, $zip_file_name, $file_path );
     } 
