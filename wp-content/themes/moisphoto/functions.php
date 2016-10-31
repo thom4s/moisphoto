@@ -627,3 +627,14 @@ function serialize_array_content( $array, $value_only = false ) {
 }
 endif;
 
+
+/**
+ * Remove title prefix on protected posts
+ * @return title
+ **/
+add_filter( 'private_title_format', 'yourprefix_private_title_format' );
+add_filter( 'protected_title_format', 'yourprefix_private_title_format' );
+ 
+function yourprefix_private_title_format( $format ) {
+    return '%s';
+}
