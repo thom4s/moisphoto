@@ -10,3 +10,20 @@
     vertical-align: middle;
     padding: 0 $base_line_height;
   }
+
+    .portrait {
+
+      img {
+        max-height: 150px;
+        width: auto;
+      }
+    }
+
+
+    .landscape {
+
+      img {
+        max-width: 150px;
+        height: auto;
+      }
+    }    
