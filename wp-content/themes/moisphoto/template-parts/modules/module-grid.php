@@ -1,6 +1,6 @@
 
 <section class="module-grid clearfix">
-  <div class="wrap">
+  <div class="wrap grid__inner">
 
     <?php
 

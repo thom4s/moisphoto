@@ -13,7 +13,15 @@
   padding-bottom: $base_line_height * 2;
   margin-top: $base_line_height * 2;
   margin-bottom: $base_line_height * 2;
+
+  
 }
+  .grid__inner {
+    background-image: url(assets/img/grid_bg.png);
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
 
   .grid__row:not(:last-child) {
     margin-bottom: $base_line_height * 2;
