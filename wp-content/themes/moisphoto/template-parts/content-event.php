@@ -187,7 +187,7 @@
 								}
 
 								if( get_field('website', $lieu)) { ?>
-									<a href="<?php the_field('website', $lieu); ?>">Site internet</a>
+									<a href="<?php the_field('website', $lieu); ?>" target="_blank">Site internet</a>
 								<?php } 
 
 
