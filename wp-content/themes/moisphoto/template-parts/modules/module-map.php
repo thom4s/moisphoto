@@ -225,7 +225,10 @@
     "featureType": "administrative.locality",
     "stylers": [
       {
-        "visibility": "off"
+        "visibility": "simplified"
+      },
+      {
+        "color": "#aaaaaa"
       }
     ]
   },
@@ -312,7 +315,8 @@
     "stylers": [
       {
         "color": "#ffffff"
-      }
+      },
+
     ]
   },
   {
@@ -320,7 +324,7 @@
     "elementType": "labels",
     "stylers": [
       {
-        "visibility": "off"
+        "visibility": "simplified"
       }
     ]
   },
@@ -347,6 +351,9 @@
     "stylers": [
       {
         "color": "#757575"
+      },
+      {
+        "lightness": 50
       }
     ]
   },
@@ -359,6 +366,9 @@
       },
       {
         "visibility": "simplified"
+      },
+      {
+        "lightness": 50
       }
     ]
   },
@@ -377,6 +387,9 @@
     "stylers": [
       {
         "color": "#616161"
+      },
+      {
+        "lightness": 50
       }
     ]
   },
@@ -394,6 +407,9 @@
     "stylers": [
       {
         "color": "#9e9e9e"
+      },
+      {
+        "lightness": 50
       }
     ]
   },
@@ -401,7 +417,7 @@
     "featureType": "transit",
     "stylers": [
       {
-        "lightness": 65
+        "lightness": 50
       }
     ]
   },
@@ -410,7 +426,10 @@
     "elementType": "geometry",
     "stylers": [
       {
-        "color": "#bbbbbb"
+        "visibility": "simplified"
+      },
+      {
+        "color": "#dddddd"
       }
     ]
   },
@@ -440,7 +459,7 @@
         "color": "#373fbd"
       },
       {
-        "lightness": 50
+        "lightness": 75
       }
     ]
   },
