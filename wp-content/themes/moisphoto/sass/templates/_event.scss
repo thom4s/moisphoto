@@ -81,6 +81,9 @@
       @include up-to(medium) {
         top: 59px;
       }
+      @include at-least(large) {
+        top: 109px;
+      }
     }
 
   }
