@@ -12,6 +12,9 @@
     zipThoseFiles($id);
   }
 
+  $dp_pdf = get_field('dp_pdf');
+  $visuels_zip = get_field('visuels_zip');
+
 ?>
 
 
@@ -65,11 +68,17 @@
                 <span class="p--strong">- <?php the_title(); ?></span>
                 <span class=""> | <?php echo get_the_title( $lieu ); ?></span>
               </p>
-              <p class="press__btn">
-                <span class="p--strong">Téléchargez :  </span>
-                <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a>
-                - <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
-              </p>
+              <?php if( $dp_pdf || $visuels_zip ) : ?>
+                <p class="press__btn">
+                  <span class="p--strong">Téléchargez :  </span>
+                  <?php if( $dp_pdf ) : ?>
+                    <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a> -  
+                  <?php endif; ?> 
+                  <?php if( $visuels_zip ) : ?>
+                    <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
+                  <?php endif; ?>
+                </p>
+              <?php endif; ?> 
             </div>
           
           <?php endwhile; ?>

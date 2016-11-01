@@ -1967,4 +1967,65 @@ acf_add_local_field_group(array (
   'description' => '',
 ));
 
+
+
+acf_add_local_field_group(array (
+  'key' => 'group_581886b07b085',
+  'title' => 'Options Espace presse',
+  'fields' => array (
+    array (
+      'key' => 'field_581886c952956',
+      'label' => 'Afficher les PDF ?',
+      'name' => 'dp_pdf',
+      'type' => 'true_false',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+      'message' => '',
+      'default_value' => 0,
+    ),
+    array (
+      'key' => 'field_581887aaf8f96',
+      'label' => 'Autoriser le téléchargement des visuels ?',
+      'name' => 'visuels_zip',
+      'type' => 'true_false',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => 0,
+      'message' => '',
+    ),
+  ),
+  'location' => array (
+    array (
+      array (
+        'param' => 'page_template',
+        'operator' => '==',
+        'value' => 'page-presse.php',
+      ),
+    ),
+  ),
+  'menu_order' => 0,
+  'position' => 'normal',
+  'style' => 'default',
+  'label_placement' => 'top',
+  'instruction_placement' => 'label',
+  'hide_on_screen' => '',
+  'active' => 1,
+  'description' => '',
+));
+
+
+
+
 endif;
