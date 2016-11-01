@@ -643,3 +643,4 @@ add_filter( 'protected_title_format', 'yourprefix_private_title_format' );
 function yourprefix_private_title_format( $format ) {
     return '%s';
 }
+

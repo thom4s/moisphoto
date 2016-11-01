@@ -1,0 +1,12 @@
+
+
+
+.gallery {
+  display: table;
+}
+
+  .gallery-item {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 $base_line_height;
+  }
