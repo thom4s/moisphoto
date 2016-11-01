@@ -96,7 +96,7 @@
 
 		<div class="event__curators clearfix">
 			<div class="wrap row">
-				<div class="h5"><?php the_field('nom_commissaire'); ?></div>
+				<div class="h5">Commissariat : <?php the_field('nom_commissaire'); ?></div>
 
 			</div>
 		</div>	
@@ -142,11 +142,11 @@
 					<div class="event__place">
 						<div class="part" id="lieu" title="Le lieu"></div>
 
-						<h3 class="h3">Où ça se passe ?</h3>
+						<h3 class="h3">Informations pratiques</h3>
 
 						<h5 class="p--big has-bordertop--little">
 							<?php echo get_the_title( $lieu ); ?><br>
-							<span class="p"><?php $type_lieu = get_field('type_de_lieu', $lieu); moisphoto_get_artists_list($type_lieu); ?></span>
+							<span class="p"><?php $type_lieu = get_field('type_de_lieu', $lieu); //moisphoto_get_artists_list($type_lieu); ?></span>
 						</h5>
 
 						<p class="has-bordertop--little"><?php echo $lieu_adresse; ?></p>
@@ -154,45 +154,51 @@
 						<p><?php the_field('complement_adresse', $lieu); ?></p>
 
 
-						<div class="p--small place__details">Informations pratiques</div>
-						<div class="p--smaller">
-							<?php 
-							if( get_field('transport', $lieu) ) {
-								the_field('transport', $lieu);
-							}
+						<div class="p--small place__details">
+<!-- 							<h5 class="h5">Informations pratiques</h6> -->
+							<div class="">
+								
+								<p class="event__place__head has-bordertop--little">S'y rendre</p>
 
-							if( get_field('horaires', $lieu) !='' ) {
-								the_field('horaires', $lieu);
-								echo '<br>';
-							}
+								<?php 
+								if( get_field('transport', $lieu) ) {
+									the_field('transport', $lieu);
+								}
 
-							if(get_field('accès', $lieu)) {
-								the_field('accès', $lieu);
-							}							
+								if( get_field('horaires', $lieu) !='' ) {
+									the_field('horaires', $lieu);
+									echo '<br>';
+								}
 
-							if(get_field('telephone', $lieu)) {
-								the_field('telephone', $lieu);
-								echo '<br>';
-							}
+								if(get_field('accès', $lieu)) {
+									the_field('accès', $lieu);
+								}	?>		
 
-							if(get_field('email', $lieu)) {
-								the_field('email', $lieu);
-								echo '<br>';
-							}
+								<p class="event__place__head has-bordertop--little">Contact</p>
 
-							if( get_field('website', $lieu)) { ?>
-								<a href="<?php the_field('website', $lieu); ?>">Site internet</a>
-							<?php } 
+								<?php if(get_field('telephone', $lieu)) {
+									the_field('telephone', $lieu);
+									echo '<br>';
+								}
+
+								if(get_field('email', $lieu)) {
+									the_field('email', $lieu);
+									echo '<br>';
+								}
+
+								if( get_field('website', $lieu)) { ?>
+									<a href="<?php the_field('website', $lieu); ?>">Site internet</a>
+								<?php } 
 
 
-							if(get_field('date_vernissage', $lieu)) {
-								echo 'Date du vernissage : ';
-								the_field('date_vernissage', $lieu);
-								echo '<br>';
-							} ?>
+								if(get_field('date_vernissage', $lieu)) {
+									echo 'Date du vernissage : ';
+									the_field('date_vernissage', $lieu);
+									echo '<br>';
+								} ?>
 
+							</div>
 						</div>
-
 					</div>
 					
 					<div class="event__map">

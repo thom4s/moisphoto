@@ -215,8 +215,21 @@
 
     .place__details {
       margin-top: $base_line_half;
+      font-weight: $light;
+
+      .h5 {
+        margin-bottom: 0;
+      }
+
+      .event__place__head {
+        font-weight: $medium;
+        margin-top: $base_line_half / 2;
+        margin-bottom: $base_line_half / 4;
+      }
+
     }
   }
+
 
 
   .event__map {
