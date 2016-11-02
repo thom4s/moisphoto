@@ -113,7 +113,9 @@ add_action( 'widgets_init', 'moisphoto_widgets_init' );
  */
 function moisphoto_scripts() {
 	wp_enqueue_style( 'moisphoto-style', get_stylesheet_uri() );
+  define('ICL_DONT_LOAD_LANGUAGE_SELECTOR_CSS',true);
 
+  wp_deregister_script( 'wp-embed' );
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', 'http://code.jquery.com/jquery-2.1.4.min.js', false, '2.1.4', true);
 	wp_enqueue_script('jquery');
