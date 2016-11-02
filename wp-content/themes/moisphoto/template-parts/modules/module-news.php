@@ -38,7 +38,7 @@
               <a href="<?php the_permalink(); ?>">
 
                 <?php if ( has_post_thumbnail() ) : ?>
-                  <div class="news__item__img--big"><?php the_post_thumbnail(); ?></div>
+                  <div class="news__item__img--big"><?php the_post_thumbnail('news-main'); ?></div>
                 <?php endif; ?>
                 
                 <div class="arrow--little--black arrow--down"> > </div>
@@ -67,7 +67,7 @@
             <div class="news__item m-7col">
               <a href="<?php the_permalink(); ?>">
                 <?php if ( has_post_thumbnail() ) : ?>
-                  <div class="news__item__img--little"><?php the_post_thumbnail(); ?></div>
+                  <div class="news__item__img--little"><?php the_post_thumbnail('grid-thumb'); ?></div>
                 <?php endif; ?>
 
                 <div class="arrow--little--black arrow--down"> > </div>

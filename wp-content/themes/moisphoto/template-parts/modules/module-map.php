@@ -38,7 +38,7 @@
           $lieu_nom = get_the_title($p[0]);
 
 
-          $thumbnail = get_the_post_thumbnail($e, 'medium' );
+          $thumbnail = get_the_post_thumbnail($e, 'part-thumb' );
           $auteurs = get_field('auteurs', $e);
           $title = get_the_title($e);
           $chapo = get_field('chapo', $e);

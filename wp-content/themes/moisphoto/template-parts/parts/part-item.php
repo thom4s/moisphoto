@@ -28,7 +28,7 @@
       $lieu_adresse = $lieu_adresse_group['address'];
       $type = get_terms( 'event-type' ); ?>
 
-  <?php echo get_the_post_thumbnail($e_id); ?>
+  <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
 
   <h4 class="h3"><?php if($auteurs) { moisphoto_get_artists_list($auteurs); } ?></h4>
 
@@ -60,6 +60,9 @@
 
 
   <?php if( get_post_type( $e) == "post" ) { ?>
+
+    <?php echo get_the_post_thumbnail($e, 'part-thumb'); ?>
+
     <?php echo '<h4 class="h3">'. get_the_title( $e ) . '</h4>'; ?>
     <div class="rebonds__chapo has-bordertop--little">
       <p><?php echo $my_excerpt; ?></p>

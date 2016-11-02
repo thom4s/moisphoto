@@ -47,6 +47,9 @@ function moisphoto_setup() {
 	 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 	 */
 	add_theme_support( 'post-thumbnails' );
+  add_image_size( 'part-thumb', 350 ); 
+  add_image_size( 'grid-thumb', 500 ); 
+  add_image_size( 'news-main', 900, 450 ); 
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
