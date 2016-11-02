@@ -87,6 +87,20 @@
     });
 
 
+    $('#mobile_nav__trigger').on('click', function(event) {
+      event.preventDefault;
+      $('.main-navigation').toggle();
+      
+      var btn = $(this).find('.arrow--little--black');
+      var btn_content = btn.html();
+      
+      if( btn_content == '&gt;' ) {
+        btn.html( "x" );
+      } else {
+        btn.html("&gt;");
+      }
+
+    });
 
     // $('#social-stream').dcSocialStream({
     //     feeds: {

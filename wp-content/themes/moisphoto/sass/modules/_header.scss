@@ -26,7 +26,8 @@
 
   @include up-to(medium) {
     padding-top: 0;
-
+    opacity: 0.99;
+    
     &.is-reduced {
       padding-top: 0;
       padding-bottom: 0.5em;
@@ -49,7 +50,7 @@
   }
 
   @include up-to(medium) {
-    height: 0;
+    padding: 1em 0;
     min-height: auto;
   }
 } 

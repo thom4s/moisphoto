@@ -28,7 +28,7 @@
 	<header id="masthead" class="site-header clearfix" role="banner">
 
 		<div class="wrap row clearfix">
-			<div class="site-branding--little s-6col">
+			<div class="site-branding--little s-5col m-6col">
 				
 				<?php if( !is_front_page() && !is_home() ) : ?>
 					<div class="site-logo">
@@ -47,52 +47,22 @@
 				<?php endif; ?>
 			</div>
 
+
+			<div class="s-18col s-last mobile_nav">
+				<div class="mobile_nav__socials">
+					<?php get_template_part( 'template-parts/parts/part', 'socials' ); ?>
+				</div>
+
+				<a id="mobile_nav__trigger" class="clearfix mobile_nav__trigger"><span class="arrow--little--black">></span>Menu</a>
+			</div>
+
+
 			<nav id="site-navigation" class="main-navigation" role="navigation">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
 
-					<div class="pict--search square s-2col m-1col s-last">
-						<div class="square__content">
-							<div class="table">
-								<a class="pict__content table-cell js-open-searchbar icon-search" href="#"> </a>
-							</div>
-						</div>
-					</div>
-
-					<div class="pict--wpml square s-2col m-1col s-last">
-						<div class="square__content">
-							<div class="table">
-								<span class="pict__content table-cell"> <?php do_action('display_languages'); ?></span>	
-							</div>
-						</div>				
-					</div>
-
-					<div class="pict--social square s-2col m-1col s-last">
-						<div class="square__content">
-							<div class="table">
-								<a href="<?php echo TWITTER_LINK; ?>" target="_blank" class="pict__content icon-twitter table-cell"> </a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="pict--social square s-2col m-1col s-last">
-						<div class="square__content">
-							<div class="table">
-								<a href="<?php echo FACEBOOK_LINK; ?>" target="_blank" class="pict__content icon-facebook table-cell"> </a>
-							</div>
-						</div>
-					</div>
-	
-					<div class="pict--social square s-2col m-1col s-last">
-						<div class="square__content">
-							<div class="table">
-								<a href="<?php echo INSTAGRAM_LINK; ?>" target="_blank" class="pict__content icon-instagram table-cell"></a>
-							</div>
-						</div>
-					</div>
-
-		      <div id="searchbar" class="searchbar s-24col m-6col">
-		      	<?php get_search_form(); ?>
-		      </div>
+				<div class="main-nav__socials">
+					<?php get_template_part( 'template-parts/parts/part', 'socials' ); ?>
+				</div>
 
 			</nav><!-- #site-navigation -->
 		</div><!-- .row -->
