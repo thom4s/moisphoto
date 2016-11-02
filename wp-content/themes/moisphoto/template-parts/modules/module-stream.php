@@ -1,9 +1,16 @@
+<?php 
 
+  wp_enqueue_script('social-stream');
+  wp_enqueue_script('social-wall');
+
+
+?>
 
 <section class="module-stream">
 
-  <?php echo  do_shortcode('[ff id="1"]'); ?>
 
+  <div id="social-stream"></div>
+  
 
   <div class="stream__item">
     <p class="p--strong">date</p>
@@ -35,4 +42,5 @@
   <?php // echo do_shortcode( '[ff id="1"]' ); ?>
 
 </section>
+
 

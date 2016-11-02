@@ -115,9 +115,11 @@ function moisphoto_scripts() {
 	wp_enqueue_style( 'moisphoto-style', get_stylesheet_uri() );
 
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', 'http://code.jquery.com/jquery-2.1.4.min.js', false, '2.1.4', false);
+	wp_register_script('jquery', 'http://code.jquery.com/jquery-2.1.4.min.js', false, '2.1.4', true);
 	wp_enqueue_script('jquery');
 
+  wp_register_script('social-stream', get_stylesheet_directory_uri() . '/js/assets/jquery.social.stream.1.6.min.js', array( 'jquery' ), '1.6', true);
+  wp_register_script('social-wall', get_stylesheet_directory_uri() . '/js/assets/jquery.social.stream.wall.1.7.js', array( 'jquery', 'social-stream' ), '1.7', true);
 
   wp_enqueue_script( 'mdlp-scripts', get_stylesheet_directory_uri() . '/js/all.min.js', array( 'jquery' ), '1.0', true );
 
