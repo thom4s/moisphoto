@@ -88,16 +88,16 @@
 
 
 
-    $('#social-stream').dcSocialStream({
-        feeds: {
-          facebook: {
-            id: 'moisdelaphotograndparis',
-          },
-        },
-        control: false,
-        wall: false,
-        limit: 5,
-      });
+    // $('#social-stream').dcSocialStream({
+    //     feeds: {
+    //       facebook: {
+    //         id: 'moisdelaphotograndparis',
+    //       },
+    //     },
+    //     control: false,
+    //     wall: false,
+    //     limit: 5,
+    // });
 
 
 
