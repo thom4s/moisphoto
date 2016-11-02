@@ -26,6 +26,7 @@
       $chapo = get_field('chapo', $e);
       $lieu_adresse_group = get_field('adresse', $lieu);
       $lieu_adresse = $lieu_adresse_group['address'];
+      $city = get_field('ville', $lieu);
       $type = get_terms( 'event-type' ); ?>
 
   <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
@@ -51,9 +52,10 @@
       } ?>
   </p>
 
-  <div class="rebonds__chapo has-bordertop--little">
-    <p class="p--strong"><?php echo get_the_title( $lieu ); ?></p>
-    <p class="modal__adress"><?php echo $location['address']; ?></p>
+  <div class="rebonds__place has-bordertop--little">
+    <p class="p--strong rebonds__place__name"><?php echo get_the_title( $lieu ); ?></p>
+
+    <p class="rebonds__place__city"><?php echo $lieu_adresse; ?></p>
   </div>
 
   <?php } ?>
