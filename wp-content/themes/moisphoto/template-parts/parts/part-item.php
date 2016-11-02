@@ -26,7 +26,6 @@
       $chapo = get_field('chapo', $e);
       $lieu_adresse_group = get_field('adresse', $lieu);
       $lieu_adresse = $lieu_adresse_group['address'];
-      $city = get_field('ville', $lieu);
       $type = get_terms( 'event-type' ); ?>
 
   <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
