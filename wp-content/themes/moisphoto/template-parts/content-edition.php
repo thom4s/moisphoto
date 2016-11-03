@@ -111,7 +111,7 @@
 
       // END GRID ?>
 
-
+    <?php if( get_field('display_news') ) : ?>
     <section class="news-group clearfix">
       <div class="wrap row">
         <?php 
@@ -133,7 +133,7 @@
         </div>
       </div>  
     </section>
-
+    <?php endif; ?>
 
     <?php get_template_part( 'template-parts/modules/module', 'partners' ); ?>
 

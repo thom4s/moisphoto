@@ -1484,6 +1484,22 @@ acf_add_local_field_group(array (
       'ui' => 1,
     ),
     array (
+      'key' => 'field_581af71d7b548',
+      'label' => 'Afficher les actualités ?',
+      'name' => 'display_news',
+      'type' => 'true_false',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+      'message' => '',
+      'default_value' => 0,
+    ),
+    array (
       'key' => 'field_580616a2b090f',
       'label' => 'Actualité principale',
       'name' => 'news_main',
@@ -1492,7 +1508,7 @@ acf_add_local_field_group(array (
       'required' => 0,
       'conditional_logic' => 0,
       'wrapper' => array (
-        'width' => '',
+        'width' => '50',
         'class' => '',
         'id' => '',
       ),
