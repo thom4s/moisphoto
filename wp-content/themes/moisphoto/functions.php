@@ -90,23 +90,7 @@ function moisphoto_content_width() {
 }
 add_action( 'after_setup_theme', 'moisphoto_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-function moisphoto_widgets_init() {
-	register_sidebar( array(
-		'name'          => esc_html__( 'Sidebar', 'moisphoto' ),
-		'id'            => 'sidebar-1',
-		'description'   => esc_html__( 'Add widgets here.', 'moisphoto' ),
-		'before_widget' => '<section id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h2 class="widget-title">',
-		'after_title'   => '</h2>',
-	) );
-}
-add_action( 'widgets_init', 'moisphoto_widgets_init' );
+
 
 /**
  * Enqueue scripts and styles.
@@ -117,7 +101,7 @@ function moisphoto_scripts() {
 
   wp_deregister_script( 'wp-embed' );
 	wp_deregister_script('jquery');
-	wp_register_script('jquery', 'http://code.jquery.com/jquery-2.1.4.min.js', false, '2.1.4', true);
+	wp_register_script('jquery', 'http://code.jquery.com/jquery-2.1.4.min.js', false, '2.1.4', false);
 	wp_enqueue_script('jquery');
 
   wp_register_script('social-stream', get_stylesheet_directory_uri() . '/js/assets/jquery.social.stream.1.6.min.js', array( 'jquery' ), '1.6', true);
