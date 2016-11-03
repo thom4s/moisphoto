@@ -1,27 +1,40 @@
 
 
 (function($) {
-
-
   $(document).ready(function(){
 
-    var $searchbar = $('#searchbar');
+
+    /*
+     * Searchbar script
+     * Display / Hide searchbars or search results 
+     * there is 2 searchbars (desktop & mobile) & 1 results container
+     */
+    var searchbar = $('.searchbar');
 
     $('.js-open-searchbar').on('click', function() {
-      $searchbar.show();
+      $(this).parents('.square').siblings('#searchbar').show();
     });
 
-      $searchbar.find('.js-close').on('click', function() {
-        $searchbar.hide();
-      });
+    searchbar.find('.js-close').on('click', function(event) {
+      event.preventDefault;
+      $(this).parents('.searchbar').hide();
+
+    });
 
     $('.menu-item-has-children > a').on('click', function(event) {
       event.preventDefault();
     });
 
+    $('.close-search').on('click', function(event) {
+      event.preventDefault;
+      $('#searchresults').hide();
+    });
 
 
-    // TABLE OF CONTENT
+
+    /*
+     * Add Table of Content on Event page
+     */
     $ToC_parent = $("#summary");
     $ToC_id = $("#summary-inner");
     $classes_to_list = $(".part");
@@ -40,7 +53,10 @@
 
 
 
-    // SMOOTH SCROLLING THING
+    /*
+     * Smooth scrolling
+     * Add smooth when clicking an anchor
+     */
     var hashTagActive = "";
     $(".scroll").click(function (event) {
         if(hashTagActive != this.hash) { //this will prevent if the user click several times the same link to freeze the scroll.
@@ -62,8 +78,12 @@
     });
 
 
-    var event_summary_height = $('.event__summary').height();
 
+    /*
+     * Summary Script
+     * modify styles when scrolling
+     */
+    var event_summary_height = $('.event__summary').height();
     $( window ).scroll(function() {
       var $win = $(window);
 
@@ -81,44 +101,27 @@
 
     });
 
-    $('.close-search').on('click', function(event) {
-      event.preventDefault;
-      $('#searchresults').hide();
-    });
 
 
+    /*
+     * Mobile menu script
+     * Display / Hide mobile menu
+     */
     $('#mobile_nav__trigger').on('click', function(event) {
       event.preventDefault;
       $('.main-navigation').toggle();
       
       var btn = $(this).find('.arrow--little--black');
       var btn_content = btn.html();
-      
+
       if( btn_content == '&gt;' ) {
         btn.html( "x" );
-      } else {
+      }
+      else {
         btn.html("&gt;");
       }
-
     });
 
-    // $('#social-stream').dcSocialStream({
-    //     feeds: {
-    //       facebook: {
-    //         id: 'moisdelaphotograndparis',
-    //       },
-    //     },
-    //     control: false,
-    //     wall: false,
-    //     limit: 5,
-    // });
 
-
-
-  });
-
-
-
-
-
+  }); // end doc.ready
 })(jQuery);
