@@ -158,7 +158,7 @@
 <!-- 							<h5 class="h5">Informations pratiques</h6> -->
 							<div class="">
 								
-								<p class="event__place__head has-bordertop--little">S'y rendre</p>
+								<p class="event__place__head has-bordertop--little">Accès</p>
 
 								<?php 
 								if( get_field('transport', $lieu) ) {
