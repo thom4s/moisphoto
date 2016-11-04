@@ -164,32 +164,31 @@
         }
       }
 
-      figure {
-        margin-bottom: $base_line_height;
-        float: left;
-      }
-
-      figcaption {
-        width: 25%;
-        float: right;
-        text-align: right;
-
-        p {
-          width: 100%;
-          @extend .p--smaller;
-
-          strong {
-            @extend .p;
-            color: $black;
-          }
-        }
-      }
-
       @include up-to(medium) {
         margin-bottom: $base_line_height;
       }
     }
 
+      .wp-caption {
+          margin-bottom: 0;
+          float: left;
+        }
+
+        .wp-caption-text {
+          width: 25%;
+          float: right;
+          text-align: right;
+
+          p {
+            width: 100%;
+            @extend .p--smaller;
+
+            strong {
+              @extend .p;
+              color: $black;
+            }
+          }
+        }
 
   .event__dates {
     background-color: $black;

@@ -50,6 +50,7 @@ function moisphoto_setup() {
   add_image_size( 'part-thumb', 350 ); 
   add_image_size( 'grid-thumb', 500 ); 
   add_image_size( 'news-main', 900, 450 ); 
+  add_image_size( 'event-main', 900, 900 ); 
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(

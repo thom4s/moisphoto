@@ -107,14 +107,23 @@
 				<div class="m-16col">
 					<div class="part" id="presentation" title="Présentation"></div>
 
-					<?php if( get_field('chapo') != '' ) : ?>
+<!-- 					<?php if( get_field('chapo') != '' ) : ?>
 						<div class="p--big event__extract">
 							<?php the_field('chapo'); ?>
 						</div>
-					<?php endif; ?>
+					<?php endif; ?> -->
 
-          <?php if ( has_post_thumbnail() ) : ?>
-            <div class="event__thumbnail"><?php the_post_thumbnail('news-main'); ?></div>
+          <?php 
+          	if ( has_post_thumbnail() ) : 
+          		$media_id = get_post_thumbnail_id();
+           		$caption = get_field('legende', $media_id);
+					?>
+            <div class="clearfix event__thumbnail">
+
+							<figure class="event__thumbnail wp-caption"><?php the_post_thumbnail('event-main'); ?></figure>
+							<figcaption class="wp-caption-text"><?php echo $caption; ?></figcaption>
+
+	          </div>
           <?php endif; ?>
 
 					<div class="event__text row">
