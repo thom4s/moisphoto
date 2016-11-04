@@ -81,7 +81,7 @@
       @include up-to(medium) {
         top: 59px;
       }
-      @include at-least(large) {
+      @include at-least(wide) {
         top: 109px;
       }
     }
@@ -145,6 +145,12 @@
   .event__extract {
     margin-bottom: $base_line_height;
   }
+
+
+  .event__thumbnail {
+    margin-bottom: $base_line_height;
+  }
+
 
     .event__text {
 

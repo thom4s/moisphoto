@@ -112,7 +112,11 @@
 							<?php the_field('chapo'); ?>
 						</div>
 					<?php endif; ?>
-		
+
+          <?php if ( has_post_thumbnail() ) : ?>
+            <div class="event__thumbnail"><?php the_post_thumbnail('news-main'); ?></div>
+          <?php endif; ?>
+
 					<div class="event__text row">
 						<?php	the_content(); ?>
 					</div>
