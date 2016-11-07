@@ -63,17 +63,31 @@
 
         case 'weekend': ?>
           <?php 
+
+            wp_enqueue_script('bxslider');
+            
             $we_id = $item['weekend_item'];
             $we_url = get_permalink ( $we_id ); 
             $we_color = get_field('color', $we_id);
+            $we_events = get_field('events_list', $we_id);
+
           ?>
           <a href="<?php echo $we_url; ?>">
             <div class="grid__item--weekend s-22col m-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
                 <div class="s-12col m-8col grid__item__img">
-                      <img src="<?php echo $item['weekend_img']; ?>">
-                      <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
+                  
+                  <ul class="bxslider">
+                    <?php foreach ($we_events as $e) : ?>
+                      <li><?php echo get_the_post_thumbnail($e, 'grid-thumb'); ?></li>
+                    <?php endforeach; ?>
+
+                  </ul>
+                  <!-- <img src="<?php echo $item['weekend_img']; ?>"> -->
+                  
+
+                  <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
                 </div>
               
                 <div class="s-10col m-6col square">
@@ -91,6 +105,8 @@
               </div>
             </div>
           </a>
+
+
           <?php
           break;
 
@@ -195,4 +211,25 @@
   </div>
 </section><!-- .section.grid -->
 
+
+          <script type="text/javascript">
+
+            var slider_array = new Array();
+
+
+
+            $(document).ready(function(){
+
+              $('.bxslider').each(function(i){
+                  slider_array[i] = $(this).bxSlider({
+                    auto: true,
+                    pager: false,
+                    controls: false,
+                  });
+              });
+
+            });
+
+          </script>
+          
 
