@@ -29,8 +29,8 @@
 			<div class="wrap row">
 
 				<div class="clearfix event__id">
-					<div class="m-10col event__id__titles"><span class="id__artist"><?php moisphoto_get_artists_list($auteurs); ?></span> - <span class="id__title"> <?php the_title(); ?></span></div> 
-					<div class="m-10col m-last event__id__place">
+					<div class="s-10col event__id__titles"><span class="id__artist"><?php moisphoto_get_artists_list($auteurs); ?></span> - <span class="id__title"> <?php the_title(); ?></span></div> 
+					<div class="s-10col s-last event__id__place">
 						<span class="id__place"> <?php echo get_the_title( $lieu ); ?></span> | 	
 								<span class="id__date"> <?php 
 									if($date_fixe) {

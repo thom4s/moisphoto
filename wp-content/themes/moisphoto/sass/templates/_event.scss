@@ -10,85 +10,6 @@
 .event__single {
 
 
-  .event__id {
-    display: none;
-    color: $white;
-    padding-bottom: 0.5em;
-  }
-    .event__id__titles {
-      .id__artist {
-        text-transform: uppercase;
-      }
-      .id__title {
-        font-weight: $light;
-      }
-    }
-
-    .event__id__place {
-      text-align: right; 
-    }
-      .id__place {
-        font-weight: $light;
-        padding-right: $base_line_half;
-      }
-      .id__date {
-        padding-left: $base_line_half;
-      }
-
-  .event__summary {
-    @include transition(all, 0.2s);
-    @include type-setting(-1);
-
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 999;
-  
-    padding: $base_line_half 0;
-    background-color: $black;
-
-    ul {
-      height: $base_line_half * 1.25;
-      line-height: $base_line_half * 1.25;
-    }
-
-    .arrow--little--white {
-      float: left;
-    }
-
-    .summary__item {
-
-      display: inline-block;
-      float: left;
-      border-right: 1px solid $white;
-      text-transform: uppercase;
-      padding: 0 1em;
-      margin: 0;
-      
-      &:last-child {
-        border: none;
-      }
-
-      a {
-        color: $white;
-      }
-    }
-
-    &.is-reduced {
-      top: 89px;
-      padding: $base_line_half / 2 0;
-
-      @include up-to(medium) {
-        top: 80px;
-      }
-      @include at-least(wide) {
-        top: 109px;
-      }
-    }
-
-  }
-
-
 
   .event__header {
     @include transition(all, 0.2s);
@@ -114,7 +35,7 @@
     }
   }
     .event__header__inner {
-      padding-top: 60px;
+      padding-top: $base_line_half;
     }
       .header__titles {
         margin-bottom: $base_line_height;
@@ -277,6 +198,86 @@
 
 }
 
+
+
+  .event__summary {
+    @include transition(all, 0.2s);
+    @include type-setting(-1);
+
+    left: 0;
+    right: 0;
+    z-index: 999;
+    margin-top: $base_line_half / 2;
+    padding: $base_line_half 0;
+    background-color: $black;
+
+    ul {
+      height: $base_line_half * 1.25;
+      line-height: $base_line_half * 1.25;
+    }
+
+
+    .event__id {
+      display: none;
+      color: $white;
+      padding-bottom: 0.5em;
+    }
+      .event__id__titles {
+        .id__artist {
+          text-transform: uppercase;
+        }
+        .id__title {
+          font-weight: $light;
+        }
+      }
+
+      .event__id__place {
+        text-align: right; 
+      }
+        .id__place {
+          font-weight: $light;
+          padding-right: $base_line_half;
+        }
+        .id__date {
+          padding-left: $base_line_half;
+        }
+
+
+    .arrow--little--white {
+      float: left;
+    }
+
+    .summary__item {
+
+      display: inline-block;
+      float: left;
+      border-right: 1px solid $white;
+      text-transform: uppercase;
+      padding: 0 1em;
+      margin: 0;
+      
+      &:last-child {
+        border: none;
+      }
+
+      a {
+        color: $white;
+      }
+    }
+
+    &.is-reduced {
+      top: 89px;
+      padding: $base_line_half / 2 0;
+
+      @include up-to(medium) {
+        top: 53px;
+      }
+      @include at-least(wide) {
+        top: 109px;
+      }
+    }
+
+  }
 
 
 

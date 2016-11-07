@@ -52,6 +52,8 @@
     }
 
 
+    $('#masthead').append($ToC_parent);
+
 
     /*
      * Smooth scrolling
