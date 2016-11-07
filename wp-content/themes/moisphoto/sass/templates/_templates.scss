@@ -13,6 +13,10 @@ body {
 
 #page {
   padding-top: 118px;
+
+  @include up-to(medium) {
+    padding-top: 0;
+  }
 }
 
   .map_fulscreen {

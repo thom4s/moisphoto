@@ -1,4 +1,4 @@
-        <div class="pict--search square s-2col m-1col s-last">
+          <div class="pict--search square s-2col m-1col s-last">
             <div class="square__content">
               <div class="table">
                 <a class="pict__content table-cell js-open-searchbar icon-search" href="#"> </a>

@@ -42,7 +42,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 9999;
+    z-index: 999;
   
     padding: $base_line_half 0;
     background-color: $black;
@@ -79,7 +79,7 @@
       padding: $base_line_half / 2 0;
 
       @include up-to(medium) {
-        top: 59px;
+        top: 80px;
       }
       @include at-least(wide) {
         top: 109px;
