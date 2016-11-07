@@ -187,7 +187,7 @@
 									the_field('accès', $lieu);
 								}	?>		
 
-								<p class="event__place__head has-bordertop--little">Contact</p>
+								<p class="event__place__head has-bordertop--little">Contact(s)</p>
 
 								<?php if(get_field('telephone', $lieu)) {
 									the_field('telephone', $lieu);
