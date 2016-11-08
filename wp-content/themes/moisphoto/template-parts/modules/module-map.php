@@ -91,7 +91,7 @@
                     <div class="has-bordertop--little">
 
                       <p class="p--strong"><?php echo $c_location['address']; ?></p>
-                      
+                      <br>
                       <?php echo $c_description; ?>
 
                     </div>
