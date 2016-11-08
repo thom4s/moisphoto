@@ -580,13 +580,17 @@
     };
 
     if ( $marker.attr('icon') == 'default_2' ) {
+       var default_icon = {
+          url: icon_file,
+          scaledSize: new google.maps.Size(12, 12),
+      };     
       var active_icon = {
           url: active_icon_file,
           scaledSize: new google.maps.Size(22, 22), 
           // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
           // The anchor for this image is the base of the flagpole at (0, 32).
-          anchor: new google.maps.Point(0, 0)
+          anchor: new google.maps.Point(11, 18)
       };
     } 
     else {
