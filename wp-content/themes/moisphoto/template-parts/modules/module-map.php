@@ -515,7 +515,7 @@
     
     // vars
     var args = {
-      zoom              : <?php if( isset($zoom) ) { echo $zoom; } else { echo '11'; } ?>,
+      zoom              : <?php if( isset($zoom) ) { echo $zoom; } else { echo '12'; } ?>,
       center            : <?php echo $center; ?>,
       mapTypeId         : google.maps.MapTypeId.ROADMAP,
       draggable         : true,
