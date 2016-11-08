@@ -47,4 +47,9 @@
 
 .press__password {
   padding: 3em 0;
+
+  input[type=password] {
+    color: $white;
+    text-align: center;
+  }
 }

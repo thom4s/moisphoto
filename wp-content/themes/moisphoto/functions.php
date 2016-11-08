@@ -588,7 +588,7 @@ function my_password_form() {
     $label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
     $o = '<form class="passwdform" action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">
     ' . __( "<p class='passwdform-msg'>Pour accéder au contenu de cette page, merci de renseigner la mot de passe ici : </p>" ) . '
-    <label for="' . $label . '">' . __( "" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" maxlength="20" /><input type="submit" name="Submit" value="' . esc_attr__( "ok" ) . '" />
+    <label for="' . $label . '">' . __( "" ) . ' </label><input name="post_password" id="' . $label . '" type="password" size="20" maxlength="20" placeholder="entrer ici le mot de passe" /><input type="submit" name="Submit" value="' . esc_attr__( "ok" ) . '" />
     </form>
     ';
     return $o;
