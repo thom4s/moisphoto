@@ -50,12 +50,13 @@
     background-color: $gray_lighter;
     text-align: center;
     padding: $base_line_height;
-    margin-bottom: $base_line_height * 2;
+    margin-bottom: $base_line_height;
   }
 
 
   .event__main {
     margin-bottom: $base_line_height * 2;
+    margin-top: $base_line_height;
 
     @include up-to(medium) {
       margin-bottom: $base_line_height;
@@ -96,6 +97,7 @@
         }
 
         .wp-caption-text {
+          clear: both;
           width: 25%;
           float: left;
           text-align: left;
@@ -220,7 +222,7 @@
     .event__id {
       display: none;
       color: $white;
-      padding-bottom: 0.5em;
+      padding-bottom: 1em;
     }
       .event__id__titles {
         .id__artist {
@@ -267,7 +269,7 @@
 
     &.is-reduced {
       top: 89px;
-      padding: $base_line_half / 2 0;
+      padding: 11px 0 9px;
 
       @include up-to(medium) {
         top: 53px;

@@ -20,6 +20,22 @@
 		'lat' => $lieu_adresse_group['lat'],
 		'lng' => $lieu_adresse_group['lng'],
 	);
+
+	$weekends = get_posts(array(
+		'post_type' => 'weekend',
+		'meta_query' => array(
+			array(
+				'key' => 'events_list', 
+				'value' => '"' . get_the_ID() . '"', 
+				'compare' => 'LIKE'
+			)
+		)
+	));
+
+	if($weekends) : 
+		$we_color = get_field('color', $weekends[0]->ID);
+	endif; 
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -94,12 +110,14 @@
 	
 	<div class="event__content clearfix">
 
+		<?php if( get_field('nom_commissaire') ) : ?>
 		<div class="event__curators clearfix">
 			<div class="wrap row">
 				<div class="h5">Commissariat : <?php the_field('nom_commissaire'); ?></div>
 
 			</div>
 		</div>	
+		<?php endif; ?>
 
 		<div class="event__main clearfix">
 			<div class="wrap row">
@@ -137,7 +155,7 @@
 
 				<div class="m-6col m-last">
 
-					<div class="event__dates">
+					<div class="event__dates" style="background-color: <?php echo $we_color; ?>">
 						<div class="h4">
 							<?php 
 								if($date_fixe) {
@@ -152,7 +170,7 @@
 					</div>
 
 
-					<div class="event__place">
+					<div class="event__place" style="border-color: <?php echo $we_color; ?>">
 						<div class="part" id="lieu" title="Le lieu"></div>
 
 						<h3 class="h3">Informations pratiques</h3>
@@ -194,12 +212,12 @@
 									echo '<br>';
 								}
 
-								if(get_field('email', $lieu)) {
+								if( get_field('email', $lieu) ) {
 									the_field('email', $lieu);
 									echo '<br>';
 								}
 
-								if( get_field('website', $lieu)) { ?>
+								if( get_field('website', $lieu) ) { ?>
 									<a href="<?php the_field('website', $lieu); ?>" target="_blank">Site internet</a>
 								<?php } 
 
@@ -214,7 +232,19 @@
 						</div>
 					</div>
 					
-					<div class="event__map">
+
+
+					<?php if( $weekends ): ?>
+						<div class="event__place" style="border-color: <?php echo $we_color; ?>">
+
+							<p>Cet événement appartient au <a href="<?php echo get_permalink( $weekends[0]->ID ); ?>"><?php echo get_the_title( $weekends[0]->ID ); ?></a>.</p>
+
+						</div>
+					<?php endif; ?>
+
+
+
+					<div class="event__map" style="border-color: <?php echo $we_color; ?>">
 					  <h3 class="h3">événements et curiosités proches</h3>
 
 						<div class="part" id="curiosites" title="Les curiosités"></div>
