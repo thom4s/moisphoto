@@ -73,9 +73,19 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 .searchbar--press {
   @extend .searchbar;
 
+  height: auto;
   display: block;
   position: relative;
   margin-bottom: $base_line_height;
+  margin-top: $base_line_height;
+
+  .h5 { 
+    margin-bottom: $base_line_half;
+
+    &.has-bordertop--little:before {
+      border-color: $black;
+    }
+  }
 }
 
 .search-form-bar {
