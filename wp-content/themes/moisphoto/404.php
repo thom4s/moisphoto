@@ -12,47 +12,62 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'moisphoto' ); ?></h1>
-				</header><!-- .page-header -->
+			<section class="error-404 not-found ">
+				<div class="wrap row">
+			    <header class="page__header m-16col clearfix">
+			      <div class="has-bordertop--big clearfix"></div>   
+			      <h1 class="h1">Désolé, nous n'avons pas trouvez ce que vous cherchez...</h1>
+			    </header><!-- .entry-header -->
+				</div>
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'moisphoto' ); ?></p>
 
-					<?php
-						get_search_form();
+				<div class="page-content clearfix ">
+					<p class="wrap">Voici une carte des événements du Mois de la Photo du Grand Paris pour vous y retrouver...</p>
 
-						the_widget( 'WP_Widget_Recent_Posts' );
+			    <?php 
+			      // GET MAP ITEMS AND DISPLAY
 
-						// Only show the widget if site has multiple categories.
-						if ( moisphoto_categorized_blog() ) :
-					?>
+				    $front_page_id = get_option('page_on_front');
+				    $current_edition = get_field('edition_courante', $front_page_id); 
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'moisphoto' ); ?></h2>
-						<ul>
-						<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-						?>
-						</ul>
-					</div><!-- .widget -->
+			      $type_relation = get_field('type_relation', $current_edition);      
+			      $events = array();
+			      $places = array();
 
-					<?php
-						endif;
+			      if( $type_relation == 'Weekends') : 
+			        $weekends = get_field('weekends',  $current_edition); // ID
 
-						/* translators: %1$s: smiley */
-						$archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'moisphoto' ), convert_smilies( ':)' ) ) . '</p>';
-						the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
+			        foreach ($weekends as $we) {
+			          $events_list = get_field('events_list', $we);
+			          $color_we = get_field('color', $we);
+			          $color_we = str_replace('#', '', $color_we); 
+			          
+			          foreach ($events_list as $e) {
+			            $events[] = $e;
+			            $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+			          }            
+			        }
+			        $is_weekend = true; 
 
-						the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+			      elseif ( $type_relation == 'Événements' ) :
+			        $events = get_field('evenements', $current_edition);
+
+			        foreach ($events as $e) {
+			          $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+			        }    
+			        $is_weekend = false; 
+
+			      endif; 
+			        $is_weekend = false; 
+
+			      set_query_var('events', $events); 
+			      set_query_var('places_events_array', $places_events_array); 
+			      set_query_var('is_weekend', $is_weekend); 
+
+			      get_template_part( 'template-parts/modules/module', 'map' ); 
+
+			      // END MAP ?>
+
 
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
