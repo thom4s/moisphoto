@@ -14,14 +14,30 @@
   a {
     color: inherit;
   }
+
+  .square__content {
+    width: 98%;
+    height: 98%;
+  }
 }
 
 
-.pict--social {
+.pict--fb {
   @extend %picto;
 
   .pict__content {
-    background-color: $gray_darker;
+    background-color: $color_primary;
+  }
+}
+
+.pict--contact {
+  @extend %picto;
+
+  .pict__content {
+    background-color: $black;
+    line-height: 1;
+    font-size: 10px;
+    font-weight: 100;
   }
 }
 
