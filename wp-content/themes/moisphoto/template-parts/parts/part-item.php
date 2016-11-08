@@ -15,8 +15,6 @@
     $my_excerpt = substr($my_excerpt, 0, '200') . '...';
   } ?>
 
-<div class="m-6col m-<?php echo $push; ?>col-push rebonds__item <?php echo $clearfix; ?>">
-
   <?php 
     if( get_post_type( $e_id) == "event" ) { 
       // Get Variables
@@ -26,7 +24,30 @@
       $chapo = get_field('chapo', $e);
       $lieu_adresse_group = get_field('adresse', $lieu);
       $lieu_adresse = $lieu_adresse_group['address'];
-      $type = get_terms( 'event-type' ); ?>
+      $type = get_terms( 'event-type' ); 
+
+      $weekends = get_posts(array(
+        'post_type' => 'weekend',
+        'meta_query' => array(
+          array(
+            'key' => 'events_list', 
+            'value' => '"' . $e_id . '"', 
+            'compare' => 'LIKE'
+          )
+        )
+      ));
+
+      if($weekends) : 
+        $we_color = get_field('color', $weekends[0]->ID);
+      endif; 
+    
+    } ?>
+
+
+<div class="m-6col m-<?php echo $push; ?>col-push rebonds__item <?php echo $clearfix; ?>" style="border-color: <?php echo $we_color; ?>">
+
+  <?php 
+    if( get_post_type( $e_id) == "event" ) { ?>
 
   <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
 

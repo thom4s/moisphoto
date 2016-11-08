@@ -33,6 +33,10 @@
     .has-bordertop--little::before {
       border-color: $white;
     }
+
+    @include at-least(wide) {
+      padding: $base_line_height * 2 0 $base_line_height * 1.5;
+    }
   }
     .event__header__inner {
       padding-top: $base_line_half;
