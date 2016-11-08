@@ -29,3 +29,15 @@ a:focus,
 a:active {
   color: inherit;
 }
+
+
+.page__content {
+
+  a {
+    border-bottom: 1px dotted $color_primary;
+
+    &:hover {
+      padding-left: 2px;
+    }
+  }
+}
