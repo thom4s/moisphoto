@@ -2,10 +2,6 @@
 /**
  * The header for our theme.
  *
- * This is the template that displays all of the <head> section and everything up until <div id="content">
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
  * @package moisphoto
  */
 
@@ -31,17 +27,17 @@
 			<div class="site-branding--little s-5col m-6col">
 				
 				<?php if( !is_front_page() && !is_home() ) : ?>
-					<div class="site-logo">
+					<div class="site-logo--little">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_little.png">
 						</a>
 					</div>
 
 				<?php else : ?>
-					<div class="row">
-						<div class="m-1col ">
-							<div class=""> </div>
-						</div>				
+					<div class="site-logo--little">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_little.png">
+						</a>
 					</div>
 
 				<?php endif; ?>
@@ -83,7 +79,7 @@
 	<?php if( is_front_page() ) : ?>
 		<div class="wrap">
 			<div class="site-branding--big row clearfix">
-				<div class="site-logo s-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
+				<div class="site-logo--big s-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
 			</div><!-- .site-branding -->
 		</div>
 	<?php endif; ?>

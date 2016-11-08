@@ -20,7 +20,7 @@
   @include transition(all, 0.2s);
 
   &.is-reduced {
-    padding-top: 1em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
   }
 
@@ -54,3 +54,7 @@
     min-height: auto;
   }
 } 
+
+  .home .site-logo--little {
+    display: none;
+  }

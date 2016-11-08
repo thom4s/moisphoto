@@ -86,19 +86,22 @@
      * modify styles when scrolling
      */
     var event_summary_height = $('.event__summary').height();
+
     $( window ).scroll(function() {
       var $win = $(window);
 
-      if ($win.scrollTop() > 50) {
+      if ($win.scrollTop() > 100) {
         $( "#masthead" ).addClass( "is-reduced" );
         $('.event__summary').addClass("is-reduced");
         $('.event__id').show();
+        $('.home .site-logo--little').show();
       }
 
       if ($win.scrollTop() === 0) {
         $( "#masthead" ).removeClass( "is-reduced" );
         $('.event__summary').removeClass("is-reduced");
         $('.event__id').hide();
+        $('.home .site-logo--little').hide();
       }
 
     });
