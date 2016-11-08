@@ -64,7 +64,7 @@
         case 'weekend': ?>
           <?php 
 
-            wp_enqueue_script('bxslider');
+            //wp_enqueue_script('bxslider');
             
             $we_id = $item['weekend_item'];
             $we_url = get_permalink ( $we_id ); 
@@ -211,24 +211,5 @@
 </section><!-- .section.grid -->
 
 
-          <script type="text/javascript">
-
-            var slider_array = new Array();
-
-
-
-            $(document).ready(function(){
-
-              $('.bxslider').each(function(i){
-                  slider_array[i] = $(this).bxSlider({
-                    auto: true,
-                    pager: false,
-                    controls: false,
-                  });
-              });
-
-            });
-
-          </script>
           
 
