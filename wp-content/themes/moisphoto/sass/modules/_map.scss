@@ -31,7 +31,7 @@
     left: 4.16667%;
     top: $base_line_height;
     bottom: $base_line_height;
-    width: 25%;
+    width: 33.33333%;
     background-color: $black;
     color: $white;
     padding: 0;
@@ -67,6 +67,8 @@
 
     .map__modal__content {
       border-top: $base_line_height * 0.75 solid $color_primary;
+      padding-bottom: 60px;
+      overflow-y: scroll;
 
       .modal__img {
         max-height: 130px;
@@ -83,6 +85,10 @@
 
       .modal__texts {
         padding: 0 $base_line_height;
+        position: absolute;
+        bottom: 75px;
+        top: 145px + $base_line_height * 0.75;
+        overflow-y: scroll;
       }
 
       h3.h3 {
