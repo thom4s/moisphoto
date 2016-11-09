@@ -15,6 +15,10 @@
   $dp_pdf = get_field('dp_pdf');
   $visuels_zip = get_field('visuels_zip');
 
+        $file_caption = get_field('legende', 312);
+
+//        die( var_dump( $file_caption ) );
+
 ?>
 
 
