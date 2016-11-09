@@ -27,9 +27,16 @@
 					<?php the_title(); ?>
 				</h1>	
 
-        <?php if( 'post' == get_post_type() ) :  ?>
-          <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small">Par <?php the_author(); ?></span></p>
-        <?php endif; ?>
+        <div class="entry__excerpt">
+          <?php if( 'post' == get_post_type() ) :  ?>
+            <p><span class="p--strong"><?php echo get_the_date('d/m/Y'); ?></span> - <span class="small">Par <?php the_author(); ?></span></p>
+
+          <?php elseif( 'page' == get_post_type() ) : 
+
+            the_field('chapo');
+
+          endif; ?>
+        </div>
 			</header><!-- .entry-header -->
 		</div>
 

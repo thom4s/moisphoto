@@ -21,6 +21,16 @@
   margin-bottom: $base_line_height * 2;
 }
 
+.entry__excerpt {
+  @include type-setting(1);
+  margin-top: $base_line_height;
+
+  p {
+    font-size: inherit;
+    line-height: inherit;
+  }
+}
+
 .entry__content {
   
   p:first-child {
