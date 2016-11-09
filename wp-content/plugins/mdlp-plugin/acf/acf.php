@@ -8,9 +8,10 @@ add_action('acf/init', 'my_acf_init');
 
 if( function_exists('acf_add_local_field_group') ):
 
+
 acf_add_local_field_group(array (
   'key' => 'group_581367f629862',
-  'title' => 'Grille (accueil, éditions & weekends)',
+  'title' => 'Lier des pages (accueil, éditions, pages & weekends)',
   'fields' => array (
     array (
       'key' => 'field_5805cd3069666',
@@ -546,6 +547,36 @@ acf_add_local_field_group(array (
         ),
       ),
     ),
+    array (
+      'key' => 'field_57c6850ff139f',
+      'label' => 'Evénéments & Pages liés',
+      'name' => 'evenements_lies',
+      'type' => 'relationship',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'post_type' => array (
+        0 => 'event',
+        1 => 'post',
+        2 => 'page',
+      ),
+      'taxonomy' => array (
+      ),
+      'filters' => array (
+        0 => 'search',
+        1 => 'post_type',
+        2 => 'taxonomy',
+      ),
+      'elements' => '',
+      'min' => '',
+      'max' => '',
+      'return_format' => 'object',
+    ),
   ),
   'location' => array (
     array (
@@ -560,6 +591,13 @@ acf_add_local_field_group(array (
         'param' => 'post_type',
         'operator' => '==',
         'value' => 'edition',
+      ),
+    ),
+    array (
+      array (
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'page',
       ),
     ),
     array (
@@ -1057,6 +1095,11 @@ acf_add_local_field_group(array (
   ),
   'location' => array (
     array (
+      array (
+        'param' => 'post_type',
+        'operator' => '==',
+        'value' => 'event',
+      ),
       array (
         'param' => 'post_type',
         'operator' => '==',

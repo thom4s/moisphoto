@@ -7,6 +7,9 @@
  * @package moisphoto
  */
 
+  $evenements_lies = get_field('evenements_lies');  
+
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -35,6 +38,16 @@
 				<?php	the_content(); ?>
 			</div><!-- .entry-content -->
 		</div>
+
+
+        <?php if($evenements_lies) : ?>
+          <div class="part" id="rebonds" title="Autour de l'exposition"></div>
+          <?php 
+            set_query_var('rebonds', $evenements_lies); 
+            get_template_part( 'template-parts/modules/module', 'rebonds' ); ?>
+        <?php endif; ?>
+
+
 
 	</div>
 </article><!-- #post-## -->
