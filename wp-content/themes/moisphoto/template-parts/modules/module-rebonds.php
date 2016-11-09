@@ -4,6 +4,7 @@
 
         <div class="m-3col has-bordertop--big">
           <h3 class="h2">
+            
             <?php if( 'event' == get_post_type() ) : ?>
               Autour de l'événement
             <?php elseif( 'page' == get_post_type() ) : ?>

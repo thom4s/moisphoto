@@ -1,15 +1,27 @@
 
 <?php 
 
-  if( is_object( $e ) ) {
-    $e_id = $e->ID;
-    $my_excerpt = $e->post_content;
-  } else {
-    $e_id = $e;
-    $my_excerpt = get_post_field('post_content', $e);
-  }
 
-  $url = get_permalink ( $e_id );
+    if( 'event' == get_post_type() ) : 
+
+      if( is_object( $e ) ) {
+        $e_id = $e->ID;
+        $my_excerpt = $e->post_content;
+      } else {
+        $e_id = $e;
+        $my_excerpt = get_post_field('post_content', $e);
+      }
+      $url = get_permalink( $e_id );
+
+
+    elseif( 'page' == get_post_type() ) : 
+      $my_excerpt = get_post_field('chapo', $e->ID);
+      $url = get_permalink( $e->ID );
+
+    else: 
+
+    endif; 
+
 
   if ( strlen($my_excerpt) > 250 ) {
     $my_excerpt = substr($my_excerpt, 0, '200') . '...';
@@ -103,7 +115,16 @@
 
   <div>
     <span class="arrow--little--black"> > </span>
-    <a href="<?php echo $url; ?>" class="a--inline">En savoir plus</a>     
+    <a href="<?php echo $url; ?>" class="a--inline">
+
+           <?php if( 'event' == get_post_type() ) : ?>
+              En savoir plus
+            <?php elseif( 'page' == get_post_type() ) : ?>
+              Lire la suite
+            <?php else: ?>
+              Lire la suite
+            <?php endif; ?>
+    </a>
   </div>
                   
 </div>
