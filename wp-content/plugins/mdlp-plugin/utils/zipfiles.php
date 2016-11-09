@@ -69,7 +69,7 @@ if (!function_exists('zipThoseFiles')) {
       foreach ($attachments as $attachment) {
         $fileNames[] = get_attached_file( $attachment->ID );
         $new_filename = substr( get_attached_file( $attachment->ID ), strrpos( get_attached_file( $attachment->ID ),'/' ) + 1 );
-        $file_caption = $new_filename . ' : ' . get_field('legende', $attachment->ID );
+        $file_caption = "\n" . "\n" . $new_filename . ' : ' . get_field('legende', $attachment->ID );
 
         $tags = array('<p>','</p>','<em>','</em>','<br />','<div class="clearfix event__thumbnail">','</div>');
         $file_caption_clean = str_replace($tags, "", $file_caption);
