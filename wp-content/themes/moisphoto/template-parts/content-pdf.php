@@ -19,21 +19,30 @@ ob_start();
 
   html, table, tr, td { margin: 0; padding: 0; }
   body { 
-    margin: 40pt; 
-    font-family: Verdana,Geneva,sans-serif;
-    font-size: 14px;
+    margin: 80pt; 
+    font-family: Verdana, Geneva, sans-serif;
+    font-size: 12px;
   }
   h1 {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 100;
     text-transform: uppercase;
     margin-bottom: 0;
   }
   h2 {
     font-weight: 100;
-    font-size: 18px;
+    font-size: 16px;
   }
-
+  h3 {
+    font-weight: 900;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+  h4 {
+    font-weight: 900;
+    font-size: 11px;
+    margin-top: 30pt;
+  }
 
 </style>
 <!DOCTYPE html>
@@ -66,12 +75,13 @@ ob_start();
       }
     ?> </p> 
 
-    <p>--</p>
+    <p>Commissariat : <?php the_field('nom_commissaire'); ?></p>
 
 
-    <h3 class="h3">L'exposition</h3>
+<br>
+<br>
+<br>
 
-    <p><?php the_field('nom_commissaire'); ?></p>
 
     <?php if( get_field('chapo') != '' ) : ?>
       <div class="p--big event__extract">
@@ -83,22 +93,25 @@ ob_start();
       <?php the_content(); ?>
     </div>
 
-    <p>--</p>
 
 
-    <h3 class="h3">Où ça se passe ?</h3>
+    <div style="page-break-before: always;"></div>
 
-            <h5>
-              <?php echo get_the_title( $lieu ); ?><br>
-              <?php $type_lieu = get_field('type_de_lieu', $lieu); moisphoto_get_artists_list($type_lieu); ?>
-            </h5>
 
-            <p><?php echo $lieu_adresse; ?></p>
+    <h3>Informations pratiques</h3>
+
+      <h5>
+        <?php echo get_the_title( $lieu ); ?><br>
+        <?php $type_lieu = get_field('type_de_lieu', $lieu); moisphoto_get_artists_list($type_lieu); ?>
+      </h5>
+
+      <p><?php echo $lieu_adresse; ?></p>
             
-            <p><?php the_field('complement_adresse', $lieu); ?></p>
+      <p><?php the_field('complement_adresse', $lieu); ?></p>
 
+<br>
 
-      <h4>Informations pratiques</h4>
+      <h4>Accès</h4>
         <?php 
         if( get_field('transport', $lieu) ) {
           the_field('transport', $lieu);
@@ -111,8 +124,11 @@ ob_start();
 
         if(get_field('accès', $lieu)) {
           the_field('accès', $lieu);
-        }             
+        }    ?>
 
+      <h4>Contact(s)</h4>
+
+        <?php
         if(get_field('telephone', $lieu)) {
           the_field('telephone', $lieu);
           echo '<br>';
@@ -135,8 +151,10 @@ ob_start();
         } ?>
 
 
+      <h4>Contact presse</h4>
+        <p> <?php the_field('nom_contact', $lieu); ?></p>
+        <p> <?php the_field('email_contact', $lieu); ?></p>
 
-    <div style="page-break-before: always;"></div>
 
 
  
