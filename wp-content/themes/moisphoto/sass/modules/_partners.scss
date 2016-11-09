@@ -8,6 +8,10 @@
 
 .module-partners {
 
+  background-color: $gray_lighter;
+  padding-top: $base_line_height * 2;
+  padding-bottom: $base_line_height * 2;
+  opacity: 0.98;
 
   .h2 {
     border-bottom: 1px solid $gray_light;
