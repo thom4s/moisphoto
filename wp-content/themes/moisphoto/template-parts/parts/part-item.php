@@ -2,7 +2,7 @@
 <?php 
 
 
-    if( 'event' == get_post_type() ) : 
+    if( 'event' == get_post_type( $e ) ) : 
 
       if( is_object( $e ) ) {
         $e_id = $e->ID;
@@ -14,7 +14,7 @@
       $url = get_permalink( $e_id );
 
 
-    elseif( 'page' == get_post_type() ) : 
+    elseif( 'page' == get_post_type( $e ) ) : 
       $my_excerpt = get_post_field('chapo', $e->ID);
       $url = get_permalink( $e->ID );
 
