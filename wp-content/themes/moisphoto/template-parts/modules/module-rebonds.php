@@ -8,7 +8,7 @@
             <?php if( 'event' == get_post_type() ) : ?>
               Autour de l'événement
             <?php elseif( 'page' == get_post_type() ) : ?>
-              En lien
+              
             <?php endif; ?>
             
           </h3>
