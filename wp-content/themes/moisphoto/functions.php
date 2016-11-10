@@ -326,24 +326,36 @@ function load_press_search() {
                 <?php endif; ?>
               </div>
 
-              <?php if ( $search->have_posts() ) : ?>
+              <?php if ( $search->have_posts() ) :
 
-                <?php while ( $search->have_posts() ) : $search->the_post(); 
+                $page_presse = get_page_by_title( 'Espace Presse' );
+                $dp_pdf = get_field('dp_pdf', $page_presse->ID);
+                $visuels_zip = get_field('visuels_zip', $page_presse->ID); 
+
+                while ( $search->have_posts() ) : $search->the_post(); 
 
                     $auteurs = get_field('auteurs'); 
                     $lieu = get_field('lieu');
-                    $id = get_the_ID(); ?>
+                    $id = get_the_ID();
+                    ?>
+
 
                     <div class="press__list__item">
                       <p><span class="p--big"><?php moisphoto_get_artists_list($auteurs); ?></span> 
                         <span class="p--strong">- <?php the_title(); ?></span>
                         <span class=""> | <?php echo get_the_title( $lieu ); ?></span>
                       </p>
+                      <?php if( $dp_pdf || $visuels_zip ) : ?>
                       <p class="press__btn">
                         <span class="p--strong">Téléchargez :  </span>
-                        <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a>
-                        - <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
+                        <?php if( $dp_pdf ) : ?>
+                          <a href="<?php the_permalink(); ?>?pdf=" classe="" target="_blank">le DP (.pdf)</a> -  
+                        <?php endif; ?> 
+                        <?php if( $visuels_zip ) : ?>
+                          <a href="?zip=<?php echo $id; ?>" classe="">Les visuels (zip)</a>
+                        <?php endif; ?>
                       </p>
+                    <?php endif; ?> 
                     </div>
 
                 <?php endwhile; ?>
