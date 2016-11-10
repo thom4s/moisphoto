@@ -2034,6 +2034,22 @@ acf_add_local_field_group(array (
       'return_format' => 'id',
     ),
     array (
+      'key' => 'field_5805d4805c0ff',
+      'label' => 'Afficher les actualités ?',
+      'name' => 'display_news',
+      'type' => 'true_false',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '50',
+        'class' => '',
+        'id' => '',
+      ),
+      'message' => '',
+      'default_value' => 0,
+    ),
+    array (
       'key' => 'field_580e251c7be05',
       'label' => 'Couleur du weekend',
       'name' => 'color',
