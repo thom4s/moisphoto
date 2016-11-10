@@ -90,7 +90,7 @@
     $( window ).scroll(function() {
       var $win = $(window);
 
-      if ($win.scrollTop() > 100) {
+      if ($win.scrollTop() > 250) {
         $( "#masthead" ).addClass( "is-reduced" );
         $('.event__summary').addClass("is-reduced");
         $('.event__id').show();
