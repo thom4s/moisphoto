@@ -18,7 +18,7 @@
 		<div class="footer__main clearfix">
       <div class="footer__main__inner row wrap clearfix">
 
-        <div class="footer__main__logo s-6col m-4col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mep.png"> </a></div>
+        <div class="footer__main__logo s-6col m-4col"><a href="http://mep-fr.org" target="_blank" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mep.png"> </a></div>
 
         <div class="footer__main__infos s-12col m-4col">
           <p>
@@ -98,5 +98,15 @@
 
 <?php wp_footer(); ?>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-36956482-5', 'auto');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
