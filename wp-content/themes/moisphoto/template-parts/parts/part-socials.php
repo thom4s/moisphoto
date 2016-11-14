@@ -26,7 +26,7 @@
           <div class="pict--contact square s-2col m-1col s-last">
             <div class="square__content">
               <div class="table">
-                <a href="/equipe-et-contacts" class="pict__content icon table-cell">Con-<br>tact</a>
+                <a href="/equipe-et-contacts" class="pict__content icon-mail table-cell"></a>
               </div>
             </div>
           </div>

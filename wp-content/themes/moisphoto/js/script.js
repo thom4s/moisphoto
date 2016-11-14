@@ -51,7 +51,6 @@
       $ToC_parent.show();
     }
 
-
     $('#masthead').append($ToC_parent);
 
 
@@ -114,17 +113,9 @@
      */
     $('#mobile_nav__trigger').on('click', function(event) {
       event.preventDefault;
-      $('.main-navigation').toggle();
-      
-      var btn = $(this).find('.arrow--little--black');
-      var btn_content = btn.html();
 
-      if( btn_content == '&gt;' ) {
-        btn.html( "x" );
-      }
-      else {
-        btn.html("&gt;");
-      }
+      $('.main-navigation').toggle();     
+      $(this).toggleClass('icon-header-mobile-menu icon-close');
     });
 
 

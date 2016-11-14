@@ -51,13 +51,15 @@
 						<?php get_template_part( 'template-parts/parts/part', 'socials' ); ?>
 					</div>
 
-					<div class="s-2col s-3col-push square">
-						<div class="square__content">
-							<div class="c-hamburger c-hamburger--htx">
-								<span>toggle menu</span>
-							</div>
-						</div>
-					</div>
+
+          <div class="pict--mobilemenu square s-2col s-3col-pusht">
+            <div class="square__content">
+              <div class="table">
+                <a id="mobile_nav__trigger" class="pict__content icon-header-mobile-menu table-cell"></a>
+              </div>
+            </div>
+          </div>
+
 
 				</div>
 				<!-- <a id="mobile_nav__trigger" class="clearfix mobile_nav__trigger"><span class="arrow--little--black">></span>Menu</a> -->

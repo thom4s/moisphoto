@@ -35,9 +35,16 @@
 
   .pict__content {
     background-color: $black;
-    line-height: 1;
-    font-size: 10px;
-    font-weight: 100;
+    font-size: 24px;
+  }
+}
+
+.pict--mobilemenu {
+  @extend %picto;
+
+  .pict__content {
+    background-color: $black;
+    font-size: 24px;
   }
 }
 
