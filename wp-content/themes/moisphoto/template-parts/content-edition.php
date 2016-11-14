@@ -32,12 +32,14 @@
             while ( have_rows('bouttons_pour_mobile') ) : the_row();
 
                 if( get_row_layout() == 'liste_des_expositions' ): ?>
-
-                  <p><span class="arrow--little--black"> > </span> <a href="#" class="<?php the_sub_field('action'); ?> p--big"><?php the_sub_field('texte'); ?></a></p>
+                  <p>
+                    <span class=""> > </span> <a href="#" class="<?php the_sub_field('action'); ?> p--big "><?php the_sub_field('texte'); ?></a>
+                  </p>
 
                 <?php elseif( get_row_layout() == 'lien_vers_page' ): ?>
-
-                  <p><span class="arrow--little--black"> > </span> <a href="<?php the_sub_field('page'); ?>" class="p--big"><?php the_sub_field('texte'); ?></a></p>
+                  <p>
+                    <span class="icon-google-map pict--map"></span><a href="<?php the_sub_field('page'); ?>" class="p--big"><?php the_sub_field('texte'); ?></a>
+                  </p>
 
                 <?php endif;
 
@@ -46,18 +48,11 @@
           </div> 
         </div>
 
-        <?php else :
-
-        endif;
-
-        ?>
-
-
-          
+        <?php endif; ?>
+         
 
 
   <?php else: ?>
-
 
     <?php 
       // GET MAP ITEMS AND DISPLAY
