@@ -92,13 +92,13 @@ $(document).on( 'click', '.js-display-events', function( event ) {
             action: 'load_events'
         },
         beforeSend: function() {
+            $content.html('<div class="loader"><img class="" src="wp-content/themes/moisphoto/assets/loader.gif"></div>');
             $events_list_modal.show();
-            $content.html('loading...');
         },
         success: function( result ) {
             $content.html( result );
             $content.show('fast');
-            $('#loading-msg').hide();
+            $('.loader').hide();
         }
     });
 
@@ -154,7 +154,7 @@ $(document).on( 'click', '.js-display-aroundme', function( event ) {
             },
             beforeSend: function() {
                 $events_list_modal.show();
-                $content.html('loading...');
+                $content.html('<div class="loader"><img class="" src="wp-content/themes/moisphoto/assets/loader.gif"></div>');
             },
             success: function( result ) {
                 $content.html( result );

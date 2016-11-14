@@ -7,6 +7,16 @@
 
 
 
+.loader {
+  margin: 6rem auto;
+
+  img {
+    display: block;
+    margin: auto;
+  }
+}
+
+
 %picto {
   text-align: center;
   color: $white;
