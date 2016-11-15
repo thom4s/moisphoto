@@ -77,13 +77,13 @@
         
         <div class="clearfix modal__close--events">
           <div class="wrap row">
-            <div class="m-first m-12col">
+            <div class="s-first s-12col">
               <span class="arrow--little--white arrow--down"> > </span>
               <span class="h4"> Liste des expositions</span>
             </div>
 
-            <div class="m-last m-6col">
-              <a href="#" id="close-events" class="clearfix">Fermer la liste <span class="close-events"></span> </a>
+            <div class="s-last s-6col">
+              <a href="#" id="close-events" class="clearfix"> Fermer la liste <span class="icon-close"></span> </a>
             </div>
           </div>
         </div>

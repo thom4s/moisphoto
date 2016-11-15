@@ -56,7 +56,7 @@
     } ?>
 
 
-<div class="m-6col m-<?php echo $push; ?>col-push rebonds__item <?php echo $clearfix; ?>" style="border-color: <?php echo $we_color; ?>">
+<div class="s-11col m-6col s-<?php echo $push; ?>col-push rebonds__item <?php echo $clearfix; ?>" style="border-color: <?php echo $we_color; ?>">
 
   <?php 
     if( get_post_type( $e_id) == "event" ) { ?>
