@@ -88,22 +88,67 @@
 
 }
 
-  .stream__item {
-    border-top: 10px solid $color_primary;
-    background-color: $white;
-    padding: $base_line_height;
+  #cff {
+    .cff-item {
+      @include type-setting(0);
 
-    .has-bordertop--little::before {
-      border-color: $black;
-    }
-    
-    @include up-to(medium) {
-      width: 50%;
-      float: left;
+      border-top: 10px solid $color_primary;
+      background-color: $white;
+      padding: $base_line_height;
       
+      a {
+        border-bottom: 1px dotted $gray_lighter;
+
+        &:hover {
+          text-decoration: none;
+          color: $color_primary;
+        }
+      }
+
+      &:first-child {
+        padding-top: $base_line_height;
+      }
+
+      @include up-to(medium) {
+        width: 50%;
+        float: left;       
+      }
     }
+      
+      .cff-date {
+        @extend .p--strong;
 
+        font-size: inherit;
+        margin-bottom: $base_line_half;
+      }
+
+      .cff-post-text {
+        @extend .has-bordertop--little;
+
+        font-size: inherit;
+
+        &::before {
+          border-color: $black;
+        }
+      }
+      .cff-post-desc {
+        font-size: inherit !important;
+      }
+      .cff-story {
+        font-weight: $medium;
+      }
+      .cff-meta-wrap {
+
+      }
+
+      .cff-event-thumb {
+        display: none;
+      }
+      .cff-details {
+        margin-left: 0;
+        width: 100%;
+      }
   }
-
+  
 
 
