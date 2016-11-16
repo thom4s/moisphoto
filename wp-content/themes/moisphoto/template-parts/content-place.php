@@ -31,8 +31,10 @@
 			<div class="entry__content m-14col is-centered clearfix">
 				<?php	the_content(); ?>
 
+<p><button onclick="geoFindMe()">Show my location</button></p>
+<div id="out"></div>
 
-    <p>lat & lng :</p>
+
 
   <?php 
   // My position (lat and lng)

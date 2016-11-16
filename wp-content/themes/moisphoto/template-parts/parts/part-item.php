@@ -38,6 +38,13 @@
       $lieu_adresse = $lieu_adresse_group['address'];
       $type = get_terms( 'event-type' ); 
 
+      if(isset($my_longitude) && isset($my_latitude)) {
+        $place_latitude = get_field('lat', $lieu);
+        $place_longitude = get_field('lng', $lieu);;
+
+        $distance = vincentyGreatCircleDistance( $my_latitude, $my_longitude, $place_latitude, $place_longitude );
+      }
+      
       $weekends = get_posts(array(
         'post_type' => 'weekend',
         'meta_query' => array(
@@ -88,6 +95,7 @@
     <p class="p--strong rebonds__place__name"><?php echo get_the_title( $lieu ); ?></p>
 
     <p class="rebonds__place__city"><?php echo $lieu_adresse; ?></p>
+    <p><?php echo $distance; ?></p>
   </div>
 
   <?php } ?>

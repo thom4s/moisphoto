@@ -34,7 +34,8 @@ jQuery(document).on( 'submit', '#searchform', function() {
 });
 
 jQuery(document).on('click', '#close-search', function(event) {
-    event.preventDefault;
+    event.preventDefault();
+
     $('#searchresults').hide('fast');
 });
 
@@ -107,7 +108,8 @@ $(document).on( 'click', '.js-display-events', function( event ) {
 
 
 jQuery(document).on('click', '#close-events', function(event) {
-    event.preventDefault;
+    event.preventDefault();
+
     $events_list_modal.hide();
 });
 
@@ -117,31 +119,51 @@ jQuery(document).on('click', '#close-events', function(event) {
  * Nearby events list load and display
  */
 
-var $events_list_modal = $('#events-modal');
-var $content = $events_list_modal.find('.modal__content__inner');
+
+function geoFindMe() {
+  var output = document.getElementById("out");
+
+  if (!navigator.geolocation){
+    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+    return;
+  }
+
+  function success(position) {
+    var latitude  = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    var my_position = {
+        'lat': latitude,
+        'lng': longitude
+    };
+
+    return my_position;
+  }
+
+  function error() {
+    output.innerHTML = "Unable to retrieve your location";
+  }
+
+  output.innerHTML = "<p>Locating…</p>";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+}
+
 
 $(document).on( 'click', '.js-display-aroundme', function( event ) {
 
-    event.preventDefault();
-    var event_latitude = '';
-    var event_longitude = '';
+    $content.html('<div class="loader"><img class="" src="wp-content/themes/moisphoto/assets/loader.gif"></div>');
+    $events_list_modal.show();
 
-    function initGeolocation() {
-      if (navigator && navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
-      } else {
-        console.log('Geolocation is not supported');
+      if (!navigator.geolocation){
+        $content.innerHTML = '<p class="position-msg">Désolé, la géolocalisation n\'est pas supporté par votre navigateur.</p>';
+        return;
       }
-    }
-     
-    function errorCallback() {
-        
-    }
-     
-    function successCallback(position) {
-        event_latitude = position.coords.latitude;
-        event_longitude = position.coords.longitude;
+
+      function success(position) {
+        var latitude  = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        $content.append('<p class="position-msg">Nous avons trouvé votre position géographique. Nous cherchons des événements...</p>');
 
         $.ajax({
             url: myAjax.ajaxurl,
@@ -149,12 +171,11 @@ $(document).on( 'click', '.js-display-aroundme', function( event ) {
             data: {
                 action: 'load_events',
                 nearby: true,
-                event_latitude: event_latitude,
-                event_longitude: event_longitude,
+                my_latitude: latitude,
+                my_longitude: longitude,
             },
             beforeSend: function() {
-                $events_list_modal.show();
-                $content.html('<div class="loader"><img class="" src="wp-content/themes/moisphoto/assets/loader.gif"></div>');
+               $content.append('<p class="position-msg">Nous avons trouvé des événements....</p>');
             },
             success: function( result ) {
                 $content.html( result );
@@ -162,18 +183,19 @@ $(document).on( 'click', '.js-display-aroundme', function( event ) {
                 $('#loading-msg').hide();
             }
         });
+      }
 
-        return false;
+      function error() {
+        $content.append('<p class="position-msg">Désolé, nous n\'avons pas trouvé votre position géographique.</p>');
+      }
 
-    }
-
-    initGeolocation();
-
+      navigator.geolocation.getCurrentPosition(success, error);
 });
 
 
 jQuery(document).on('click', '#close-events', function(event) {
-    event.preventDefault;
+    event.preventDefault();
+
     $events_list_modal.hide();
 });
 
