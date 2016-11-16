@@ -13,6 +13,26 @@ define("TWITTER_LINK", 'https://www.twitter.com/moisdelaphotograndparis/');
 define("INSTAGRAM_LINK", 'https://www.instagram.com/moisdelaphotograndparis/');
 
 
+/**
+ * Check if mobile device
+ * @return true if mobile
+ **/
+function is_mobile() {
+  $useragent = $_SERVER['HTTP_USER_AGENT'];
+
+  if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))) : 
+
+    return true;
+  
+  else : 
+    return false;
+  
+  endif;
+}
+
+
+
+
 if ( ! function_exists( 'moisphoto_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
@@ -393,58 +413,66 @@ add_action( 'wp_ajax_load_events', 'load_events_list' );
 function load_events_list() {
 
   $nearby = $_POST['nearby'];
-  $event_latitude = $_POST['event_latitude'];
-  $event_longitude = $_POST['event_longitude'];
-
-  $event_latitude = '48.8652352';
-  $event_longitude = '2.3634082999999464';
-
-
-
-  $lat = maybe_serialize( array("lat" => $event_latitude) ); // a:1:{s:3:"bar";s:6:"foobar";}
-  $lat = rtrim( ltrim( $lat, 'a:1:{' ), '}' );    // on élague les bords qui nous gênent : s:3:"bar";s:6:"foobar";
-
-  $lng = maybe_serialize( array("lng" => $event_longitude) ); // a:1:{s:3:"bar";s:6:"foobar";}
-  $lng = rtrim( ltrim( $lng, 'a:1:{' ), '}' );    // on élague les bords qui nous gênent : s:3:"bar";s:6:"foobar";
 
   if( $nearby ) :
+    $my_latitude = $_POST['my_latitude'];
+    $my_longitude = $_POST['my_longitude'];
 
-    $meta_query[] = array(
-      'key'   => 'adresse',
-      'value'   => $lat,
-      'compare' => 'LIKE',
+    // Calcul the range of lat, lng 
+    $rad = 2; // radius of bounding circle in kilometers
+    $R = 6371;  // earth's mean radius, km
+
+    $maxLat = $my_latitude + rad2deg( $rad/$R );
+    $minLat = $my_latitude - rad2deg( $rad/$R );
+    $maxLng = $my_longitude + rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));
+    $minLng = $my_longitude - rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));  
+
+    $places_meta_query[] = array(
+      'relation' => 'AND', 
+      array(
+        'key'     => 'lat',
+        'value'   => array($minLat, $maxLat),
+        'compare' => 'BETWEEN'
+      ),
+      array(
+        'key'     => 'lng',
+        'value'   => array($minLng, $maxLng),
+        'compare' => 'BETWEEN'
+      )
     );
 
     $nearby_places_args = array(
         'posts_per_page'   => -1,
-        'meta_query'       => $meta_query,
+        'meta_query'       => $places_meta_query,
         'post_type'        => 'place',
         'post_status'      => 'publish',
         'suppress_filters' => 0 
       );
     $nearby_places_array = get_posts($nearby_places_args);
 
-    // var_dump($nearby_places_array);
+    foreach ( $nearby_places_array as $p ) {
+       $places[] += $p->ID;
+    }
 
-      // lieux proches
-      $meta_query[] = array(
-         'key'   => $name,
-                'value'   => $value,
-                'compare' => 'IN',
-            );
-
-      $args = array(
-        'posts_per_page'   => 5,
-        'category'         => 'exposition',
-        'orderby'          => 'date',
-        'order'            => 'DESC',
-        'meta_key'         => '',
-        'meta_value'       => '',
-        'post_type'        => 'event',
-        'post_status'      => 'publish',
-        'suppress_filters' => 0 
-      );
-      $events_array = get_posts($args);
+    // Get event with nearby place
+    $events_meta_query[] = array(
+      array(
+        'key'     => 'lieu',
+        'value'   => $places,
+        'compare' => 'IN'
+      )
+    );
+    $args = array(
+      'posts_per_page'    => -1,
+      'category'          => 'exposition',
+      'orderby'           => 'date',
+      'order'             => 'DESC',
+      'post_type'         => 'event',
+      'post_status'       => 'publish',
+      'suppress_filters'  => 0 ,
+      'meta_query'        => $events_meta_query,
+    );
+    $events_array = get_posts($args);
 
 //    var_dump($events_array);
 
@@ -504,20 +532,36 @@ function load_events_list() {
 
                     $clearfix = ''; 
 
-                    if( $i%3 == 0 ) : 
-                      $push = '2';
-                      $i = 1;
+                    if( !is_mobile() ) : 
+                      if( $i%3 == 0 ) : 
+                        $push = '2';
+                        $i = 1;
 
-                    elseif( $i%2 == 0 ) : 
-                      $push = '1';
-                      $i++;
+                      elseif( $i%2 == 0 ) : 
+                        $push = '1';
+                        $i++;
 
-                    else : 
-                      $push = '0';
-                      $clearfix = 'clearfix';
-                      $i++;
+                      else : 
+                        $push = '0';
+                        $clearfix = 'clearfix';
+                        $i++;
 
-                    endif;  
+                      endif;
+
+
+                    else :
+                      if( $i%2 == 0 ) : 
+                        $push = '1';
+                        $i++;
+
+                      else : 
+                        $push = '0';
+                        $clearfix = 'clearfix';
+                        $i++;
+
+                      endif;
+
+                    endif;
 
                     set_query_var('e', $e); 
                     set_query_var('push', $push); 
@@ -549,6 +593,7 @@ function filter_ptags_on_images($content){
     return preg_replace('/<p>\s*(<a .*>)?\s*(<img .* \/>)\s*(<\/a>)?\s*<\/p>/iU', '\1\2\3', $content);
 }
 add_filter('the_content', 'filter_ptags_on_images');
+
 
 
 /**
@@ -587,7 +632,6 @@ add_filter('img_caption_shortcode', 'juiz_img_caption_shortcode_html5_compliant'
 
 
 
-
 /**
  * Template tags for password form
  * @return html
@@ -607,24 +651,6 @@ add_filter( 'the_password_form', 'my_password_form' );
 
 
 /**
- * Check if mobile device
- * @return true if mobile
- **/
-function is_mobile() {
-  $useragent = $_SERVER['HTTP_USER_AGENT'];
-
-  if(preg_match('/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i',$useragent)||preg_match('/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i',substr($useragent,0,4))) : 
-
-    return true;
-  
-  else : 
-    return false;
-  
-  endif;
-}
-
-
-/**
  * serialize une array pour les meta_query
  * @return 
  **/
@@ -637,6 +663,7 @@ function serialize_array_content( $array, $value_only = false ) {
 endif;
 
 
+
 /**
  * Remove title prefix on protected posts
  * @return title
@@ -647,4 +674,33 @@ add_filter( 'protected_title_format', 'yourprefix_private_title_format' );
 function yourprefix_private_title_format( $format ) {
     return '%s';
 }
+
+
+
+/**
+ * Save post metadata when a post is saved.
+ *
+ * @param int $post_id The post ID.
+ * @param post $post The post object.
+ * @param bool $update Whether this is an existing post being updated or not.
+ */
+function save_place_lat_lng( $post_id, $post, $update ) {
+
+    $post_type = get_post_type($post_id);
+
+    // If this isn't a 'book' post, don't update it.
+    if ( "place" != $post_type ) return;
+
+    $lieu_adresse_group = get_field('adresse', $post_id);
+    $lat = (float)$lieu_adresse_group['lat'];
+    $lng = (float)$lieu_adresse_group['lng'];
+
+    // Update the post's acf fields.
+    update_field('lat', $lat);
+    update_field('lng', $lng);
+
+}
+add_action( 'save_post', 'save_place_lat_lng', 10, 3 );
+
+
 
