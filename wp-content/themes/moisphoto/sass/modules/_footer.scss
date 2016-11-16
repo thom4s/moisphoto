@@ -109,6 +109,8 @@
       text-align: right; 
       text-transform: uppercase;
       font-weight: $light;
+      display: inline-block;
+      float: right;
     }
 
     @include up-to(medium) {
