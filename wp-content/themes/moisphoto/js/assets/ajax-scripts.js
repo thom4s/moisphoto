@@ -120,35 +120,6 @@ jQuery(document).on('click', '#close-events', function(event) {
  */
 
 
-function geoFindMe() {
-  var output = document.getElementById("out");
-
-  if (!navigator.geolocation){
-    output.innerHTML = "<p>Geolocation is not supported by your browser</p>";
-    return;
-  }
-
-  function success(position) {
-    var latitude  = position.coords.latitude;
-    var longitude = position.coords.longitude;
-    var my_position = {
-        'lat': latitude,
-        'lng': longitude
-    };
-
-    return my_position;
-  }
-
-  function error() {
-    output.innerHTML = "Unable to retrieve your location";
-  }
-
-  output.innerHTML = "<p>Locating…</p>";
-
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-
 $(document).on( 'click', '.js-display-aroundme', function( event ) {
 
     $content.html('<div class="loader"><img class="" src="wp-content/themes/moisphoto/assets/loader.gif"></div>');

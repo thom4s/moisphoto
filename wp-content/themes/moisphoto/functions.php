@@ -444,6 +444,7 @@ function load_events_list() {
   $nearby = $_POST['nearby'];
 
   if( $nearby ) :
+
     $my_latitude = $_POST['my_latitude'];
     $my_longitude = $_POST['my_longitude'];
 
@@ -505,9 +506,9 @@ function load_events_list() {
 
     set_query_var('my_latitude', $my_latitude);
     set_query_var('my_longitude', $my_longitude);
-  else : 
 
-    // GET MAP ITEMS AND DISPLAY
+
+  else : 
 
     $front_page_id = get_option('page_on_front');
     $current_edition = get_field('edition_courante', $front_page_id); 
@@ -599,7 +600,7 @@ function load_events_list() {
                   <?php  endforeach; 
                 
                 else : ?>
-                <p class="no-result"><?php _e( 'Désolé, il n\'y a aucun résultat pour votre recherche.' ); ?></p>
+                <p class="position-msg"><?php _e( 'Désolé, il n\'y a aucun événement correspant à votre recherche.' ); ?></p>
               <?php endif; ?>
             </div>
 
