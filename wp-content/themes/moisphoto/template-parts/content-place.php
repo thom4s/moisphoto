@@ -13,7 +13,6 @@
 	<div class="row">
 
 
-
     <?php if ( has_post_thumbnail() ) : ?>
       <div class="entry__media bg--img" style="background-image: url(<?php the_post_thumbnail_url(); ?>);"></div>
     <?php endif; ?>
@@ -32,16 +31,18 @@
 			<div class="entry__content m-14col is-centered clearfix">
 				<?php	the_content(); ?>
 
-        <?php 
 
+    <p>lat & lng :</p>
 
+  <?php 
   // My position (lat and lng)
   // Replace that with variables
-  $my_latitude = '48.865390';
-  $my_longitude = '2.361799';
 
+  $my_latitude = get_field('lat'); 
+  $my_longitude = get_field('lng'); 
+ 
   echo '<br>';
-  echo "mes coordonnées : <br>"; 
+  echo "les coordonnées de la galerie baudoin lebon : <br>"; 
   echo $my_latitude;
   echo '<br>';
   echo $my_longitude;
@@ -55,62 +56,33 @@
 
   $maxLat = $my_latitude + rad2deg( $rad/$R );
   $minLat = $my_latitude - rad2deg( $rad/$R );
-  $maxLon = $my_longitude + rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));
-  $minLon = $my_longitude - rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));
+  $maxLng = $my_longitude + rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));
+  $minLng = $my_longitude - rad2deg(asin( $rad/$R ) / cos(deg2rad( $lat )));
 
-  echo "lat & lng max (à 2km autour de moi) : <br>"; 
+  echo "lat & lng max (à 2km autour du point donné) : <br>"; 
   echo $maxLat;
   echo '<br>';
   echo $minLat;
   echo '<br>';
-  echo $maxLon;
+  echo $maxLng;
   echo '<br>';
-  echo $minLon;
-  echo '<br>';
-
-
-  // galerie baudoin
-  //  48.8652352
-  //  2.3612143
-
-  $maxLatRange = serialize_array_content( array("lat" => $maxLat) ); // a:1:{s:3:"bar";s:6:"foobar";}
-  $minLatRange = serialize_array_content( array("lat" => $minLat) ); // a:1:{s:3:"bar";s:6:"foobar";}
-  $maxLonRange = serialize_array_content( array("lng" => $maxLon) ); // a:1:{s:3:"bar";s:6:"foobar";}
-  $minLonRange = serialize_array_content( array("lng" => $minLon) ); // a:1:{s:3:"bar";s:6:"foobar";}
-
-
-  echo '<br>';
-  echo "Serialize it : <br>"; 
-  echo $maxLatRange;
-  echo '<br>';
-  echo $minLatRange;
-  echo '<br>';
-  echo $maxLonRange;
-  echo '<br>';
-  echo $minLonRange;
+  echo $minLng;
   echo '<br>';
 
 
-    // $meta_query[] = array(
-    //   'relation' => 'AND', 
-    //   array(
-    //     'key'     => 'adresse',
-    //     'value'   => array($minLat, $maxLat),
-    //     'compare' => 'BETWEEN'
-    //   ),
-    //   array(
-    //     'key'     => 'adresse',
-    //     'value'   => array($minLon, $maxLon),
-    //     'compare' => 'BETWEEN'
-    //   )
-    // );
 
     $meta_query[] = array(
+      'relation' => 'AND', 
       array(
-        'key'     => 'adresse',
-        'value'   => $minLatRange,
-        'compare' => 'LIKE'
+        'key'     => 'lat',
+        'value'   => array($minLat, $maxLat),
+        'compare' => 'BETWEEN'
       ),
+      array(
+        'key'     => 'lng',
+        'value'   => array($minLng, $maxLng),
+        'compare' => 'BETWEEN'
+      )
     );
 
     $nearby_places_args = array(
@@ -122,8 +94,16 @@
       );
     $nearby_places_array = get_posts($nearby_places_args);
 
-    var_dump($nearby_places_array);
+    //var_dump($nearby_places_array);
 
+    foreach ($nearby_places_array as $p) {
+      $id = $p->ID;
+
+      echo '<br>';
+      echo '<h4>'.get_the_title( $p->ID ).'</h4>';
+      the_field('adresse', $id);
+      echo '<br>';
+    }
 
 
         ?>
