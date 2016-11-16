@@ -38,7 +38,14 @@ body {
       margin: 0;
     }
 
-    .close-events {
+    .close-map {
+      background-image: url("assets/bouton_close_map.png");
+      background-repeat: no-repeat;
+      display: inline-block;
+      float: right;
+      background-size: 40px 40px;
+      width: 40px;
+      height: 40px;
       z-index: 999;
       position: relative;
       margin-top: 20px;
