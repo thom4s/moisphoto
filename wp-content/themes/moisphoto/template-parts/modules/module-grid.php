@@ -62,30 +62,17 @@
 
 
         case 'weekend': ?>
-          <?php 
-
-            //wp_enqueue_script('bxslider');
-            
+          <?php             
             $we_id = $item['weekend_item'];
             $we_url = get_permalink ( $we_id ); 
             $we_color = get_field('color', $we_id);
-            // $we_events = get_field('events_list', $we_id);
-
           ?>
           <a href="<?php echo $we_url; ?>">
             <div class="grid__item--weekend s-22col m-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
                 <div class="s-12col m-8col grid__item__img">
-                  
-<!--                   <ul class="bxslider">
-                    <?php foreach ($we_events as $e) : ?>
-                      <li><?php echo get_the_post_thumbnail($e, 'grid-thumb'); ?></li>
-                    <?php endforeach; ?>
-                  </ul> -->
                   <img src="<?php echo $item['weekend_img']; ?>">
-                  
-
                   <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
                 </div>
               
@@ -111,6 +98,8 @@
 
 
         case 'big_bloc': ?>
+
+          <?php $url = $item['lien__fichier'];?>
           <a href="<?php echo $url; ?>">
             <div class="grid__item--big s-23col m-15col <?php echo $order_item; ?>">
               <div class="row">

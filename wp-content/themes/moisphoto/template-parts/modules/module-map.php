@@ -37,7 +37,6 @@
           $location = get_field('adresse', $p[0] );
           $lieu_nom = get_the_title($p[0]);
 
-
           $thumbnail = get_the_post_thumbnail($e, 'part-thumb' );
           $auteurs = get_field('auteurs', $e);
           $title = get_the_title($e);
