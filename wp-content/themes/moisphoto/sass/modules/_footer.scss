@@ -13,6 +13,7 @@
 .footer__main{
   @include type-setting(-1);
 
+
   font-weight: $light;
   background-color: $gray_darker;
   padding-top: $base_line_height * 2;
@@ -21,7 +22,13 @@
 }
 
 
+  .footer__main__logo {
+    padding-right: $base_line_half;
+  }
+
   .footer__main__infos {
+    padding-left: $base_line_half;
+
     strong {
       text-transform: uppercase;
     }
@@ -44,12 +51,18 @@
     @include up-to(medium) {
       clear: both;
       margin-top: $base_line_height;
+      margin-bottom: $base_line_height;
     }
   }
 
   .footer__main__menu {
+
     li:last-child {
       background-color: $black;
+    }
+  
+    @include at-least(medium) {
+      left: 0 !important;
     }
   }
 

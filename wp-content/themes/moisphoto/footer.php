@@ -20,7 +20,7 @@
 
         <div class="footer__main__logo s-6col m-4col"><a href="http://mep-fr.org" target="_blank" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mep.png"> </a></div>
 
-        <div class="footer__main__infos s-12col m-4col">
+        <div class="footer__main__infos s-12col m-6col l-4col">
           <p>
             Le Mois de la Photo du Grand Paris est un événement organisé par la Maison Européenne de la Photographie.
           </p>
@@ -32,7 +32,7 @@
         </div>
 
 
-        <div class="footer__main__newsletter s-12col m-7col m-1col-push">
+        <div class="footer__main__newsletter s-20col s-2col-push m-7col m-1col-push">
           <div class="row">
             <div class="s-2col m-1col square"> 
               <div class="square__content">
@@ -44,7 +44,7 @@
               </div>
             </div>
 
-            <form action="http://maisoneuropennedelaphoto.createsend.com/t/t/s/mhudii/" method="post" id="subForm" class="s-10col m-6col">
+            <form action="http://maisoneuropennedelaphoto.createsend.com/t/t/s/mhudii/" method="post" id="subForm" class="s-18col m-6col">
               <input id="fieldEmail" name="cm-mhudii-mhudii" type="email" required placeholder="votre email" />
               <input type="submit" value="M'inscrire à la newsletter">
             </form>
@@ -53,7 +53,7 @@
         </div>
 
 
-        <div class="footer__main__menu s-10col m-4col s-last">
+        <div class="footer__main__menu s-20col s-2col-push m-5col l-4col m-last">
           <?php wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu' ) ); ?>
         </div>
 
