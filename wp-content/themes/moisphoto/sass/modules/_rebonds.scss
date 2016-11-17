@@ -31,6 +31,23 @@
     .arrow--little--black {
       margin-right: $base_line_half;
     }
+
+    @include up-to(medium) {
+
+      &:nth-child(odd) {
+        clear: both;
+        left: 0;
+      }
+      &:nth-child(even) {
+        left: 4.16667%;
+        position: relative;
+        right: auto;
+      }
+      &.clearfix {
+        clear: none !important;
+      }
+    }
+
   }
     .rebonds__chapo {
       margin-bottom: $base_line_half;

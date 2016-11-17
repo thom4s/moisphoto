@@ -32,8 +32,8 @@
     background-color: $gray_darker;
     clear: both;
     padding: 6rem 6rem 48rem 6rem;
-    width: 102%;
-    margin-left: -1%;
+    width: 115%;
+    margin-left: -8%;
   }
 }
   .main-navigation ul {
@@ -42,7 +42,7 @@
     padding-left: 0;
   }
     .main-navigation .menu > li {
-      @extend .m-3col;
+      @extend .m-4col;
       @include type-setting(0);
 
       text-align: center;

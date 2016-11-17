@@ -39,9 +39,11 @@ $wide_breakpoint:                   1400px !default;
   margin: auto;
 
     @include up-to(large) {
-        width: 98%;
+        width: 95%;
     }
-
+    @include up-to(medium) {
+        width: 90%;
+    }
     @include at-least(wide) {
         width: $max_width_large;
     }
@@ -62,6 +64,20 @@ $wide_breakpoint:                   1400px !default;
         position: absolute;
         width: 100%;
         height: 100%;
+    }
+
+    @include up-to(medium) {
+
+        &:not([class*=pict-]):after,
+         {
+            padding-bottom: 0;
+        }
+
+        &:not([class*=pict-]) .square__content {
+            position: relative;
+        }
+
+
     }
 }
 
