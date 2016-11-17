@@ -630,7 +630,7 @@
           var this_icon_backup = map.markers[i].icon_backup;
           map.markers[i].setIcon(this_icon_backup);
         }
-        
+      
         marker.setIcon( active_icon );
         $content = $marker.html();
 
@@ -645,14 +645,11 @@
         $('#close-event').on('click', function(event) {
           event.preventDefault;
           $('#map__modal').hide();
-
           for (i=0; i < map.markers.length; i++ ) {
             var this_icon_backup = map.markers[i].icon_backup;
             map.markers[i].setIcon(this_icon_backup);
           }
-          
         });
-
       });
     }
 
@@ -730,6 +727,12 @@
     });
 
     $('.module-map').show();
+
+    $( window ).resize(function() {
+      console.log('resize');
+      center_map( map );
+    });
+
 
   });
 

@@ -81,12 +81,10 @@
     .event__text {
 
       p {
-        width: 75%;
         margin-bottom: $base_line_height;
         @extend .clearfix;
 
         @include up-to(medium) {
-          width: 100%;
         }
       }
 
@@ -200,6 +198,19 @@
 
   }
     .event__map__inner {
+    }
+    .map__modal__content .modal__img {
+      position: relative;
+      right: 0;
+      margin-bottom: 0;
+      width: auto;
+
+        img {        
+          height: 130px;
+          width: auto;
+          margin: auto;
+        }
+
     }
 
 }
