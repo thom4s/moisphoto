@@ -16,6 +16,8 @@
 	$lieu = get_field('lieu');
 	$lieu_adresse_group = get_field('adresse', $lieu);
 	$lieu_adresse = $lieu_adresse_group['address'];
+  $lieu_adresse = str_replace(', France', '', $lieu_adresse);
+
 	$position = array(
 		'lat' => $lieu_adresse_group['lat'],
 		'lng' => $lieu_adresse_group['lng'],
@@ -155,7 +157,7 @@
 
 				<div class="m-6col m-last">
 
-					<div class="event__dates" style="background-color: <?php echo $we_color; ?>">
+					<div class="clearfix event__dates" style="background-color: <?php echo $we_color; ?>">
 						<div class="h4">
 							<?php 
 								if($date_fixe) {

@@ -36,6 +36,8 @@
 
           $location = get_field('adresse', $p[0] );
           $lieu_nom = get_the_title($p[0]);
+          $lieu_adresse = $location['address'];
+          $lieu_adresse = str_replace(', France', '', $lieu_adresse);
 
           $thumbnail = get_the_post_thumbnail($e, 'part-thumb' );
           $auteurs = get_field('auteurs', $e);
@@ -130,7 +132,7 @@
 
                   <?php if($lieu_nom) :?>
                     <p class="p--strong has-bordertop--little modal__place"><?php echo $lieu_nom; ?></p>
-                    <p class="modal__adress"><?php echo $location['address']; ?></p>
+                    <p class="modal__adress"><?php echo $lieu_adresse; ?></p>
                   <?php endif; ?>
 
               </div>

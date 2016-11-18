@@ -36,6 +36,8 @@
       $chapo = get_field('chapo', $e);
       $lieu_adresse_group = get_field('adresse', $lieu);
       $lieu_adresse = $lieu_adresse_group['address'];
+      $lieu_adresse = str_replace(', France', '', $lieu_adresse);
+
       $type = get_terms( 'event-type' ); 
 
       if(isset($my_longitude) && isset($my_latitude)) {
