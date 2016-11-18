@@ -35,7 +35,7 @@
     @include up-to(medium) {
 
       &:nth-child(odd) {
-        clear: both;
+        clear: both !important;
         left: 0;
       }
       &:nth-child(even) {
@@ -44,7 +44,7 @@
         right: auto;
       }
       &.clearfix {
-        clear: none !important;
+        clear: none;
       }
     }
 

@@ -7,14 +7,20 @@
 
 .home {
   background-image: url(assets/img/grid_bg.png);
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment:fixed;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment:fixed;
 
+  @include up-to(medium) {
+    background: none;
+  }
+
+  @include at-least(medium) {
     .module-grid {
       background: none;
     }
+  }
 }
 
 

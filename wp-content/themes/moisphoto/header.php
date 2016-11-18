@@ -81,7 +81,7 @@
 	<?php if( is_front_page() ) : ?>
 		<div class="wrap">
 			<div class="site-branding--big row clearfix">
-				<div class="site-logo--big s-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
+				<div class="site-logo--big s-24col m-17col"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png"></a></div>
 			</div><!-- .site-branding -->
 		</div>
 	<?php endif; ?>
