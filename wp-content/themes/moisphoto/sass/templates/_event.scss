@@ -15,7 +15,7 @@
     @include transition(all, 0.2s);
 
     background-image: url('assets/img/event_bg.png');
-    padding: $base_line_height * 1.5 0;
+    padding: $base_line_height * 1.5 0 $base_line_height 0;
     color: $white;
 
     .h1 {
@@ -39,7 +39,8 @@
     }
   }
     .event__header__inner {
-      padding-top: $base_line_half;
+      background-color: rgba(0,0,0,0.2);
+      padding: 1rem;
     }
       .header__titles {
         margin-bottom: $base_line_height;
@@ -53,7 +54,7 @@
   .event__curators {
     background-color: $gray_lighter;
     text-align: center;
-    padding: $base_line_height;
+    padding: $base_line_half;
     margin-bottom: $base_line_height;
   }
 
@@ -100,7 +101,7 @@
 
         .wp-caption-text {
           clear: both;
-          width: 25%;
+          width: 33%;
           float: left;
           text-align: left;
 

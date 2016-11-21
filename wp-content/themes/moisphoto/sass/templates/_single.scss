@@ -33,6 +33,8 @@
 
 .entry__content {
   
+  margin-bottom: $base_line_height * 2; 
+
   p:first-child {
     @extend .p--big;
   }

@@ -70,9 +70,9 @@
 
 
 		<header class="event__header clearfix bg--img">
-			<div class="event__header__inner">
+			<div class="">
 				<div class="row wrap">
-					<div class="m-8col">
+					<div class="m-8col event__header__inner">
 
 						<div class="header__titles">
 							<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>

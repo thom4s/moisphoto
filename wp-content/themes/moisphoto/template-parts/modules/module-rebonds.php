@@ -2,19 +2,8 @@
     <section class="event__rebonds clearfix">
       <div class="wrap row">
 
-        <div class="m-3col has-bordertop--big">
-          <h3 class="h2">
-            
-            <?php if( 'event' == get_post_type() ) : ?>
-              Autour de l'événement
-            <?php elseif( 'page' == get_post_type() ) : ?>
-              
-            <?php endif; ?>
-            
-          </h3>
-        </div>
-        
-        <div class="m-20col m-last">
+       
+        <div class="m-20col is-centered">
           <div class="row">
 
           <?php 
