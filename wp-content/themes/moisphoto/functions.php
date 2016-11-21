@@ -262,7 +262,7 @@ function load_search_results() {
         <div class="search__results">
           <div class="results-number">
             <?php if( $search->post_count > 0) : ?>
-              <h5 class="h3">Nous avons <?php echo $search->post_count; ?> résultats à votre recherche :</h5>
+              <h5 class="h3">Nous avons <?php echo $search->post_count; ?> résultat<?php if($search->post_count !== 1) { echo 's'; } ?> à votre recherche :</h5>
             <?php endif; ?>
           </div>
 
