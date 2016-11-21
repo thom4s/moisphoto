@@ -70,40 +70,40 @@
   <?php 
     if( get_post_type( $e_id) == "event" ) { ?>
 
-  <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
+      <?php echo get_the_post_thumbnail($e_id, 'part-thumb'); ?>
 
-  <h4 class="h3"><?php if($auteurs) { moisphoto_get_artists_list($auteurs); } ?></h4>
+      <h4 class="h3"><?php if($auteurs) { moisphoto_get_artists_list($auteurs); } ?></h4>
 
-  <h5 class="h5"><?php echo get_the_title( $e_id ); ?></h5>
+      <h5 class="h5"><?php echo get_the_title( $e_id ); ?></h5>
 
-  <?php if($chapo) :?>
-    <div class="modal__intro"><?php echo $chapo; ?></div>
-  <?php endif; ?>
+      <?php if($chapo) :?>
+        <div class="modal__intro"><?php echo $chapo; ?></div>
+      <?php endif; ?>
 
-  <p class="p--strong">
-    <?php if($type) { moisphoto_get_artists_list($type); echo '<br>'; } ?>
-    
-    <?php 
-      if($date_fixe) {
-        the_field('date', $e_id); 
-      } else {
-        the_field('date_debut', $e_id);
-        echo ' - ';
-        the_field('date_fin', $e_id);
-      } ?>
-  </p>
+      <p class="p--strong">
+        <?php if($type) { moisphoto_get_artists_list($type); echo '<br>'; } ?>
+        
+        <?php 
+          if($date_fixe) {
+            the_field('date', $e_id); 
+          } else {
+            the_field('date_debut', $e_id);
+            echo ' - ';
+            the_field('date_fin', $e_id);
+          } ?>
+      </p>
 
-  <div class="rebonds__place">
-    <p class="p--strong rebonds__place__name"><?php echo get_the_title( $lieu ); ?></p>
+      <div class="rebonds__place">
+        <p class="p--strong rebonds__place__name"><?php echo get_the_title( $lieu ); ?></p>
 
-    <p class="rebonds__place__city"><?php echo $lieu_adresse; ?></p>
-    <p><?php echo $distance; ?></p>
-  </div>
+        <p class="rebonds__place__city"><?php echo $lieu_adresse; ?></p>
+        <p><?php echo $distance; ?></p>
+      </div>
 
   <?php } ?>
 
 
-  <?php if( get_post_type( $e) == "post" ) { ?>
+  <?php if( get_post_type( $e_id ) == "post" ) { ?>
 
     <?php echo get_the_post_thumbnail($e, 'part-thumb'); ?>
 
@@ -114,7 +114,7 @@
   <?php } ?>
 
 
-  <?php if( get_post_type( $e) == "page" ) { ?>
+  <?php if( get_post_type( $e_id) == "page" ) { ?>
     <?php echo '<h4 class="h3">'. get_the_title( $e ) . '</h4>'; ?>
     <div class="rebonds__chapo">
       <p><?php echo $my_excerpt; ?></p>
