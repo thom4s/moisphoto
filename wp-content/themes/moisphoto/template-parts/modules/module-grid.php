@@ -66,13 +66,26 @@
             $we_id = $item['weekend_item'];
             $we_url = get_permalink ( $we_id ); 
             $we_color = get_field('color', $we_id);
+            $we_img = $item['weekend_img'];
+
+
+            $url = $we_img['url'];
+            $title = $we_img['title'];
+            $alt = $we_img['alt'];
+            $caption = $we_img['caption'];
+            $size = 'grid-thumb';
+            $thumb = $we_img['sizes'][ $size ];
+            $width = $we_img['sizes'][ $size . '-width' ];
+            $height = $we_img['sizes'][ $size . '-height' ];
+
           ?>
+
           <a href="<?php echo $we_url; ?>">
             <div class="grid__item--weekend s-22col m-14col <?php echo $order_item; ?>" style="border-color:<?php echo $we_color; ?>">
               <div class="row">
               
                 <div class="s-12col m-8col grid__item__img">
-                  <img src="<?php echo $item['weekend_img']; ?>">
+                  <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
                   <div class="arrow--medium--black" style="background-color:<?php echo $we_color; ?>"> > </div>
                 </div>
               
@@ -99,14 +112,28 @@
 
         case 'big_bloc': ?>
 
-          <?php $url = $item['lien__fichier'];?>
+          <?php 
+
+            $url = $item['lien__fichier']; 
+            $bloc_img = $item['big_bloc_img'];
+
+            $url = $bloc_img['url'];
+            $title = $bloc_img['title'];
+            $alt = $bloc_img['alt'];
+            $caption = $bloc_img['caption'];
+            $size = 'grid-thumb';
+            $thumb = $bloc_img['sizes'][ $size ];
+            $width = $bloc_img['sizes'][ $size . '-width' ];
+            $height = $bloc_img['sizes'][ $size . '-height' ];
+
+          ?>
           <a href="<?php echo $url; ?>">
             <div class="grid__item--big s-23col m-15col <?php echo $order_item; ?>">
               <div class="row">
               
                 <div class="s-13col m-9col square">
                   <div class="square__content grid__item__img">
-                      <img src="<?php echo $item['big_bloc_img']; ?>">
+                       <img src="<?php echo $thumb; ?>" alt="<?php echo $alt; ?>" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
                       <div class="arrow--medium--white"> > </div>
                   </div>
                 </div>
