@@ -7,52 +7,47 @@
  * @package moisphoto
  */
 
+// Include and instantiate the class.
+require_once TEMPLATEPATH . '/inc/Mobile_Detect.php';
+$detect = new Mobile_Detect;
+
 
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-
   <div class="entry-content clearfix">
 
-
     <?php
-      if( is_mobile() ) : ?>
+      if( $detect->isMobile() && !$detect->isTablet() ) :
 
-
-        <?php
-
-        // check if the flexible content field has rows of data
         if( have_rows('bouttons_pour_mobile') ): ?>
 
         <div class="edition__mobile row">
           <div class="is-centered s-16col">
 
-            <?php // loop through the rows of data
+            <?php 
             while ( have_rows('bouttons_pour_mobile') ) : the_row();
-
                 if( get_row_layout() == 'liste_des_expositions' ): ?>
+
                   <p>
                     <span class=""> > </span> <a href="#" class="<?php the_sub_field('action'); ?> p--big "><?php the_sub_field('texte'); ?></a>
                   </p>
 
                 <?php elseif( get_row_layout() == 'lien_vers_page' ): ?>
+
                   <p>
                     <span class="icon-google-map pict--map"></span><a href="<?php the_sub_field('page'); ?>" class="p--big"><?php the_sub_field('texte'); ?></a>
                   </p>
 
                 <?php endif;
-
             endwhile; ?>
 
           </div> 
         </div>
-
         <?php endif; ?>
          
-
-
-  <?php else: ?>
+    <?php else: ?>
 
     <?php 
       // GET MAP ITEMS AND DISPLAY
