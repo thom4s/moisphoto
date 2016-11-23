@@ -16,7 +16,7 @@
     });
 
     searchbar.find('.js-close').on('click', function(event) {
-      event.preventDefault;
+      event.preventDefault();
       $(this).parents('.searchbar').hide();
 
     });
@@ -26,7 +26,7 @@
     });
 
     $('.close-search').on('click', function(event) {
-      event.preventDefault;
+      event.preventDefault();
       $('#searchresults').hide();
     });
 
@@ -112,7 +112,7 @@
      * Display / Hide mobile menu
      */
     $('#mobile_nav__trigger').on('click', function(event) {
-      event.preventDefault;
+      event.preventDefault();
 
       $('.main-navigation').toggle();     
       $(this).toggleClass('icon-header-mobile-menu icon-close');
@@ -128,7 +128,7 @@
     for (var i = toggles.length - 1; i >= 0; i--) {
       var toggle = toggles[i];
       toggleHandler(toggle);
-    };
+    }
 
     function toggleHandler(toggle) {
       toggle.addEventListener( "click", function(event) {
