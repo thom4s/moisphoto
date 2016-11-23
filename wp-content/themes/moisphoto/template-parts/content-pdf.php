@@ -1,6 +1,6 @@
 <?php
 setlocale(LC_TIME, "fr_FR");
-require_once( dirname(__FILE__) . "/dompdf/dompdf_config.inc.php");
+require_once TEMPLATEPATH . "/inc/dompdf/dompdf_config.inc.php";
 ob_start(); 
 
   // Get Variables
