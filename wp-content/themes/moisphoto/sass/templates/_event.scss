@@ -39,8 +39,7 @@
     }
   }
     .event__header__inner {
-      background-color: rgba(0,0,0,0.2);
-      padding: 1rem;
+      background-color: rgba($color_primary, 0.5);  
     }
       .header__titles {
         margin-bottom: $base_line_height;
