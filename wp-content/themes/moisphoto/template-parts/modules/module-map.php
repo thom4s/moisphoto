@@ -106,7 +106,7 @@
           endif; ?>
 
           <!-- MARKER -->
-          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>">
+          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>" data-thisevent="<?php echo $e; ?>" data-activeevent="<?php echo $this_event; ?>">
             <div class="modal__close">
               <a href="#" id="close-event" class="clearfix close-events"></a>
             </div>
@@ -572,6 +572,9 @@
 
     // var
     var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
+    var active_event = $marker.attr('data-activeevent');
+    var this_event = $marker.attr('data-thisevent');  
+
     var icon_file = "<?php echo get_template_directory_uri(); ?>/assets/icons/" + $marker.attr('icon') + '.png';
     var active_icon_file = "<?php echo get_template_directory_uri(); ?>/assets/icons/active_" + $marker.attr('icon') + '.png';
 
@@ -581,28 +584,41 @@
     };
 
     if ( $marker.attr('icon') == 'default_2' ) {
-       var default_icon = {
+      var default_icon = {
           url: icon_file,
-          scaledSize: new google.maps.Size(12, 12),
-      };     
+          scaledSize: new google.maps.Size(6, 6),
+      };
       var active_icon = {
           url: active_icon_file,
-          scaledSize: new google.maps.Size(22, 22), 
-          // The origin for this image is (0, 0).
+          scaledSize: new google.maps.Size(13, 13), 
           origin: new google.maps.Point(0, 0),
-          // The anchor for this image is the base of the flagpole at (0, 32).
-          anchor: new google.maps.Point(11, 18)
+          anchor: new google.maps.Point(6, 10),
       };
     } 
     else {
-      var active_icon = {
+      if(this_event == active_event) {
+        var default_icon = {
           url: active_icon_file,
           scaledSize: new google.maps.Size(48, 48), 
-          // The origin for this image is (0, 0).
           origin: new google.maps.Point(0, 0),
-          // The anchor for this image is the base of the flagpole at (0, 32).
           anchor: new google.maps.Point(24, 32)
-      };
+        };
+        var active_icon = {
+          url: active_icon_file,
+          scaledSize: new google.maps.Size(48, 48), 
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(24, 32)
+        };
+
+      }
+      else {
+        var active_icon = {
+          url: active_icon_file,
+          scaledSize: new google.maps.Size(48, 48), 
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(24, 32)
+        };
+      } 
     }
 
     // create marker

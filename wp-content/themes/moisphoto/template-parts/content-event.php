@@ -293,6 +293,7 @@
 					      set_query_var('is_weekend', $is_weekend); 
 					      set_query_var('position', $position); 
 					      set_query_var('zoom', '13'); 
+					      set_query_var('this_event', get_the_ID() ); 
 
 					      get_template_part( 'template-parts/modules/module', 'map' ); 
 
