@@ -114,7 +114,7 @@
 
           <?php 
 
-            $url = $item['lien__fichier']; 
+            $url_file = $item['lien__fichier']; 
             $bloc_img = $item['big_bloc_img'];
 
             $url = $bloc_img['url'];
@@ -127,7 +127,7 @@
             $height = $bloc_img['sizes'][ $size . '-height' ];
 
           ?>
-          <a href="<?php echo $url; ?>">
+          <a href="<?php echo $url_file; ?>" target="_blank">
             <div class="grid__item--big s-23col m-15col <?php echo $order_item; ?>">
               <div class="row">
               
