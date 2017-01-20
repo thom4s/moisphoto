@@ -65,9 +65,9 @@
             //calculate destination place
             var dest = 0;
             if ($(this.hash).offset().top > $(document).height() - $(window).height()) {
-                dest = $(document).height() - $(window).height() - 200;
+                dest = $(document).height() - $(window).height() - 400;
             } else {
-                dest = $(this.hash).offset().top - 150;
+                dest = $(this.hash).offset().top - 250;
             }
 
             //go to destination
@@ -102,6 +102,8 @@
         $('.event__id').hide();
         $('.home .site-logo--little').hide();
       }
+
+
 
     });
 
