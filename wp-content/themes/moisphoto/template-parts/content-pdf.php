@@ -98,7 +98,7 @@ ob_start();
   <body>
 
     <div class="logo bloc">
-      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png">
+      <img src="wp-content/themes/moisphoto/assets/img/mdlp_logo_big.png" />
     </div>
 
     <div class="bloc">
@@ -139,26 +139,29 @@ ob_start();
       </div>
     <?php endif; ?>
 
+    <?php if( get_field('nom_contact', $lieu) && get_field('email_contact', $lieu) ): ?>
     <div class="bloc">
       <p>Contact presse : <br>
         <?php the_field('nom_contact', $lieu); ?>, <?php the_field('email_contact', $lieu); ?></p>
       </p> 
     </div>
+    <?php endif; ?>
 
 <br>
 <br>
 
     <div class="bloc">
-    <?php if( get_field('chapo') != '' ) : ?>
-        <p><strong><?php the_field('chapo'); ?></strong></p>
-    <?php endif; ?>
+      <?php if( get_field('chapo') != '' ) : ?>
+          <p><strong><?php the_field('chapo'); ?></strong></p>
+      <?php endif; ?>
 
-    <p>
-      <?php $page_data = get_page( get_the_ID() );
-        if ($page_data) {
-          echo strip_shortcodes($page_data->post_content);
-      } ?>
-    </p></div>
+      <p>
+        <?php $page_data = get_page( get_the_ID() );
+          if ($page_data) {
+            echo strip_shortcodes( wpautop($page_data->post_content) );
+        } ?>
+      </p>
+    </div>
 
 
 <br>
@@ -177,5 +180,12 @@ $dompdf = new DOMPDF();
 $dompdf->load_html(ob_get_clean());
 $dompdf->set_paper('a4', 'portrait');
 $dompdf->render();
+
+$canvas = $dompdf->get_canvas();
+$font = Font_Metrics::get_font("helvetica", "bold");
+$canvas->page_text(16, 800, "{PAGE_NUM} / {PAGE_COUNT}", $font, 6, array(0,0,0));
+
 $dompdf->stream($pdf_name, array("Attachment" => 0));
 ?>
+
+
