@@ -207,9 +207,10 @@
 									echo '<br>'; 
 								}
 
-								// if(get_field('accès', $lieu)) {
-								// 	the_field('accès', $lieu);
-								// }	
+								if(get_field('accès', $lieu)) {
+								 	the_field('accès', $lieu);
+								 	echo '<br>';
+								}	
 								?>		
 
 								<p class="event__place__head has-bordertop--little">Contact(s)</p>
