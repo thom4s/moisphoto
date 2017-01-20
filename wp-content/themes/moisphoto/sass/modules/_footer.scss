@@ -95,6 +95,16 @@
     .event__rebonds {
       background: none;
     }
+
+
+    @include up-to(medium) {
+      padding-top: $base_line_height * 2.5;
+
+      .event__rebonds {
+        padding-top: $base_line_height;
+      }
+
+    }    
 }
 
 /* The Close Button */
@@ -129,6 +139,12 @@
     @include up-to(medium) {
       height: auto;
       line-height: 45px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      margin-top: 0;
     }
   }
 

@@ -196,16 +196,21 @@
 								<?php 
 								if( get_field('transport', $lieu) ) {
 									the_field('transport', $lieu);
-								}
-
-								if( get_field('horaires', $lieu) !='' ) {
-									the_field('horaires', $lieu);
 									echo '<br>';
 								}
 
-								if(get_field('accès', $lieu)) {
-									the_field('accès', $lieu);
-								}	?>		
+								if( get_field('horaires') !='' ) {
+									the_field('horaires');
+								}
+								if( get_field('tarifs') !='' ) {
+									the_field('tarifs');
+									echo '<br>'; 
+								}
+
+								// if(get_field('accès', $lieu)) {
+								// 	the_field('accès', $lieu);
+								// }	
+								?>		
 
 								<p class="event__place__head has-bordertop--little">Contact(s)</p>
 

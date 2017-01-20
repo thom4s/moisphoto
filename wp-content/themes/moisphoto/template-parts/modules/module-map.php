@@ -80,9 +80,13 @@
 
                 <div class="map__modal__content">
 
-                  <div class="modal__img">
-                    <?php the_post_thumbnail($c); ?>
-                  </div>
+                  <?php if ( has_post_thumbnail( $c ) ) { ?>
+                    <div class="modal__img">
+                      <?php echo get_the_post_thumbnail( $c, 'thumbnail' ); ?>
+                    </div>
+                  <?php } ?>
+
+
 
                   <div class="modal__texts">
                     <h3 class="h3"><?php echo get_the_title($c); ?></h3>
@@ -106,7 +110,7 @@
           endif; ?>
 
           <!-- MARKER -->
-          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>" data-thisevent="<?php echo $e; ?>" data-activeevent="<?php echo $this_event; ?>">
+          <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" icon="<?php echo $p[1]; ?>" data-thisevent="<?php echo $e; ?>" data-activeevent="<?php if( isset($this_event) ) {echo $this_event;} ?>">
             <div class="modal__close">
               <a href="#" id="close-event" class="clearfix close-events"></a>
             </div>

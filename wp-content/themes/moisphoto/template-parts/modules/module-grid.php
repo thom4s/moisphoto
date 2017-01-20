@@ -152,11 +152,12 @@
           break;
 
 
-        case 'page': ?>
-          <?php 
+        case 'page': 
+        
             $page_id = $item['post_item'];
             $url = get_permalink ( $item['page_item'] );
             $post_title = get_the_title( $page_id ) ?>
+
           <a href="<?php echo $url; ?>">
             <div class="grid__item--page s-14col m-6col <?php echo $order_item; ?> square">
               <div class="square__content">
@@ -183,8 +184,8 @@
           break;
 
 
-        case 'post': ?>
-          <?php
+        case 'post': 
+
             $post_id = $item['post_item'][0]->ID;
             $url = get_permalink ( $post_id );
             $post_title = get_the_title( $post_id ); ?>
