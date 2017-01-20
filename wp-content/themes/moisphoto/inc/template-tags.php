@@ -134,7 +134,7 @@ function moisphoto_get_artists_list($terms, $linked = false) {
 	    $term_list = '';
 
 	    if($count > 5) :
-	    	$term_list = 'Collectif';
+	    	$term_list = 'Exposition collective ';
 
 	    else : 
 				foreach ( $terms as $term ) {
