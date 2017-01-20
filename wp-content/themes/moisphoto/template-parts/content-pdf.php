@@ -12,37 +12,83 @@ ob_start();
   $lieu = get_field('lieu');
   $lieu_adresse_group = get_field('adresse', $lieu);
   $lieu_adresse = $lieu_adresse_group['address'];
-
-  ?>
+  $weekends = get_posts(array(
+    'post_type' => 'weekend',
+    'meta_query' => array(
+      array(
+        'key' => 'events_list', 
+        'value' => '"' . get_the_ID() . '"', 
+        'compare' => 'LIKE'
+      )
+    )
+  ));
+?>
 
 <style type="text/css">
 
   html, table, tr, td { margin: 0; padding: 0; }
   body { 
-    margin: 80pt; 
+    margin: 60pt; 
     font-family: Verdana, Geneva, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
+    line-height: 10px;
   }
   h1 {
-    font-size: 20px;
-    font-weight: 100;
+    font-size: 18px;
+    font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 0;
+    line-height: 5px;
   }
   h2 {
-    font-weight: 100;
+    font-size: 22px;
+    font-weight: 900;
     font-size: 16px;
+    line-height: 5px;
   }
   h3 {
     font-weight: 900;
-    font-size: 13px;
-    text-transform: uppercase;
+    font-size: 14px;
+    line-height: 5px;
   }
   h4 {
     font-weight: 900;
-    font-size: 11px;
+    font-size: 14px;
     margin-top: 30pt;
+    line-height: 5px;
   }
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  p {
+    font-size: 13px;
+    margin-bottom: 10px;
+    line-height: 18px;
+  }
+  strong {
+    font-weight: 900;
+  }
+  .logo img {
+    width: 400px;
+    margin-bottom: 50px;
+  }
+
+  .bloc {
+    margin-bottom: 10px;
+  }
+
+  .partners img {
+    display: block;
+    width: 75px;
+    max-height: 40px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    float: left;
+    height: auto;
+  }
+
 
 </style>
 <!DOCTYPE html>
@@ -51,21 +97,29 @@ ob_start();
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <body>
 
-    <!-- PAGE FRANÇAISE -->
+    <div class="logo bloc">
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/img/mdlp_logo_big.png">
+    </div>
 
-    <h1><?php moisphoto_get_artists_list($auteurs); ?></h1>
-    <h2><?php the_title( ); ?></h2>
-    <h3><?php 
-        if($sous_titres) {
-          foreach ($sous_titres as $st) {
-            echo $st['sous-titre'];
+    <div class="bloc">
+      <h1><?php moisphoto_get_artists_list($auteurs); ?></h1>
+      <h2><?php the_title( ); ?></h2>
+      <h3><?php 
+          if($sous_titres) {
+            foreach ($sous_titres as $st) {
+              echo $st['sous-titre'];
+            }
           }
-        }
-      ?> </h3>
+        ?> </h3>
+    </div>
+    
+    <div class="bloc">
+      <h2><?php echo get_the_title( $lieu ); ?></h2>
+      <?php echo $lieu_adresse; ?><br><br><br>
+    </div>
 
-    <p><?php echo get_the_title( $lieu ); ?> <br>
-     <?php echo $lieu_adresse; ?></p>
-    <p><?php 
+    <div class="bloc">
+    <?php 
       if($date_fixe) {
         the_field('date'); 
       } else {
@@ -73,91 +127,47 @@ ob_start();
         echo ' - ';
         the_field('date_fin');
       }
-    ?> </p> 
+    ?><br><br>
+    <?php echo get_the_title( $weekends[0]->ID ); ?>
 
-    <p>Commissariat : <?php the_field('nom_commissaire'); ?></p>
+    </div>
 
-
-<br>
-<br>
-<br>
-
-
-    <?php if( get_field('chapo') != '' ) : ?>
-      <div class="p--big event__extract">
-        <?php the_field('chapo'); ?>
+    <?php if( get_field('nom_commissaire') != '' ) : ?>
+      <div class="bloc">
+        <p>Commissariat : <br>
+         <?php the_field('nom_commissaire'); ?></p>
       </div>
     <?php endif; ?>
 
-    <div>
-      <?php the_content(); ?>
+    <div class="bloc">
+      <p>Contact presse : <br>
+        <?php the_field('nom_contact', $lieu); ?>, <?php the_field('email_contact', $lieu); ?></p>
+      </p> 
     </div>
 
-
-
-    <div style="page-break-before: always;"></div>
-
-
-    <h3>Informations pratiques</h3>
-
-      <h5>
-        <?php echo get_the_title( $lieu ); ?><br>
-        <?php $type_lieu = get_field('type_de_lieu', $lieu); moisphoto_get_artists_list($type_lieu); ?>
-      </h5>
-
-      <p><?php echo $lieu_adresse; ?></p>
-            
-      <p><?php the_field('complement_adresse', $lieu); ?></p>
-
+<br>
 <br>
 
-      <h4>Accès</h4>
-        <?php 
-        if( get_field('transport', $lieu) ) {
-          the_field('transport', $lieu);
-        }
+    <div class="bloc">
+    <?php if( get_field('chapo') != '' ) : ?>
+        <p><strong><?php the_field('chapo'); ?></strong></p>
+    <?php endif; ?>
 
-        if( get_field('horaires', $lieu) !='' ) {
-          the_field('horaires', $lieu);
-          echo '<br>';
-        }
-
-        if(get_field('accès', $lieu)) {
-          the_field('accès', $lieu);
-        }    ?>
-
-      <h4>Contact(s)</h4>
-
-        <?php
-        if(get_field('telephone', $lieu)) {
-          the_field('telephone', $lieu);
-          echo '<br>';
-        }
-
-        if(get_field('email', $lieu)) {
-          the_field('email', $lieu);
-          echo '<br>';
-        }
-
-        if( get_field('website', $lieu)) { ?>
-          <a href="<?php the_field('website', $lieu); ?>">Site internet</a>
-        <?php } 
+    <p>
+      <?php $page_data = get_page( get_the_ID() );
+        if ($page_data) {
+          echo strip_shortcodes($page_data->post_content);
+      } ?>
+    </p></div>
 
 
-        if(get_field('date_vernissage', $lieu)) {
-          echo 'Date du vernissage : ';
-          the_field('date_vernissage', $lieu);
-          echo '<br>';
-        } ?>
+<br>
+<br>
 
-
-      <h4>Contact presse</h4>
-        <p> <?php the_field('nom_contact', $lieu); ?></p>
-        <p> <?php the_field('email_contact', $lieu); ?></p>
-
-
-
- 
+    <div class="bloc partners">
+      <?php the_field('mentions'); ?>
+    </div>
+  
   </body>
 </html>
 
