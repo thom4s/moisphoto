@@ -172,9 +172,10 @@ ob_start();
 </html>
 
 <?php
+$pdf_name = "MDLP_" . get_the_title() . ".pdf";
 $dompdf = new DOMPDF();
 $dompdf->load_html(ob_get_clean());
 $dompdf->set_paper('a4', 'portrait');
 $dompdf->render();
-$dompdf->stream("sample.pdf", array("Attachment" => 0));
+$dompdf->stream($pdf_name, array("Attachment" => 0));
 ?>
