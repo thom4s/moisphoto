@@ -27,6 +27,10 @@
 
 
     else: 
+      $e_id = $e->ID;
+      $my_excerpt = get_the_excerpt($e->ID);
+      $url = get_permalink( $e->ID );
+
 
     endif; 
 
