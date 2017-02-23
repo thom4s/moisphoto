@@ -15,8 +15,16 @@
 
 
     elseif( 'page' == get_post_type( $e ) ) : 
-      $my_excerpt = get_post_field('chapo', $e->ID);
+      $e_id = $e->ID;
+      $my_excerpt = get_post_field('chapo', $e_id );
+      $url = get_permalink( $e_id );
+
+
+    elseif( 'post' == get_post_type( $e ) ) : 
+      $e_id = $e->ID;
+      $my_excerpt = get_the_excerpt($e->ID);
       $url = get_permalink( $e->ID );
+
 
     else: 
 
@@ -38,7 +46,7 @@
       $lieu_adresse = $lieu_adresse_group['address'];
       $lieu_adresse = str_replace(', France', '', $lieu_adresse);
 
-      $type = get_terms( 'event-type' ); 
+      $type = wp_get_post_terms( $e_id, 'event-type', $args );
 
       if(isset($my_longitude) && isset($my_latitude)) {
         $place_latitude = get_field('lat', $lieu);
@@ -84,7 +92,7 @@
         <?php if($type) { moisphoto_get_artists_list($type); echo '<br>'; } ?>
         
         <?php 
-          if($date_fixe) {
+          if( $date_fixe ) {
             the_field('date', $e_id); 
           } else {
             the_field('date_debut', $e_id);

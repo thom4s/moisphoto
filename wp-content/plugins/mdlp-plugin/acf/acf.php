@@ -821,10 +821,13 @@ acf_add_local_field_group(array (
       'default_value' => 0,
     ),
     array (
+      'display_format' => 'd/m/Y H:i',
+      'return_format' => 'd/m/Y - H:i',
+      'first_day' => 1,
       'key' => 'field_57b5be76d3c41',
       'label' => 'Date',
       'name' => 'date',
-      'type' => 'date_picker',
+      'type' => 'date_time_picker',
       'instructions' => '',
       'required' => 0,
       'conditional_logic' => array (
@@ -841,9 +844,6 @@ acf_add_local_field_group(array (
         'class' => '',
         'id' => '',
       ),
-      'display_format' => 'd/m/Y',
-      'return_format' => 'd/m/Y',
-      'first_day' => 1,
     ),
     array (
       'key' => 'field_57b5bebad3c42',

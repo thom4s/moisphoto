@@ -221,9 +221,9 @@
 								}
 
 								if( get_field('email', $lieu) ) {
-									the_field('email', $lieu);
+									echo "<a href='mailto:" . get_field('email', $lieu) . "'>" . get_field('email', $lieu) . '</a>';
 									echo '<br>';
-								}
+								}	
 
 								if( get_field('website', $lieu) ) { ?>
 									<a href="<?php the_field('website', $lieu); ?>" target="_blank"><br><strong>> Voir le site internet</strong></a>
@@ -253,7 +253,7 @@
 
 
 					<div class="event__map" style="border-color: <?php echo $we_color; ?>">
-					  <h3 class="h3">événements et curiosités proches</h3>
+					  <h3 class="h3">Expositions et curiosités proches</h3>
 
 						<div class="part" id="curiosites" title="Les curiosités"></div>
 
