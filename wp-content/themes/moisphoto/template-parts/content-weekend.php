@@ -35,7 +35,10 @@
         $color_we = str_replace('#', '', $color_we); 
 
         foreach ($events as $e) {
-            $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+          $type = wp_get_post_terms( $e, 'event-type', array('orderby' => 'name', 'order' => 'ASC', 'fields' => 'slugs') );
+          if( in_array("exposition", $type) ) {
+            $places_events_array[$e] = array( get_field('lieu', $e), $color_we );            
+          }
         }    
 
         set_query_var('events', $events); 
@@ -62,6 +65,53 @@
         </div>
       </div>
     <?php endif; ?>
+
+    <section class="event__rebonds clearfix">
+      <div class="wrap row">
+
+        <div class="has-bordertop--big clearfix"></div>   
+        <h3 class="h2 clearfix">Les événements du expositions</h3>
+
+        <div class="m-20col is-centered">
+          <div class="row">
+
+          <?php 
+            if($events) {
+
+              $i = 1;
+
+              foreach ($events as $e) : 
+
+                $clearfix = ''; 
+
+                if( $i%3 == 0 ) : 
+                  $push = '2';
+                  $i = 1;
+
+                elseif( $i%2 == 0 ) : 
+                  $push = '1';
+                  $i++;
+
+                else : 
+                  $push = '0';
+                  $clearfix = 'clearfix';
+                  $i++;
+
+                endif;  
+
+                set_query_var('e', $e); 
+                set_query_var('push', $push); 
+                set_query_var('clearfix', $clearfix); 
+                get_template_part('template-parts/parts/part', 'item'); ?>
+
+              <?php  endforeach; 
+            
+            } ?>
+          </div>
+        </div>
+        
+      </div>
+    </section><!-- .event__rebonds -->
 
 
     <?php if( get_field('display_news') ) : ?>
