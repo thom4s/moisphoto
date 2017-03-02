@@ -39,8 +39,8 @@
       <?php the_content(); ?>
 
       <div class="s-20col m-12col searchbar--press">
-        <h3 class="h5 has-bordertop--little">Téléchargez tous les dossiers de presse en une fois (ne comprend pas les visuels)</h3>
-        <a target="_blank" href="/telecharger-tous-dp">Télécharger</a>
+        <h3 class="h5 has-bordertop--little"><a target="_blank" href="/telecharger-tous-dp">Télécharger tous les dossiers de presse en une fois</a>  (ne comprend pas les visuels). Attention, le chargement peut prendre quelques minutes suivant l'état de la connection.</h3>
+        
       </div>
 
       <div class="clearfix s-20col m-11col searchbar--press">
