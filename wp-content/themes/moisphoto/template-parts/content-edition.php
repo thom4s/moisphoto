@@ -8,8 +8,8 @@
  */
 
 // Include and instantiate the class.
-require_once TEMPLATEPATH . '/inc/Mobile_Detect.php';
-$detect = new Mobile_Detect;
+// require_once TEMPLATEPATH . '/inc/Mobile_Detect.php';
+// $detect = new Mobile_Detect;
 
 
 ?>
@@ -19,7 +19,7 @@ $detect = new Mobile_Detect;
   <div class="entry-content clearfix">
 
     <?php
-      if( $detect->isMobile() && !$detect->isTablet() ) :
+      if( wp_is_mobile() ) :
 
         if( have_rows('bouttons_pour_mobile') ): ?>
 
