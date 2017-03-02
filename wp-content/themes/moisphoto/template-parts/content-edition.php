@@ -66,7 +66,10 @@
           
           foreach ($events_list as $e) {
             $events[] = $e;
-            $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+            $type = wp_get_post_terms( $e, 'event-type', array('fields' => 'slugs') );
+            if( in_array("exposition", $type) ) {
+              $places_events_array[$e] = array( get_field('lieu', $e), $color_we );
+            }
           }            
         }
         $is_weekend = true; 
@@ -75,7 +78,11 @@
         $events = get_field('evenements', $current_edition);
 
         foreach ($events as $e) {
-          $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+          $type = wp_get_post_terms( $e, 'event-type', array('fields' => 'slugs') );
+          
+          if( in_array("exposition", $type) ) {
+            $places_events_array[$e] = array( get_field('lieu', $e), 'default' );
+          }
         }    
         $is_weekend = false; 
 
