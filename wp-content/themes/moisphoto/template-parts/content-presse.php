@@ -38,7 +38,12 @@
     <div class="page__content">
       <?php the_content(); ?>
 
-      <div class="s-20col m-9col searchbar--press">
+      <div class="s-20col m-12col searchbar--press">
+        <h3 class="h5 has-bordertop--little">Téléchargez tous les dossiers de presse en une fois (ne comprend pas les visuels)</h3>
+        <a target="_blank" href="/telecharger-tous-dp">Télécharger</a>
+      </div>
+
+      <div class="clearfix s-20col m-11col searchbar--press">
         <h3 class="h5 has-bordertop--little">Téléchargez les éléments presse par expostion</h3>
         <?php get_template_part('template-parts/parts/part-presseform'); ?>
       </div>
@@ -51,6 +56,8 @@
               $args = array(
                 'posts_per_page'  => -1,
                 'post_type' => array('event'),
+                'event-type'          => 'exposition',
+                'post_status'       => 'publish',
               );
         
               $events = new WP_Query( $args );
