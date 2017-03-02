@@ -70,7 +70,7 @@
       <div class="wrap row">
 
         <div class="has-bordertop--big clearfix"></div>   
-        <h3 class="h2 clearfix">Les événements du expositions</h3>
+        <h3 class="h2 clearfix">Les événements du weekend</h3>
 
         <div class="m-20col is-centered">
           <div class="row">
