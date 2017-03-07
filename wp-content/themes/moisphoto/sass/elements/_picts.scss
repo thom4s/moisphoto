@@ -34,6 +34,22 @@
 }
 
 
+.pict--twitter {
+  @extend %picto;
+
+  .pict__content {
+    background-color: $color_primary;
+  }
+}
+
+.pict--insta {
+  @extend %picto;
+
+  .pict__content {
+    background-color: $color_primary;
+  }
+}
+
 .pict--fb {
   @extend %picto;
 

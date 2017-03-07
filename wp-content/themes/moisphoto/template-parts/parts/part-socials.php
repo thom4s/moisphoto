@@ -14,13 +14,6 @@
             </div>        
           </div>
 
-<!--           <div class="pict--social square s-2col m-1col s-last">
-            <div class="square__content">
-              <div class="table">
-                <a href="<?php echo TWITTER_LINK; ?>" target="_blank" class="pict__content icon-twitter table-cell"> </a>
-              </div>
-            </div>
-          </div> -->
           
 
           <div class="pict--contact square s-2col m-1col s-last">
@@ -39,13 +32,22 @@
             </div>
           </div>
   
-<!--           <div class="pict--social square s-2col m-1col s-last">
+           <div class="pict--insta square s-2col m-1col s-last">
             <div class="square__content">
               <div class="table">
                 <a href="<?php echo INSTAGRAM_LINK; ?>" target="_blank" class="pict__content icon-instagram table-cell"></a>
               </div>
             </div>
-          </div> -->
+          </div> 
+
+
+          <div class="pict--twitter square s-2col m-1col s-last">
+            <div class="square__content">
+              <div class="table">
+                <a href="<?php echo TWITTER_LINK; ?>" target="_blank" class="pict__content icon-twitter table-cell"> </a>
+              </div>
+            </div>
+          </div> 
 
           <div id="searchbar" class="searchbar s-24col m-6col">
             <?php get_search_form(); ?>
