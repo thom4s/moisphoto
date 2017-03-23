@@ -89,7 +89,7 @@ ob_start();
   $args = array(
     'posts_per_page'    => -1,
     'post_type'         => array('event'),
-    'event-type'          => 'exposition',
+    'event-type'        => 'exposition',
     'post_status'       => 'publish',
   );
 
@@ -119,10 +119,6 @@ ob_start();
       ));
       ?>
          
-
-        <div class="logo bloc">
-          <img src="wp-content/themes/moisphoto/assets/img/mdlp_logo_big.png" />
-        </div>
 
         <div class="bloc">
           <h1><?php moisphoto_get_artists_list($auteurs); ?></h1>
