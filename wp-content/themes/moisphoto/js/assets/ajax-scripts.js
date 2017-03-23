@@ -100,6 +100,12 @@ $(document).on( 'click', '.js-display-events', function( event ) {
             $content.html( result );
             $content.show('fast');
             $('.loader').hide();
+        },
+        error: function( result ) {
+            console.log( result );
+            $content.html( '<p style="color: #fff;">Une erreur est apparue, merci de réessayer plus tard...</p>' );
+            $content.show('fast');
+            $('.loader').hide();
         }
     });
 
