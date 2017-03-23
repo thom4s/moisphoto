@@ -65,6 +65,7 @@
                 $c_description = get_field('description', $c); 
               ?>
 
+              <?php if( get_the_title($c) != "" ) : ?>
               <!-- MARKER FOR CURIOSITES-->
               <div class="marker" data-lat="<?php echo $c_location['lat']; ?>" data-lng="<?php echo $c_location['lng']; ?>" icon="default_2">
 
@@ -78,7 +79,7 @@
                 <?php endif; ?>
 
 
-                <div class="map__modal__content">
+                <div class="map__modal__content" id="<?php echo get_the_title($c); ?>">
 
                   <?php if ( has_post_thumbnail( $c ) ) { ?>
                     <div class="modal__img">
@@ -105,6 +106,7 @@
 
                 </div><!--.modal-content -->
               </div><!--.marker -->
+              <?php endif; ?>
 
             <?php endforeach; 
           endif; ?>
@@ -751,7 +753,6 @@
     $('.module-map').show();
 
     $( window ).resize(function() {
-      console.log('resize');
       center_map( map );
     });
 
