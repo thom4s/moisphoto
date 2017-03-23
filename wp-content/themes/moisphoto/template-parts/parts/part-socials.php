@@ -12,14 +12,12 @@
                 <span class="pict__content table-cell"> <?php do_action('display_languages'); ?></span> 
               </div>
             </div>        
-          </div>
-
-          
+          </div>        
 
           <div class="pict--contact square s-2col m-1col s-last">
             <div class="square__content">
               <div class="table">
-                <a href="/equipe-et-contacts" class="pict__content icon-mail table-cell"></a>
+                <a href="mailto:contact@moisdelaphotodugrandparis.com/" class="pict__content icon-mail table-cell"></a>
               </div>
             </div>
           </div>
