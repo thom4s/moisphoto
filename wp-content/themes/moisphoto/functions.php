@@ -9,8 +9,8 @@
 
 
 define("FACEBOOK_LINK", 'https://www.facebook.com/moisdelaphotograndparis/');
-define("TWITTER_LINK", 'https://www.twitter.com/moisdelaphotograndparis/');
-define("INSTAGRAM_LINK", 'https://www.instagram.com/moisdelaphotograndparis/');
+define("TWITTER_LINK", 'https://twitter.com/MoisdelaPhotoGP');
+define("INSTAGRAM_LINK", 'https://www.instagram.com/moisphotograndparis2017/');
 
 
 
@@ -548,7 +548,7 @@ function load_events_list() {
 
                     $clearfix = ''; 
 
-                    if( !is_mobile() ) : 
+                    if( !wp_is_mobile() ) : 
                       if( $i%3 == 0 ) : 
                         $push = '2';
                         $i = 1;
