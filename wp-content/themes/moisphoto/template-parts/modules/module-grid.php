@@ -49,11 +49,12 @@
                 <h3 class="h3"><?php echo $item['text_title']; ?></h3>
                 <div class="has-bordertop--little"> <?php echo $item['text_intro']; ?></div>
                 
+                <?php if( $item['text_link'] !== "" ): ?>
                 <div>
                   <span class="arrow--little--black"> > </span>
                   <span class="a--inline">En savoir plus</span>
                 </div>  
-
+                <?php endif; ?>
               </div>
             </div>
           </a>
