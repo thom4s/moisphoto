@@ -15,9 +15,12 @@
     <div class="wrap row">
       
       <div class="has-bordertop--big clearfix"></div>
-      <h1><?php the_title(); ?></h1>
+
+      <div class="entry__header text-on-left">
+        <h1><?php the_title(); ?></h1>
+      </div>
     
-      <div class="m-12col">
+      <div class="m-16col entry__content">
         <?php the_content(); ?>
       </div>
     
@@ -43,8 +46,10 @@
 
         set_query_var('events', $events); 
         set_query_var('places_events_array', $places_events_array); 
-        set_query_var('is_weekend', $is_weekend); 
-
+        
+        if( isset($is_weekend) ) {
+          set_query_var('is_weekend', $is_weekend); 
+        }
 				get_template_part( 'template-parts/modules/module', 'map' ); ?>
 
     </div>
@@ -64,54 +69,61 @@
 
         </div>
       </div>
+
     <?php endif; ?>
 
-    <section class="event__rebonds clearfix">
-      <div class="wrap row">
 
-        <div class="has-bordertop--big clearfix"></div>   
-        <h3 class="h2 clearfix">Les événements du weekend</h3>
+    <?php if( get_field('evenements_lies') ) :  ?>
 
-        <div class="m-20col is-centered">
-          <div class="row">
+      <?php $we_events = get_field('evenements_lies'); ?>
 
-          <?php 
-            if($events) {
+      <section class="event__rebonds clearfix">
+        <div class="wrap row">
 
-              $i = 1;
+          <div class="has-bordertop--big clearfix"></div>   
+          <h3 class="h2 clearfix">Les événements du weekend</h3>
 
-              foreach ($events as $e) : 
+          <div class="m-20col is-centered">
+            <div class="row">
 
-                $clearfix = ''; 
+            <?php 
 
-                if( $i%3 == 0 ) : 
-                  $push = '2';
-                  $i = 1;
+                $i = 1;
 
-                elseif( $i%2 == 0 ) : 
-                  $push = '1';
-                  $i++;
+                foreach ($we_events as $e) : 
 
-                else : 
-                  $push = '0';
-                  $clearfix = 'clearfix';
-                  $i++;
+                  $clearfix = ''; 
 
-                endif;  
+                  if( $i%3 == 0 ) : 
+                    $push = '2';
+                    $i = 1;
 
-                set_query_var('e', $e); 
-                set_query_var('push', $push); 
-                set_query_var('clearfix', $clearfix); 
-                get_template_part('template-parts/parts/part', 'item'); ?>
+                  elseif( $i%2 == 0 ) : 
+                    $push = '1';
+                    $i++;
 
-              <?php  endforeach; 
-            
-            } ?>
+                  else : 
+                    $push = '0';
+                    $clearfix = 'clearfix';
+                    $i++;
+
+                  endif;  
+
+                  set_query_var('e', $e); 
+                  set_query_var('push', $push); 
+                  set_query_var('clearfix', $clearfix); 
+                  get_template_part('template-parts/parts/part', 'item'); ?>
+
+                <?php  endforeach; 
+              
+              ?>
+            </div>
           </div>
+          
         </div>
-        
-      </div>
-    </section><!-- .event__rebonds -->
+      </section><!-- .event__rebonds -->
+
+    <?php endif; ?>
 
 
     <?php if( get_field('display_news') ) : ?>
