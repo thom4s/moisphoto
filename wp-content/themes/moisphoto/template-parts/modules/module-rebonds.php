@@ -3,8 +3,8 @@
       <div class="wrap row">
 
         <?php if( is_singular( 'event' )) : ?>
-          <div class="has-bordertop--big clearfix"></div>   
-          <h3 class="h2 clearfix">Autour de l'exposition</h3>
+          <div class="has-bordertop--big clearfix"></div>
+          <h3 class="h2 clearfix">Autour de </h3>
         <?php endif; ?>
 
         <div class="m-20col is-centered">
