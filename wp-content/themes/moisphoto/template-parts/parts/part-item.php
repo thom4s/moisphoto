@@ -50,7 +50,7 @@
       $lieu_adresse = $lieu_adresse_group['address'];
       $lieu_adresse = str_replace(', France', '', $lieu_adresse);
 
-      $type = wp_get_post_terms( $e_id, 'event-type', $args );
+      $type = wp_get_post_terms( $e_id, 'event-type' );
 
       if(isset($my_longitude) && isset($my_latitude)) {
         $place_latitude = get_field('lat', $lieu);
@@ -109,7 +109,11 @@
         <p class="p--strong rebonds__place__name"><?php echo get_the_title( $lieu ); ?></p>
 
         <p class="rebonds__place__city"><?php echo $lieu_adresse; ?></p>
-        <p><?php echo $distance; ?></p>
+        
+        <?php if( isset($distance) ) : ?>  
+          <p><?php echo $distance; ?></p>
+        <?php endif; ?>
+
       </div>
 
   <?php } ?>
