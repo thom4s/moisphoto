@@ -53,6 +53,17 @@ body {
   }
 
 
+.weekend {
+
+  .entry__header {
+    margin-top: 0;
+  }
+  .entry__content {
+    margin-bottom: $base_line_height;
+  }
+}
+
+
 @import "home";
 @import "single";
 @import "presse";
