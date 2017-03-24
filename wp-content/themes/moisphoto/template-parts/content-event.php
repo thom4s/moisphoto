@@ -18,6 +18,9 @@
 	$lieu_adresse = $lieu_adresse_group['address'];
   $lieu_adresse = str_replace(', France', '', $lieu_adresse);
 
+	$event_type = wp_get_post_terms( get_the_ID(), 'event-type' );
+
+
 	$position = array(
 		'lat' => $lieu_adresse_group['lat'],
 		'lng' => $lieu_adresse_group['lng'],
@@ -47,6 +50,7 @@
 			<div class="wrap row">
 
 				<div class="clearfix event__id">
+					<div class="event__id__type"><?php moisphoto_get_artists_list($event_type); ?></div>
 					<div class="s-10col event__id__titles"><span class="id__artist"><?php moisphoto_get_artists_list($auteurs); ?></span> - <span class="id__title"> <?php the_title(); ?></span></div> 
 					<div class="s-10col s-last event__id__place">
 						<span class="id__place"> <?php echo get_the_title( $lieu ); ?></span> | 	
@@ -75,6 +79,7 @@
 					<div class="m-8col event__header__inner">
 
 						<div class="header__titles">
+							<div class="event__id__type"><?php moisphoto_get_artists_list($event_type); ?></div>
 							<h1 class="h1"><?php moisphoto_get_artists_list($auteurs); ?></h1>
 							<h2 class="h2"><?php the_title(); ?></h2>					
 							<h5 class="h5"><?php 
