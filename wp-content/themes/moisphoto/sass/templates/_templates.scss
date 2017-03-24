@@ -53,7 +53,8 @@ body {
   }
 
 
-.weekend {
+.weekend,
+.portraits {
 
   .entry__header {
     margin-top: 0;
@@ -64,9 +65,11 @@ body {
 }
 
 
+
+
 @import "home";
 @import "single";
 @import "presse";
 @import "event";
-
+@import "portrait";
 

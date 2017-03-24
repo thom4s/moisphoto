@@ -1,0 +1,48 @@
+/* 
+ * templates/portrait
+ * 
+ * @package sasskit
+ */
+
+
+.portraits {
+
+
+  .page__header {
+    margin-top: $base_line_height;
+  }
+  
+  .entry__content {
+
+
+    a[href$=".pdf"] {
+      display: inline-block;
+      border: 1px solid $gray;
+      padding: 10px 15px;
+
+      &:after {
+        content: '(.pdf)';
+      }
+      &:hover {
+        background-color: $gray;
+        color: $white;
+      }
+    }
+
+    a:not([href$=".pdf"]) {
+      display: inline-block;
+      border: 1px solid $color_primary;
+      padding: 10px 15px;
+      background-color: $color_primary;
+      color: $white;
+      font-weight: 400;
+
+      &:hover {
+        background-color: white;
+        color: $color_primary;
+      }
+    }
+  }
+
+
+}

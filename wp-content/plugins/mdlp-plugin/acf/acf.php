@@ -2171,6 +2171,50 @@ acf_add_local_field_group(array (
 ));
 
 
+acf_add_local_field_group(array (
+  'key' => 'group_58d54571c6389',
+  'title' => 'Infos Portraits Grands Parisiens',
+  'fields' => array (
+    array (
+      'tabs' => 'all',
+      'toolbar' => 'full',
+      'media_upload' => 1,
+      'default_value' => '',
+      'delay' => 0,
+      'key' => 'field_58d54587a754f',
+      'label' => 'Partenaires',
+      'name' => 'partenaires',
+      'type' => 'wysiwyg',
+      'instructions' => '',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+    ),
+  ),
+  'location' => array (
+    array (
+      array (
+        'param' => 'post_template',
+        'operator' => '==',
+        'value' => 'page-portraits.php',
+      ),
+    ),
+  ),
+  'menu_order' => 0,
+  'position' => 'normal',
+  'style' => 'default',
+  'label_placement' => 'top',
+  'instruction_placement' => 'label',
+  'hide_on_screen' => '',
+  'active' => 1,
+  'description' => '',
+));
+
+
 
 
 endif;
