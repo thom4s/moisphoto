@@ -1109,7 +1109,7 @@ acf_add_local_field_group(array (
     ),
     array (
       'key' => 'field_57c6850ff139f',
-      'label' => 'Evénéments liés',
+      'label' => 'Evénements liés',
       'name' => 'evenements_lies',
       'type' => 'relationship',
       'instructions' => '',
