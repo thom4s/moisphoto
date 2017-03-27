@@ -106,4 +106,55 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
 }
 
 
+.wpcf7-form {
+
+  input[type="text"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="email"] {
+    background: none;
+    border: 1px solid $gray_dark;
+    padding: $base_line_half / 2;
+    width: 48%;
+    margin-right: 2%;
+    float: left;
+    margin-bottom: $base_line_half;
+  }
+
+  select {
+      height: 41px;
+      padding: 0 10px;
+      border: 1px solid $gray_dark;
+      margin-right: 20px;
+  }
+
+  span {
+
+  }
+
+  h2 {
+    clear: both;
+    margin-bottom: $base_line_half;
+  }
+  h3 {
+    clear: both;
+    margin-bottom: $base_line_half / 2;
+  }
+}
+
+.input-group {
+  margin-bottom: $base_line_half;
+}
+
+input.wpcf7-submit {
+  background-color: $color_primary;
+  color: $white;
+  width: auto;
+  padding: 0 $base_line_height;
+  margin-top: $base_line_height;
+}
+
+
+
+
 

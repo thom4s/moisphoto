@@ -725,3 +725,55 @@ add_action( 'save_post', 'save_place_lat_lng', 10, 3 );
 
 
 
+
+add_action("wpcf7_posted_data", "wpcf7_modify_this");
+function wpcf7_modify_this($posted_data) {
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-8'] == "Samedi 8 avril")
+        $posted_data['avril-8'] = " - ";
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-9'] == "Dimanche 9 avril")
+        $posted_data['avril-9'] = " - ";
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-14'] == "Vendredi 14 avril")
+        $posted_data['avril-14'] = " - ";
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-15'] == "Samedi 15 avril")
+        $posted_data['avril-15'] = " - ";      
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-16'] == "Dimanche 16 avril")
+        $posted_data['avril-16'] = " - ";      
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-21'] == "Vendredi 21 avril")
+        $posted_data['avril-21'] = " - ";
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-22'] == "Samedi 22 avril")
+        $posted_data['avril-22'] = " - ";      
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-23'] == "Dimanche 23 avril")
+        $posted_data['avril-23'] = " - ";   
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-28'] == "Vendredi 28 avril")
+        $posted_data['avril-28'] = " - ";
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-29'] == "Samedi 29 avril")
+        $posted_data['avril-29'] = " - ";      
+
+    // if user leaves the message area blank, set to "None"
+    if ($posted_data['avril-30'] == "Dimanche 30 avril")
+        $posted_data['avril-30'] = " - "; 
+
+    return $posted_data;
+}
+
+
+

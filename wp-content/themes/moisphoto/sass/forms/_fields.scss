@@ -3,6 +3,8 @@ input[type="email"],
 input[type="url"],
 input[type="password"],
 input[type="search"],
+input[type="number"],
+input[type="tel"],
 textarea {
   width: 100%;
   height: ($base_line_height * 1.5) - 4;
