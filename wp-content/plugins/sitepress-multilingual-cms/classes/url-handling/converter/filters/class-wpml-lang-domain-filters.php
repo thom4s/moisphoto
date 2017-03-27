@@ -4,6 +4,7 @@ class WPML_Lang_Domain_Filters {
 
 	private $wpml_url_converter;
 	private $wpml_wp_api;
+	private $debug_backtrace;
 
 	/**
 	 * WPML_Lang_Domain_Filters constructor.
@@ -11,15 +12,22 @@ class WPML_Lang_Domain_Filters {
 	 * @param $wpml_url_converter
 	 * @param $wpml_wp_api
 	 */
-	public function __construct( WPML_URL_Converter $wpml_url_converter, WPML_WP_API $wpml_wp_api ) {
+	public function __construct(
+		WPML_URL_Converter $wpml_url_converter,
+		WPML_WP_API $wpml_wp_api,
+		WPML_Debug_BackTrace $debug_backtrace
+	) {
+
 		$this->wpml_url_converter = $wpml_url_converter;
-		$this->wpml_wp_api = $wpml_wp_api;
+		$this->wpml_wp_api        = $wpml_wp_api;
+		$this->debug_backtrace    = $debug_backtrace;
 	}
 
 	public function add_hooks() {
 		add_filter( 'upload_dir', array( $this, 'upload_dir_filter_callback' ) );
 		add_filter( 'stylesheet_uri', array( $this, 'convert_url' ) );
 		add_filter( 'option_siteurl', array( $this, 'siteurl_callback' ) );
+		add_filter( 'content_url', array( $this, 'siteurl_callback' ) );
 		add_filter( 'login_url', array( $this, 'convert_url' ) );
 		add_filter( 'logout_url', array( $this, 'convert_logout_url' ) );
 		add_filter( 'admin_url', array( $this, 'admin_url_filter' ), 10, 2 );
@@ -53,10 +61,12 @@ class WPML_Lang_Domain_Filters {
 	 * @return string
 	 */
 	public function siteurl_callback( $url ) {
-		$parsed_url = wpml_parse_url( $url );
-		$host = is_array( $parsed_url ) && isset( $parsed_url['host'] );
-		if( $host && $_SERVER['HTTP_HOST'] ){
-			$url = str_replace( $parsed_url['host'], $_SERVER['HTTP_HOST'], $url );
+		if ( ! $this->debug_backtrace->is_function_in_call_stack( 'get_home_path' ) ) {
+			$parsed_url = wpml_parse_url( $url );
+			$host       = is_array( $parsed_url ) && isset( $parsed_url['host'] );
+			if ( $host && isset( $_SERVER['HTTP_HOST'] ) && $_SERVER['HTTP_HOST'] ) {
+				$url = str_replace( $parsed_url['host'], $_SERVER['HTTP_HOST'], $url );
+			}
 		}
 
 		return $url;
