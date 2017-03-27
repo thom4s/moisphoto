@@ -7,6 +7,8 @@
  * @package moisphoto
  */
 
+        $we_color = get_field('color');
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -111,6 +113,7 @@
 
                   set_query_var('e', $e); 
                   set_query_var('push', $push); 
+                  set_query_var('we_color', $we_color); 
                   set_query_var('clearfix', $clearfix); 
                   get_template_part('template-parts/parts/part', 'item'); ?>
 
