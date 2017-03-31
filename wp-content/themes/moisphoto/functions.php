@@ -777,3 +777,23 @@ function wpcf7_modify_this($posted_data) {
 
 
 
+
+/*
+ * Extend wp search to include custom post meta 
+ */
+
+function custom_search_query( $query ) {
+  if ( !is_admin() && $query->is_search ) {
+    $query->set('meta_query', array(
+      array(
+        'key' => 'lieu',
+        'value' => $query->query_vars['s'],
+        'compare' => 'LIKE'
+      )
+    ));
+  };
+}
+//add_filter( 'pre_get_posts', 'custom_search_query');
+
+
+

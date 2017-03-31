@@ -115,10 +115,6 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
     background: none;
     border: 1px solid $gray_dark;
     padding: $base_line_half / 2;
-    width: 48%;
-    margin-right: 2%;
-    float: left;
-    margin-bottom: $base_line_half;
   }
 
   select {
@@ -126,10 +122,6 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
       padding: 0 10px;
       border: 1px solid $gray_dark;
       margin-right: 20px;
-  }
-
-  span {
-
   }
 
   h2 {
@@ -146,15 +138,65 @@ input::-moz-focus-inner { /* Corrects inner padding and border displayed oddly i
   margin-bottom: $base_line_half;
 }
 
+.input-group--id {
+  
+  .wpcf7-form-control-wrap {
+    width: 48%;
+    margin-right: 2%;
+    float: left;
+    margin-bottom: $base_line_half;
+  }
+}
+
+.input-group--dates {
+  
+  .wpcf7-form-control-wrap {
+    margin-bottom: $base_line_half;
+    float: left;
+  }
+}
+
+.input-group--acceptance {
+  
+  & > p {
+    font-size: 14px !important;
+    font-size: 1.4rem !important;
+    font-weight: $light !important;
+  }
+  .wpcf7-form-control-wrap {
+    margin-bottom: $base_line_half;
+
+  }
+}
+
+
 input.wpcf7-submit {
   background-color: $color_primary;
   color: $white;
   width: auto;
   padding: 0 $base_line_height;
-  margin-top: $base_line_height;
+  margin-top: $base_line_half;
+  clear: both;
+  float: left;
 }
 
 
+div.wpcf7-response-output {
+  margin-left: 0;
+}
+
+div.wpcf7-mail-sent-ok {
+    border-color: $color_primary;
+}
+
+div.wpcf7-validation-errors {
+    border-color: $color_secondary;
+}
+
+span.wpcf7-not-valid-tip {
+  color: $color_secondary;
+  font-weight: $light;
+}
 
 
 

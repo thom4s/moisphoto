@@ -26,6 +26,9 @@
 .main-navigation {
   @include box-sizing();
   position: relative;
+
+  float: right;
+  width: 75%;
   
   @include up-to(medium) {
     display: none;
@@ -37,20 +40,33 @@
     top: -1px;
   }
 }
+.menu-menu-principal-container {
+
+}
   .main-navigation ul {
     list-style: none;
     margin: 0;
     padding-left: 0;
   }
     .main-navigation .menu > li {
-      @extend .m-4col;
-      @include type-setting(0);
+      //@extend .m-5col;
+      //@extend .m-last;
+      @include type-setting(1);
 
-      text-align: center;
-      border-left: 1px solid $color_primary;
+      text-align: right;
+      float: right;
       color: $color_primary;
       text-transform: uppercase;
-      margin: 13px 0px;
+      margin: 10px 0;
+      
+
+      @include at-least(medium) {
+        &:not(:first-child) {
+          border-right: 1px solid $color_primary;
+          margin-right: 15px;
+          padding-right: 15px; 
+        }        
+      }
 
       @include up-to(medium) {
         @include type-setting(2);
@@ -58,6 +74,7 @@
         border: none;
         border-top: 1px solid $gray_dark;
         color: $white;
+        clear: both;
       }
 
     }

@@ -68,12 +68,14 @@
 
 
 			<nav id="site-navigation" class="main-navigation" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
-
 				<div class="main-nav__socials">
 					<?php get_template_part( 'template-parts/parts/part', 'socials' ); ?>
 				</div>
 
+				<div class="clearfix">
+					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu' ) ); ?>
+				</div>
+				
 			</nav><!-- #site-navigation -->
 		</div><!-- .row -->
 	</header><!-- #masthead -->
