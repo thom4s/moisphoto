@@ -22,10 +22,14 @@
         <h1><?php the_title(); ?></h1>
       </div>
     
-      <div class="m-16col entry__content">
+      <div class="m-14col entry__content">
         <?php the_content(); ?>
       </div>
-    
+
+        <div class="thumbnail m-8col m-last">
+          <?php the_post_thumbnail(''); ?>
+        </div>
+
     </div>
   </header>
 

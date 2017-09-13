@@ -47,6 +47,6 @@
             </div>
           </div> 
 
-          <div id="searchbar" class="searchbar s-24col m-6col">
+          <div id="searchbar" class="searchbar s-24col m-10col">
             <?php get_search_form(); ?>
           </div>

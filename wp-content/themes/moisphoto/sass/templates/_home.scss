@@ -21,6 +21,14 @@
       background: none;
     }
   }
+
+  @include up-to(medium) {
+
+    .module-map {
+      display: none;
+    }
+  }
+
 }
 
 
@@ -32,6 +40,10 @@
 
   span {
     margin-right: $base_line_height;
+  }
+
+  @include at-least(medium) {
+    display: none;
   }
 
 }

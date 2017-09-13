@@ -42,6 +42,21 @@
           <?php break;
 
 
+        case 'image': ?>
+          <div class="grid__item--affiche s-14col m-9col <?php echo $order_item; ?>">
+            <a href="<?php echo $item['image_link']; ?>" target="_blank">
+              <img src="<?php echo $item['file']['url']; ?>">
+            </a>
+          </div>
+          <?php break;
+
+        case 'grid_embed': ?>
+          <div class="grid__item--affiche s-14col m-9col <?php echo $order_item; ?>">
+              <?php echo $item['code']; ?>
+          </div>
+          <?php break;
+
+
         case 'text': ?>
           <a href="<?php echo $item['text_link']; ?>">
             <div class="grid__item--text s-14col m-6col <?php echo $order_item; ?> square">

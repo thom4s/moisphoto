@@ -18,7 +18,7 @@
                   </div>              
                 </div>
 
-                <div class="s-20col m-4col pressform__input">
+                <div class="s-20col m-8col pressform__input">
                   <input type="search" class="search-field" placeholder="<?php echo esc_attr_x( 'Tapez votre recherche ici_', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>" />
                 </div>
                 

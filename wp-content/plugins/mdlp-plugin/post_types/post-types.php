@@ -67,7 +67,7 @@ function weekend_post_type() {
     'label'               => __( 'weekend', 'mdlp_db' ),
     'description'         => __( 'weekend', 'mdlp_db' ),
     'labels'              => $labels,
-    'supports'            => array( 'title', 'revisions', 'editor' ),
+    'supports'            => array( 'title', 'revisions', 'editor', 'thumbnail',  ),
     'hierarchical'        => true,
     'public'              => true,
     'show_ui'             => true,
